@@ -1,0 +1,246 @@
+ion-grid {
+    padding: 3%;
+}
+
+// #map {
+//     position: relative;  /* ใช้ position relative เพื่อให้สามารถจัดการตำแหน่งได้ง่าย */
+//     height: 100vh;  /* ตั้งความสูงของแผนที่ให้เต็มความสูงของหน้าจอ */
+//     width: 100%;  /* ตั้งความกว้างของแผนที่ให้เต็มความกว้างของหน้าจอ */
+//     z-index: 1;  /* เพิ่ม z-index เพื่อให้แผนที่อยู่ด้านบน */
+//   }
+
+//   .background {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: #f0f0f0; /* สีพื้นหลัง */
+//     z-index: 0;  /* กำหนด z-index ให้น้อยกว่าของแผนที่ */
+//   }
+
+.ion-button-blue {
+    // width: 160px;
+    height: 40px;
+    min-height: 40px;
+    --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    background: #469FD1 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.ion-button-gray {
+    // width: 160px;
+    height: 40px;
+    min-height: 40px;
+    --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    background: #ACACAC 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.ion-button-green {
+    width: 160px;
+    height: 40px;
+    min-height: 40px;
+    --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    background: #1F8447 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.font-16 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+    text-align: left;
+    font: normal normal normal 16px/19px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.font-14 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-707070);
+    text-align: left;
+    font: normal normal normal 14px/19px Roboto;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.ion-select-T {
+    height: 40px;
+    min-height: 40px;
+    --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    border: 0.5px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #707070;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-left {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.center-right {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.card-toolbar {
+    width: 398px;
+    height: 40px;
+    background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    background: #469FD1 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.iconbar {
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.input {
+    // width: 70px;
+    height: 40px;
+    min-height: 40px;
+    border: 0.5px solid var(--unnamed-color-707070);
+    border: 0.5px solid #707070;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.icon {
+    font-size: 20px;
+    color: #469FD1;
+}
+
+.icon-25 {
+    font-size: 25px;
+    color: #469FD1;
+}
+
+.icon-blue {
+    font-size: 30px;
+    color: #469FD1;
+}
+
+.icon-red {
+    font-size: 30px;
+    color: #FF0000;
+}
+
+ion-textarea {
+    height: 90px;
+    /* UI Properties */
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    border: 0.5px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #707070;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.font-12 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 12px/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-707070);
+    text-align: left;
+    font: normal normal normal 12px/19px Roboto;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+}
+
+.ion-card-header-green {
+    height: 30px;
+    background: #82B440 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.ion-card-header-yello {
+    height: 30px;
+    background: #FCC845 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+
+ion-crad-content {
+    height: 40px;
+    min-height: 40px;
+    --background: #F5F5F5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+ion-card {
+    width: 100%;
+}
+
+.bar {
+    height: 40px;
+    border: 0.5px solid var(--unnamed-color-469fd1);
+    box-shadow: none;
+    border: 0.5px solid #469FD1;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+ion-button {
+    --background-activated: transparent;
+    --background-hover: transparent;
+    --ripple-color: transparent;
+}
+
+ion-select-option {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: left;
+    font: normal normal normal 14px/19px Roboto;
+    letter-spacing: 0px;
+    color: #ACACAC;
+    opacity: 1;
+}
+
+// .input-segment {
+//     width: 125px;
+//     height: 40px;
+//     min-height: 10px;
+//     margin-bottom: 10%;
+//     --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+//     border: 0.2px solid var(--unnamed-color-707070);
+//     background: #FFFFFF 0% 0% no-repeat padding-box;
+//     box-shadow: 0px 3px 6px #00000029;
+//     border: 0.20000000298023224px solid #707070;
+//     border-radius: 2px;
+//     opacity: 1;
+
+//     ::placeholder {
+//         color: red;
+//         opacity: 1;
+//     }
+// }

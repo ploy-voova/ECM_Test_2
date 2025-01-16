@@ -1,0 +1,193 @@
+<!-- collapse="condense" -->
+<ion-header>
+  <ion-toolbar>
+    <app-explore-header style="width: 100%;"></app-explore-header>
+  </ion-toolbar>
+</ion-header>
+
+<!-- class="curved-shape" -->
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <swiper-container>
+
+        <!-- 1 -->
+        <swiper-slide #swiperEx *ngFor="let quote of quo"  style="padding: 1%;">
+
+          <ion-card class="card-container" (click)="Topreview(quote.quote_id)"> 
+            <ion-row>
+              <ion-col class="col-f" size-xs="5" size-sm="4" size-md="3" style="padding: 0;">
+                <ion-card-header class="cardQ" style="background-color: #469FD1;">
+                  <span>
+                    <ion-card-title class="ion-card-title">Quote ID : {{ quote.quote_id }}</ion-card-title>
+                    <ion-row style="display: flex; align-items: center; justify-content: space-between; padding: 2%;">
+                      <ion-label class="ion-card-subtitle">Sale : {{ quote.sale }}</ion-label>
+                      <ion-label class="label">1 Journey</ion-label>
+                    </ion-row>
+                  </span>
+                </ion-card-header>
+              </ion-col>
+              <ion-col class="col-l" size-xs="7" size-sm="8" size-md="9">
+                <ion-row>
+                  <ion-col size-xs="8" style="height: 45px; display: flex; align-items: end; justify-content: start;">
+                    <ion-label class="text-truncate">Name: {{ quote.name }}</ion-label>
+                  </ion-col>
+                  <ion-col size-xs="4">
+                    <ion-row>
+                      <ion-col size-xs="6" style="padding: 0; display: flex; align-items: flex-end; ">
+                        <ion-icon name="mail-outline" class="icon-card"></ion-icon>
+                      </ion-col>
+                      <ion-col size-xs="6" style="padding: 0; display: flex; align-items: flex-start; ">
+                        <ion-icon name="call-outline" class="icon-card"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+
+            <!-- container card-->
+            <ion-grid class="grid">
+              <ion-row class="cus">
+                <ion-col size-xs="7" class="cus">
+                  <ion-row style="display: flex; align-items: center;" class="cus">
+                    <ion-col size-xs="2" style="display: flex; align-items: center;" class="cus">
+                      <ion-icon class="icon-card" name="calendar-clear-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size-xs="10" class="cus">
+                      <h4>{{ quote.date_journey }}</h4>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="display: flex; align-items: center;" class="cus">
+                    <ion-col size-xs="2" style="display: flex; align-items: center;" class="cus">
+                      <ion-icon class="icon-card" name="time-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size-xs="10" class="cus">
+                      <h4>{{ quote.time_journey }}</h4>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="display: flex; align-items: center;" class="cus">
+                    <ion-col size-xs="2" style="display: flex; align-items: center;" class="cus">
+                      <ion-icon class="icon-card" name="location-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size-xs="10" class="cus">
+                      <h4 class="text-truncate">{{ quote.pick_up }}</h4>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="display: flex; align-items: center;" class="cus">
+                    <ion-col size-xs="2" style="display: flex; align-items: center;" class="cus">
+                      <ion-icon class="icon-card" name="location-outline" color="black"></ion-icon>
+                    </ion-col>
+                    <ion-col size-xs="10" class="cus">
+                      <h4 class="text-truncate">{{ quote.destination }}</h4>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col size-xs="5">
+                  <ion-row style="display: flex; align-items: center;" class="cus">
+                    <ion-col size-xs="2" style="display: flex; align-items: center;" class="cus">
+                      <ion-icon class="icon-card" name="cash-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size-xs="10" class="cus">
+                      <h4>£{{ quote.price }}</h4>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="display: flex; align-items: center;" class="cus">
+                    <ion-col size-xs="2" style="display: flex; align-items: center;" class="cus">
+                      <ion-icon class="icon-card" name="people-circle-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size-xs="" class="cus">
+                      <h4>10 Pix(s)</h4>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size-xs="12"
+                      style="height: 59px; padding-right: 10px;  display: flex; align-items: end; justify-content: flex-end;">
+                      <ion-button class="booking-btn">Booking</ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </swiper-slide>
+
+      </swiper-container>
+    </ion-row>
+
+    <ion-row style="display: flex; align-items: center; padding-left: 3%; padding-top: 5%;">
+      <ion-label class="label-com">Communicate</ion-label>
+    </ion-row>
+
+    <ion-row ion-no-padding style="width: 100%; display: flex; align-items: center; justify-content: center;">
+      <ion-card class="card-call">
+        <ion-row style="width: 100%; height: 100%; padding: 0;">
+          <ion-col size-xs="3"
+            style="padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+            <ion-icon class="call" name="call"></ion-icon>
+          </ion-col>
+          <ion-col size-xs="7"
+            style="padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
+            <h1 style="padding: 0; margin: 0;" class="set-font-1">Quote CallBacks</h1>
+            <h2 style="padding: 0; margin: 0;" class="set-font2">No Callbacks</h2>
+          </ion-col>
+          <ion-col size-xs="2" style="display: flex; align-items: center; justify-content: center;">
+            <ion-icon style="color: #469FD1; font-size: 35px;" name="ellipsis-vertical"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card class="card-call">
+        <ion-row style="width: 100%; height: 100%; padding: 0; background-color: #469FD1;">
+          <ion-col size="3"
+            style="padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+            <ion-icon class="call_2" name="call"></ion-icon>
+          </ion-col>
+          <ion-col size="7" class="text-truncate"
+            style="padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
+            <h1 style="padding: 0; margin: 0; color: #ffff;" class="set-font-h1">Customer CallBacks</h1>
+            <h2 style="padding: 0; margin: 0;" class="set-font2-h2 text-truncate">09 Aug 2023 10.55 (GTxxx WBR+18)</h2>
+          </ion-col>
+          <ion-col size="2" style="display: flex; align-items: center; justify-content: center;">
+            <ion-icon style="color: #ffff; font-size: 35px;" name="ellipsis-vertical"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card class="card-call">
+        <ion-row style="width: 100%; height: 100%; padding: 0;">
+          <ion-col size="3"
+            style="padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+            <ion-icon class="call" name="call"></ion-icon>
+          </ion-col>
+          <ion-col size="7" class="text-truncate"
+            style="padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
+            <h1 style="padding: 0; margin: 0;" class="set-font">Supplier CallBacks</h1>
+            <h2 style="padding: 0; margin: 0;" class="set-font2 text-truncate">02 Jan 2024 16.00 (Aye Melbourne1)</h2>
+          </ion-col>
+          <ion-col size="2" style="display: flex; align-items: center; justify-content: center;">
+            <ion-icon style="color: #469FD1; font-size: 35px;" name="ellipsis-vertical"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card class="card-call">
+        <ion-row style="width: 100%; height: 100%; padding: 0; background-color: #469FD1;">
+          <ion-col size="3"
+            style="padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+            <ion-icon class="call_2" name="call"></ion-icon>
+          </ion-col>
+          <ion-col size="7" class="text-truncate"
+            style=" padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
+            <h1 style="padding: 0; margin: 0; color: #ffff;" class="set-font-h1">Customer CallBacks</h1>
+            <h2 style="padding: 0; margin: 0;" class="set-font2-h2 ">16 Aug 2021 00.00 (Jod ID: 1208)</h2>
+          </ion-col>
+          <ion-col size-xs="2" style="display: flex; align-items: center; justify-content: center;">
+            <ion-icon style="color: #ffff; font-size: 35px;" name="ellipsis-vertical"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

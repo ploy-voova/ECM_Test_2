@@ -1,0 +1,769 @@
+<ion-header>
+  <ion-toolbar style="background-color: white;">
+    <app-explore-header></app-explore-header>
+    <!-- <ion-row style="background-color: white; border: 5px #ffff; ">Create a new quote</ion-row> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row style="margin-bottom: 4%;">
+      <ion-col size="5.5">
+        <ion-row class="ion-button-blue font-16 no-padding center">
+          Create a new Quote
+        </ion-row>
+      </ion-col>
+      <ion-col size="5" class="center">
+        <ion-select class="font-14 ion-select-T" (ionChange)="onFirstSelectChange()" style="color: #ACACAC;"
+          label-placement="floating" interface="popover" value="select">
+          <ion-select-option value="select">Select Profile</ion-select-option>
+          <ion-select-option value="bezt">bezt</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="4">
+        <ion-select #cor2 class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+          interface="popover" value="select">
+          <ion-select-option value="select">Job Category</ion-select-option>
+          <ion-select-option value="bezt">bezt</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="4">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="select">
+          <ion-select-option value="select">Job Prototype</ion-select-option>
+          <ion-select-option value="bezt">bezt</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="4">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
+          placeholder="Journey Type">
+          <ion-select-option *ngFor="let j_type of journey_Type" value="{{j_type.jt_id}}">
+            {{j_type.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="card-toolbar">
+        <ion-row (click)="toggleRowCus()">
+          <ion-col size="7" class="center-left">
+            <ion-icon name="person-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
+            <ion-label style="color: #ffff;">| Customer</ion-label>
+          </ion-col>
+          <ion-col size="5" class="center" style="justify-content: space-between;">
+            <ion-icon class="iconbar" name="mail-outline"></ion-icon>
+            <ion-icon class="iconbar" name="call-outline"></ion-icon>
+            <ion-icon class="iconbar" name="id-card-outline"></ion-icon>
+            <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNameCus"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="padding: 2%;" *ngIf="isRowvisibleCus">
+      <ion-col size="6">
+        <ion-input [(ngModel)]="company" class="input font-14" placeholder=" Company/Account" style="width: 100%;"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input [(ngModel)]="email" class="input font-14" placeholder=" Email" style="width: 100%;"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder=" External Reference" style="width: 100%;"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder=" name" style="width: 100%;"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder=" Referrer Code" style="width: 100%;"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder=" Phone" style="width: 100%;"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-label class="font-16" style="color: #707070; font-weight: bold;">Passenger</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder=" Passenger Email" style="width: 100%;"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder=" Passenger Name" style="width: 100%;"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder=" Passenger Number" style="width: 100%;"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="card-toolbar">
+        <ion-row (click)="toggleRowTran()">
+          <ion-col size="8" class="center-left">
+            <ion-icon name="bus-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
+            <ion-label style="color: #ffff;">| Transport</ion-label>
+          </ion-col>
+          <ion-col size="4" class="center" style="justify-content: space-between;">
+            <ion-icon class="iconbar" name="people-circle-outline"></ion-icon>
+            <ion-icon class="iconbar" name="briefcase-outline"></ion-icon>
+            <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNameTran"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="isRowvisibleTran" style="margin-bottom: 5%; padding: 2%;">
+      <ion-col size="12" class="center-right">
+        <ion-button class="ion-button-blue center font-14" style="width: 135px; color: #ffff;">
+          Show Movement
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
+          value="selectpax" (ionChange)="paxChange($event)">
+          <ion-select-option value="selectpax">Select Pax</ion-select-option>
+          <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
+            {{ index + 1 }} Paxs
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          [value]="'selectvehicle'" (ionChange)="vehicleChange($event)">
+          <ion-select-option value="selectvehicle">Select Vehicle</ion-select-option>
+          <ion-select-option *ngFor="let vehi of vehicle" [value]="vehi.car_id">
+            {{vehi.car_name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="selectluggage">
+          <ion-select-option value="selectluggage">Select Luggage</ion-select-option>
+          <ion-select-option *ngFor="let lug of luggage" [value]="lug.bag_id">
+            {{lug.bag_des}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="other">
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6.5" class="center-left" style="margin-top: 2%;">
+        <ion-icon name="bus-outline" style="color: #AB1C1C; width: 25px; height: 29px"></ion-icon>
+        <ion-label class="font-16" style="color: #AB1C1C;" (click)="toggleVehicles()">Set alternative
+          vehicles</ion-label>
+      </ion-col>
+      <ion-col size="5.5" class="center-left">
+        <ion-icon name="bus-outline" style="color: #000000; width: 25px; height: 29px"></ion-icon>
+        <ion-label class="font-16 " style="color: #000000;" (click)="toggleAs()">As Directed</ion-label>
+      </ion-col>
+      <ion-col offset="6.5">
+        <ion-row *ngIf="isdropAs">
+          <ion-select class="font-14 ion-select-T" style="color: #ACACAC; width: 120px; margin-right: 5%;"
+            label-placement="floating" interface="popover" value="hours">
+            <ion-select-option value="hours">0 Hours</ion-select-option>
+            <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
+              {{ index + 1 }} Hours
+            </ion-select-option>
+          </ion-select>
+          <ion-select class="font-14 ion-select-T" style="color: #ACACAC; width: 120px;" label-placement="floating"
+            interface="popover" value="days">
+            <ion-select-option value="days">0 Days</ion-select-option>
+            <ion-select-option *ngFor="let i of [].constructor(365); let index = index" [value]="index + 1">
+              {{ index + 1 }} Days
+            </ion-select-option>
+          </ion-select>
+        </ion-row>
+      </ion-col>
+      <ion-row *ngIf="isdropVehicles">
+        <ion-col size="6">
+          <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+            interface="popover" value="vehicle2" >
+            <ion-select-option value="vehicle2">Alternate vehicle2</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="6">
+          <ion-input class="input font-14" type="number" placeholder=" Price" style="width: 100%;"></ion-input>
+        </ion-col>
+        <ion-col size="6">
+          <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+            interface="popover" value="vehicle3" >
+            <ion-select-option value="vehicle3">Alternate vehicle3</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="6">
+          <ion-input class="input font-14" type="number" placeholder=" Price" style="width: 100%;"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-col size="12" style="margin-top: 3%;">
+        <ion-label class="font-16" style="font-weight: bold; color: #000000;">As Directed</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-row style="display: flex; align-items: end;">
+          <ion-input class="input font-14" type="number" placeholder="0"
+            style=" text-align: left; margin-right: 2%; text-align: right; "></ion-input>
+        </ion-row>
+      </ion-col>
+      <ion-col size="6" style="display: flex; align-items: end;">
+        <ion-label class="font-14" style="color: #000000;">miles</ion-label>
+      </ion-col>
+      <ion-col size="6" style="margin-top: 3%;">
+        <ion-label class="font-16" style="font-weight: bold; color: #000000;">Actual Time</ion-label>
+        <ion-row style="display: flex; align-items: end; margin-top: 3%;">
+          <ion-input class="input font-14" style="margin-right: 2%; color: #707070;" value="{{timeAc}}"
+            placeholder="Hours / Minutes">
+            <ion-icon id="open-time_Ac" name="time-outline" slot="end"
+              style="font-size: 25px; color: #469FD1;"></ion-icon>
+          </ion-input>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-popover trigger="open-time_Ac" side="bottom" alignment="center">
+      <ng-template>
+        <ion-content class="popover-content-time">
+          <ion-datetime class="time-size" presentation="time" (ionChange)="onTimeChange_Ac($event)">
+          </ion-datetime>
+          <ion-button expand="full" (click)="close_Ac()">ตกลง</ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+
+    <ion-row>
+      <ion-col size="12" class="card-toolbar">
+        <ion-row (click)="toggleRowPricing()">
+          <ion-col size="10" class="center-left">
+            <ion-icon name="cash-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
+            <ion-label style="color: #ffff;">| Pricing</ion-label>
+          </ion-col>
+          <ion-col size="2" class="center" style="justify-content: space-between;">
+            <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNamePrice"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="isRowvisiblePricing" style="margin-top: 4%; padding: 2%;">
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder="Vehicle Price"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input class="input font-14" placeholder="Deposit"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="12" style="margin-top: 2%;">
+        <ion-label class="font-16" style="color: #067E36; font-weight: bold;">Added Options</ion-label>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-checkbox class="font-16" style="color: #747474;" labelPlacement="end">ITEM 004</ion-checkbox>
+      </ion-col>
+      <ion-col size="5.5">
+        <ion-row style="display: flex; align-items: center; justify-content: space-between;">
+          <ion-label style="font-size: 20px; color: #747474;">$</ion-label>
+          <ion-input class="input" style="width: 113px;"></ion-input>
+          <ion-icon class="icon" name="alert-circle-outline"></ion-icon>
+        </ion-row>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-checkbox class="font-16" style="color: #747474;" labelPlacement="end">Oil TEST Extra It...</ion-checkbox>
+      </ion-col>
+      <ion-col size="5.5">
+        <ion-row style="display: flex; align-items: center; justify-content: space-between;">
+          <ion-label style="font-size: 20px; color: #747474;">$</ion-label>
+          <ion-input class="input" style="width: 113px;"></ion-input>
+          <ion-icon class="icon" name="alert-circle-outline"></ion-icon>
+        </ion-row>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-checkbox class="font-16" style="color: #747474;" labelPlacement="end">Oil TEST Extra It...</ion-checkbox>
+      </ion-col>
+      <ion-col size="5.5">
+        <ion-row style="display: flex; align-items: center; justify-content: space-between;">
+          <ion-label style="font-size: 20px; color: #747474;">$</ion-label>
+          <ion-input class="input" style="width: 113px;"></ion-input>
+          <ion-icon class="icon" name="alert-circle-outline"></ion-icon>
+        </ion-row>
+      </ion-col>
+      <ion-col size="6.8" style="margin-top: 2%;">
+        <ion-textarea placeholder="Payment Message"></ion-textarea>
+      </ion-col>
+      <ion-col size="5.2" style="margin-top: 2%;">
+        <ion-col class="no-padding">
+          <ion-input class="input font-14" placeholder="Balance Due Date">
+            <ion-icon class="icon" slot="end" name="today-outline"></ion-icon>
+          </ion-input>
+        </ion-col>
+        <ion-col class="no-padding" style="display: flex; align-items: end; justify-content: end;">
+          <ion-button class="ion-button-blue font-14" style="width: 110px; color: #ffff;">
+            $ Quick Price
+          </ion-button>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="card-toolbar">
+        <ion-row (click)="toggleRowMisc()">
+          <ion-col size="10" class="center-left">
+            <ion-icon name="help-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
+            <ion-label style="color: #ffff;">| Misc</ion-label>
+          </ion-col>
+          <ion-col size="2" class="center" style="justify-content: space-between;">
+            <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNameMisc"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="isRowvisibleMisc" style="margin-top: 3%; padding: 2%;">
+      <ion-col size="5.5">
+        <ion-label class="font-14">How did you hear of us ?</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col offset="1" size="5.5">
+        <ion-label class="font-14">Opsperson</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+
+      <ion-col size="5.5">
+        <ion-label class="font-14">Salesperson</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col offset="1" size="5.5">
+        <ion-label class="font-14">Account Owner</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="5.5">
+        <ion-label class="font-14">Priority</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col offset="1" size="5.5">
+        <ion-label class="font-14">Account Owner</ion-label>
+        <ion-label class="font-14" style="color: #000000; display: block;">Name Admin</ion-label>
+      </ion-col>
+      <ion-col size="7">
+        <ion-textarea class="font-12" placeholder="Payment Message"
+          placeholder="Notes (Customers see these!)"></ion-textarea>
+      </ion-col>
+      <ion-col size="5" style="display: flex; justify-content: end;">
+        <ion-button class="ion-button-blue font-14" style="width: 76px; color: #ffff;">
+          Itinerary
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="card-toolbar">
+        <ion-row (click)="toggleRowItem()">
+          <ion-col size="10" class="center-left">
+            <ion-icon name="pricetags-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
+            <ion-label style="color: #ffff;">| Item</ion-label>
+          </ion-col>
+          <ion-col size="2" class="center" style="justify-content: space-between;">
+            <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNameItem"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="isRowvisibleItem">
+      <ion-col size="5.5">
+        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Location</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
+          interface="popover" value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col offset="1" size="5.5">
+        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Categoty</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
+          interface="popover" value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="5.5">
+        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Group</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
+          interface="popover" value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="12">
+        <label class="font-14" style="font-weight: bold; color: #000000;">No extra item yet</label>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button class="ion-button-green font-14" style="color: #ffff; width: 100%;">
+          Book Now
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button class="ion-button-green font-14" style="color: #ffff; width: 100%;">
+          Send and Save
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button class="ion-button-blue font-14" style=" color: #ffff; width: 100%;">
+          Quick Save
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="card-toolbar">
+        <ion-row (click)="toggleRowKyc()">
+          <ion-col size="11" class="center-left">
+            <ion-label style="color: #ffff;">Know Your Customer (KYC)</ion-label>
+          </ion-col>
+          <ion-col size="1" class="center" style="justify-content: space-between;">
+            <ion-icon class="iconbar" [name]="iconNameKyc"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="isRowvisibleKyc" style="padding: 2%;">
+      <ion-card style="margin: 0; margin-bottom: 4%; margin-top: 2%;">
+        <ion-card-header class="center ion-card-header-green">
+          <ion-label class="font-14" style="color: #ffff;">Internal Info</ion-label>
+        </ion-card-header>
+
+        <ion-card-content class="center">
+          <ion-input style="text-align: center;" placeholder="Please fill the Email Address"></ion-input>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card style="margin: 0; margin-bottom: 3%;">
+        <ion-card-header class="center ion-card-header-yello">
+          <ion-label class="font-14" style="color: #ffff;">Internal Info</ion-label>
+        </ion-card-header>
+
+        <ion-card-content class="center">
+          <ion-input style="text-align: center;" placeholder="Please fill the Email Address"></ion-input>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="card-toolbar">
+        <ion-row (click)="toggleRowStart()">
+          <ion-col size="11" class="center-left">
+            <ion-icon name="map-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
+            <ion-label style="color: #ffff;">| Start of Journey</ion-label>
+          </ion-col>
+          <ion-col size="1" class="center" style="justify-content: space-between;">
+            <ion-icon class="iconbar" [name]="iconNameStart"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="isRowvisibleStart" style="padding: 2%; margin-top: 3%;">
+      <ion-col size="12" class="bar">
+        <ion-checkbox class="check-box font-14 " checked="true" style="color: #469FD1;">Start of Journey</ion-checkbox>
+      </ion-col>
+      <ion-row style="margin-top: 3%;">
+        <ion-col size="6" class="center-left">
+          <ion-label class="font-14" style="color: #AB1C1C;">Pickup date</ion-label>
+        </ion-col>
+        <ion-col size="6">
+          <ion-input class="font-14 input" style="color: #707070; " value="{{date_c}} {{time_c}}">
+            <ion-icon id="open-date" style="margin-right: 3%; padding: 0;" slot="end" name="today-outline"
+              class="icon-25"></ion-icon>
+            <ion-icon id="open-time" style="margin-right: 5%;" slot="end" name="time-outline"
+              class="icon-25"></ion-icon>
+          </ion-input>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label class="font-14" style="color: #AB1C1C;">Collection Address(1)</ion-label>
+        </ion-col>
+        <ion-col size="9.5">
+          <ion-input class="input"></ion-input>
+        </ion-col>
+        <ion-col size="2.5">
+          <ion-icon class="icon-blue" name="location-outline"></ion-icon>
+          <ion-icon (click)="toggleNote_col1()" class="icon-blue" name="reader-outline"></ion-icon>
+        </ion-col>
+        <ion-row *ngIf="isdropNote_col1">
+          <ion-col size="12">
+            <ion-label class="font-14">Destination Note</ion-label>
+          </ion-col>
+          <ion-col size="9.5">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="1.5">
+            <ion-icon (click)="toggleNote_col1()" class="icon-red" name="reader-outline"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-col size="12">
+          <ion-label class="font-14" style="color: #AB1C1C;">Collection Address(2)</ion-label>
+        </ion-col>
+        <ion-col size="9.5">
+          <ion-input class="input"></ion-input>
+        </ion-col>
+        <ion-col size="2.5">
+          <ion-icon class="icon-blue" name="location-outline"></ion-icon>
+          <ion-icon (click)="toggleNote_col2()" class="icon-blue" name="reader-outline"></ion-icon>
+        </ion-col>
+        <ion-row *ngIf="isdropNote_col2">
+          <ion-col size="12">
+            <ion-label class="font-14">Destination Note</ion-label>
+          </ion-col>
+          <ion-col size="9.5">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col offset="1" size="1.5">
+            <ion-icon (click)="toggleNote_col2()" class="icon-red" name="reader-outline"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-col size="5" class="center">
+          <ion-label class="font-14">Destination Arrival Time</ion-label>
+        </ion-col>
+        <ion-col size="7">
+          <ion-input class="font-14 input" style="color: #707070; " value="{{date_des}} {{time_des}}">
+            <ion-icon id="open-date_des" style="margin-right: 3%; padding: 0;" slot="end" name="today-outline"
+              class="icon-25"></ion-icon>
+            <ion-icon id="open-time_des" style="margin-right: 5%;" slot="end" name="time-outline"
+              class="icon-25"></ion-icon>
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <!-- Popover date-->
+      <ion-popover trigger="open-date" side="bottom" alignment="center">
+        <ng-template>
+          <ion-content class="popover-content">
+            <ion-datetime presentation="date" (ionChange)="onDateChange($event)">
+            </ion-datetime>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+
+      <ion-popover trigger="open-date_des" side="bottom" alignment="center">
+        <ng-template>
+          <ion-content class="popover-content">
+            <ion-datetime presentation="date" (ionChange)="onDateChange_Des($event)">
+            </ion-datetime>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+
+      <!-- Popover time-->
+      <ion-popover trigger="open-time" side="bottom" alignment="center">
+        <ng-template>
+          <ion-content class="popover-content-time">
+            <ion-datetime class="time-size" presentation="time" (ionChange)="onTimeChange($event)">
+            </ion-datetime>
+            <ion-button expand="full" (click)="close()">ตกลง</ion-button>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+
+      <ion-popover trigger="open-time_des" side="bottom" alignment="center">
+        <ng-template>
+          <ion-content class="popover-content-time">
+            <ion-datetime class="time-size" presentation="time" (ionChange)="onTimeChange_Des($event)">
+            </ion-datetime>
+            <ion-button expand="full" (click)="close_des()">ตกลง</ion-button>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+      <ion-col size="12" class="bar" style="display: flex; align-items: center; margin-top: 3%;">
+        <ion-label class="font-14" style="color: #469FD1;">Vehicle</ion-label>
+      </ion-col>
+
+      <ion-col size="6" class="center-left">
+        <ion-label class="font-14" style="color: #AB1C1C;">Passenger</ion-label>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
+          value="selectpax" (ionChange)="paxChange($event)">
+          <ion-select-option value="selectpax">Select Pax</ion-select-option>
+          <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
+            {{ index + 1 }} Paxs
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-label class="font-14" style="color: #AB1C1C;">Vehicle</ion-label>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          [value]="'selectvehicle'" (ionChange)="vehicleChange($event)">
+          <ion-select-option value="selectvehicle">Select Vehicle</ion-select-option>
+          <ion-select-option *ngFor="let vehi of vehicle" [value]="vehi.car_id">
+            {{vehi.car_name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-label class="font-14" style="color: #AB1C1C;">Luggaga</ion-label>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="selectluggage">
+          <ion-select-option value="selectluggage">Select Luggage</ion-select-option>
+          <ion-select-option *ngFor="let lug of luggage" [value]="lug.bag_id">
+            {{lug.bag_des}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-label class="font-14">Journey Type</ion-label>
+      </ion-col>
+      <ion-col size="6" class="center-left">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
+          placeholder="Journey Type">
+          <ion-select-option *ngFor="let j_type of journey_Type" value="{{j_type.jt_id}}">
+            {{j_type.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+
+      <ion-col (click)="toggleRowFilght()" size="12" class="bar"
+        style="display: flex; align-items: center; margin-top: 3%; justify-content: space-between;">
+        <ion-label class="font-14" style="color: #469FD1;">Filght Details</ion-label>
+        <ion-icon [name]="iconNameFilght" style="color: #469FD1;"></ion-icon>
+      </ion-col>
+
+      <ion-row *ngIf="isRowvisibleFilght" style="margin-top: 5%;">
+        <ion-segment (ionChange)="segmentChanged($event)" value="light">
+          <ion-segment-button value="light" content-id="arrival">
+            <ion-label>Arrival</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="segment">
+            <ion-label>Departure</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <ion-segment-view>
+          <ion-segment-content id="arrival" style="padding: 5%;">
+            <ion-row>
+              <ion-col class="no-padding">
+                <ion-input class="input-segment" placeholder=" Filght Airline"></ion-input>
+              </ion-col>
+              <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                <ion-input class="input-segment" placeholder=" Number"></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="no-padding">
+                <ion-input class="input-segment" placeholder=" Date"></ion-input>
+              </ion-col>
+              <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                <ion-input class="input-segment" placeholder=" Time"></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="no-padding">
+                <ion-input class="input-segment" placeholder=" Airport"></ion-input>
+              </ion-col>
+              <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                <ion-input class="input-segment" placeholder=" Terminal"></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-segment-content>
+        </ion-segment-view>
+      </ion-row>
+      <ion-col size="12" class="center-right">
+        <ion-icon name="trash-outline" style="color: #469FD1; font-size: 24px;"></ion-icon>
+      </ion-col>
+      <ion-col size="5">
+        <ion-button class="ion-button-blue font-16" style="width: 100%;">Add Movement</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button class="ion-button-blue font-16" style="width: 100%;">Add Blank Journey</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button class="ion-button-blue font-16" style="width: 100%;">Add Return</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button class="ion-button-blue font-16" style="width: 100%;">Remove Movement</ion-button>
+      </ion-col>
+      <ion-col size="4.5">
+        <ion-button class="ion-button-gray font-16" style="width: 100%;">Covering job</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button class="ion-button-gray font-16" style="width: 100%;">Duplicate Movement</ion-button>
+      </ion-col>
+      <ion-col size="5.5">
+        <ion-button class="ion-button-gray font-16" style="width: 100%;">Duplicate Journey</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button class="ion-button-gray font-16" style="width: 100%;">Assign Driver</ion-button>
+      </ion-col>
+      <ion-col size="5">
+        <ion-button class="ion-button-gray font-16" style="width: 100%;">Remove Driver</ion-button>
+      </ion-col>
+      <ion-col size="12" class="center-right">
+        <ion-icon name="map" style="color: #469FD1; font-size: 27px;"></ion-icon>
+      </ion-col>
+      <ion-col size="12">
+        <ion-label class="font-14" style="color: #747474;">Please select journey or movement</ion-label>
+      </ion-col>
+      <ion-card style="width: 400px; height: 300px;">
+        <app-map></app-map>
+      </ion-card>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

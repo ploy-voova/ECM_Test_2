@@ -1,0 +1,46 @@
+///style ion-tabs
+ion-tab-bar {
+    --background: #fff;
+    --color: #444;
+    // --color-selected: #4caf50;
+    --border-color: #ccc;
+}
+
+ion-tab-bar {
+    background: #ffff;
+    border-top: 1px solid #ffff;
+    height: 70px;
+}
+
+/* ปรับสีของ tab-button เมื่อ active */
+ion-tab-button {
+    --color: #747474;
+
+    --color-selected: #469FD1;
+
+    --ripple-color: #469FD1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2%;
+    height: 100%;
+}
+
+/* ปรับไอคอน */
+ion-tab-button ion-icon {
+    font-size: 24px;
+    
+}
+
+/* ปรับ label */
+ion-tab-button ion-label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* แสดง border ด้านบนเมื่อ tab active */
+ion-tab-button[aria-selected="true"] {
+    border-top: 2px solid #469FD1;
+}

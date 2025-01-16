@@ -1,0 +1,7 @@
+{
+  "name": "ECM",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
