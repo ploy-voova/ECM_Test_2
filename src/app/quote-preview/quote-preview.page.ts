@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { baseUrl } from 'BaseUrl';
 import { AlertController } from '@ionic/angular';
+import { QuotePreviewService } from '../service/quote-preview/quote-preview.service';
 
 @Component({
   selector: 'app-quote-preview',
@@ -23,7 +23,7 @@ export class QuotePreviewPage implements OnInit {
   time: any;
   dt_q: any;
 
-  iconNameCus: string = 'chevron-down-outline'; // ไอคอนเริ่มต้น
+  iconNameCus: string = 'chevron-down-outline';
   iconNameTran: string = 'chevron-down-outline';
   iconNamePrice: string = 'chevron-down-outline';
   iconNameMisc: string = 'chevron-down-outline';
@@ -36,8 +36,13 @@ export class QuotePreviewPage implements OnInit {
   isdropItem: boolean = false;
   isdropVehicles: boolean = false;
   isdropAs: boolean = false;
+  isvisiblemap: boolean = false;
 
-  constructor(private router: ActivatedRoute, private popoverController: PopoverController, private alertController: AlertController) {
+  constructor(
+    private router: ActivatedRoute, 
+    private popoverController: PopoverController, 
+    private alertController: AlertController,
+    public quote_pre: QuotePreviewService ) {
 
   }
 
@@ -45,10 +50,16 @@ export class QuotePreviewPage implements OnInit {
     this.router.paramMap.subscribe(params => {
       this.q_id = params.get('quoteId');
     });
+    this.io();
+  }
 
-    this.journey_quote();
-
-
+  async io(){
+    const res = await this.quote_pre.quote_Preview2(this.q_id);
+    // console.log(res);
+    
+    this.dt_q = res;
+    // console.log(this.dt_q);
+    
   }
 
   toggleCus() {
@@ -82,6 +93,10 @@ export class QuotePreviewPage implements OnInit {
 
   toggleAs() {
     this.isdropAs = !this.isdropAs;
+  }
+
+  togglemap() {
+    this.isvisiblemap = !this.isvisiblemap;
   }
 
   isdrop: boolean[][] = [];
@@ -132,6 +147,8 @@ export class QuotePreviewPage implements OnInit {
       .then((response) => response.json())
       .then((data) => {
         this.dt_q = data;
+        console.log(this.dt_q);
+        
         this.date_j = data[0]['movement_quote'][0]['date_start'];
         this.time_j = data[0]['movement_quote'][0]['time_start'];
       });
@@ -160,6 +177,7 @@ export class QuotePreviewPage implements OnInit {
     this.closePopover()
   }
 
+  // ฟังก์ชันเรียกเมื่อเลือกเวลา
   onTimeChange(event: any) {
     this.time = event.detail.value
     // console.log(this.time);

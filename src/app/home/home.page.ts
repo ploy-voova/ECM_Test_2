@@ -1,23 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import Swiper from 'swiper';
-import { baseUrl } from 'BaseUrl';
-
-interface q {
-  quote_id: string;
-  sale: string;
-  name: string;
-  date_journey: string;
-  time_journey: string;
-  pick_up: string;
-  destination: string;
-  price: string;
-  pix: string;
-  progress_data: string;
-  callback_date: null | string;
-}
-
+import { HomeService } from '../service/home/home.service';
 
 @Component({
   selector: 'app-home',
@@ -27,29 +11,14 @@ interface q {
 export class HomePage implements OnInit {
   currentWidth: number = 0;
   currentHeight: number = 0;
-  quo: q[] = [];
-  qid: string = '';
+  qid: any;
+  quo: any = [];
 
-  constructor(private platform: Platform, private router: Router) {
-    this.quotebook();
+  constructor(private platform: Platform, private router: Router,public home_ser: HomeService) {}
 
-    this.platform.ready().then(() => {
-      const width = this.platform.width();
-      if (width <= 576) {
-        console.log('Small screen (xs)');
-      } else if (width <= 768) {
-        console.log('Medium screen (sm)');
-      } else if (width <= 1024) {
-        console.log('Large screen (md)');
-      } else {
-        console.log('Extra large screen (lg or xl)');
-      }
-    });
+  async ngOnInit() {
+    this.home_ser.quote_booking();
   }
-
-  ngOnInit() {
-  }
-
   Topreview(quoteId: string) {
     console.log(quoteId);
 
@@ -60,31 +29,6 @@ export class HomePage implements OnInit {
     }
 
   }
-
-  quotebook() {
-
-
-    fetch(baseUrl + '/api/ploy/quote_booking', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // body: JSON.stringify(),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log('Key=====', data);
-        this.quo = (data);
-        // localStorage.setItem('keyLogin', data);
-        // const keylogin = localStorage.getItem('keyLogin');
-        // console.log('KeyLoginStorage==', keylogin);
-        // this.router.navigate(['/tabs/home'])
-      })
-      .catch((error) => {
-        alert('ผิด');
-      });
-  }
-
 
 }
 

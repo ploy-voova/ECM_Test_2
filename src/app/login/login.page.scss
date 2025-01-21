@@ -9,7 +9,6 @@ ion-grid{
 
 .font-16 {
     text-align: left;
-    // font-weight: bold;
     font-size: 16px;
     line-height: 19px;
     font-family: Roboto, sans-serif;
@@ -22,7 +21,6 @@ ion-grid{
     width: 354px;
     height: 47px;
     min-height: 47px;
-    /* UI Properties */
     --background: #469FD1 0% 0% no-repeat padding-box;
     --border-radius: 4px;
     opacity: 1;
@@ -39,7 +37,6 @@ ion-grid{
     width: 163px;
     height: 42px;
     min-height: 42px;
-    /* UI Properties */
     --background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 9px;
@@ -51,9 +48,6 @@ ion-grid{
     height: 300px;
     background: #469FD1;
     position: relative;
-    // margin-top: -50px;
-
-
 }
 
 .curved-shape::before {
@@ -77,84 +71,3 @@ ion-content {
 ion-item{
     --background: #ffff;
 }
-
-// @media (max-width: 768px) {
-//     .curved-shape {
-//         height: 30vh; /* Increase height for smaller screens */
-//     }
-//     .curved-shape::before {
-//         height: 80vh; /* Adjust the curve size */
-//         bottom: -15vh; /* Adjust bottom positioning */
-//     }
-// }
-
-// @media (max-width: 480px) {
-//     .curved-shape {
-//         height: 40vh; /* Further adjust height for very small screens */
-//     }
-//     .curved-shape::before {
-//         height: 100vh; /* Scale the curve to fit smaller screens */
-//         bottom: -20vh; /* Adjust bottom positioning */
-//     }
-// }
-
-// @media (min-width: 500px){
-//     ion-grid{
-//         padding-top: 20%; 
-//         z-index: 2;
-//     }
-
-//     .curved-shape {
-//         height: 320px;
-//     }
-// }
-
-// @media (min-width: 650px){
-//     ion-grid{
-//         padding-top: 20%; 
-//         z-index: 2;
-//     }
-
-//     .curved-shape {
-//         // height: 320px;
-//     }
-// }
-
-// @media (min-width: 700px){
-//     ion-grid{
-//         padding-top: 20%; 
-//         z-index: 2;
-//     }
-
-//     .curved-shape {
-//         height: 320px;
-//     }
-// }
-
-// @media (min-width: 800px){
-//     ion-grid{
-//         padding-top: 20%; 
-//         z-index: 2;
-//     }
-
-//     .curved-shape {
-//         margin-top: -120px;
-//     }
-// }
-
-// @media (min-width: 900px){
-//     ion-grid{
-//         padding-top: 15%; 
-//         z-index: 2;
-//     }
-
-//     .curved-shape {
-//         // margin-top: -150px;
-//         // height: 320px;
-//     }
-
-//     .curved-shape::before {
-//         height: 580px;
-//     }
-// }
-

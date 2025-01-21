@@ -15,7 +15,7 @@ import { HomePage } from './home.page';
     FormsModule,
     IonicModule.forRoot(),
     HomePageRoutingModule,
-    ExploreHeaderComponentModule
+    ExploreHeaderComponentModule,
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

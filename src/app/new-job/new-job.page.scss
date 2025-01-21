@@ -2,25 +2,7 @@ ion-grid {
     padding: 3%;
 }
 
-// #map {
-//     position: relative;  /* ใช้ position relative เพื่อให้สามารถจัดการตำแหน่งได้ง่าย */
-//     height: 100vh;  /* ตั้งความสูงของแผนที่ให้เต็มความสูงของหน้าจอ */
-//     width: 100%;  /* ตั้งความกว้างของแผนที่ให้เต็มความกว้างของหน้าจอ */
-//     z-index: 1;  /* เพิ่ม z-index เพื่อให้แผนที่อยู่ด้านบน */
-//   }
-
-//   .background {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-color: #f0f0f0; /* สีพื้นหลัง */
-//     z-index: 0;  /* กำหนด z-index ให้น้อยกว่าของแผนที่ */
-//   }
-
 .ion-button-blue {
-    // width: 160px;
     height: 40px;
     min-height: 40px;
     --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
@@ -30,7 +12,6 @@ ion-grid {
 }
 
 .ion-button-gray {
-    // width: 160px;
     height: 40px;
     min-height: 40px;
     --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
@@ -120,7 +101,6 @@ ion-grid {
 }
 
 .input {
-    // width: 70px;
     height: 40px;
     min-height: 40px;
     border: 0.5px solid var(--unnamed-color-707070);
@@ -149,9 +129,13 @@ ion-grid {
     color: #FF0000;
 }
 
+.icon-green {
+    font-size: 30px;
+    color: #1F8447;
+}
+
 ion-textarea {
     height: 90px;
-    /* UI Properties */
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     border: 0.5px solid var(--unnamed-color-707070);
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -226,21 +210,28 @@ ion-select-option {
     opacity: 1;
 }
 
-// .input-segment {
-//     width: 125px;
-//     height: 40px;
-//     min-height: 10px;
-//     margin-bottom: 10%;
-//     --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-//     border: 0.2px solid var(--unnamed-color-707070);
-//     background: #FFFFFF 0% 0% no-repeat padding-box;
-//     box-shadow: 0px 3px 6px #00000029;
-//     border: 0.20000000298023224px solid #707070;
-//     border-radius: 2px;
-//     opacity: 1;
+ion-segment-view {
+    width: 100%;
+    height: 216px;
+    background: #F3F3F3 0% 0% no-repeat padding-box;
+    border-top: none;
+    border-radius: 2px;
+    opacity: 1;
+}
 
-//     ::placeholder {
-//         color: red;
-//         opacity: 1;
-//     }
-// }
+
+.input-segment {
+    height: 40px;
+    min-height: 10px;
+    margin-bottom: 10%;
+    --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: none;
+    border-radius: 2px;
+    opacity: 1;
+
+    ::placeholder {
+        color: red;
+        opacity: 1;
+    }
+}

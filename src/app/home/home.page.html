@@ -9,11 +9,14 @@
 <ion-content>
   <ion-grid>
     <ion-row>
+      <!-- <ion-row style="color: aqua;"> -->
+        <ion-col size="12">
+          <ion-checkbox class="font-14"  checked="true" style="color: #469FD1;">Start of Journey</ion-checkbox>
+        </ion-col>
+      <!-- </ion-row> -->
       <swiper-container>
-
         <!-- 1 -->
-        <swiper-slide #swiperEx *ngFor="let quote of quo"  style="padding: 1%;">
-
+        <swiper-slide #swiperEx *ngFor="let quote of this.home_ser.quo"  style="padding: 1%;">
           <ion-card class="card-container" (click)="Topreview(quote.quote_id)"> 
             <ion-row>
               <ion-col class="col-f" size-xs="5" size-sm="4" size-md="3" style="padding: 0;">

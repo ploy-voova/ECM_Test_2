@@ -11,17 +11,17 @@ import { NewJobPage } from './new-job.page';
 import { ExploreHeaderComponentModule } from '../explore-header/explore-header.module';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-import { MapComponent } from '../map/map.component';
+import { SharedMapModule } from '../sharedMap/sharedMap.module';
 
 @NgModule({
-  declarations: [NewJobPage,MapComponent],
+  declarations: [NewJobPage],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     NewJobPageRoutingModule,
     ExploreHeaderComponentModule,
+    SharedMapModule
   ],
   
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

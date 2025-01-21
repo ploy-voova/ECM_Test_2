@@ -141,7 +141,7 @@
                   style="color: #000000; border: none; background: #D9D9D9 0% 0% no-repeat padding-box;"
                   value="{{mm.address_last}}" disabled="true"></ion-input>
                 <ion-icon class="icon-blue" name="location-outline" style="font-size: 35px;"></ion-icon>
-                <ion-icon class="icon-blue" name="document-text-outline" style="font-size: 35px;"></ion-icon>
+                <ion-icon class="icon-blue" name="reader-outline" style="font-size: 35px;"></ion-icon>
               </ion-row>
               <ion-row class="margin">
                 <ion-label class="font-14" style="color: #FF0000;">Destination Address(2)</ion-label>
@@ -149,13 +149,13 @@
               <ion-row class="margin">
                 <ion-input class="center font-14 ion-input"></ion-input>
                 <ion-icon class="icon-blue" name="location-outline" style="font-size: 35px;"></ion-icon>
-                <ion-icon class="icon-blue" name="document-text-outline" style="font-size: 35px;"></ion-icon>
+                <ion-icon class="icon-blue" name="reader-outline" style="font-size: 35px;"></ion-icon>
               </ion-row>
               <ion-row>
                 <ion-col size="12">
                   <ion-label class="font-16" style="color: #707070; font-weight: bold;">Vehicle</ion-label>
                 </ion-col>
-                <ion-col size="3.5" class="center">
+                <ion-col size="3.5" class="center-left">
                   <ion-label class="font-14" style="color: #FF0000;">Passenger</ion-label>
                 </ion-col>
                 <ion-col size="8.5">
@@ -168,7 +168,7 @@
                   </ion-select>
                 </ion-col>
 
-                <ion-col size="3.5" class="center">
+                <ion-col size="3.5" class="center-left">
                   <ion-label class="font-14" style="color: #FF0000;">Vehicle</ion-label>
                 </ion-col>
                 <ion-col size="8.5">
@@ -180,7 +180,7 @@
                     <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
                   </ion-select>
                 </ion-col>
-                <ion-col size="3.5" class="center">
+                <ion-col size="3.5" class="center-left">
                   <ion-label class="font-14" style="color: #FF0000;">Luggage</ion-label>
                 </ion-col>
                 <ion-col size="8.5">
@@ -192,7 +192,7 @@
                     <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
                   </ion-select>
                 </ion-col>
-                <ion-col size="3.5" class="center">
+                <ion-col size="3.5" class="center-left">
                   <ion-label class="font-14">Journey Type</ion-label>
                 </ion-col>
                 <ion-col size="8.5">
@@ -205,15 +205,15 @@
                   </ion-select>
                 </ion-col>
               </ion-row>
-              <ion-row>
-                <ion-card class="card-tool" style="display: flex; align-items: center; padding-left: 7%;">
-                  <ion-label class="font-16" style="color: #469FD1;">Filght Detaild</ion-label>
-                </ion-card>
-              </ion-row>
+              <!-- <ion-row> -->
+              <ion-col size="12" class="card-tool" style="display: flex; align-items: center; margin-top: 4%;">
+                <ion-label class="font-16" style="color: #469FD1;">Filght Detaild</ion-label>
+              </ion-col>
+              <!-- </ion-row> -->
               <ion-row>
                 <ion-col>
-                  <ion-segment (ionChange)="segmentChanged($event)" value="light">
-                    <ion-segment-button value="light" content-id="arrival">
+                  <ion-segment (ionChange)="segmentChanged($event)" color="red" value="medium">
+                    <ion-segment-button value="medium" content-id="arrival">
                       <ion-label>Arrival</ion-label>
                     </ion-segment-button>
                     <ion-segment-button value="segment">
@@ -223,7 +223,7 @@
                   <ion-segment-view>
                     <ion-segment-content id="arrival" style="padding: 5%;">
                       <ion-row>
-                        <ion-col class="no-padding">
+                        <ion-col class="no-padding" style="margin-right: 2%;">
                           <ion-input class="input-segment" placeholder=" Filght Airline"></ion-input>
                         </ion-col>
                         <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
@@ -231,7 +231,7 @@
                         </ion-col>
                       </ion-row>
                       <ion-row>
-                        <ion-col class="no-padding">
+                        <ion-col class="no-padding" style="margin-right: 2%;">
                           <ion-input class="input-segment" placeholder=" Date"></ion-input>
                         </ion-col>
                         <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
@@ -239,7 +239,7 @@
                         </ion-col>
                       </ion-row>
                       <ion-row>
-                        <ion-col class="no-padding">
+                        <ion-col class="no-padding" style="margin-right: 2%;">
                           <ion-input class="input-segment" placeholder=" Airport"></ion-input>
                         </ion-col>
                         <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
@@ -295,14 +295,19 @@
             </ion-col>
           </ion-row>
         </ion-row>
-        <ion-row style="display: flex; align-items: center; justify-content:  end; margin-bottom: 5%;">
-          <ion-icon style="width: 40px; height: 32px; color: #469FD1;" name="map"></ion-icon>
+        <ion-row>
+          <ion-col size="12">
+            <ion-icon (click)="togglemap()" style="width: 40px; height: 32px; color: #469FD1;" name="map"></ion-icon>
+          </ion-col>
         </ion-row>
+        <ion-card *ngIf="isvisiblemap" style="width: 350px; height: 300px;">
+          <app-map></app-map>
+        </ion-card>
       </ion-card-content>
     </ion-card>
     <ion-row>
       <ion-col size="12" class="card-toolbar">
-        <ion-row>
+        <ion-row (click)="toggleCus()">
           <ion-col size="7" class="center-left">
             <ion-icon name="person-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Customer</ion-label>
@@ -312,7 +317,7 @@
             <ion-icon class="iconbar" name="call-outline"></ion-icon>
             <ion-icon class="iconbar" name="id-card-outline"></ion-icon>
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
-            <ion-icon class="iconbar" [name]="iconNameCus" (click)="toggleCus()"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNameCus"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-col>
@@ -383,7 +388,7 @@
 
     <ion-row>
       <ion-col size="12" class="card-toolbar">
-        <ion-row>
+        <ion-row (click)="toggleTran()">
           <ion-col size="8" class="center-left">
             <ion-icon name="bus-outline" style="width: 25px; height: 29px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Transport</ion-label>
@@ -392,7 +397,7 @@
             <ion-icon class="iconbar" name="people-circle-outline"></ion-icon>
             <ion-icon class="iconbar" name="briefcase-outline"></ion-icon>
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
-            <ion-icon class="iconbar" [name]="iconNameTran" (click)="toggleTran()"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNameTran"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-col>
@@ -442,11 +447,12 @@
       </ion-col>
       <ion-col size="6.5" class="center-left" style="margin-top: 2%;">
         <ion-icon name="bus-outline" style="color: #AB1C1C; width: 25px; height: 29px"></ion-icon>
-        <ion-label class="font-16" style="color: #AB1C1C;" (click)="toggleVehicles()" >Set alternative vehicles</ion-label>
+        <ion-label class="font-16" style="color: #AB1C1C;" (click)="toggleVehicles()">Set alternative
+          vehicles</ion-label>
       </ion-col>
       <ion-col size="5.5" class="center-left">
         <ion-icon name="bus-outline" style="color: #000000; width: 25px; height: 29px"></ion-icon>
-        <ion-label class="font-16 " style="color: #000000;" (click)="toggleAs()" >As Directed</ion-label>
+        <ion-label class="font-16 " style="color: #000000;" (click)="toggleAs()">As Directed</ion-label>
       </ion-col>
       <ion-col offset="6.5" *ngIf="isdropAs">
         <ion-row>
@@ -456,8 +462,8 @@
       </ion-col>
       <ion-row *ngIf="isdropVehicles">
         <ion-col size="6">
-          <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-            value="70 Pax(s)">
+          <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+            interface="popover" value="70 Pax(s)">
             <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
             <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
             <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
@@ -468,8 +474,8 @@
           <ion-input class="input-T font-14" placeholder=" Price" style="width: 100%;"></ion-input>
         </ion-col>
         <ion-col size="6">
-          <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-            value="No">
+          <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+            interface="popover" value="No">
             <ion-select-option value="No">No luggage.</ion-select-option>
             <ion-select-option value="No">No luggage.</ion-select-option>
             <ion-select-option value="No">No luggage.</ion-select-option>
@@ -503,14 +509,14 @@
 
     <ion-row>
       <ion-col size="12" class="card-toolbar">
-        <ion-row>
+        <ion-row (click)="togglePrice()">
           <ion-col size="10" class="center-left">
             <ion-icon name="cash-outline" style="width: 25px; height: 29px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Pricing</ion-label>
           </ion-col>
           <ion-col size="2" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
-            <ion-icon class="iconbar" [name]="iconNamePrice" (click)="togglePrice()"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNamePrice"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-col>
@@ -571,14 +577,14 @@
 
     <ion-row>
       <ion-col size="12" class="card-toolbar">
-        <ion-row>
+        <ion-row (click)="toggleMisc()">
           <ion-col size="10" class="center-left">
             <ion-icon name="help-outline" style="width: 25px; height: 29px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Misc</ion-label>
           </ion-col>
           <ion-col size="2" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
-            <ion-icon class="iconbar" [name]="iconNameMisc" (click)="toggleMisc()"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNameMisc"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-col>
@@ -640,7 +646,7 @@
       </ion-row>
     </ion-row>
 
-    <ion-row>
+    <ion-row (click)="toggleItem()">
       <ion-col size="12" class="card-toolbar">
         <ion-row>
           <ion-col size="11" class="center-left">
@@ -648,7 +654,7 @@
             <ion-label style="color: #ffff;">| Item</ion-label>
           </ion-col>
           <ion-col size="1" class="center" style="justify-content: space-between;">
-            <ion-icon class="iconbar" [name]="iconNameItem" (click)="toggleItem()"></ion-icon>
+            <ion-icon class="iconbar" [name]="iconNameItem"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-col>
@@ -656,9 +662,9 @@
 
     <ion-row style="padding: 5%;" *ngIf="isdropItem">
       <ion-col size="5">
-        <ion-label class="font-14" style="color: #000000; font-weight: bold;" >Location</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating" interface="popover"
-          value="No">
+        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Location</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
+          interface="popover" value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -666,19 +672,19 @@
         </ion-select>
       </ion-col>
       <ion-col offset="2">
-        <ion-label class="font-14" style="color: #000000; font-weight: bold;" >Categoty</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating" interface="popover"
-        value="No">
-        <ion-select-option value="No">No luggage.</ion-select-option>
-        <ion-select-option value="No">No luggage.</ion-select-option>
-        <ion-select-option value="No">No luggage.</ion-select-option>
-        <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-      </ion-select>
+        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Categoty</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
+          interface="popover" value="No">
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
       </ion-col>
       <ion-col size="5">
-        <ion-label class="font-14" style="color: #000000; font-weight: bold;" >Group</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating" interface="popover"
-          value="No">
+        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Group</ion-label>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
+          interface="popover" value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -686,13 +692,13 @@
         </ion-select>
       </ion-col>
       <ion-col size="12">
-        <ion-label class="font-14" style="color: #000000; font-weight: bold; " >No extra item yet</ion-label>
+        <ion-label class="font-14" style="color: #000000; font-weight: bold; ">No extra item yet</ion-label>
       </ion-col>
       <ion-col offset="4">
-        <ion-button class="font-14 ion-button-green" >
+        <ion-button class="font-14 ion-button-green">
           Send and Save
         </ion-button>
-        <ion-button class="font-14 ion-button-blue" >
+        <ion-button class="font-14 ion-button-blue">
           Quick Save
         </ion-button>
       </ion-col>

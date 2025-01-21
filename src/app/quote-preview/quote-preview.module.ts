@@ -9,6 +9,7 @@ import { QuotePreviewPageRoutingModule } from './quote-preview-routing.module';
 import { QuotePreviewPage } from './quote-preview.page';
 
 import { ExploreHeaderComponentModule } from '../explore-header/explore-header.module';
+import { SharedMapModule } from '../sharedMap/sharedMap.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ExploreHeaderComponentModule } from '../explore-header/explore-header.m
     FormsModule,
     IonicModule,
     QuotePreviewPageRoutingModule,
-    ExploreHeaderComponentModule
+    ExploreHeaderComponentModule,
+    SharedMapModule
   ],
   declarations: [QuotePreviewPage]
 })

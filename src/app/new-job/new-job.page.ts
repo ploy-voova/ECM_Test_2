@@ -1,13 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSelect, PopoverController } from '@ionic/angular';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { IonSelect, IonThumbnail, PopoverController } from '@ionic/angular';
 import { baseUrl } from 'BaseUrl';
-
-interface j {
-  jt_id: string; // รหัสของฟีเจอร์หรือบริการ
-  name: string;  // ชื่อของฟีเจอร์หรือบริการ
-  color: string; // สี (ในรูปแบบ Hex เช่น #FFFFFF)
-  priority: number; // ลำดับความสำคัญ (ตัวเลข)
-}
+import { NewjobService } from '../service/newjob/newjob.service';
 
 @Component({
   selector: 'app-new-job',
@@ -34,7 +28,7 @@ export class NewJobPage implements OnInit {
   timeAc: any;
   time_a: any;
 
-  iconNameCus: string = 'chevron-down-outline'; // ไอคอนเริ่มต้น
+  iconNameCus: string = 'chevron-down-outline';
   iconNameTran: string = 'chevron-down-outline';
   iconNamePrice: string = 'chevron-down-outline';
   iconNameMisc: string = 'chevron-down-outline';
@@ -52,10 +46,10 @@ export class NewJobPage implements OnInit {
   isRowvisibleKyc: boolean = false;
   isRowvisibleStart: boolean = false;
   isRowvisibleFilght: boolean = false;
+  isvisiblemap: boolean = false;
 
-  isdropNote_col1: boolean = false;
+
   isdropNote_des1: boolean = false;
-  isdropNote_col2: boolean = false;
   isdropNote_des2: boolean = false;
 
   isdropVehicles: boolean = false;
@@ -71,104 +65,192 @@ export class NewJobPage implements OnInit {
   /// inputvalue //////
   company: string = '';
   email: string = '';
+  external_reference: string = '';
+  name: string = '';
+  referrer_code: string = '';
+  phone: number | undefined;
+  passenger_email: string = '';
+  passenger_name: string = '';
+  passenger_namber: number | undefined;
+  address1: string = '';
+  address2: string = '';
+  note1: string = '';
+  note2: string = '';
+
+  /// select value ///
+  select_pax: string = "selectpax";
+  select_vehicle_: string = "selectvehicle";
+  select_luggage_: string = "selectluggage";
+  // journey
+  select_pax_jouney: string = "selectpax";
+  select_vehicle_journey: string = "selectvehicle";
+  select_luggage_journey: string = "selectluggage";
 
 
 
-  constructor(private popoverController: PopoverController) {
-    this.journeyType();
+  constructor(private popoverController: PopoverController,
+    public newjob_ser: NewjobService,) {
   }
 
   ngOnInit() {
+    this.select_journeyT()
   }
 
-  journeyType() {
 
-    fetch(baseUrl + '/api/ploy/option/journey_type', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // body: JSON.stringify(),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log('Key=====', data);
-        this.journey_Type = (data);
-        console.log(this.journey_Type);
 
-        // localStorage.setItem('keyLogin', data);
-        // const keylogin = localStorage.getItem('keyLogin');
-        // console.log('KeyLoginStorage==', keylogin);
-        // this.router.navigate(['/tabs/home'])
-      })
-      .catch((error) => {
-        alert('ผิด');
-      });
-  }
+  // journeyType() {
 
-  Select_Vehicle() {
-    const requestBody = {
-      pax: this.pax,
-    };
+  //   fetch(baseUrl + '/api/ploy/option/journey_type', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       this.journey_Type = (data);
+  //     })
+  //     .catch((error) => {
+  //       alert('ผิด');
+  //     });
+  // }
 
-    fetch('http://35.187.248.255:214/api/ploy/option/car_type', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        this.vehicle = (data);
-        this.vehicle = this.vehicle[0];
-        console.log(this.vehicle);
+  // Select_Vehicle() {
+  //   const requestBody = {
+  //     pax: this.pax,
+  //   };
 
-      });
-  }
+  //   fetch('http://35.187.248.255:214/api/ploy/option/car_type', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(requestBody),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       this.vehicle = (data);
+  //       this.vehicle = this.vehicle[0];
+  //       console.log(this.vehicle);
 
-  select_Luggage(){
-    const requestBody = {
-      pax: this.pax,
-      vehicle: this.car_id
-    };
+  //     });
+  // }
 
-    fetch('http://35.187.248.255:214/api/ploy/option/bag_type', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        this.luggage = (data);
-        this.luggage = this.luggage[0];
-        console.log(this.luggage);
+  // select_Luggage() {
+  //   const requestBody = {
+  //     pax: this.pax,
+  //     vehicle: this.car_id
+  //   };
 
-      });
-  }
+  //   fetch('http://35.187.248.255:214/api/ploy/option/bag_type', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(requestBody),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       this.luggage = (data);
+  //       this.luggage = this.luggage[0];
 
+  //     });
+  // }
+
+
+  // seclect pax //
+  private previousPax: any = null;
   paxChange(event: CustomEvent) {
-    console.log('ionChange fired with value: ' + event.detail.value);
     this.pax = event.detail.value;
-    // console.log(this.pax);
-    this.Select_Vehicle();
+    this.select_pax = this.pax;
+    this.select_pax_jouney = this.pax;
+    this.vehicle_1();
+    if (this.pax !== this.previousPax) {
+      this.select_vehicle_ = "selectvehicle"
+      this.select_luggage_ = "selectluggage"
+      this.select_vehicle_journey = "selectvehicle"
+      this.select_luggage_journey = "selectluggage"
+    }
+
+    this.previousPax = this.pax;
   }
 
+  private previousPax_j: any = null;
+  paxChange_journey(event: CustomEvent) {
+    this.pax = event.detail.value;
+    this.select_pax_jouney = this.pax;
+    this.vehicle_1();
+    if (this.pax !== this.previousPax_j) {
+      this.select_vehicle_journey = "selectvehicle"
+      this.select_luggage_journey = "selectluggage"
+    }
+
+    this.previousPax_j = this.pax;
+  }
+
+
+  // select vehicle //
+  async vehicle_1() {
+    const veh = await this.newjob_ser.select_Vehicle(this.pax);
+    this.vehicle = veh;
+    this.vehicle = this.vehicle[0];
+  }
+
+  private previousVehicle: any = null;
   vehicleChange(event: CustomEvent) {
-    console.log('vehicle value: ' + event.detail.value);
     this.car_id = event.detail.value;
-    // console.log(this.car_id);
-    this.select_Luggage();
+    this.select_vehicle_ = this.car_id;
+    this.select_vehicle_journey = this.select_vehicle_;
+    this.luggage_1();
+    if(this.car_id !== this.previousVehicle){
+      this.select_luggage_ = "selectluggage";
+      this.select_luggage_journey = "selectluggage";
+    }
+
+    this.previousVehicle = this.car_id;
+  }
+
+  private previousVehicle_j: any = null;
+  vehicleChange_journey(event: CustomEvent) {
+    this.car_id = event.detail.value;
+    this.select_vehicle_journey = this.car_id;
+    this.luggage_1();
+    if(this.car_id !== this.previousVehicle_j){
+      this.select_luggage_journey = "selectluggage"
+    }
+
+    this.previousVehicle_j = this.car_id
   }
 
 
-  customOptions = {
-    header: 'Select an Option',
-    icon: 'star', // เปลี่ยนไอคอนเป็น 'star'
-  };
+  // select luggage //
+  async luggage_1() {
+    const lug = await this.newjob_ser.select_Luggage(this.pax, this.car_id)
+    this.luggage = lug;
+    this.luggage = this.luggage[0];
+  }
 
+  luggageChange(event: CustomEvent) {
+    this.select_luggage_ = event.detail.value;
+    this.select_luggage_journey = this.select_luggage_
+    this.luggage_1();
+  }
+  luggageChange_journey(event: CustomEvent) {
+    this.select_luggage_journey = event.detail.value;
+    this.luggage_1();
+  }
+
+  // select journeyType //
+  async select_journeyT(){
+    const journey_t = await this.newjob_ser.select_Journey();
+    this.journey_Type = journey_t;
+    console.log(this.journey_Type);
+    
+  }
+
+
+
+  // check dropdow row //
   toggleRowCus() {
     this.iconNameCus = this.iconNameCus === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isRowvisibleCus = !this.isRowvisibleCus;
@@ -218,19 +300,25 @@ export class NewJobPage implements OnInit {
   }
 
   toggleNote_col1() {
-    this.isdropNote_col1 = !this.isdropNote_col1;
+    this.isdropNote_des1 = true;
   }
 
   toggleNote_des1() {
-    this.isdropNote_des1 = !this.isdropNote_des1;
+    this.isdropNote_des1 = false;
+    this.note1 = '';
   }
 
   toggleNote_col2() {
-    this.isdropNote_col2 = !this.isdropNote_col2;
+    this.isdropNote_des2 = true;
   }
 
   toggleNote_des2() {
-    this.isdropNote_des2 = !this.isdropNote_des2;
+    this.isdropNote_des2 = false;
+    this.note2 = '';
+  }
+
+  togglemap() {
+    this.isvisiblemap = !this.isvisiblemap
   }
 
   // ฟังก์ชันปิด Popover
@@ -259,30 +347,27 @@ export class NewJobPage implements OnInit {
 
   onTimeChange_Des(event: any) {
     this.time_d = event.detail.value
-    // console.log(this.time);
+
   }
 
   onTimeChange_Ac(event: any) {
     this.time_a = event.detail.value
-    // console.log(this.time);
+
   }
 
   close_des() {
     this.closePopover();
     this.time_des = this.formatTime(this.time_d);
-    // console.log(this.time_c);
   }
 
   close_Ac() {
     this.closePopover();
     this.timeAc = this.formatTime(this.time_a);
-    // console.log(this.time_c);
   }
 
   close() {
     this.closePopover();
     this.time_c = this.formatTime(this.time);
-    // console.log(this.time_c);
   }
 
   formatDate(isoString: string): string {

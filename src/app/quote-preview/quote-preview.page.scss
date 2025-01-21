@@ -44,7 +44,6 @@ ion-grid {
     margin: 0;
     margin-bottom: 5%;
     background: rgba(172, 172, 172, 0.15);
-    /* ใช้ค่า opacity แบบนี้ */
     border-radius: 10px;
     box-shadow: none;
 }
@@ -55,10 +54,6 @@ ion-grid {
 
 .card-content {
     padding: 1.5%;
-    // margin: 0;
-    // padding-top: 3%;
-    // padding-left: 2%;
-    // margin-bottom: 100%;
 }
 
 .input {
@@ -182,7 +177,7 @@ ion-select {
     min-height: 40px;
     color: #000000;
     background: #ACACAC 0% 0% no-repeat padding-box;
-    border-radius: 3px;
+    --border-radius: 10px;
     opacity: 0.45;
 
 }
@@ -191,14 +186,12 @@ ion-select {
     width: 219px;
     height: 40px;
     min-height: 40px;
-    /* UI Properties */
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     border: 0.5px solid var(--unnamed-color-707070);
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 0.5px solid #707070;
     border-color: #707070;
     border-radius: 2px;
-    // opacity: 1;
 }
 
 .margin {
@@ -208,7 +201,6 @@ ion-select {
 .input-no-back {
     width: 214px;
     height: 40px;
-    /* UI Properties */
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     border: 0.5px solid var(--unnamed-color-707070);
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -218,57 +210,32 @@ ion-select {
 }
 
 .card-tool {
-    width: 323px;
+    width: 100%;
     height: 40px;
     background-color: #FFFFFF;
     border: 0.5px solid var(--unnamed-color-469fd1);
-    box-shadow: 0px 3px 6px #00000029;
     border: 0.5px solid #469FD1;
     border-radius: 2px;
     opacity: 1;
 }
 
-ion-segment {
-    width: 323px;
-    height: 40px;
-    background: #ACACAC 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    opacity: 1;
-}
-
-ion-segment-button {
-    width: 162px;
-    height: 40px;
-    min-height: 40px;
-    --background: #ACACAC;
-    color: #000000;
-}
-
-ion-segment-button.selected {
-    background: #469FD1;
-    // color: white;
-}
-
-ion-segment-content {
-    width: 323px;
-    height: 176px;
-    border: 0.5px solid var(--unnamed-color-707070);
+ion-segment-view {
+    width: 100%;
+    height: 216px;
     background: #F3F3F3 0% 0% no-repeat padding-box;
-    border: 0.5px solid #707070;
+    border-top: none;
     border-radius: 2px;
     opacity: 1;
 }
 
+
 .input-segment {
-    width: 125px;
     height: 40px;
     min-height: 10px;
     margin-bottom: 10%;
     --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 0.2px solid var(--unnamed-color-707070);
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    border: 0.20000000298023224px solid #707070;
+    border: none;
     border-radius: 2px;
     opacity: 1;
 
@@ -310,12 +277,11 @@ ion-select {
     height: 40px;
     border: 0.5px solid var(--unnamed-color-707070);
     border: 0.5px solid #707070;
-    border-radius: 5px;
+    border-radius: 2px;
     opacity: 1;
 }
 
 .ion-button-blue {
-    // width: 122px;
     height: 40px;
     min-height: 40px;
     background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
@@ -335,7 +301,6 @@ ion-select {
 }
 
 .ion-button-green {
-    // width: 122px;
     height: 40px;
     min-height: 40px;
     background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
@@ -355,7 +320,6 @@ ion-select {
 }
 
 .ion-button-gray {
-    // width: 122px;
     height: 40px;
     min-height: 40px;
     background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
@@ -397,7 +361,6 @@ ion-select {
 ion-badge {
     width: 72px;
     height: 25px;
-    /* UI Properties */
     background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
     background: #469FD1 0% 0% no-repeat padding-box;
     border-radius: 6px;
@@ -440,15 +403,11 @@ ion-textarea {
 
 .hover-label {
     color: #000;
-    /* สีปกติ */
     transition: color 0.3s ease, transform 0.3s ease;
-    /* เพิ่มการเปลี่ยนแบบ Smooth */
 
     &:hover {
         color: #ff5722;
-        /* เปลี่ยนสีเมื่อ hover */
         transform: scale(1.1);
-        /* ขยายเล็กน้อยเมื่อ hover */
     }
 }
 
@@ -458,21 +417,14 @@ ion-button {
     --ripple-color: transparent;
 }
 
-
-
-
 .custom-col {
     flex: 0 0 34%;
-    /* 50% width (6 columns) */
     max-width: 50%;
-    /* กำหนดขนาดสูงสุด */
 }
 
 .custom-col2 {
     flex: 0 0 45%;
-    /* 50% width (6 columns) */
     max-width: 55%;
-    /* กำหนดขนาดสูงสุด */
 }
 
 @media (min-width: 300px) and (max-width:400px) {
