@@ -14,10 +14,15 @@ export class HomePage implements OnInit {
   qid: any;
   quo: any = [];
 
+  //checkbox//
+  isdrop: boolean[] = [];
+  c: boolean = false;
+
   constructor(private platform: Platform, private router: Router,public home_ser: HomeService) {}
 
   async ngOnInit() {
     this.home_ser.quote_booking();
+    console.log(this.isdrop);
   }
   Topreview(quoteId: string) {
     console.log(quoteId);
@@ -29,6 +34,14 @@ export class HomePage implements OnInit {
     }
 
   }
+
+  toggleSelectAll(event: any) {
+    const isChecked = event.detail.checked;
+    console.log(isChecked);
+  }
+
+
+
 
 }
 

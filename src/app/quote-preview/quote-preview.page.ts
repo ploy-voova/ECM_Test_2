@@ -55,10 +55,11 @@ export class QuotePreviewPage implements OnInit {
 
   async io(){
     const res = await this.quote_pre.quote_Preview2(this.q_id);
-    // console.log(res);
+    console.log(res);
     
-    this.dt_q = res;
+    // this.dt_q = res['journey_quote'];
     // console.log(this.dt_q);
+    this.dt_q = res;
     
   }
 

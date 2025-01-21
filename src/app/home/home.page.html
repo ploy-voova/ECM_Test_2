@@ -10,19 +10,31 @@
   <ion-grid>
     <ion-row>
       <!-- <ion-row style="color: aqua;"> -->
-        <ion-col size="12">
-          <ion-checkbox class="font-14"  checked="true" style="color: #469FD1;">Start of Journey</ion-checkbox>
-        </ion-col>
+      <ion-col size="6" style="padding-left: 4%;">
+        <ion-radio-group [allowEmptySelection]="true" value="turtles" class="custom-radio-group">
+          <ion-radio value="dogs" labelPlacement="end">Select All</ion-radio>
+        </ion-radio-group>
+      </ion-col>
+      <ion-col size="6" class="icon-top"
+        style="display: flex; align-items: center; justify-content: space-between; padding-right: 4%;">
+        <ion-icon name="speedometer-outline"></ion-icon>
+        <ion-icon name="bus-outline"></ion-icon>
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-col>
       <!-- </ion-row> -->
       <swiper-container>
         <!-- 1 -->
-        <swiper-slide #swiperEx *ngFor="let quote of this.home_ser.quo"  style="padding: 1%;">
-          <ion-card class="card-container" (click)="Topreview(quote.quote_id)"> 
+        <swiper-slide #swiperEx *ngFor="let quote of this.home_ser.quo">
+          <ion-card class="card-container" style="margin: 3%;" >
             <ion-row>
-              <ion-col class="col-f" size-xs="5" size-sm="4" size-md="3" style="padding: 0;">
-                <ion-card-header class="cardQ" style="background-color: #469FD1;">
+              <ion-col class="col-f" size-xs="6" size-sm="4" size-md="3" style="padding: 0;">
+                <ion-card-header class="cardQ" style="background-color: #469FD1; padding: 2%;">
                   <span>
-                    <ion-card-title class="ion-card-title">Quote ID : {{ quote.quote_id }}</ion-card-title>
+                    <ion-row style="display: flex; justify-content: space-between;">
+                      <ion-card-title class="ion-card-title">Quote ID : {{ quote.quote_id }}</ion-card-title>
+                      <ion-checkbox></ion-checkbox>
+                    </ion-row>
                     <ion-row style="display: flex; align-items: center; justify-content: space-between; padding: 2%;">
                       <ion-label class="ion-card-subtitle">Sale : {{ quote.sale }}</ion-label>
                       <ion-label class="label">1 Journey</ion-label>
@@ -30,7 +42,7 @@
                   </span>
                 </ion-card-header>
               </ion-col>
-              <ion-col class="col-l" size-xs="7" size-sm="8" size-md="9">
+              <ion-col class="col-l" size-xs="6" size-sm="8" size-md="9">
                 <ion-row>
                   <ion-col size-xs="8" style="height: 45px; display: flex; align-items: end; justify-content: start;">
                     <ion-label class="text-truncate">Name: {{ quote.name }}</ion-label>
@@ -50,7 +62,7 @@
             </ion-row>
 
             <!-- container card-->
-            <ion-grid class="grid">
+            <ion-grid class="grid" (click)="Topreview(quote.quote_id)">
               <ion-row class="cus">
                 <ion-col size-xs="7" class="cus">
                   <ion-row style="display: flex; align-items: center;" class="cus">

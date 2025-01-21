@@ -14,6 +14,9 @@ export class QuotePreviewService {
   public async quote_Preview2(qId: any) {
     return (await (axios.get(baseUrl + '/api/testss/quote_review/'+ qId))).data;
   }
+  // public async quote_Preview2(qId: any) {
+  //   return (await (axios.get(baseUrl + '/api/super/quote_full/'+ qId))).data;
+  // }
 
   public quote_Preview = (qId: any) => new Promise(async (resolve, reject) => {
     await axios.get(baseUrl + '/api/testss/quote_review/'+ qId)
