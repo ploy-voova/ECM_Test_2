@@ -64,7 +64,7 @@ ion-grid {
     border: 0.2px solid var(--unnamed-color-469fd1);
     background: #CDE5F3 0% 0% no-repeat padding-box;
     box-shadow: none;
-    border: 0.20000000298023224px solid #469FD1;
+    // border: 0.01px solid #469FD1;
     border-radius: 4px;
     opacity: 1;
 }
@@ -76,4 +76,76 @@ ion-grid {
     box-shadow: none;
     border-radius: 4px;
     opacity: 1;
+}
+
+.timeline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: transparent; // ต้องโปร่งใสเพื่อแสดงเส้นประ
+        border-top: 1.5px dashed #FFFFFF; // เปลี่ยนเป็นเส้นประ
+        z-index: 1;
+    }
+
+    .step {
+        position: relative;
+        z-index: 2;
+        //   background-color: #fff; // สีพื้นหลังของไอคอน
+        border: 1px solid #FFFFFF; // สีขอบวงกลม
+        border-radius: 50%;
+        width: 15px; // ขนาดวงกลม
+        height: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.active {
+            border-color: #fff; // สีขอบเมื่อ active
+            background-color: #fff; // สีพื้นหลังเมื่อ active
+            color: #fff; // สีของไอคอนเมื่อ active
+        }
+
+        .icon {
+            font-size: 16px; // ขนาดของไอคอน
+        }
+    }
+}
+
+.custom-accordion {
+    position: relative;
+}
+
+.accordion-header {
+    position: sticky;
+    /* ทำให้ Header ติดอยู่กับตำแหน่ง */
+    top: 0;
+    /* ตำแหน่งด้านบน */
+    z-index: 2;
+    /* ทำให้ Header อยู่ด้านหน้าของ Content */
+    background-color: white;
+    /* สีพื้นหลังของ Header */
+}
+
+.accordion-content {
+    overflow: hidden;
+    /* ซ่อนเนื้อหาส่วนที่ไม่แสดง */
+    transition: max-height 0.3s ease-in-out;
+    /* เพิ่มการเลื่อนที่นุ่มนวล */
+    max-height: 0;
+    /* ซ่อนเนื้อหาเมื่อปิด */
+}
+
+ion-accordion[active] .accordion-content {
+    max-height: 300px;
+    /* กำหนดความสูงเนื้อหาเมื่อเปิด (ปรับได้ตามต้องการ) */
 }
