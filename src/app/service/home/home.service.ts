@@ -9,6 +9,7 @@ import axios from 'axios';
 export class HomeService {
 
   public quo: any = [];
+  public chB: boolean[] = [];
 
   constructor(private glo: GlobalService) { }
 
@@ -25,6 +26,7 @@ export class HomeService {
   public async quote_booking() {
     await axios.get(baseUrl + '/api/ploy/quote_booking').then((response) => {
       this.quo = response.data;
+      this.chB = response.data.map(() => false);
     })
   }
 

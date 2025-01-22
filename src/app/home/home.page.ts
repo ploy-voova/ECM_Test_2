@@ -15,14 +15,13 @@ export class HomePage implements OnInit {
   quo: any = [];
 
   //checkbox//
-  isdrop: boolean[] = [];
+  isChecked : boolean | null = null;
   c: boolean = false;
 
   constructor(private platform: Platform, private router: Router,public home_ser: HomeService) {}
 
   async ngOnInit() {
     this.home_ser.quote_booking();
-    console.log(this.isdrop);
   }
   Topreview(quoteId: string) {
     console.log(quoteId);
@@ -35,9 +34,28 @@ export class HomePage implements OnInit {
 
   }
 
-  toggleSelectAll(event: any) {
-    const isChecked = event.detail.checked;
-    console.log(isChecked);
+  onCheckboxChange(event: any, index: any) {
+    let ch : boolean = true;
+    if (event.detail.checked == false) {
+      this.isChecked = null
+    }
+    this.home_ser.chB[index] = event.detail.checked;
+    this.home_ser.chB.map((res)=>{
+      if (res == false) {
+        ch = false;
+      }
+    });
+    if(ch){
+      this.isChecked = true;
+    }
+  }
+
+  toggleSelectAll(e: any) {
+    if(e.detail.value == true){
+      this.home_ser.chB = this.home_ser.chB.map(() => true);
+    } else {
+      this.home_ser.chB = this.home_ser.chB.map(() => false);
+    }
   }
 
 
