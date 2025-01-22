@@ -23,8 +23,8 @@ export class HomeService {
   //     });
   // })
 
-  public async quote_booking() {
-    await axios.get(baseUrl + '/api/ploy/quote_booking').then((response) => {
+  public async quote_booking(e:number) {
+    await axios.get(baseUrl + '/api/ploy/quote_booking/'+e).then((response) => {
       this.quo = response.data;
       this.chB = response.data.map(() => false);
     })

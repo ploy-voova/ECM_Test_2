@@ -8,22 +8,30 @@ import { HomeService } from '../service/home/home.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  currentWidth: number = 0;
-  currentHeight: number = 0;
+  limit: number = 20;
   qid: any;
   quo: any = [];
   currentSlideIndex: number = 0;
 
   isChecked : boolean | null = null;
 
-  constructor(private router: Router,public home_ser: HomeService) {}
+  constructor(private router: Router,public home_ser: HomeService) {
+    this.home_ser.quote_booking(this.limit);
+  }
 
   async ngOnInit() {    
-    this.home_ser.quote_booking();
     const swiper = document.querySelector('swiper-container')?.swiper;
     if (swiper) {
       swiper.on('slideChange', () => {
-        console.log('Slide changed to:', swiper.activeIndex);
+        console.log('Slide changed to:', swiper.activeIndex+1);
+        if (this.limit - swiper.activeIndex == 11) {
+          console.log(456456654);
+          console.log(this.home_ser);
+          
+          this.limit = this.limit + 10;
+          this.home_ser.quote_booking(this.limit);
+
+        }
       });
     }
   }
