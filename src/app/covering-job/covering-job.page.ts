@@ -7,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoveringJobPage implements OnInit {
 
+  rate: number = 5.0;
   constructor() { }
 
   ngOnInit() {
   }
 
-  async canDismiss(data?: undefined, role?: string) {
-    return role !== 'gesture';
+  selectedItem: string | null = null;
+
+  selectItem(item: string) {
+    this.selectedItem = item;
   }
+
 
   toOrigin(){
 

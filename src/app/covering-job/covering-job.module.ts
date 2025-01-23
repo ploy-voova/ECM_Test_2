@@ -10,13 +10,16 @@ import { CoveringJobPage } from './covering-job.page';
 
 import { ExploreHeaderComponentModule } from '../explore-header/explore-header.module';
 
+import { SharedMapModule } from '../sharedMap/sharedMap.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     CoveringJobPageRoutingModule,
-    ExploreHeaderComponentModule
+    ExploreHeaderComponentModule,
+    SharedMapModule
   ],
   declarations: [CoveringJobPage]
 })
