@@ -60,6 +60,8 @@ export class QuotePreviewPage implements OnInit {
     // this.dt_q = res['journey_quote'];
     // console.log(this.dt_q);
     this.dt_q = res;
+    this.date_j = res[0]['movement_quote'][0]['date_start'];
+    this.time_j = res[0]['movement_quote'][0]['time_start'];
     
   }
 

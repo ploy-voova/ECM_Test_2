@@ -193,7 +193,7 @@ ion-grid {
 }
 
 .item-drop {
-    width: 170px;
+    width: 180px;
     height: 34px;
     min-height: 34px;
     text-align: center;
@@ -272,6 +272,10 @@ ion-button {
 
 .no-padding{
     padding: 0;
+}
+
+.no-margin{
+    margin: 0;
 }
 
 .item-drop.active {
