@@ -11,17 +11,7 @@ export class HomeService {
   public quo: any = [];
   public chB: boolean[] = [];
 
-  constructor(private glo: GlobalService) { }
-
-  // public quote_test = () => new Promise(async (resolve, reject) => {
-  //   axios.get(baseUrl + '/api/ploy/quote_booking')
-  //     .then((data) => {
-  //       resolve(data.data);
-  //     })
-  //     .catch((error) => {
-  //       alert('ผิด');
-  //     });
-  // })
+  constructor() { }
 
   public async quote_booking(e:number) {
     await axios.get(baseUrl + '/api/ploy/quote_booking/'+e).then((response) => {
@@ -30,19 +20,4 @@ export class HomeService {
     })
   }
 
-  // public quotebook() {
-  //   fetch(baseUrl + '/api/ploy/quote_booking', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       this.quo = data;
-  //     })
-  //     .catch((error) => {
-  //       alert('ผิด');
-  //     });
-  // }
 }

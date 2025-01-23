@@ -25,9 +25,6 @@ export class HomePage implements OnInit {
       swiper.on('slideChange', () => {
         console.log('Slide changed to:', swiper.activeIndex+1);
         if (this.limit - swiper.activeIndex == 11) {
-          console.log(456456654);
-          console.log(this.home_ser);
-          
           this.limit = this.limit + 10;
           this.home_ser.quote_booking(this.limit);
 
