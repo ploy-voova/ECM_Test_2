@@ -46,7 +46,7 @@ export class HomePage implements OnInit {
   onCheckboxChange(event: any, index: any) {
     let ch : boolean = true;
     if (event.detail.checked == false) {
-      this.isChecked = null
+      this.isChecked = false;
     }
     this.home_ser.chB[index] = event.detail.checked;
     this.home_ser.chB.map((res)=>{

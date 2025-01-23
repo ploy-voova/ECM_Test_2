@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { baseUrl } from 'BaseUrl';
-import { GlobalService } from '../global/global.service';
 import axios from 'axios';
 
 @Injectable({
