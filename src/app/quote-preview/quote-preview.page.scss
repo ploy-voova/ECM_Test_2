@@ -17,6 +17,15 @@ ion-grid {
     padding: 2.5%;
 }
 
+.custom-checkbox {
+    --border-color: #469fD1;
+    --border-color-checked: #469fD1;
+    --checkbox-background-checked: #469FD1;
+    --checkmark-color: #ffffff;
+    --checkmark-width: 1px;
+    --border-width: 1px;
+}
+
 .font-18 {
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 18px/22px var(--unnamed-font-family-roboto);
     letter-spacing: var(--unnamed-character-spacing-0);
@@ -108,13 +117,12 @@ ion-grid {
 
 ion-checkbox {
     --size: 15px;
-    --checkbox-background-checked: #707070;
-    --checkbox-background: #ffff;
-}
-
-ion-checkbox::part(container) {
-    border-radius: 2px;
-    border: 1px solid #707070;
+    --border-color: #469fD1;
+    --border-color-checked: #469fD1;
+    --checkbox-background-checked: #469FD1;
+    --checkmark-color: #ffffff;
+    --checkmark-width: 1px;
+    --border-width: 1px;
 }
 
 .card {

@@ -8,7 +8,7 @@ import { HomeService } from '../service/home/home.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  limit: number = 20;
+  limit: number = 10;
   qid: any;
   quo: any = [];
   currentSlideIndex: number = 0;
@@ -24,10 +24,9 @@ export class HomePage implements OnInit {
     if (swiper) {
       swiper.on('slideChange', () => {
         console.log('Slide changed to:', swiper.activeIndex+1);
-        if (this.limit - swiper.activeIndex == 11) {
+        if (this.limit - swiper.activeIndex == 1) {
           this.limit = this.limit + 10;
           this.home_ser.quote_booking(this.limit,this.isChecked,this.limit);
-
         }
       });
     }
@@ -43,12 +42,12 @@ export class HomePage implements OnInit {
 
   }
 
-  onCheckboxChange(event: any, index: any) {
+  onCheckboxChange(e: any, index: any) {
     let ch : boolean = true;
-    if (event.detail.checked == false) {
+    if (e.detail.checked == false) {
       this.isChecked = false;
     }
-    this.home_ser.chB[index] = event.detail.checked;
+    this.home_ser.chB[index] = e.detail.checked;
     this.home_ser.chB.map((res)=>{
       if (res == false) {
         ch = false;
@@ -60,12 +59,8 @@ export class HomePage implements OnInit {
   }
 
   toggleSelectAll(e: any) {
-    this.isChecked = true;
-    if(e.detail.checked == true){
-      this.home_ser.chB = this.home_ser.chB.map(() => true);
-    } else {
-      this.home_ser.chB = this.home_ser.chB.map(() => false);
-    }
+    this.isChecked = e.detail.checked;
+    this.home_ser.chB = this.home_ser.chB.map(() => e.detail.checked);
   }
 
 }

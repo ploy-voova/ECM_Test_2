@@ -7,8 +7,6 @@ import { baseUrl } from 'BaseUrl';
 })
 export class QuotePreviewService {
 
-  public data_q2: any;
-
   constructor() { }
 
   public async quote_Preview2(qId: any) {

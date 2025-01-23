@@ -23,6 +23,10 @@ export class QuotePreviewPage implements OnInit {
   time: any;
   dt_q: any;
 
+  selectAll: boolean = false;
+  checkAll : boolean[] = [];
+  mmcheck : boolean[][] = [];
+
   iconNameCus: string = 'chevron-down-outline';
   iconNameTran: string = 'chevron-down-outline';
   iconNamePrice: string = 'chevron-down-outline';
@@ -50,19 +54,23 @@ export class QuotePreviewPage implements OnInit {
     this.router.paramMap.subscribe(params => {
       this.q_id = params.get('quoteId');
     });
-    this.io();
+    this.journey_quote();
   }
 
-  async io(){
+  async journey_quote(){
     const res = await this.quote_pre.quote_Preview2(this.q_id);
     console.log(res);
+
+    this.checkAll = res.map(() => false);
+    this.mmcheck = res.map((res:any) =>res['movement_quote'].map(() => false));
     
     // this.dt_q = res['journey_quote'];
+    // this.date_j = res['journey_quote'][0]['movement_quote'][0]['date_start'];
+    // this.time_j = res['journey_quote'][0]['movement_quote'][0]['time_start'];
     // console.log(this.dt_q);
     this.dt_q = res;
     this.date_j = res[0]['movement_quote'][0]['date_start'];
     this.time_j = res[0]['movement_quote'][0]['time_start'];
-    
   }
 
   toggleCus() {
@@ -140,22 +148,22 @@ export class QuotePreviewPage implements OnInit {
   }
 
 
-  journey_quote() {
-    fetch('http://35.187.248.255:214/api/testss/quote_review/' + this.q_id, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        this.dt_q = data;
-        console.log(this.dt_q);
+  // journey_quote() {
+  //   fetch('http://35.187.248.255:214/api/testss/quote_review/' + this.q_id, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       this.dt_q = data;
+  //       console.log(this.dt_q);
         
-        this.date_j = data[0]['movement_quote'][0]['date_start'];
-        this.time_j = data[0]['movement_quote'][0]['time_start'];
-      });
-  }
+  //       this.date_j = data[0]['movement_quote'][0]['date_start'];
+  //       this.time_j = data[0]['movement_quote'][0]['time_start'];
+  //     });
+  // }
 
   segmentChanged(event: any) {
     const selectedValue = event.detail.value;
@@ -205,5 +213,57 @@ export class QuotePreviewPage implements OnInit {
     const hour = date.getHours();
     const minute = date.getMinutes();
     return `${hour}:${minute}`;
+  }
+
+  oncselectAll(e:any){
+    this.selectAll = e.detail.checked;
+    this.checkAll = this.checkAll.map(() => e.detail.checked);
+    this.mmcheck = this.mmcheck.map((res:any) => res.map(() => e.detail.checked));
+  }
+
+  onccheckAll(e:any ,i:number){
+    let se : boolean = true;
+    this.checkAll[i] = e.detail.checked;
+    this.mmcheck[i] = this.mmcheck[i].map(() => e.detail.checked);
+
+    this.checkAll.map((res) => {
+      if (res == false) {
+        se = false;
+        this.selectAll = false;
+      }
+
+      if (se) {
+        this.selectAll = se;
+      }
+    })
+  }
+
+  onccheck(e:any ,i:number ,j:number){
+    let se : boolean = true;
+    let ch : boolean = true;
+    this.mmcheck[i][j] = e.detail.checked;
+    this.mmcheck[i].map((res) => {
+      if (res == false) {
+        se = false;
+        ch = false;
+        this.checkAll[i] = false;
+        this.selectAll = false;
+      }
+
+      if (ch) {
+        this.checkAll[i] = ch;
+        this.checkAll.map((res2) => {
+          if (res2 == false) {
+            se = false;
+            this.selectAll = false;
+          }
+
+          if (se) {
+            this.selectAll = se;
+          }
+        })
+      }
+    })
+    
   }
 }
