@@ -43,6 +43,10 @@ const routes: Routes = [
         path: 'quote-preview/:quoteId',
         loadChildren: () => import('../quote-preview/quote-preview.module').then( m => m.QuotePreviewPageModule)
       },
+      {
+        path: 'covering-job',
+        loadChildren: () => import('../covering-job/covering-job.module').then( m => m.CoveringJobPageModule)
+      },
     ]
   },
   {

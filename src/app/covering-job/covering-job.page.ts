@@ -12,4 +12,12 @@ export class CoveringJobPage implements OnInit {
   ngOnInit() {
   }
 
+  async canDismiss(data?: undefined, role?: string) {
+    return role !== 'gesture';
+  }
+
+  toOrigin(){
+
+  }
+
 }

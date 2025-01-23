@@ -4,24 +4,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content  [fullscreen]="true">
+  <!-- <ion-backdrop [visible]="true"></ion-backdrop> -->
   <ion-grid>
     <ion-row>
       <ion-col size="12" class="center">
         <ion-label class="font-18" style="font-weight: bold;">Covering Job</ion-label>
       </ion-col>
       <ion-col size="12" class="center-left-top">
-        <ion-icon name="arrow-undo-outline"></ion-icon>
+        <ion-icon name="arrow-undo" style="font-size: 20px; color: red; "></ion-icon>
       </ion-col>
       <ion-col size="12" class="bar center-left">
-        <ion-label class="font-18" style="color: #ffff;">Job Select</ion-label>
+        <ion-label class="font-18" style="color: #ffff;" >Job Select</ion-label>
       </ion-col>
     </ion-row>
     <ion-row style="padding: 2%; margin-top: 5%;">
       <ion-col size="12" class="card-blue">
         <ion-row style="padding-bottom: 8%;">
           <ion-col size="3" class="small-card center">
-            <ion-label class="font-14" >Journey</ion-label>
+            <ion-label class="font-14">Journey</ion-label>
           </ion-col>
           <ion-col size="7" class="center">
             <div class="timeline">
@@ -43,10 +44,10 @@
           </ion-col>
         </ion-row>
       </ion-col>
-      <ion-col size="12" class="card-blue">
+      <ion-col size="12" class="card-blue" >
         <ion-row style="padding-bottom: 8%;">
           <ion-col size="3" class="small-card center">
-            <ion-label class="font-14" >Journey</ion-label>
+            <ion-label class="font-14">Journey</ion-label>
           </ion-col>
           <ion-col size="7" class="center">
             <div class="timeline">
@@ -69,21 +70,122 @@
         </ion-row>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col size="12" class="bar" style="display: flex; align-items: center; justify-content: space-between;">
-        <ion-label class="font-18" style="color: #ffff;">New Bid</ion-label>
-        <ion-accordion-group expand="inset">
-          <ion-accordion value="first">
-            <ion-item slot="header" color="light">
-              <ion-label>First Accordion</ion-label>
+    <ion-row class="bar">
+      <ion-col size="6" style="display: flex; align-items: start; justify-content: start;">
+        <ion-label class="font-18" style="color: #ffff; margin-top: 4px;">New Bid</ion-label>
+      </ion-col>
+      <ion-col size="6" class="center-right" style="padding-top: 0.8%;">
+        <ion-accordion-group style="z-index: 3;">
+          <ion-accordion>
+            <ion-item slot="header" class="item-drop">
+              <ion-icon name="funnel-outline" style="font-size: 18px;"></ion-icon>
+              <ion-label class="font-16">Get bids</ion-label>
             </ion-item>
-            <div class="ion-padding" slot="content">First Content</div>
-            <div class="ion-padding" slot="content">First Content</div>
-            <div class="ion-padding" slot="content">First Content</div>
-            <div class="ion-padding" slot="content">First Content</div>
+
+            <ion-list slot="content">
+              <ion-item class="item-drop" id="open-modal">
+                <ion-label class="font-14">Get bids at origin</ion-label>
+              </ion-item>
+              <ion-item class="item-drop">
+                <ion-label class="font-14">Get bids along route</ion-label>
+              </ion-item>
+              <ion-item class="item-drop">
+                <ion-label class="font-14">Get bids at destination</ion-label>
+              </ion-item>
+            </ion-list>
           </ion-accordion>
- 
         </ion-accordion-group>
+        <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.93">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Get bids at orign</ion-title>
+                <ion-buttons slot="end">
+                  <!-- ปุ่มปิด Modal -->
+                  <ion-button (click)="modal.dismiss()">Close</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              <p>Welcome to the half-page modal! Use the "Close" button to dismiss it.</p>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding: 2%; margin-top: 2%;">
+      <ion-col size="4" class="center-left-top">
+        <ion-label class="font-14" style="color: #747474;">Lookup Affiliate</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-input class="input font-14" style="color: #747474;" placeholder=" Find affiliateID by name"></ion-input>
+      </ion-col>
+      <ion-col size="4" class="center-left-top">
+        <ion-label class="font-14" style="color: #747474;">Affiliate ID</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-input class="input font-14" style="color: #747474;" placeholder=""></ion-input>
+      </ion-col>
+      <ion-col size="4" class="center-left-top">
+        <ion-label class="font-14" style="color: #747474;">Price</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-input class="input font-14" style="color: #747474;" placeholder=" Your Price"></ion-input>
+      </ion-col>
+      <ion-col size="4" class="center-left-top">
+        <ion-label class="font-14" style="color: #747474;">Name</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-input class="input font-14" style="color: #747474;" placeholder=" Your Name"></ion-input>
+      </ion-col>
+      <ion-col size="4" class="center-left-top">
+        <ion-label class="font-14" style="color: #747474;">Notes</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-textarea class="font-14" style="color: #747474;" placeholder=" Your Notes"></ion-textarea>
+      </ion-col>
+      <ion-col size="4" class="center-left-top">
+        <ion-label class="font-14" style="color: #747474;">Price</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-input class="input font-14" style="color: #747474;" placeholder=" £"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-top: 10%;">
+      <ion-col size="12" class="card-bid">
+        <ion-row>
+          <ion-col size="6" class="status-green center">
+            <ion-label class="font-14" style="color: #ffff;">Status: Bidding Completed</ion-label>
+          </ion-col>
+          <ion-col size="6" class="center-right">
+            <ion-label class="font-14" style="color: #747474;">24 March 2025</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label class="font-14" style="color: black;">Get bids at orign</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            ----------------------
+          </ion-col>
+          <ion-col size="12" class="center-right">
+            <ion-label class="font-14" style="color: black;">Get bids along route</ion-label>
+          </ion-col>
+          <ion-col size="12" class="no-padding">
+            <ion-label class="font-14" style="color: #ACACAC;">Bid Source: Get bids along route.</ion-label>
+          </ion-col>
+          <ion-col size="12" class="no-padding">
+            <hr style="background-color: #6C757D33;">
+          </ion-col>
+          <ion-col size="12" style="display: flex; align-items: center; justify-content: space-between;">
+            <ion-label class="font-16" style="color: #747474;">Similar Bids</ion-label>
+            <ion-icon name="share-social-outline" style="font-size: 20px; color: #469FD1C4;"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="center-right">
+        <ion-button class="font-14" style="color: #ffff;">Make Bid</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
