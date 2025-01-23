@@ -12,10 +12,28 @@ export class HomeService {
 
   constructor() { }
 
-  public async quote_booking(e:number) {
+  public async quote_booking(e:number,c:boolean,l:number) {
     await axios.get(baseUrl + '/api/ploy/quote_booking/'+e).then((response) => {
       this.quo = response.data;
-      this.chB = response.data.map(() => false);
+
+      console.log(c);
+      
+      console.log(this.chB.length);
+      
+
+      if (this.chB.length === 0) {
+        this.chB = response.data.map(() => c);
+      } else {
+        if (c) {
+          this.chB = response.data.map(() => c);
+        } else {
+          for (let index = this.chB.length; index < l; index++){
+            this.chB[index] = c;
+          }
+        }
+      }
+
+      
     })
   }
 

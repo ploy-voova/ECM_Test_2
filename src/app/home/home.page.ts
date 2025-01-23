@@ -13,10 +13,10 @@ export class HomePage implements OnInit {
   quo: any = [];
   currentSlideIndex: number = 0;
 
-  isChecked : boolean | null = null;
+  isChecked : boolean = false;
 
   constructor(private router: Router,public home_ser: HomeService) {
-    this.home_ser.quote_booking(this.limit);
+    this.home_ser.quote_booking(this.limit,this.isChecked,this.limit);
   }
 
   async ngOnInit() {    
@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
         console.log('Slide changed to:', swiper.activeIndex+1);
         if (this.limit - swiper.activeIndex == 11) {
           this.limit = this.limit + 10;
-          this.home_ser.quote_booking(this.limit);
+          this.home_ser.quote_booking(this.limit,this.isChecked,this.limit);
 
         }
       });
@@ -60,6 +60,7 @@ export class HomePage implements OnInit {
   }
 
   toggleSelectAll(e: any) {
+    this.isChecked = true;
     if(e.detail.checked == true){
       this.home_ser.chB = this.home_ser.chB.map(() => true);
     } else {
