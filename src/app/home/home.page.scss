@@ -343,8 +343,24 @@ ion-radio {
 }
 
 .checkbox-q{
-    border: none;
+    --border-color: #ffffff;
+    --border-color-checked: #ffffff;
+    --checkbox-background: #469fD1;
+    --checkbox-background-checked: #ffffff;
+    --checkmark-color: #469fD1;
+    --checkmark-width: 1px;
+    --border-width: 1px;
 }
+
+.custom-checkbox {
+    --border-color: #469fD1;
+    --border-color-checked: #469fD1;
+    --checkbox-background-checked: #469FD1;
+    --checkmark-color: #ffffff;
+    --checkmark-width: 1px;
+    --border-width: 1px;
+  }
+  
 
 .custom-col {
     flex: 0 0 40%;
@@ -478,3 +494,4 @@ ion-radio {
 
 
 //   }
+

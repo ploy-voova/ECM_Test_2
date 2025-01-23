@@ -11,14 +11,7 @@
     <ion-row>
       <!-- <ion-row style="color: aqua;"> -->
       <ion-col size="6" style="padding-left: 4%;">
-        <ion-radio-group 
-          [allowEmptySelection]="true" 
-          [(ngModel)]="isChecked" 
-          (ionChange)="toggleSelectAll($event)">
-          <ion-radio [value]="true" labelPlacement="end" style="color: black;">
-            Select All
-          </ion-radio>
-        </ion-radio-group>
+        <ion-checkbox labelPlacement="end" [checked]="isChecked" (ionChange)="toggleSelectAll($event)" class="custom-checkbox">Select All</ion-checkbox>
       </ion-col>
       <ion-col size="6" class="icon-top"
         style="display: flex; align-items: center; justify-content: space-between; padding-right: 4%;">
@@ -38,7 +31,7 @@
                   <span>
                     <ion-row style="display: flex; justify-content: space-between;">
                       <ion-card-title class="ion-card-title">Quote ID : {{ quote.quote_id }}</ion-card-title>
-                      <ion-checkbox [checked]="this.home_ser.chB[i]" (ionChange)="onCheckboxChange($event, i)"></ion-checkbox>
+                      <ion-checkbox [checked]="this.home_ser.chB[i]" (ionChange)="onCheckboxChange($event, i)" class="checkbox-q"></ion-checkbox>
                     </ion-row>
                     <ion-row style="display: flex; align-items: center; justify-content: space-between; padding: 2%;">
                       <ion-label class="ion-card-subtitle">Sale : {{ quote.sale }}</ion-label>

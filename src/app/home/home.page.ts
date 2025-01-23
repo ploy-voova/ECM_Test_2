@@ -1,6 +1,5 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
 import { HomeService } from '../service/home/home.service';
 
 @Component({
@@ -9,19 +8,29 @@ import { HomeService } from '../service/home/home.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  currentWidth: number = 0;
-  currentHeight: number = 0;
+  limit: number = 20;
   qid: any;
   quo: any = [];
+  currentSlideIndex: number = 0;
 
-  //checkbox//
   isChecked : boolean | null = null;
-  c: boolean = false;
 
-  constructor(private platform: Platform, private router: Router,public home_ser: HomeService) {}
+  constructor(private router: Router,public home_ser: HomeService) {
+    this.home_ser.quote_booking(this.limit);
+  }
 
-  async ngOnInit() {
-    this.home_ser.quote_booking();
+  async ngOnInit() {    
+    const swiper = document.querySelector('swiper-container')?.swiper;
+    if (swiper) {
+      swiper.on('slideChange', () => {
+        console.log('Slide changed to:', swiper.activeIndex+1);
+        if (this.limit - swiper.activeIndex == 11) {
+          this.limit = this.limit + 10;
+          this.home_ser.quote_booking(this.limit);
+
+        }
+      });
+    }
   }
   Topreview(quoteId: string) {
     console.log(quoteId);
@@ -51,15 +60,12 @@ export class HomePage implements OnInit {
   }
 
   toggleSelectAll(e: any) {
-    if(e.detail.value == true){
+    if(e.detail.checked == true){
       this.home_ser.chB = this.home_ser.chB.map(() => true);
     } else {
       this.home_ser.chB = this.home_ser.chB.map(() => false);
     }
   }
-
-
-
 
 }
 
