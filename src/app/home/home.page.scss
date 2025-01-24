@@ -320,29 +320,29 @@ ion-button {
 ion-radio {
     --border-radius: 2px;
     --inner-border-radius: 2px;
-  
+
     --color: #469FD1;
     --color-checked: #469FD1;
-  }
-  
-  ion-radio.ios::part(container) {
+}
+
+ion-radio.ios::part(container) {
     width: 20px;
     height: 20px;
-  
+
     border: 2px solid #469FD1;
     border-radius: 2px;
-  }
-  
-  .radio-checked.ios::part(container) {
-    border-color: #469FD1;
-  }
+}
 
-.icon-top{
+.radio-checked.ios::part(container) {
+    border-color: #469FD1;
+}
+
+.icon-top {
     font-size: 23px;
     color: #a5a5a5;
 }
 
-.checkbox-q{
+.checkbox-q {
     --border-color: #ffffff;
     --border-color-checked: #ffffff;
     --checkbox-background: #469fD1;
@@ -360,7 +360,7 @@ ion-radio {
     --checkmark-width: 1px;
     --border-width: 1px;
 }
-  
+
 
 .custom-col {
     flex: 0 0 40%;
@@ -370,6 +370,44 @@ ion-radio {
     .custom-col {
         flex: 0 0 40%;
     }
+}
+
+ion-modal {
+    --width: 260px;
+    --height: 331px;
+    --border-radius: 10px;
+}
+
+.col-modal {
+    width: 100%;
+    height: 43px;
+    color: black;
+    margin-top: 5%;
+    --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    border: 0.5px solid var(--unnamed-color-707070);
+    --background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #707070;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.ion-button-blue {
+    width: 100%;
+    height: 46px;
+    --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    --background: #469FD1 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.ion-button-red {
+    width: 100%;
+    height: 46px;
+    --background: none;
+    border: 1px solid #D14646;
+    color: #D14646;
+    border-radius: 10px;
+    opacity: 1;
 }
 
 // @media (max-width: 400px) {
@@ -494,4 +532,3 @@ ion-radio {
 
 
 //   }
-

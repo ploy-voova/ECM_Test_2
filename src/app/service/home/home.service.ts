@@ -15,12 +15,6 @@ export class HomeService {
   public async quote_booking(e:number,c:boolean) {
     await axios.get(baseUrl + '/api/ploy/quote_booking/'+e).then((response) => {
       this.quo = response.data;
-
-      console.log(c);
-      
-      console.log(this.chB.length);
-      
-
       if (this.chB.length === 0) {
         this.chB = response.data.map(() => c);
       } else {
@@ -32,8 +26,6 @@ export class HomeService {
           }
         }
       }
-
-      
     })
   }
 

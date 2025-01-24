@@ -14,9 +14,10 @@ export class CoveringJobPage implements OnInit {
   constructor(
     private router: Router,
     private quotepreviewservice: QuotePreviewService
-  ) { }
+  ) {  }
 
   ngOnInit() {
+    console.log(this.quotepreviewservice.mmcheck);
   }
 
   selectedItem: string | null = null;

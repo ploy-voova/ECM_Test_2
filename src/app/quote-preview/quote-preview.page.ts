@@ -41,11 +41,11 @@ export class QuotePreviewPage implements OnInit {
   isvisiblemap: boolean = false;
 
   constructor(
-    private router: ActivatedRoute, 
-    private popoverController: PopoverController, 
+    private router: ActivatedRoute,
+    private popoverController: PopoverController,
     private alertController: AlertController,
     public quote_pre: QuotePreviewService,
-    private router_: Router ) {
+    private router_: Router) {
 
   }
 
@@ -53,18 +53,19 @@ export class QuotePreviewPage implements OnInit {
     this.router.paramMap.subscribe(params => {
       this.q_id = params.get('quoteId');
       this.quote_pre.qId = this.q_id;
-      
+
     });
     this.journey_quote();
+    
   }
 
-  async journey_quote(){
+  async journey_quote() {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
     console.log(res);
 
     this.quote_pre.checkAll = res.map(() => false);
-    this.quote_pre.mmcheck = res.map((res:any) =>res['movement_quote'].map(() => false));
-    
+    this.quote_pre.mmcheck = res.map((res: any) => res['movement_quote'].map(() => false));
+
     // this.dt_q = res['journey_quote'];
     // this.date_j = res['journey_quote'][0]['movement_quote'][0]['date_start'];
     // this.time_j = res['journey_quote'][0]['movement_quote'][0]['time_start'];
@@ -74,7 +75,7 @@ export class QuotePreviewPage implements OnInit {
     this.time_j = res[0]['movement_quote'][0]['time_start'];
   }
 
-  to_CoveringJob(){
+  to_CoveringJob() {
     this.router_.navigate(['/tabs/covering-job'])
   }
 
@@ -164,7 +165,7 @@ export class QuotePreviewPage implements OnInit {
   //     .then((data) => {
   //       this.dt_q = data;
   //       console.log(this.dt_q);
-        
+
   //       this.date_j = data[0]['movement_quote'][0]['date_start'];
   //       this.time_j = data[0]['movement_quote'][0]['time_start'];
   //     });
@@ -220,20 +221,16 @@ export class QuotePreviewPage implements OnInit {
     return `${hour}:${minute}`;
   }
 
-  oncselectAll(e:any){
+  oncselectAll(e: any) {
     this.selectAll = e.detail.checked;
-<<<<<<< HEAD
-    
-    this.checkAll = this.checkAll.map(() => e.detail.checked);
-    this.mmcheck = this.mmcheck.map((res:any) => res.map(() => e.detail.checked));
-=======
+
     this.quote_pre.checkAll = this.quote_pre.checkAll.map(() => e.detail.checked);
-    this.quote_pre.mmcheck = this.quote_pre.mmcheck.map((res:any) => res.map(() => e.detail.checked));
->>>>>>> refs/remotes/origin/main
+    this.quote_pre.mmcheck = this.quote_pre.mmcheck.map((res: any) => res.map(() => e.detail.checked));
+
   }
 
-  onccheckAll(e:any ,i:number){
-    let se : boolean = true;
+  onccheckAll(e: any, i: number) {
+    let se: boolean = true;
     this.quote_pre.checkAll[i] = e.detail.checked;
     this.quote_pre.mmcheck[i] = this.quote_pre.mmcheck[i].map(() => e.detail.checked);
 
@@ -249,9 +246,9 @@ export class QuotePreviewPage implements OnInit {
     })
   }
 
-  onccheck(e:any ,i:number ,j:number){
-    let se : boolean = true;
-    let ch : boolean = true;
+  onccheck(e: any, i: number, j: number) {
+    let se: boolean = true;
+    let ch: boolean = true;
     this.quote_pre.mmcheck[i][j] = e.detail.checked;
     this.quote_pre.mmcheck[i].map((res) => {
       if (res == false) {
@@ -275,6 +272,14 @@ export class QuotePreviewPage implements OnInit {
         })
       }
     })
+    // console.log(this.quote_pre.mmcheck);
+
+    this.quote_pre.mmcheck[i].map((res3,index) => {
+      if (res3 == true) {
+        console.log("journey: "+(i+1)+" movement: "+(index+1)+" = "+res3);
+      }
+    })
+
     
   }
 }
