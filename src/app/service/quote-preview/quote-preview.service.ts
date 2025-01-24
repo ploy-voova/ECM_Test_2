@@ -7,6 +7,9 @@ import { baseUrl } from 'BaseUrl';
 })
 export class QuotePreviewService {
 
+  checkAll : boolean[] = [];
+  mmcheck : boolean[][] = [];
+
   constructor() { }
 
   public async quote_Preview2(qId: any) {
