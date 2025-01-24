@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   isChecked : boolean = false;
 
   constructor(private router: Router,public home_ser: HomeService) {
-    this.home_ser.quote_booking(this.limit,this.isChecked,this.limit);
+    this.home_ser.quote_booking(this.limit,this.isChecked);
   }
 
   async ngOnInit() {    
@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
         console.log('Slide changed to:', swiper.activeIndex+1);
         if (this.limit - swiper.activeIndex == 1) {
           this.limit = this.limit + 10;
-          this.home_ser.quote_booking(this.limit,this.isChecked,this.limit);
+          this.home_ser.quote_booking(this.limit,this.isChecked);
         }
       });
     }
