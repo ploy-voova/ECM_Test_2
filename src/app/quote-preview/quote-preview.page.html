@@ -30,7 +30,7 @@
               <ion-label class="font-16" style="color: #469FD1;">Journey: {{i+1}}</ion-label>
             </ion-row>
             <ion-row>
-              <ion-checkbox class="font-16" style="color: #747474;" [checked]="checkAll[i]" (ionChange)="onccheckAll($event,i)" labelPlacement="end">Check All</ion-checkbox>
+              <ion-checkbox class="font-16" style="color: #747474;" [checked]="quote_pre.checkAll[i]" (ionChange)="onccheckAll($event,i)" labelPlacement="end">Check All</ion-checkbox>
             </ion-row>
           </ion-col>
           <ion-col>
@@ -55,7 +55,7 @@
           <ion-card-content style="padding: 2%;">
             <ion-row>
               <ion-col class="custom-col2">
-                <ion-checkbox class="font-14" [checked]="mmcheck[i][j]" (ionChange)="onccheck($event,i,j)" labelPlacement="end">{{mm.date_start}} {{mm.time_start}}</ion-checkbox>
+                <ion-checkbox class="font-14" [checked]="quote_pre.mmcheck[i][j]" (ionChange)="onccheck($event,i,j)" labelPlacement="end">{{mm.date_start}} {{mm.time_start}}</ion-checkbox>
               </ion-col>
               <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
                 <ion-label class="font-14">Mileage: {{mm.mileage}} {{mm.time_use}} minute(s)</ion-label>

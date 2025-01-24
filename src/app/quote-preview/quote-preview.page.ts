@@ -24,8 +24,6 @@ export class QuotePreviewPage implements OnInit {
   dt_q: any;
 
   selectAll: boolean = false;
-  checkAll : boolean[] = [];
-  mmcheck : boolean[][] = [];
 
   iconNameCus: string = 'chevron-down-outline';
   iconNameTran: string = 'chevron-down-outline';
@@ -64,8 +62,8 @@ export class QuotePreviewPage implements OnInit {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
     console.log(res);
 
-    this.checkAll = res.map(() => false);
-    this.mmcheck = res.map((res:any) =>res['movement_quote'].map(() => false));
+    this.quote_pre.checkAll = res.map(() => false);
+    this.quote_pre.mmcheck = res.map((res:any) =>res['movement_quote'].map(() => false));
     
     // this.dt_q = res['journey_quote'];
     // this.date_j = res['journey_quote'][0]['movement_quote'][0]['date_start'];
@@ -224,18 +222,22 @@ export class QuotePreviewPage implements OnInit {
 
   oncselectAll(e:any){
     this.selectAll = e.detail.checked;
-    console.log(this.selectAll);
+<<<<<<< HEAD
     
     this.checkAll = this.checkAll.map(() => e.detail.checked);
     this.mmcheck = this.mmcheck.map((res:any) => res.map(() => e.detail.checked));
+=======
+    this.quote_pre.checkAll = this.quote_pre.checkAll.map(() => e.detail.checked);
+    this.quote_pre.mmcheck = this.quote_pre.mmcheck.map((res:any) => res.map(() => e.detail.checked));
+>>>>>>> refs/remotes/origin/main
   }
 
   onccheckAll(e:any ,i:number){
     let se : boolean = true;
-    this.checkAll[i] = e.detail.checked;
-    this.mmcheck[i] = this.mmcheck[i].map(() => e.detail.checked);
+    this.quote_pre.checkAll[i] = e.detail.checked;
+    this.quote_pre.mmcheck[i] = this.quote_pre.mmcheck[i].map(() => e.detail.checked);
 
-    this.checkAll.map((res) => {
+    this.quote_pre.checkAll.map((res) => {
       if (res == false) {
         se = false;
         this.selectAll = false;
@@ -250,18 +252,18 @@ export class QuotePreviewPage implements OnInit {
   onccheck(e:any ,i:number ,j:number){
     let se : boolean = true;
     let ch : boolean = true;
-    this.mmcheck[i][j] = e.detail.checked;
-    this.mmcheck[i].map((res) => {
+    this.quote_pre.mmcheck[i][j] = e.detail.checked;
+    this.quote_pre.mmcheck[i].map((res) => {
       if (res == false) {
         se = false;
         ch = false;
-        this.checkAll[i] = false;
+        this.quote_pre.checkAll[i] = false;
         this.selectAll = false;
       }
 
       if (ch) {
-        this.checkAll[i] = ch;
-        this.checkAll.map((res2) => {
+        this.quote_pre.checkAll[i] = ch;
+        this.quote_pre.checkAll.map((res2) => {
           if (res2 == false) {
             se = false;
             this.selectAll = false;

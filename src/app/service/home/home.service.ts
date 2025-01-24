@@ -12,7 +12,7 @@ export class HomeService {
 
   constructor() { }
 
-  public async quote_booking(e:number,c:boolean,l:number) {
+  public async quote_booking(e:number,c:boolean) {
     await axios.get(baseUrl + '/api/ploy/quote_booking/'+e).then((response) => {
       this.quo = response.data;
 
@@ -27,7 +27,7 @@ export class HomeService {
         if (c) {
           this.chB = response.data.map(() => c);
         } else {
-          for (let index = this.chB.length; index < l; index++){
+          for (let index = this.chB.length; index < response.data.length; index++){
             this.chB[index] = c;
           }
         }

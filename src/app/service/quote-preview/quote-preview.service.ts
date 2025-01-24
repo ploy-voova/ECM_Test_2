@@ -7,7 +7,12 @@ import { baseUrl } from 'BaseUrl';
 })
 export class QuotePreviewService {
 
+<<<<<<< HEAD
   public qId:any;
+=======
+  checkAll : boolean[] = [];
+  mmcheck : boolean[][] = [];
+>>>>>>> refs/remotes/origin/main
 
   constructor() { }
 
