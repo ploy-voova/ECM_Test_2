@@ -46,13 +46,16 @@ export class QuotePreviewPage implements OnInit {
     private router: ActivatedRoute, 
     private popoverController: PopoverController, 
     private alertController: AlertController,
-    public quote_pre: QuotePreviewService ) {
+    public quote_pre: QuotePreviewService,
+    private router_: Router ) {
 
   }
 
   ngOnInit() {
     this.router.paramMap.subscribe(params => {
       this.q_id = params.get('quoteId');
+      this.quote_pre.qId = this.q_id;
+      
     });
     this.journey_quote();
   }
@@ -71,6 +74,10 @@ export class QuotePreviewPage implements OnInit {
     this.dt_q = res;
     this.date_j = res[0]['movement_quote'][0]['date_start'];
     this.time_j = res[0]['movement_quote'][0]['time_start'];
+  }
+
+  to_CoveringJob(){
+    this.router_.navigate(['/tabs/covering-job'])
   }
 
   toggleCus() {
@@ -217,6 +224,8 @@ export class QuotePreviewPage implements OnInit {
 
   oncselectAll(e:any){
     this.selectAll = e.detail.checked;
+    console.log(this.selectAll);
+    
     this.checkAll = this.checkAll.map(() => e.detail.checked);
     this.mmcheck = this.mmcheck.map((res:any) => res.map(() => e.detail.checked));
   }

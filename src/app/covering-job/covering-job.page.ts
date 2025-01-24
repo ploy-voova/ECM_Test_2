@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { QuotePreviewService } from '../service/quote-preview/quote-preview.service';
 
 @Component({
   selector: 'app-covering-job',
@@ -8,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class CoveringJobPage implements OnInit {
 
   rate: number = 5.0;
-  constructor() { }
+
+  constructor(
+    private router: Router,
+    private quotepreviewservice: QuotePreviewService
+  ) { }
 
   ngOnInit() {
   }
@@ -19,9 +25,9 @@ export class CoveringJobPage implements OnInit {
     this.selectedItem = item;
   }
 
-
-  toOrigin(){
-
+  back_quotepreview(){
+    this.router.navigate(['/tabs/quote-preview',this.quotepreviewservice.qId])
   }
+
 
 }
