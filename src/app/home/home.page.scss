@@ -1,3 +1,5 @@
+
+
 .curved-shape {
     width: 100%;
     height: 50px;
@@ -132,10 +134,10 @@ h5 {
     width: 100%;
     padding: 0;
     height: 199px;
-    /* UI Properties */
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    border: 1px solid #707070;
+    --background: #FFFFFF 0% 0% no-repeat padding-box;
+    // box-shadow: 0px 3px 6px #00000029;
+    box-shadow: none;
+    border: 0.5px solid #ACACAC;
     border-radius: 2px;
     opacity: 0.82;
     opacity: 1 !important;
@@ -150,7 +152,7 @@ h5 {
 .cus {
     padding-bottom: 0;
     margin: 0;
-    margin-bottom: -6px;
+    margin-bottom: -7px;
 }
 
 .icon-card {
@@ -409,6 +411,31 @@ ion-modal {
     border-radius: 10px;
     opacity: 1;
 }
+
+.custom-pagination .swiper-pagination-bullet {
+    display: none;
+  }
+  
+  .custom-pagination .swiper-pagination-bullet:nth-child(-n+10) {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    margin: 0 5px;
+    border-radius: 50%;
+  }
+  
+  .custom-pagination .swiper-pagination-bullet-active {
+    background-color: #007bff;
+    transform: scale(1.2);
+  }
+
+  .swiper-pagination-bullet {
+    display: none;
+  }
+  .swiper-pagination-bullet:nth-child(-n+10) {
+    display: inline-block;
+  }
 
 // @media (max-width: 400px) {
 //     .col-f{

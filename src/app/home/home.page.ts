@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit() {    
     const swiper = document.querySelector('swiper-container')?.swiper;
+    swiper?.pagination
     if (swiper) {
       swiper.on('slideChange', () => {
         console.log('Slide changed to:', swiper.activeIndex+1);
@@ -62,6 +63,8 @@ export class HomePage implements OnInit {
     this.isChecked = e.detail.checked;
     this.home_ser.chB = this.home_ser.chB.map(() => e.detail.checked);
   }
+
+  
 
 }
 

@@ -239,3 +239,21 @@ ion-segment-view {
 ion-modal {
     --border-radius: 13px;
 }
+
+ion-toolbar {
+    --background: #ffff;
+    border: none;
+    box-shadow: none;
+    // --border-width: 0;
+    // padding: 0;
+    // --border-bottom: none;
+    // border-bottom: none;
+    // box-shadow: none;
+
+}
+
+ion-header {
+    --background: #ffff;
+    box-shadow: none;
+    border-bottom: #fff;
+}

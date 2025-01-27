@@ -87,6 +87,9 @@ export class NewJobPage implements OnInit {
   select_luggage_journey: string = "selectluggage";
 
 
+  name_address:any;
+  isModalOpen = false;
+  temp_addess:any;
 
   constructor(private popoverController: PopoverController,
     public newjob_ser: NewjobService,) {
@@ -244,7 +247,7 @@ export class NewJobPage implements OnInit {
   async select_journeyT(){
     const journey_t = await this.newjob_ser.select_Journey();
     this.journey_Type = journey_t;
-    console.log(this.journey_Type);
+    // console.log(this.journey_Type);
     
   }
 
@@ -392,8 +395,15 @@ export class NewJobPage implements OnInit {
     });
   }
 
+  apply_address(){
+    this.address1 = this.newjob_ser.name_address;
+    this.newjob_ser.name_address = '';
+  }
 
-
+  apply_address2(){
+    this.address2 = this.newjob_ser.name_address;
+    this.newjob_ser.name_address = '';
+  }
 
 
 }

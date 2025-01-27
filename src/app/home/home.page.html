@@ -154,7 +154,9 @@
       </ion-modal>
 
       <!-- </ion-row> -->
-      <swiper-container>
+       <!-- [pagination]="true" -->
+      <swiper-container
+      >
         <!-- 1 -->
         <swiper-slide #swiperEx *ngFor="let quote of this.home_ser.quo;  let i = index;">
           <ion-card class="card-container" style="margin: 3%;">
@@ -247,9 +249,8 @@
                       <h4>10 Pix(s)</h4>
                     </ion-col>
                   </ion-row>
-                  <ion-row>
-                    <ion-col size-xs="12"
-                      style="height: 59px;   display: flex; align-items: end; justify-content: flex-end;">
+                  <ion-row style="height: 64%;">
+                    <ion-col size-xs="12" style="padding-right: 3%; display: flex; align-items: end; justify-content: end;">
                       <ion-button class="booking-btn">Booking</ion-button>
                     </ion-col>
                   </ion-row>
@@ -258,6 +259,7 @@
             </ion-grid>
           </ion-card>
         </swiper-slide>
+
 
       </swiper-container>
     </ion-row>

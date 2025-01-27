@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar style="background-color: white;">
+  <ion-toolbar style="height: 111px;">
     <app-explore-header></app-explore-header>
     <!-- <ion-row style="background-color: white; border: 5px #ffff; ">Create a new quote</ion-row> -->
   </ion-toolbar>
@@ -7,6 +7,11 @@
 
 <ion-content [fullscreen]="true">
   <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="center" >
+        <ion-label class="font-16" style="color: #000000; font-weight: bold;">Create a new qoute</ion-label>
+      </ion-col>
+    </ion-row>
     <ion-row style="margin-bottom: 4%;">
       <ion-col size="5.5">
         <ion-row class="ion-button-blue font-16 no-padding center">
@@ -124,9 +129,12 @@
         </ion-select>
       </ion-col>
       <ion-col size="6">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="other">
-          <ion-select-option value="other">Other</ion-select-option>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
+          value="selectjourneytype">
+          <ion-select-option value="selectjourneytype">Select Journey Type</ion-select-option>
+          <ion-select-option *ngFor="let j_type of journey_Type" value="{{j_type.jt_id}}">
+            {{j_type.name}}
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6.5" class="center-left" style="margin-top: 2%;">
@@ -517,13 +525,13 @@
           <ion-label class="font-14" style="color: #AB1C1C;">Collection Address(1)</ion-label>
         </ion-col>
         <ion-col size="9.5">
-          <ion-input [(ngModel)]="address1" class="input"></ion-input>
+          <ion-input [(ngModel)]="address1" value="address1" class="input font-14" style="color: #707070;"></ion-input>
         </ion-col>
         <ion-col size="2.5">
           <ion-icon class="icon-blue" name="location-outline" id="open-modal-call"></ion-icon>
           
           <!-- modal-call -->
-          <ion-modal #model_coll trigger="open-modal-call" [initialBreakpoint]="0.7">
+          <ion-modal #modal_coll trigger="open-modal-call" [initialBreakpoint]="0.7">
             <ng-template>
               <ion-content>
                 <ion-grid>
@@ -535,7 +543,7 @@
                       <ion-icon name="arrow-undo" style="color: #AB1C1C;"></ion-icon>
                     </ion-col>
                     <ion-col size="12" style="display: flex;">
-                      <ion-input class="input"></ion-input>
+                      <ion-input class="input font-14" style="color: #707070;" [value]="newjob_ser.name_address.trim() === '' ? address1 : newjob_ser.name_address"></ion-input>
                       <ion-icon name="location-outline" style="font-size: 40px; color: #469FD1;"></ion-icon>
                     </ion-col>
                     <ion-col>
@@ -545,7 +553,7 @@
                       <app-map></app-map>
                     </ion-col>
                     <ion-col size="12" class="center-right">
-                      <ion-button class="ion-button-blue font-14" style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
+                      <ion-button (click)="apply_address()" (click)="modal_coll.dismiss()" class="ion-button-blue font-14" style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
                     </ion-col>
                   </ion-row>
                 </ion-grid>
@@ -567,15 +575,47 @@
           </ion-col>
         <!-- </ion-row> -->
         <ion-col size="12">
-          <ion-label class="font-14" style="color: #AB1C1C;">Collection Address(2)</ion-label>
+          <ion-label  class="font-14" style="color: #AB1C1C;">Collection Address(2)</ion-label>
         </ion-col>
         <ion-col size="9.5">
-          <ion-input [(ngModel)]="address2" class="input"></ion-input>
+          <ion-input [(ngModel)]="address2" value="address2" class="input font-14" style="color: #707070;"></ion-input>
         </ion-col>
         <ion-col size="2.5">
-          <ion-icon class="icon-blue" name="location-outline"></ion-icon>
+          <ion-icon class="icon-blue" name="location-outline"  id="open-modal-call2"></ion-icon>
           <ion-icon [ngClass]="{'icon-green': note2.length > 0, 'icon-blue': note2.length === 0}" (click)="toggleNote_col2()" class="icon-blue" name="reader-outline"></ion-icon>
         </ion-col>
+
+        <!-- modal-call2 -->
+        <ion-modal #modal_coll2 trigger="open-modal-call2" [initialBreakpoint]="0.7">
+          <ng-template>
+            <ion-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="12" class="center">
+                    <ion-label class="font-16" style="color: #747474;" >Collection Address</ion-label>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-icon name="arrow-undo" style="color: #AB1C1C;"></ion-icon>
+                  </ion-col>
+                  <ion-col size="12" style="display: flex;">
+                    <ion-input class="input font-14" style="color: #707070;" [value]="newjob_ser.name_address.trim() === '' ? address2 : newjob_ser.name_address"></ion-input>
+                    <ion-icon name="location-outline" style="font-size: 40px; color: #469FD1;"></ion-icon>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label class="font-14" style="color: #469FD1;">View Root</ion-label>
+                  </ion-col>
+                  <ion-col size="12" style="height: 300px;">
+                    <app-map></app-map>
+                  </ion-col>
+                  <ion-col size="12" class="center-right">
+                    <ion-button (click)="apply_address2()" (click)="modal_coll2.dismiss()" class="ion-button-blue font-14" style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
         <!-- <ion-row *ngIf="isdropNote_des2"> -->
           <ion-col size="12" *ngIf="isdropNote_des2">
             <ion-label class="font-14">Destination Note</ion-label>

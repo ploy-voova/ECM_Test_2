@@ -7,6 +7,7 @@ import { baseUrl } from 'BaseUrl';
 })
 export class NewjobService {
 
+  public name_address: string = '';
   public vehicle: any;
 
   constructor() { }
