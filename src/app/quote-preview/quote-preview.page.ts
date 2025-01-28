@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import {PopoverController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { QuotePreviewService } from '../service/quote-preview/quote-preview.service';
 
@@ -10,6 +10,7 @@ import { QuotePreviewService } from '../service/quote-preview/quote-preview.serv
   styleUrls: ['./quote-preview.page.scss'],
 })
 export class QuotePreviewPage implements OnInit {
+
   q_id: string | null = '';
   journey: any;
   movement: any;
@@ -21,7 +22,13 @@ export class QuotePreviewPage implements OnInit {
   date_c: any;
   time_c: any;
   time: any;
+
   dt_q: any;
+  dt_c: any;
+  dt_t: any;
+  dt_p: any;
+  dt_m: any;
+
 
   selectAll: boolean = false;
 
@@ -63,17 +70,28 @@ export class QuotePreviewPage implements OnInit {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
     console.log(res);
 
-    this.quote_pre.checkAll = res.map(() => false);
-    this.quote_pre.mmcheck = res.map((res: any) => res['movement_quote'].map(() => false));
+    // this.quote_pre.checkAll = res.map(() => false);
+    // this.quote_pre.mmcheck = res.map((res: any) => res['movement_quote'].map(() => false));
 
-    // this.dt_q = res['journey_quote'];
-    // this.date_j = res['journey_quote'][0]['movement_quote'][0]['date_start'];
-    // this.time_j = res['journey_quote'][0]['movement_quote'][0]['time_start'];
-    // console.log(this.dt_q);
-    this.dt_q = res;
-    this.date_j = res[0]['movement_quote'][0]['date_start'];
-    this.time_j = res[0]['movement_quote'][0]['time_start'];
+    this.dt_q = res['journey_quote'];
+    this.date_j = res['journey_quote'][0]['movement_quote'][0]['date_start'];
+    this.time_j = res['journey_quote'][0]['movement_quote'][0]['time_start'];
+    this.quote_pre.checkAll = res['journey_quote'].map(() => false);
+    this.quote_pre.mmcheck = res['journey_quote'].map((res: any) => res['movement_quote'].map(() => false));
+
+    this.dt_c = res['Customer'];
+    this.dt_t = res['Transport'];
+    this.dt_p = res['Pricing'];
+    this.dt_m = res['Misc']
+    console.log(this.dt_q);
+    // this.dt_q = res;
+    // this.date_j = res[0]['movement_quote'][0]['date_start'];
+    // this.time_j = res[0]['movement_quote'][0]['time_start'];
   }
+
+  popoverOptions: any = {
+    cssClass: 'custom-popover-class',
+  };
 
   to_CoveringJob() {
     this.router_.navigate(['/tabs/covering-job'])

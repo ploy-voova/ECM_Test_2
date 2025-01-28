@@ -89,8 +89,8 @@
 
             <ion-row style="margin-top: 10px;">
               <ion-col size-xs="6">
-                <ion-label class="font-14" style="color: #747474;">Under bid</ion-label>
-                <ion-icon name="ellipse" style="font-size: 9px; color: #FF9900;"></ion-icon>
+                <ion-label class="font-14" style="color: #747474;">{{mm.progress.progress}}</ion-label>
+                <ion-icon name="ellipse" style="margin-left: 3%;" [ngStyle]="{ color: '#' + mm.progress.bg, fontSize: '9px' }">></ion-icon>
               </ion-col>
               <ion-col size-xs="6" style="display: flex; justify-content: end;">
                 <ion-icon name="caret-down" (click)="toggleDrop(i,j)" style="font-size: 25px; "></ion-icon>
@@ -165,8 +165,8 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" value="70 Pax(s)">
-                    <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
+                    interface="popover" value="0">
+                    <ion-select-option value="0">{{mm.pax}}</ion-select-option>
                     <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
                     <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
                     <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
@@ -177,9 +177,9 @@
                   <ion-label class="font-14" style="color: #FF0000;">Vehicle</ion-label>
                 </ion-col>
                 <ion-col size="8.5">
-                  <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" value="81">
-                    <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
+                  <ion-select class="font-14 ion-select-T " style="color: #ACACAC; " label-placement="floating"
+                    interface="popover" value="0">
+                    <ion-select-option class="custom-option" value="0">{{mm.car_name}}</ion-select-option>
                     <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
                     <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
                     <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
@@ -190,8 +190,8 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" value="No">
-                    <ion-select-option value="No">No luggage.</ion-select-option>
+                    interface="popover" value="0">
+                    <ion-select-option value="0">{{mm.bag_name}}</ion-select-option>
                     <ion-select-option value="No">No luggage.</ion-select-option>
                     <ion-select-option value="No">No luggage.</ion-select-option>
                     <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
@@ -202,8 +202,8 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" value="AutoNo">
-                    <ion-select-option value="No">School Trip</ion-select-option>
+                    interface="popover" value="0">
+                    <ion-select-option value="0">{{mm.journey_type}}</ion-select-option>
                     <ion-select-option value="AutoNo">School Trip</ion-select-option>
                     <ion-select-option value="AutoYes">School Trip</ion-select-option>
                     <ion-select-option value="Yes">School Trip</ion-select-option>
@@ -335,23 +335,24 @@
       <ion-row style="padding: 2%;">
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">name:</ion-label>
-          <ion-label class="font-14">Mybus4u</ion-label>
+          <ion-label class="font-14">{{this.dt_c.name}}</ion-label>
         </ion-col>
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Company:</ion-label>
+          <ion-label class="font-14"> {{this.dt_c.company}}</ion-label>
           <ion-label class="font-14"></ion-label>
         </ion-col>
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Email:</ion-label>
-          <ion-label class="font-14">sai</ion-label>
+          <ion-label class="font-14"> {{this.dt_c.email}}</ion-label>
         </ion-col>
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Ext Ref :</ion-label>
-          <ion-label class="font-14"> ABACUS</ion-label>
+          <ion-label class="font-14"> {{this.dt_c.ext_ref}}</ion-label>
         </ion-col>
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Phone:</ion-label>
-          <ion-label class="font-14"> 01619337797</ion-label>
+          <ion-label class="font-14"> {{this.dt_c.phone}}</ion-label>
         </ion-col>
         <ion-col size="6" style="display: flex; justify-content: space-between;">
           <ion-label class="font-14" style="color: #000000;">Moblie:</ion-label>
@@ -372,15 +373,15 @@
         </ion-col>
         <ion-col size="12">
           <ion-label class="font-14" style="color: #000000;">Passenger Name:</ion-label>
-          <ion-label class="font-14"> AUM TEST API</ion-label>
+          <ion-label class="font-14"> {{this.dt_c.passenger_name}}</ion-label>
         </ion-col>
         <ion-col size="12">
           <ion-label class="font-14" style="color: #000000;">Passenger Email:</ion-label>
-          <ion-label class="font-14"> aum_TEST!disney.com</ion-label>
+          <ion-label class="font-14"> {{this.dt_c.passenger_email}}</ion-label>
         </ion-col>
         <ion-col size="12">
           <ion-label class="font-14" style="color: #000000;">Passenger Number:</ion-label>
-          <ion-label class="font-14"> +664956182</ion-label>
+          <ion-label class="font-14"> {{this.dt_c.passenger_number}}</ion-label>
         </ion-col>
         <ion-col size="12" class="center-right">
           <ion-button class="ion-button-blue center" style="width: 135px;">
