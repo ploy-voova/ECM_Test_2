@@ -1,8 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {PopoverController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { QuotePreviewService } from '../service/quote-preview/quote-preview.service';
+import { NewjobService } from '../service/newjob/newjob.service';
 
 @Component({
   selector: 'app-quote-preview',
@@ -10,7 +11,6 @@ import { QuotePreviewService } from '../service/quote-preview/quote-preview.serv
   styleUrls: ['./quote-preview.page.scss'],
 })
 export class QuotePreviewPage implements OnInit {
-
   q_id: string | null = '';
   journey: any;
   movement: any;
@@ -29,7 +29,6 @@ export class QuotePreviewPage implements OnInit {
   dt_p: any;
   dt_m: any;
 
-
   selectAll: boolean = false;
 
   iconNameCus: string = 'chevron-down-outline';
@@ -47,78 +46,94 @@ export class QuotePreviewPage implements OnInit {
   isdropAs: boolean = false;
   isvisiblemap: boolean = false;
 
+  select_pax: string = '';
+  select_vehicle_: string = '';
+  select_luggage_: string = '';
+  select_journey_type_: string = '';
+
+  pax: string = '';
+  vehicle: any;
+  luggage: any;
+  journey_type: any;
+
   constructor(
     private router: ActivatedRoute,
     private popoverController: PopoverController,
     private alertController: AlertController,
     public quote_pre: QuotePreviewService,
-    private router_: Router) {
+    private router_: Router,
+    private new_job: NewjobService
+  ) {}
 
-  }
-
-  ngOnInit() {
-    this.router.paramMap.subscribe(params => {
+  async ngOnInit() {
+    this.router.paramMap.subscribe((params) => {
       this.q_id = params.get('quoteId');
       this.quote_pre.qId = this.q_id;
-
     });
     this.journey_quote();
-    
   }
 
   async journey_quote() {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
-    console.log(res);
 
     // this.quote_pre.checkAll = res.map(() => false);
     // this.quote_pre.mmcheck = res.map((res: any) => res['movement_quote'].map(() => false));
+    // this.dt_q = res;
+    // this.date_j = res[0]['movement_quote'][0]['date_start'];
+    // this.time_j = res[0]['movement_quote'][0]['time_start'];
 
     this.dt_q = res['journey_quote'];
     this.date_j = res['journey_quote'][0]['movement_quote'][0]['date_start'];
     this.time_j = res['journey_quote'][0]['movement_quote'][0]['time_start'];
     this.quote_pre.checkAll = res['journey_quote'].map(() => false);
     this.quote_pre.mmcheck = res['journey_quote'].map((res: any) => res['movement_quote'].map(() => false));
-
     this.dt_c = res['Customer'];
     this.dt_t = res['Transport'];
     this.dt_p = res['Pricing'];
-    this.dt_m = res['Misc']
-    console.log(this.dt_q);
-    // this.dt_q = res;
-    // this.date_j = res[0]['movement_quote'][0]['date_start'];
-    // this.time_j = res[0]['movement_quote'][0]['time_start'];
+    this.dt_m = res['Misc'];
   }
 
-  popoverOptions: any = {
-    cssClass: 'custom-popover-class',
-  };
-
   to_CoveringJob() {
-    this.router_.navigate(['/tabs/covering-job'])
+    this.router_.navigate(['/tabs/covering-job']);
   }
 
   toggleCus() {
-    this.iconNameCus = this.iconNameCus === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.iconNameCus =
+      this.iconNameCus === 'chevron-down-outline'
+        ? 'chevron-up-outline'
+        : 'chevron-down-outline';
     this.isdropCus = !this.isdropCus;
   }
 
   toggleTran() {
-    this.iconNameTran = this.iconNameTran === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.iconNameTran =
+      this.iconNameTran === 'chevron-down-outline'
+        ? 'chevron-up-outline'
+        : 'chevron-down-outline';
     this.isdropTran = !this.isdropTran;
   }
 
   togglePrice() {
-    this.iconNamePrice = this.iconNamePrice === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.iconNamePrice =
+      this.iconNamePrice === 'chevron-down-outline'
+        ? 'chevron-up-outline'
+        : 'chevron-down-outline';
     this.isdropPrice = !this.isdropPrice;
   }
 
   toggleMisc() {
-    this.iconNameMisc = this.iconNameMisc === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.iconNameMisc =
+      this.iconNameMisc === 'chevron-down-outline'
+        ? 'chevron-up-outline'
+        : 'chevron-down-outline';
     this.isdropMisc = !this.isdropMisc;
   }
 
   toggleItem() {
-    this.iconNameItem = this.iconNameItem === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.iconNameItem =
+      this.iconNameItem === 'chevron-down-outline'
+        ? 'chevron-up-outline'
+        : 'chevron-down-outline';
     this.isdropItem = !this.isdropItem;
   }
 
@@ -138,7 +153,11 @@ export class QuotePreviewPage implements OnInit {
   currentOpen: { journeyIndex: number; mmIndex: number } | null = null; // เก็บตำแหน่งของอันที่เปิดอยู่
 
   async toggleDrop(journeyIndex: number, mmIndex: number) {
-    if (this.currentOpen && (this.currentOpen.journeyIndex !== journeyIndex || this.currentOpen.mmIndex !== mmIndex)) {
+    if (
+      this.currentOpen &&
+      (this.currentOpen.journeyIndex !== journeyIndex ||
+        this.currentOpen.mmIndex !== mmIndex)
+    ) {
       const alert = await this.alertController.create({
         header: 'Destination has not been set.',
         message: 'Please drag the locate pointer to the requied destination.',
@@ -171,31 +190,47 @@ export class QuotePreviewPage implements OnInit {
     }
   }
 
-
-  // journey_quote() {
-  //   fetch('http://35.187.248.255:214/api/testss/quote_review/' + this.q_id, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       this.dt_q = data;
-  //       console.log(this.dt_q);
-
-  //       this.date_j = data[0]['movement_quote'][0]['date_start'];
-  //       this.time_j = data[0]['movement_quote'][0]['time_start'];
-  //     });
-  // }
-
   segmentChanged(event: any) {
     const selectedValue = event.detail.value;
     document.querySelectorAll('ion-segment-button').forEach((button) => {
-      button.classList.toggle('selected', button.getAttribute('value') === selectedValue);
+      button.classList.toggle(
+        'selected',
+        button.getAttribute('value') === selectedValue
+      );
     });
   }
 
+  paxChange(e: CustomEvent) {
+    this.pax = e.detail.value;
+    this.select_pax = this.pax;
+    this.select_vehicle_ = 'selectvehicle';
+    this.select_luggage_ = 'selectluggage';
+  }
+
+  vehicleChange(e: CustomEvent) {
+    this.select_vehicle_ = e.detail.value;
+    this.select_luggage_ = 'selectluggage';
+  }
+
+  async vehicleChange_fo(pax: number) {
+    const veh = await this.new_job.select_Vehicle(pax);
+    this.vehicle = veh;
+    this.vehicle = this.vehicle[0];
+  }
+
+  luggageChange(e: CustomEvent) {
+    this.select_luggage_ = e.detail.value;
+  }
+
+  async luggageChange_fo(pax: number,vehicle: number){
+    const lug = await this.new_job.select_Luggage(pax, vehicle);
+    this.luggage = lug;
+    this.luggage = this.luggage[0];
+  }
+
+  async select_journeyT(){
+    this.journey_type = await this.new_job.select_Journey();
+  }
 
 
   // ฟังก์ชันปิด Popover
@@ -209,12 +244,12 @@ export class QuotePreviewPage implements OnInit {
   // ฟังก์ชันเรียกเมื่อเลือกวันที่
   onDateChange(event: any) {
     this.date_c = this.formatDate(event.detail.value);
-    this.closePopover()
+    this.closePopover();
   }
 
   // ฟังก์ชันเรียกเมื่อเลือกเวลา
   onTimeChange(event: any) {
-    this.time = event.detail.value
+    this.time = event.detail.value;
     // console.log(this.time);
   }
 
@@ -242,15 +277,20 @@ export class QuotePreviewPage implements OnInit {
   oncselectAll(e: any) {
     this.selectAll = e.detail.checked;
 
-    this.quote_pre.checkAll = this.quote_pre.checkAll.map(() => e.detail.checked);
-    this.quote_pre.mmcheck = this.quote_pre.mmcheck.map((res: any) => res.map(() => e.detail.checked));
-
+    this.quote_pre.checkAll = this.quote_pre.checkAll.map(
+      () => e.detail.checked
+    );
+    this.quote_pre.mmcheck = this.quote_pre.mmcheck.map((res: any) =>
+      res.map(() => e.detail.checked)
+    );
   }
 
   onccheckAll(e: any, i: number) {
     let se: boolean = true;
     this.quote_pre.checkAll[i] = e.detail.checked;
-    this.quote_pre.mmcheck[i] = this.quote_pre.mmcheck[i].map(() => e.detail.checked);
+    this.quote_pre.mmcheck[i] = this.quote_pre.mmcheck[i].map(
+      () => e.detail.checked
+    );
 
     this.quote_pre.checkAll.map((res) => {
       if (res == false) {
@@ -261,7 +301,7 @@ export class QuotePreviewPage implements OnInit {
       if (se) {
         this.selectAll = se;
       }
-    })
+    });
   }
 
   onccheck(e: any, i: number, j: number) {
@@ -287,17 +327,17 @@ export class QuotePreviewPage implements OnInit {
           if (se) {
             this.selectAll = se;
           }
-        })
+        });
       }
-    })
+    });
     // console.log(this.quote_pre.mmcheck);
 
-    this.quote_pre.mmcheck[i].map((res3,index) => {
+    this.quote_pre.mmcheck[i].map((res3, index) => {
       if (res3 == true) {
-        console.log("journey: "+(i+1)+" movement: "+(index+1)+" = "+res3);
+        console.log(
+          'journey: ' + (i + 1) + ' movement: ' + (index + 1) + ' = ' + res3
+        );
       }
-    })
-
-    
+    });
   }
 }

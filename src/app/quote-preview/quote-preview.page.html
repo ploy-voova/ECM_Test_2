@@ -165,11 +165,12 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" value="0">
-                    <ion-select-option value="0">{{mm.pax}}</ion-select-option>
-                    <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
-                    <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
-                    <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
+                    interface="popover" [value]="select_pax ? select_pax : +mm.pax" (ionChange)="paxChange($event)">
+                    <!-- <ion-select-option value="0">{{mm.pax}}</ion-select-option> -->
+                    <ion-select-option value="selectpax">Select Pax</ion-select-option>
+                    <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
+                      {{ index + 1 }} Paxs
+                    </ion-select-option>
                   </ion-select>
                 </ion-col>
 
@@ -178,11 +179,11 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T " style="color: #ACACAC; " label-placement="floating"
-                    interface="popover" value="0">
-                    <ion-select-option class="custom-option" value="0">{{mm.car_name}}</ion-select-option>
-                    <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
-                    <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
-                    <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
+                    interface="popover" [value]="select_vehicle_ ? select_vehicle_ : mm.car_id" (ionFocus)="vehicleChange_fo(select_pax ? select_pax : mm.pax)" (ionChange)="vehicleChange($event)">
+                    <ion-select-option class="custom-option" value="selectvehicle">Select Vehicle</ion-select-option>
+                    <ion-select-option *ngFor="let vehi of vehicle || [0]" [value]="vehi?.car_id || mm.car_id">
+                      {{ vehi?.car_name || mm.car_name }}
+                    </ion-select-option>
                   </ion-select>
                 </ion-col>
                 <ion-col size="3.5" class="center-left">
@@ -190,11 +191,11 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" value="0">
-                    <ion-select-option value="0">{{mm.bag_name}}</ion-select-option>
-                    <ion-select-option value="No">No luggage.</ion-select-option>
-                    <ion-select-option value="No">No luggage.</ion-select-option>
-                    <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+                    interface="popover" [value]="select_luggage_ ? select_luggage_ : mm.bag_id" (ionFocus)="luggageChange_fo(select_pax ? select_pax : mm.pax, select_vehicle_ ? select_vehicle_ : mm.car_id)" (ionChange)="luggageChange($event)">
+                    <ion-select-option value="selectluggage">Select Luggage</ion-select-option>
+                    <ion-select-option *ngFor="let lug of luggage || [0]" [value]="lug?.bag_id || mm.bag_id" >
+                      {{ lug?.bag_des || mm.bag_name }}
+                    </ion-select-option>
                   </ion-select>
                 </ion-col>
                 <ion-col size="3.5" class="center-left">
@@ -202,11 +203,11 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" value="0">
-                    <ion-select-option value="0">{{mm.journey_type}}</ion-select-option>
-                    <ion-select-option value="AutoNo">School Trip</ion-select-option>
-                    <ion-select-option value="AutoYes">School Trip</ion-select-option>
-                    <ion-select-option value="Yes">School Trip</ion-select-option>
+                    interface="popover" [value] = "select_journey_type_ ? select_journey_type_ : mm.journey_type_id">
+                    <ion-select-option value="selectjourney">Select Journey Type</ion-select-option>
+                    <ion-select-option *ngFor="let j_type of journey_type || [0]" [value]="j_type?.journey_id || mm.journey_type_id" (ionFocus)="select_journeyT()">
+                      {{ j_type?.journey_data || mm.journey_type }}
+                    </ion-select-option>
                   </ion-select>
                 </ion-col>
               </ion-row>
