@@ -17,29 +17,29 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="new-job" >
-      <ion-icon aria-hidden="true" name="add-circle-outline"></ion-icon>
+    <ion-tab-button tab="new-job" (click)="changeIcon_Newjob()">
+      <ion-icon aria-hidden="true" [name]="newjob"></ion-icon>
       <ion-label>New Job</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="job" >
-      <ion-icon aria-hidden="true" name="briefcase-outline"></ion-icon>
+    <ion-tab-button tab="job"  (click)="changeIcon_Job()">
+      <ion-icon aria-hidden="true" [name]="job"></ion-icon>
       <ion-label>Job</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="home">
-      <ion-icon aria-hidden="true" name="home-outline"></ion-icon>
+    <ion-tab-button tab="home" (click)="changeIcon_Home()">
+      <ion-icon aria-hidden="true" [name]="home"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="contacts">
-      <ion-icon aria-hidden="true" name="person-outline"></ion-icon>
+    <ion-tab-button tab="contacts" (click)="changeIcon_Con()">
+      <ion-icon aria-hidden="true" [name]="contacts"></ion-icon>
       <ion-label>Contacts</ion-label>
     </ion-tab-button>
 
 
-    <ion-tab-button (click)="openFirstMenu()" id="main-content">
-      <ion-icon name="apps-outline"></ion-icon>
+    <ion-tab-button (click)="openFirstMenu()" (click)="changeIcon_More()" id="main-content">
+      <ion-icon [name]="more"></ion-icon>
       <ion-label>More</ion-label>
     </ion-tab-button>
   </ion-tab-bar>

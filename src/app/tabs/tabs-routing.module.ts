@@ -47,6 +47,10 @@ const routes: Routes = [
         path: 'covering-job',
         loadChildren: () => import('../covering-job/covering-job.module').then( m => m.CoveringJobPageModule)
       },
+      {
+        path: 'assign-diver',
+        loadChildren: () => import('../assign-diver/assign-diver.module').then( m => m.AssignDiverPageModule)
+      },
     ]
   },
   {
