@@ -418,38 +418,38 @@
       </ion-col>
       <ion-col size="6">
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="70 Pax(s)">
-          <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
-          <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
-          <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
-          <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
+          [value]="select_pax_tran ? select_pax_tran : +dt_t.pax" (ionChange)="paxTran($event)">
+          <ion-select-option value="selectpax">Select Pax</ion-select-option>
+          <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
+            {{ index + 1 }} Paxs
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6">
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="81">
-          <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
-          <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
-          <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
-          <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
+          [value]="select_vehicle_tran ? select_vehicle_tran : dt_t.car_id" (ionChange)="vehicleTran($event)">
+          <ion-select-option class="custom-option" value="selectvehicle">Select Vehicle</ion-select-option>
+          <ion-select-option *ngFor="let vehi of vehicle_tran" [value]="vehi.car_id">
+            {{ vehi.car_name }}
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6">
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
-          <ion-select-option value="No">No luggage.</ion-select-option>
-          <ion-select-option value="No">No luggage.</ion-select-option>
-          <ion-select-option value="No">No luggage.</ion-select-option>
-          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          [value]="select_luggage_tran ? select_luggage_tran : dt_t.bag_id" (ionChange)="luggageTran($event)">
+          <ion-select-option class="custom-option" value="selectluggage">Select Luggage</ion-select-option>
+          <ion-select-option *ngFor="let lug of luggage_tran" [value]="lug.bag_id">
+            {{ lug.bag_des }}
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6">
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="AutoNo">
-          <ion-select-option value="No">School Trip</ion-select-option>
-          <ion-select-option value="AutoNo">School Trip</ion-select-option>
-          <ion-select-option value="AutoYes">School Trip</ion-select-option>
-          <ion-select-option value="Yes">School Trip</ion-select-option>
+          [value]="select_journey_type_tran ? select_journey_type_tran : dt_t.journey_type_id" (ionChange)="journey_type_Tran($event)">
+          <ion-select-option class="custom-option" value="selectjourney">Select Journey Type</ion-select-option>
+          <ion-select-option *ngFor="let j_type of journey_type_tran" [value]="j_type.jt_id">
+            {{ j_type.name }}
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6.5" class="center-left" style="margin-top: 2%;">
