@@ -5,8 +5,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-grid>
+<ion-content [fullscreen]="true" class="white-background">
+  <ion-grid style="background-color: #ffff; ">
     <ion-row>
       <ion-col size="12" class="center" >
         <ion-label class="font-16" style="color: #000000; font-weight: bold;">Create a new qoute</ion-label>
@@ -470,7 +470,7 @@
     </ion-row>
 
     <ion-row *ngIf="isRowvisibleKyc" style="padding: 2%;">
-      <ion-card style="margin: 0; margin-bottom: 4%; margin-top: 2%;">
+      <ion-card style="margin: 0; margin-bottom: 4%; margin-top: 2%; background-color: #ffff;">
         <ion-card-header class="center ion-card-header-green">
           <ion-label class="font-14" style="color: #ffff;">Internal Info</ion-label>
         </ion-card-header>
@@ -480,7 +480,7 @@
         </ion-card-content>
       </ion-card>
 
-      <ion-card style="margin: 0; margin-bottom: 3%;">
+      <ion-card style="margin: 0; margin-bottom: 3%; background-color: #ffff;">
         <ion-card-header class="center ion-card-header-yello">
           <ion-label class="font-14" style="color: #ffff;">Internal Info</ion-label>
         </ion-card-header>
@@ -505,7 +505,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="isRowvisibleStart" style="padding: 2%; margin-top: 3%;">
+    <ion-row *ngIf="isRowvisibleStart" style="padding: 2%; margin-top: 3%; margin-bottom: 10%;">
       <ion-col size="12" class="bar">
         <ion-checkbox class="check-box font-14 " checked="true" style="color: #469FD1;">Start of Journey</ion-checkbox>
       </ion-col>

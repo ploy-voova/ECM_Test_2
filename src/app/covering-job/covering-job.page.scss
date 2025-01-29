@@ -122,6 +122,10 @@ ion-grid {
     justify-content: start;
 }
 
+.white-background {
+    --background: #ffffff !important;
+}
+
 .center-right {
     display: flex;
     align-items: center;
@@ -243,7 +247,6 @@ ion-textarea {
 
 .card-bid {
     width: 395px;
-    // height: 185px;
     border: 0.5px solid #6C757D33;
     border-radius: 15px;
     opacity: 1;
@@ -285,20 +288,6 @@ ion-textarea {
 .no-margin {
     margin: 0;
 }
-
-// ion-item.item-drop-header.center {
-//     width: 180px;
-//     height: 34px;
-//     min-height: 34px;
-//     overflow: visible; /* ให้พื้นที่ขยายได้ */
-//     transition: width 0.2s ease, height 0.2s ease; /* ทำให้การเปลี่ยนขนาดสมูธ */
-//   }
-
-//   ion-item.item-drop-header.center:active {
-//     width: 190px;
-//     height: 40px;
-//     min-height: 40px;
-//   }
 
 ion-item.item-drop.center.selected {
     --background: #469FD1C4;
@@ -362,7 +351,6 @@ ion-modal {
 
 .item-list {
     --background: #469FD1;
-    /* กำหนดค่าเริ่มต้น */
 }
 
 .item-list:nth-child(odd) {
@@ -429,9 +417,7 @@ ion-badge {
     height: 26px;
     margin-left: 4%;
     background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
-    // border: 0.5px solid var(--unnamed-color-469fd1);
     background: #469FD1 0% 0% no-repeat padding-box;
-    // border: 0.5px solid #469FD1;
     border-radius: 4px;
     opacity: 1;
 }
@@ -441,15 +427,11 @@ ion-toolbar {
 }
 
 .card-journey {
-    // height: 108px;
-    // background: #ACACAC 0% 0% no-repeat padding-box;
     background-color: rgba(172, 172, 172, 0.15);
     border-radius: 2px;
-    // opacity: 0.15;
 }
 
 .card-mm {
-    height: 49px;
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     border: 0.5px solid var(--unnamed-color-469fd1);
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -462,16 +444,58 @@ ion-toolbar {
     --background: #ffff;
     border: none;
     box-shadow: none;
-    // --border-width: 0;
-    // padding: 0;
-    // --border-bottom: none;
-    // border-bottom: none;
-    // box-shadow: none;
-
 }
 
 ion-header {
     --background: #ffff;
     box-shadow: none;
     border-bottom: #fff;
+}
+
+.icon-mm {
+    font-size: 18px;
+    color: #469FD1;
+    margin-right: 3%;
+}
+
+.icon-star {
+    font-size: 18px;
+    color: #F3AB00;
+}
+
+.button-blue {
+    width: 100px;
+    height: 41px;
+    min-height: 41px;
+    color: #FFFFFF;
+    background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    --background: #469FD1 0% 0% no-repeat padding-box;
+    --border-radius: 2px;
+    opacity: 1;
+}
+
+.button-yello {
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+    color: #FFFFFF;
+    --background: #F3AB00 0% 0% no-repeat padding-box;
+    --border-radius: 2px;
+    opacity: 1;
+}
+
+.button-gray {
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+    color: #FFFFFF;
+    --background: #ACACAC 0% 0% no-repeat padding-box;
+    --border-radius: 2px;
+    opacity: 1;
+}
+
+.space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

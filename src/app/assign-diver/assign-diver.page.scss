@@ -44,6 +44,10 @@ ion-header {
     opacity: 1;
 }
 
+.white-background {
+    --background: #ffffff !important;
+}
+
 .center {
     display: flex;
     align-items: center;
@@ -119,3 +123,48 @@ ion-button {
     --border-radius: 2px;
     opacity: 1;
 }
+
+// ion-checkbox {
+//     --background: #ffffff !important; /* พื้นหลังสีขาว */
+//   }
+
+//   ion-checkbox::part(container) {
+//     background-color: white; /* พื้นหลังเป็นสีขาว */
+//     border: 1px solid #ccc; /* ขอบสีเทาอ่อน */
+//   }
+  
+//   ion-checkbox[aria-checked="true"]::part(container) {
+//     size: 15px;
+//     border-color: #469fD1;
+//     --border-color-checked: #469fD1;
+//     --checkbox-background-checked: #469FD1;
+//     --checkmark-color: #ffffff;
+//     --checkmark-width: 1px;
+//     border-width: 1px;/* เปลี่ยนเป็นสีของธีมเมื่อ checked */
+//   }
+
+/* กำหนดพื้นหลังของ checkbox ให้เป็นสีขาวตอนยังไม่ถูกเลือก */
+ion-checkbox::part(container) {
+    background-color: white !important; /* ทำให้ checkbox มีพื้นหลังสีขาว */
+    border: 1px solid #ccc !important; /* ขอบสีเทาอ่อน */
+    border-radius: 2px; /* ให้ขอบมน */
+  }
+  
+  /* เมื่อ checkbox ถูกเลือก (checked) */
+  ion-checkbox[aria-checked="true"]::part(container) {
+    border-color: #469FD1 !important; /* สีขอบเมื่อถูกเลือก */
+    background-color: #469FD1 !important; /* เปลี่ยนพื้นหลังเมื่อถูกเลือก */
+  }
+  
+  ion-checkbox {
+    --background: #ffffff !important; /* พื้นหลังสีขาว */
+    --border-color: #ccc !important; /* ขอบสีเทาอ่อน */
+    --border-width: 1px; /* ความหนาของขอบ */
+  }
+  
+  /* กำหนดสีขีดเครื่องหมายถูก (checkmark) */
+  ion-checkbox::part(mark) {
+    color: #ffffff !important; /* ทำให้ checkmark เป็นสีขาว */
+  }
+  
+  

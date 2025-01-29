@@ -244,16 +244,41 @@ ion-toolbar {
     --background: #ffff;
     border: none;
     box-shadow: none;
-    // --border-width: 0;
-    // padding: 0;
-    // --border-bottom: none;
-    // border-bottom: none;
-    // box-shadow: none;
-
 }
 
 ion-header {
     --background: #ffff;
     box-shadow: none;
     border-bottom: #fff;
+}
+
+ion-checkbox::part(container) {
+    background-color: white !important; 
+    border: 1px solid #ccc !important; 
+    border-radius: 2px; 
+  }
+  
+  /* เมื่อ checkbox ถูกเลือก (checked) */
+  ion-checkbox[aria-checked="true"]::part(container) {
+    border-color: #469FD1 !important; 
+    background-color: #469FD1 !important; 
+  }
+  
+  ion-checkbox {
+    --background: #ffffff !important;
+    --border-color: #ccc !important; 
+    --border-width: 1px;
+  }
+  
+  /* กำหนดสีขีดเครื่องหมายถูก (checkmark) */
+  ion-checkbox::part(mark) {
+    color: #ffffff !important;
+  }
+
+  .white-background {
+    --background: #ffffff !important;
+}
+
+ion-select-option{
+    --background: #ffffff !important;
 }

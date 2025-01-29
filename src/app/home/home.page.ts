@@ -64,6 +64,10 @@ export class HomePage implements OnInit {
     this.home_ser.chB = this.home_ser.chB.map(() => e.detail.checked);
   }
 
+  to_Assign(){
+    this.router.navigate(['/tabs/assign-diver']);
+  }
+
   
 
 }

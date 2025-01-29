@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController, Platform, AlertController } from '@ionic/angular';
 
@@ -11,12 +11,25 @@ import { MenuController, Platform, AlertController } from '@ionic/angular';
 export class TabsPage {
   currentPage: string = '';
 
-  constructor(private menu: MenuController, private router: Router) {
+  newjob: string = 'add-circle-outline';
+  job: string = 'briefcase-outline';
+  home: string = 'home';
+  contacts: string = 'person-outline';
+  more: string = 'apps-outline';
+  
+  // @ViewChild('iconH', { static: true }) iconH!: ElementRef;
+  
+  constructor(private menu: MenuController, private router: Router,private renderer: Renderer2) {
+
 
   }
 
   ngOnInit() {
-    // this.checkCurrentPage();
+    // if(this.home == 'home'){
+    //   console.log('nn');
+      
+    //   // this.renderer.setStyle(this.iconH.nativeElement, 'color', 'blue');
+    // }
   }
 
 
@@ -28,11 +41,7 @@ export class TabsPage {
     this.router.navigateByUrl('/tabs/home');
   }
 
-  newjob: string = 'add-circle-outline';
-  job: string = 'briefcase-outline';
-  home: string = 'home';
-  contacts: string = 'person-outline';
-  more: string = 'apps-outline';
+
 
   changeIcon_Newjob(){
     this.newjob = 'add-circle';

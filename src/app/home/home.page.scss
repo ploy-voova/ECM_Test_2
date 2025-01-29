@@ -1,21 +1,15 @@
-
-
 .curved-shape {
     width: 100%;
     height: 50px;
     --background: #469FD1;
     position: relative;
     box-shadow: 10px #00000029;
-    // z-index: 2;
     margin-top: -50px;
     z-index: 1;
 }
 
 .curved-shape::before {
     content: '';
-    // box-shadow: 0px 3px 6px #00000029;
-    // margin-left: -10px;
-    // margin-top: 30px;
     position: absolute;
     width: 225%;
     height: 1250px;
@@ -23,7 +17,6 @@
     border-radius: 50%;
     top: -120px;
     left: -110%;
-    // margin-top: -12px;
     z-index: 1;
 }
 
@@ -31,12 +24,6 @@ ion-toolbar {
     --background: #ffff;
     border: none;
     box-shadow: none;
-    // --border-width: 0;
-    // padding: 0;
-    // --border-bottom: none;
-    // border-bottom: none;
-    // box-shadow: none;
-
 }
 
 ion-header {
@@ -71,7 +58,6 @@ swiper-container {
 
 swiper-slide {
     display: flex;
-    // align-items: center;
     justify-content: center;
 }
 
@@ -79,7 +65,6 @@ swiper-slide {
     width: auto;
     height: auto;
     padding: 0;
-    // --background: #469FD1;
     background-color: #469FD1;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 2px;
@@ -98,7 +83,6 @@ swiper-slide {
     font-size: 14px;
     line-height: 17px;
     font-family: Roboto, sans-serif;
-    // font: normal normal normal 14px/17px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
 
@@ -109,7 +93,6 @@ swiper-slide {
     font-size: 10px;
     line-height: 13px;
     font-family: Roboto, sans-serif;
-    // font: normal normal normal 14px/17px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
 
@@ -135,7 +118,6 @@ h5 {
     padding: 0;
     height: 199px;
     --background: #FFFFFF 0% 0% no-repeat padding-box;
-    // box-shadow: 0px 3px 6px #00000029;
     box-shadow: none;
     border: 0.5px solid #ACACAC;
     border-radius: 2px;
@@ -345,6 +327,7 @@ ion-radio.ios::part(container) {
 }
 
 .checkbox-q {
+    --border-radius: 2px;
     --border-color: #ffffff;
     --border-color-checked: #ffffff;
     --checkbox-background: #469fD1;
@@ -355,6 +338,7 @@ ion-radio.ios::part(container) {
 }
 
 .custom-checkbox {
+    --background-color: #ffffff;
     --border-color: #469fD1;
     --border-color-checked: #469fD1;
     --checkbox-background-checked: #469FD1;
@@ -378,6 +362,10 @@ ion-modal {
     --width: 260px;
     --height: 331px;
     --border-radius: 10px;
+}
+
+.white-background {
+    --background: #ffffff !important;
 }
 
 .col-modal {
@@ -414,148 +402,44 @@ ion-modal {
 
 .custom-pagination .swiper-pagination-bullet {
     display: none;
-  }
-  
-  .custom-pagination .swiper-pagination-bullet:nth-child(-n+10) {
+}
+
+.custom-pagination .swiper-pagination-bullet:nth-child(-n+10) {
     display: inline-block;
     width: 10px;
     height: 10px;
     background-color: #ccc;
     margin: 0 5px;
     border-radius: 50%;
-  }
-  
-  .custom-pagination .swiper-pagination-bullet-active {
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
     background-color: #007bff;
     transform: scale(1.2);
-  }
+}
 
-  .swiper-pagination-bullet {
+.swiper-pagination-bullet {
     display: none;
-  }
-  .swiper-pagination-bullet:nth-child(-n+10) {
+}
+
+.swiper-pagination-bullet:nth-child(-n+10) {
     display: inline-block;
+}
+
+  /* กำหนดสไตล์ checkbox ตอนยังไม่ถูกเลือก */
+.unchecked-checkbox::part(container) {
+    background-color: white !important;
+    border: 1px solid #ccc !important;
+    border-radius: 2px;
   }
-
-// @media (max-width: 400px) {
-//     .col-f{
-//         width: 80% !important;
-//     }
-//     .col-l{
-//         width: 20% !important;
-//     }
-// }
-// .ios ion-title {
-//     color: black;
-// }
-// .md {
-//     .card-call {
-//         // width: 600px;
-//         margin-top: 5%;
-//     }
-// }
-
-
-// @media (min-width: 1024px) {
-//     ion-toolbar {
-//         --background: transparent;
-//         --border-width: 0;
-//         --border-bottom: none;
-//         border-bottom: none;
-//         box-shadow: none;
-//     }
-// }
-
-
-
-
-// }
-
-// @media (min-width: 700px) {
-//     .card-call {
-//         width: 600px;
-//         // margin-top: 3%;
-//     }
-
-//     .card-container {
-//         width: 600px;
-//     }
-
-//     .call-h1{
-//         padding-left: 10.2%;
-//         // margin-left: 25%;
-//     }
-// }
-
-
-////////////////////////////////////////////////////////////////////////////////
-// @media (max-width: 400px) {
-//     .md .card-call {
-//         width: 300px;
-//         margin-top: 25px;
-//     }
-
-//     .md.call-h1 {
-//         padding-left: 10.2%;
-//         // margin-left: 25%;
-//     }
-
-
-//     .ios {
-//         .card-call {
-//             width: 340px;
-//             margin-top: 25px;
-//         }
-
-//         .card-container {
-//             width: 600px;
-//         }
-
-//         .call-h1 {
-//             padding-left: 10.2%;
-//             // margin-left: 25%;
-//         }
-//     }
-// }
-
-// @media (max-width: 500px) {
-//     .md .card-call {
-//         width: 350px;
-//         margin-top: 25px;
-//     }
-
-//     .md.call-h1 {
-//         padding-left: 10.2%;
-//     }
-
-//     .ios {
-//         .card-call {
-//             width: 340px;
-//             margin-top: 25px;
-//         }
-
-//         .card-container {
-//             width: 600px;
-//         }
-
-//         .call-h1 {
-//             padding-left: 10.2%;
-//         }
-//     }
-// }
-
-
-
-
-//   @media (min-height: 600px) {
-//     .card-call{
-//         height: 700px;
-//     }
-
-//     .card-container{
-//         width: 600px;
-//         // height: 200px;
-//     }
-
-
-//   }
+  
+  /* กำหนดสไตล์ checkbox ตอนถูกเลือก */
+  .unchecked-checkbox[aria-checked="true"]::part(container) {
+    background-color: #469FD1 !important;
+    border: 1px solid #469FD1 !important;
+  }
+  
+  /* เปลี่ยนสีของเครื่องหมายถูก */
+  .unchecked-checkbox::part(mark) {
+    color: #ffffff !important; 
+  }
