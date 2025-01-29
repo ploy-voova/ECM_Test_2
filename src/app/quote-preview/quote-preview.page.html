@@ -165,7 +165,7 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" [value]="select_pax ? select_pax : +mm.pax" (ionChange)="paxChange($event)">
+                    interface="popover" [value]="select_pax[i][j] ? select_pax[i][j] : +mm.pax" (ionChange)="paxChange($event, i, j)">
                     <!-- <ion-select-option value="0">{{mm.pax}}</ion-select-option> -->
                     <ion-select-option value="selectpax">Select Pax</ion-select-option>
                     <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
@@ -179,7 +179,7 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T " style="color: #ACACAC; " label-placement="floating"
-                    interface="popover" [value]="select_vehicle_ ? select_vehicle_ : mm.car_id" (ionFocus)="vehicleChange_fo(select_pax ? select_pax : mm.pax)" (ionChange)="vehicleChange($event)">
+                    interface="popover" [value]="select_vehicle_[i][j] ? select_vehicle_[i][j] : mm.car_id" (ionFocus)="vehicleChange_fo(select_pax ? select_pax : mm.pax)" (ionChange)="vehicleChange($event, i, j)">
                     <ion-select-option class="custom-option" value="selectvehicle">Select Vehicle</ion-select-option>
                     <ion-select-option *ngFor="let vehi of vehicle || [0]" [value]="vehi?.car_id || mm.car_id">
                       {{ vehi?.car_name || mm.car_name }}
@@ -191,7 +191,7 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" [value]="select_luggage_ ? select_luggage_ : mm.bag_id" (ionFocus)="luggageChange_fo(select_pax ? select_pax : mm.pax, select_vehicle_ ? select_vehicle_ : mm.car_id)" (ionChange)="luggageChange($event)">
+                    interface="popover" [value]="select_luggage_[i][j] ? select_luggage_[i][j] : mm.bag_id" (ionFocus)="luggageChange_fo(select_pax ? select_pax : mm.pax, select_vehicle_ ? select_vehicle_ : mm.car_id)" (ionChange)="luggageChange($event, i, j)">
                     <ion-select-option value="selectluggage">Select Luggage</ion-select-option>
                     <ion-select-option *ngFor="let lug of luggage || [0]" [value]="lug?.bag_id || mm.bag_id" >
                       {{ lug?.bag_des || mm.bag_name }}
@@ -203,10 +203,10 @@
                 </ion-col>
                 <ion-col size="8.5">
                   <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                    interface="popover" [value] = "select_journey_type_ ? select_journey_type_ : mm.journey_type_id">
+                    interface="popover" [value] = "select_journey_type_[i][j] ? select_journey_type_[i][j] : mm.journey_type_id" (ionFocus)="select_journeyT()" (ionChange)="select_journey($event,i,j)">
                     <ion-select-option value="selectjourney">Select Journey Type</ion-select-option>
-                    <ion-select-option *ngFor="let j_type of journey_type || [0]" [value]="j_type?.journey_id || mm.journey_type_id" (ionFocus)="select_journeyT()">
-                      {{ j_type?.journey_data || mm.journey_type }}
+                    <ion-select-option *ngFor="let j_type of journey_type || [0]" [value]="j_type?.jt_id || mm.journey_type_id">
+                      {{ j_type?.name || mm.journey_type }}
                     </ion-select-option>
                   </ion-select>
                 </ion-col>
@@ -418,38 +418,38 @@
       </ion-col>
       <ion-col size="6">
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="70 Pax(s)">
-          <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
-          <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
-          <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
-          <ion-select-option value="70 Pax(s)">70 Pax(s)</ion-select-option>
+          [value]="select_pax_tran ? select_pax_tran : +dt_t.pax" (ionChange)="paxTran($event)">
+          <ion-select-option value="selectpax">Select Pax</ion-select-option>
+          <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
+            {{ index + 1 }} Paxs
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6">
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="81">
-          <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
-          <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
-          <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
-          <ion-select-option value="81">81 Seat Standard C..</ion-select-option>
+          [value]="select_vehicle_tran ? select_vehicle_tran : dt_t.car_id" (ionChange)="vehicleTran($event)">
+          <ion-select-option class="custom-option" value="selectvehicle">Select Vehicle</ion-select-option>
+          <ion-select-option *ngFor="let vehi of vehicle_tran" [value]="vehi.car_id">
+            {{ vehi.car_name }}
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6">
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
-          <ion-select-option value="No">No luggage.</ion-select-option>
-          <ion-select-option value="No">No luggage.</ion-select-option>
-          <ion-select-option value="No">No luggage.</ion-select-option>
-          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          [value]="select_luggage_tran ? select_luggage_tran : dt_t.bag_id" (ionChange)="luggageTran($event)">
+          <ion-select-option class="custom-option" value="selectluggage">Select Luggage</ion-select-option>
+          <ion-select-option *ngFor="let lug of luggage_tran" [value]="lug.bag_id">
+            {{ lug.bag_des }}
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6">
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="AutoNo">
-          <ion-select-option value="No">School Trip</ion-select-option>
-          <ion-select-option value="AutoNo">School Trip</ion-select-option>
-          <ion-select-option value="AutoYes">School Trip</ion-select-option>
-          <ion-select-option value="Yes">School Trip</ion-select-option>
+          [value]="select_journey_type_tran ? select_journey_type_tran : dt_t.journey_type_id" (ionChange)="journey_type_Tran($event)">
+          <ion-select-option class="custom-option" value="selectjourney">Select Journey Type</ion-select-option>
+          <ion-select-option *ngFor="let j_type of journey_type_tran" [value]="j_type.jt_id">
+            {{ j_type.name }}
+          </ion-select-option>
         </ion-select>
       </ion-col>
       <ion-col size="6.5" class="center-left" style="margin-top: 2%;">
@@ -536,27 +536,27 @@
       <ion-row style="padding: 2%;">
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Vehicle Price :</ion-label>
-          <ion-label class="font-14"> £525.00</ion-label>
+          <ion-label class="font-14"> {{dt_p.vehicle_price}}</ion-label>
         </ion-col>
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Total Price :</ion-label>
-          <ion-label class="font-14">£525.00</ion-label>
+          <ion-label class="font-14">{{dt_p.total_price}}</ion-label>
         </ion-col>
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Deposit Amount :</ion-label>
-          <ion-label class="font-14"> £131.25</ion-label>
+          <ion-label class="font-14"> {{dt_p.deposit_amount}}</ion-label>
         </ion-col>
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Deposit % :</ion-label>
-          <ion-label class="font-14"> 0</ion-label>
+          <ion-label class="font-14"> {{dt_p.deposit}}</ion-label>
         </ion-col>
         <ion-col size="6">
           <ion-label class="font-14" style="color: #000000;">Payment Message :</ion-label>
-          <ion-label class="font-14"></ion-label>
+          <ion-label class="font-14">{{dt_p.payment_message}}</ion-label>
         </ion-col>
         <ion-col size="6" style="display: flex; justify-content: space-between;">
           <ion-label class="font-14" style="color: #000000;">Price per person:</ion-label>
-          <ion-label class="font-14"></ion-label>
+          <ion-label class="font-14">{{dt_p.price_per_person}}</ion-label>
         </ion-col>
         <ion-col size="12" class="center-left">
           <ion-label class="font-14" style="color: #000000; margin-right: 2%;">Balance Due Date:</ion-label>
@@ -601,38 +601,38 @@
       <ion-row style="padding: 2%;">
         <ion-col size="12">
           <ion-label class="font-14" style="color: #000000;">Internal Profile:</ion-label>
-          <ion-label class="font-14"> thecoachcompany.co.uk</ion-label>
+          <ion-label class="font-14"> {{dt_m.internal_profile}}</ion-label>
         </ion-col>
         <ion-col size="12">
           <ion-label class="font-14" style="color: #000000;">Account Owner:r</ion-label>
-          <ion-label class="font-14"> aum_teste</ion-label>
+          <ion-label class="font-14"> {{dt_m.account_owner}}</ion-label>
         </ion-col>
         <ion-col size="12">
           <ion-label class="font-14" style="color: #000000;">Priority:</ion-label>
-          <ion-label class="font-14"> 0</ion-label>
+          <ion-label class="font-14"> {{dt_m.priority}}</ion-label>
         </ion-col>
         <ion-col size="12">
-          <ion-label class="font-14" style="color: #000000;">How did you heart of us ?:</ion-label>
-          <ion-label class="font-14"> </ion-label>
+          <ion-label class="font-14" style="color: #000000;">How did you hear of us ?:</ion-label>
+          <ion-label class="font-14"> {{dt_m.hear_of_us}}</ion-label>
         </ion-col>
         <ion-col size="12">
           <ion-label class="font-14" style="color: #000000;">Salesperson:</ion-label>
-          <ion-label class="font-14"> aum_tester</ion-label>
+          <ion-label class="font-14"> {{dt_m.sales_person}}</ion-label>
         </ion-col>
-        <ion-col size="12" style="display: flex; justify-content: space-between;">
+        <ion-col size="12">
           <ion-label class="font-14" style="color: #000000;">Opsperson:</ion-label>
-          <ion-label class="font-14"></ion-label>
+          <ion-label class="font-14"> {{dt_m.opsperson}}</ion-label>
         </ion-col>
         <ion-col size="12" class="center-left">
           <ion-label class="font-14" style="color: #000000; margin-right: 2%;">Crator:</ion-label>
-          <ion-label class="font-14"> </ion-label>
+          <ion-label class="font-14"> {{dt_m.creator}}</ion-label>
         </ion-col>
         <ion-col size="12" class="center-left">
           <ion-label class="font-14" style="color: #000000; margin-right: 2%;">Notes (Customer see these!):</ion-label>
           <ion-label class="font-14"> </ion-label>
         </ion-col>
         <ion-col size="12" style="margin-left: 4%;">
-          <ion-textarea></ion-textarea>
+          <ion-textarea value="{{dt_m.comment}}"></ion-textarea>
         </ion-col>
         <ion-col size="3.5" style="margin-left: 4%;">
           <ion-label class="font-16" style="color: #469FD1; display: block;">Chang Status</ion-label>

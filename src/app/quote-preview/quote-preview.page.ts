@@ -46,15 +46,25 @@ export class QuotePreviewPage implements OnInit {
   isdropAs: boolean = false;
   isvisiblemap: boolean = false;
 
-  select_pax: string = '';
-  select_vehicle_: string = '';
-  select_luggage_: string = '';
-  select_journey_type_: string = '';
+  select_pax: any[][] = [];
+  select_vehicle_: any[][] = [];
+  select_luggage_: any[][] = [];
+  select_journey_type_: any[][] = [];
+
+  select_pax_tran: string = '';
+  select_vehicle_tran: string = '';
+  select_luggage_tran: string = '';
+  select_journey_type_tran: string = '';
 
   pax: string = '';
   vehicle: any;
   luggage: any;
   journey_type: any;
+
+  pax_tran: string = '';
+  vehicle_tran: any;
+  luggage_tran: any;
+  journey_type_tran: any;
 
   constructor(
     private router: ActivatedRoute,
@@ -75,6 +85,25 @@ export class QuotePreviewPage implements OnInit {
 
   async journey_quote() {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
+    console.log(res);
+
+    // let i = 0;
+    res['journey_quote'].map((r:any,i:number) => {
+      this.select_pax[i] = [];
+      this.select_vehicle_[i] = [];
+      this.select_luggage_[i] = [];
+      this.select_journey_type_[i] = [];
+      i = i + 1;
+    });
+
+    this.vehicle_tran = await this.new_job.select_Vehicle(res['Transport']['pax']);
+    this.luggage_tran = await this.new_job.select_Luggage(res['Transport']['pax'],res['Transport']['car_id']);
+    this.journey_type_tran = await this.new_job.select_Journey();
+    
+    this.vehicle_tran = this.vehicle_tran[0];
+    this.luggage_tran = this.luggage_tran[0];
+    
+    // this.journey_type_tran = this.journey_type_tran[0];
 
     // this.quote_pre.checkAll = res.map(() => false);
     // this.quote_pre.mmcheck = res.map((res: any) => res['movement_quote'].map(() => false));
@@ -200,16 +229,16 @@ export class QuotePreviewPage implements OnInit {
     });
   }
 
-  paxChange(e: CustomEvent) {
+  paxChange(e: CustomEvent, i: number, j: number) {
     this.pax = e.detail.value;
-    this.select_pax = this.pax;
-    this.select_vehicle_ = 'selectvehicle';
-    this.select_luggage_ = 'selectluggage';
+    this.select_pax[i][j] = this.pax;
+    this.select_vehicle_[i][j] = 'selectvehicle';
+    this.select_luggage_[i][j] = 'selectluggage';
   }
 
-  vehicleChange(e: CustomEvent) {
-    this.select_vehicle_ = e.detail.value;
-    this.select_luggage_ = 'selectluggage';
+  vehicleChange(e: CustomEvent, i: number, j: number) {
+    this.select_vehicle_[i][j] = e.detail.value;
+    this.select_luggage_[i][j] = 'selectluggage';
   }
 
   async vehicleChange_fo(pax: number) {
@@ -218,8 +247,8 @@ export class QuotePreviewPage implements OnInit {
     this.vehicle = this.vehicle[0];
   }
 
-  luggageChange(e: CustomEvent) {
-    this.select_luggage_ = e.detail.value;
+  luggageChange(e: CustomEvent, i: number, j: number) {
+    this.select_luggage_[i][j] = e.detail.value;
   }
 
   async luggageChange_fo(pax: number,vehicle: number){
@@ -228,8 +257,35 @@ export class QuotePreviewPage implements OnInit {
     this.luggage = this.luggage[0];
   }
 
+  select_journey(e: CustomEvent, i: number, j: number){
+    this.select_journey_type_[i][j] = e.detail.value;
+  }
+
   async select_journeyT(){
     this.journey_type = await this.new_job.select_Journey();
+  }
+
+  async paxTran(e: CustomEvent) {
+    this.pax_tran = e.detail.value;
+    this.select_pax_tran = this.pax_tran;
+    this.select_vehicle_tran = 'selectvehicle';
+    this.select_luggage_tran = 'selectluggage';
+    this.vehicle_tran = await this.new_job.select_Vehicle(e.detail.value);
+    this.vehicle_tran = this.vehicle_tran[0];
+  }
+
+  async vehicleTran(e: CustomEvent) {
+    this.select_vehicle_tran = e.detail.value;
+    this.select_luggage_tran = 'selectluggage';
+    this.luggage_tran = await this.new_job.select_Luggage(this.select_pax_tran,e.detail.value);
+    this.luggage_tran = this.luggage_tran[0];
+  }
+
+  luggageTran(e: CustomEvent) {
+    this.select_luggage_tran = e.detail.value;
+  }
+  journey_type_Tran(e: CustomEvent){
+    this.select_journey_type_tran = e.detail.value;
   }
 
 
