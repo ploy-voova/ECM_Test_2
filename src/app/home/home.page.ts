@@ -19,10 +19,12 @@ export class HomePage implements OnInit {
     this.home_ser.quote_booking(this.limit,this.isChecked);
   }
 
-  async ngOnInit() {    
+  ngOnInit() {    
     const swiper = document.querySelector('swiper-container')?.swiper;
     swiper?.pagination
     if (swiper) {
+      console.log(swiper);
+      
       swiper.on('slideChange', () => {
         console.log('Slide changed to:', swiper.activeIndex+1);
         if (this.limit - swiper.activeIndex == 1) {
@@ -68,8 +70,49 @@ export class HomePage implements OnInit {
     this.router.navigate(['/tabs/assign-diver']);
   }
 
-  
+  testch=true
 
+  isIconSpeed = false;
+  isIconBus = false;
+  isIconPerson = false;
+  isIconSetting = false;
+
+  toggleSpeedIcon() {
+    this.isIconSpeed = !this.isIconSpeed;
+    this.isIconBus = false;
+    this.isIconPerson = false;
+    this.isIconSetting = false;
+  }
+
+  toggleBusIcon() {
+    this.isIconBus = !this.isIconBus;
+    this.isIconSpeed = false;
+    this.isIconPerson = false;
+    this.isIconSetting = false; // สลับค่า true/false
+  }
+
+  togglePersonIcon() {
+    this.isIconPerson = !this.isIconPerson;
+    this.isIconSpeed = false;
+    this.isIconBus = false;
+    this.isIconSetting = false; // สลับค่า true/false
+  }
+
+  toggleSettingIcon() {
+    this.isIconSetting = !this.isIconSetting;
+    this.isIconSpeed = false;
+    this.isIconBus = false;
+    this.isIconPerson = false; // สลับค่า true/false
+  }
+
+  setIconTob(){
+    this.isIconSpeed = false;
+    this.isIconBus = false;
+    this.isIconPerson = false;
+    this.isIconSetting = false;
+
+  }
+  alertButtons = ['Action'];
 }
 
 

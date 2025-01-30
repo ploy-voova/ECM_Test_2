@@ -426,20 +426,73 @@ ion-modal {
     display: inline-block;
 }
 
-  /* กำหนดสไตล์ checkbox ตอนยังไม่ถูกเลือก */
+/* กำหนดสไตล์ checkbox ตอนยังไม่ถูกเลือก */
 .unchecked-checkbox::part(container) {
     background-color: white !important;
     border: 1px solid #ccc !important;
     border-radius: 2px;
-  }
-  
-  /* กำหนดสไตล์ checkbox ตอนถูกเลือก */
-  .unchecked-checkbox[aria-checked="true"]::part(container) {
+}
+
+/* กำหนดสไตล์ checkbox ตอนถูกเลือก */
+.unchecked-checkbox[aria-checked="true"]::part(container) {
     background-color: #469FD1 !important;
     border: 1px solid #469FD1 !important;
+}
+
+/* เปลี่ยนสีของเครื่องหมายถูก */
+.unchecked-checkbox::part(mark) {
+    color: #ffffff !important;
+}
+
+.disabled-icon {
+    opacity: 0.5;
+    /* ทำให้ไอคอนจางลง */
+    pointer-events: none;
+    /* ปิดการคลิก */
+}
+
+.set-icon {
+    color: #469FD1;
+}
+
+.custom-alert .alert-wrapper {
+    position: absolute;
+    bottom: 10px;
+    /* กำหนดให้ติดขอบล่าง */
+    left: 50%;
+    transform: translateX(-50%);
+    /* จัดให้อยู่กึ่งกลางแนวนอน */
+    width: 90%;
+    /* ปรับขนาดความกว้าง */
+    max-width: 400px;
+    /* จำกัดขนาดสูงสุด */
+    border-radius: 15px;
+    /* ทำให้ขอบมน */
+}
+
+ion-modal#example-modal {
+    --width: fit-content;
+    --min-width: 250px;
+    --height: fit-content;
+    --border-radius: 6px;
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
   }
   
-  /* เปลี่ยนสีของเครื่องหมายถูก */
-  .unchecked-checkbox::part(mark) {
-    color: #ffffff !important; 
+  ion-modal#example-modal h1 {
+    margin: 20px 20px 10px 20px;
+  }
+  
+  ion-modal#example-modal ion-icon {
+    margin-right: 6px;
+  
+    width: 48px;
+    height: 48px;
+  
+    padding: 4px 0;
+  
+    color: #aaaaaa;
+  }
+  
+  ion-modal#example-modal .wrapper {
+    margin-bottom: 10px;
   }

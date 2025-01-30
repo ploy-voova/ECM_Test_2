@@ -531,16 +531,13 @@
           <ion-icon class="icon-blue" name="location-outline" id="open-modal-call"></ion-icon>
           
           <!-- modal-call -->
-          <ion-modal #modal_coll trigger="open-modal-call" [initialBreakpoint]="0.7">
+          <ion-modal #modal_coll trigger="open-modal-call" [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7]">
             <ng-template>
               <ion-content>
                 <ion-grid>
                   <ion-row>
                     <ion-col size="12" class="center">
                       <ion-label class="font-16" style="color: #747474;" >Collection Address</ion-label>
-                    </ion-col>
-                    <ion-col size="12">
-                      <ion-icon name="arrow-undo" style="color: #AB1C1C;"></ion-icon>
                     </ion-col>
                     <ion-col size="12" style="display: flex;">
                       <ion-input class="input font-14" style="color: #707070;" [value]="newjob_ser.name_address.trim() === '' ? address1 : newjob_ser.name_address"></ion-input>
@@ -586,16 +583,13 @@
         </ion-col>
 
         <!-- modal-call2 -->
-        <ion-modal #modal_coll2 trigger="open-modal-call2" [initialBreakpoint]="0.7">
+        <ion-modal #modal_coll2 trigger="open-modal-call2" [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7]">
           <ng-template>
             <ion-content>
               <ion-grid>
                 <ion-row>
                   <ion-col size="12" class="center">
                     <ion-label class="font-16" style="color: #747474;" >Collection Address</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-icon name="arrow-undo" style="color: #AB1C1C;"></ion-icon>
                   </ion-col>
                   <ion-col size="12" style="display: flex;">
                     <ion-input class="input font-14" style="color: #707070;" [value]="newjob_ser.name_address.trim() === '' ? address2 : newjob_ser.name_address"></ion-input>
