@@ -123,6 +123,24 @@ export class QuotePreviewPage implements OnInit {
   }
 
   to_CoveringJob() {
+    this.quote_pre.jm = [];
+    let u = 0;
+    this.quote_pre.mmcheck.map((res: any[],i: number) => {
+      if (res.includes(true)) {
+        this.quote_pre.jm[u] = [];
+        this.quote_pre.jm[u][0] = [];
+        this.quote_pre.jm[u][0].push(i+1);
+        res.map((res2: any, j: number) => {
+          if (res2 == true) {
+            if (!this.quote_pre.jm[u][1]) {
+              this.quote_pre.jm[u][1] = [];
+            }
+            this.quote_pre.jm[u][1].push(j+1);
+          }
+        })
+        u = u + 1;
+      }
+    })
     this.router_.navigate(['/tabs/covering-job']);
   }
 

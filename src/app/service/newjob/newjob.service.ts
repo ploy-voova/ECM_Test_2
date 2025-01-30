@@ -12,7 +12,7 @@ export class NewjobService {
 
   constructor() { }
 
-  public async select_Vehicle(pax:any,qid:any){
+  public async select_Vehicle(pax: any, qid: any){
     return ( await (axios.post(baseUrl + '/api/ploy/option/car_type',{
         pax: pax,
         qid: qid,
@@ -20,7 +20,7 @@ export class NewjobService {
 
   }
 
-  public async select_Luggage(pax:any,car_id:any){
+  public async select_Luggage(pax: any, car_id: any){
     return ( await (axios.post(baseUrl + '/api/ploy/option/bag_type',{
       pax: pax,
       vehicle: car_id,

@@ -12,6 +12,8 @@ export class QuotePreviewService {
   public checkAll : boolean[] = [];
   public mmcheck : boolean[][] = [];
 
+  public jm: any[][][] = [];
+
 
 
   constructor() { }

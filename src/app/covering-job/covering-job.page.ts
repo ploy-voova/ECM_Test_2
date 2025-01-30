@@ -15,13 +15,13 @@ export class CoveringJobPage implements OnInit {
   items: string[] = [];
   bidding: boolean = true;
 
+
   constructor(
     private router: Router,
-    private quotepreviewservice: QuotePreviewService
+    public quotepreviewservice: QuotePreviewService
   ) {  }
 
   ngOnInit() {
-    console.log(this.quotepreviewservice.mmcheck);
     this.generateItems();
   }
 
@@ -43,9 +43,7 @@ export class CoveringJobPage implements OnInit {
     this.bidding = !this.bidding;
   }
 
-
-
-  private generateItems() {
+  private generateItems() {    
     const count = this.items.length + 1;
     for (let i = 0; i < 15; i++) {
       this.items.push(`Item ${count + i}`);
@@ -57,6 +55,10 @@ export class CoveringJobPage implements OnInit {
     setTimeout(() => {
       event.target.complete();
     }, 500);
+  }
+
+  checkBut(){
+    console.log(this.quotepreviewservice.mmcheck);
   }
 
 
