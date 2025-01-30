@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from '../service/home/home.service';
+import { InfiniteScrollCustomEvent, IonModal } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -23,8 +24,6 @@ export class HomePage implements OnInit {
     const swiper = document.querySelector('swiper-container')?.swiper;
     swiper?.pagination
     if (swiper) {
-      console.log(swiper);
-      
       swiper.on('slideChange', () => {
         console.log('Slide changed to:', swiper.activeIndex+1);
         if (this.limit - swiper.activeIndex == 1) {
@@ -112,7 +111,15 @@ export class HomePage implements OnInit {
     this.isIconSetting = false;
 
   }
-  alertButtons = ['Action'];
+
+  @ViewChild('modalAlert', { static: false }) modalAlert!: IonModal;
+  close(){
+    console.log('passs');
+    
+    this.modalAlert.dismiss();
+  }
+
+  isAlertOpen = false;
 }
 
 
