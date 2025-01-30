@@ -12,9 +12,10 @@ export class NewjobService {
 
   constructor() { }
 
-  public async select_Vehicle(pax:any){
+  public async select_Vehicle(pax:any,qid:any){
     return ( await (axios.post(baseUrl + '/api/ploy/option/car_type',{
         pax: pax,
+        qid: qid,
     }))).data;
 
   }

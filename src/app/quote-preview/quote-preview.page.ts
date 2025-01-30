@@ -96,7 +96,7 @@ export class QuotePreviewPage implements OnInit {
       i = i + 1;
     });
 
-    this.vehicle_tran = await this.new_job.select_Vehicle(res['Transport']['pax']);
+    this.vehicle_tran = await this.new_job.select_Vehicle(res['Transport']['pax'],this.q_id);
     this.luggage_tran = await this.new_job.select_Luggage(res['Transport']['pax'],res['Transport']['car_id']);
     this.journey_type_tran = await this.new_job.select_Journey();
     
@@ -242,7 +242,7 @@ export class QuotePreviewPage implements OnInit {
   }
 
   async vehicleChange_fo(pax: number) {
-    const veh = await this.new_job.select_Vehicle(pax);
+    const veh = await this.new_job.select_Vehicle(pax,this.q_id);
     this.vehicle = veh;
     this.vehicle = this.vehicle[0];
   }
@@ -270,7 +270,7 @@ export class QuotePreviewPage implements OnInit {
     this.select_pax_tran = this.pax_tran;
     this.select_vehicle_tran = 'selectvehicle';
     this.select_luggage_tran = 'selectluggage';
-    this.vehicle_tran = await this.new_job.select_Vehicle(e.detail.value);
+    this.vehicle_tran = await this.new_job.select_Vehicle(e.detail.value,this.q_id);
     this.vehicle_tran = this.vehicle_tran[0];
   }
 

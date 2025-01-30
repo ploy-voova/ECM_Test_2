@@ -194,7 +194,7 @@ export class NewJobPage implements OnInit {
 
   // select vehicle //
   async vehicle_1() {
-    const veh = await this.newjob_ser.select_Vehicle(this.pax);
+    const veh = await this.newjob_ser.select_Vehicle(this.pax,0);
     this.vehicle = veh;
     this.vehicle = this.vehicle[0];
   }
