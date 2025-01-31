@@ -39,7 +39,8 @@
               "node_modules/@ionic/angular/css/structure.css",
               "node_modules/@ionic/angular/css/typography.css",
               "node_modules/mapbox-gl/dist/mapbox-gl.css",
-              "node_modules/swiper/swiper-bundle.min.css"
+              "node_modules/swiper/swiper-bundle.min.css",
+              "src/assets/css/full-page.css"
             ],
             "scripts": []
           },

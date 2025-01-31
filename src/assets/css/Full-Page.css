@@ -1,0 +1,56 @@
+:root {
+
+/* Colors: */
+--unnamed-color-edeef0: #EDEEF0;
+--unnamed-color-747474: #747474;
+--unnamed-color-ff9900: #FF9900;
+--unnamed-color-000000: #000000;
+--unnamed-color-f4f5f8: #F4F5F8;
+--unnamed-color-ffffff: #FFFFFF;
+--unnamed-color-397c53: #397C53;
+--unnamed-color-469fd1: #469FD1;
+--unnamed-color-ff0101: #FF0101;
+--unnamed-color-03679f: #03679F;
+--unnamed-color-035887: #035887;
+--unnamed-color-707070: #707070;
+
+/* Font/text values */
+--unnamed-font-family-roboto: Roboto;
+--unnamed-font-style-normal: normal;
+--unnamed-font-weight-normal: normal;
+--unnamed-font-weight-bold: bold;
+--unnamed-font-size-14: 14px;
+--unnamed-font-size-16: 16px;
+--unnamed-character-spacing-0: 0px;
+--unnamed-line-spacing-17: 17px;
+--unnamed-line-spacing-19: 19px;
+}
+
+/* Character Styles */
+.unnamed-character-style-1 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-normal);
+font-size: var(--unnamed-font-size-14);
+line-height: var(--unnamed-line-spacing-17);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-469fd1);
+}
+.unnamed-character-style-2 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-normal);
+font-size: var(--unnamed-font-size-14);
+line-height: var(--unnamed-line-spacing-17);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+}
+.unnamed-character-style-3 {
+font-family: var(--unnamed-font-family-roboto);
+font-style: var(--unnamed-font-style-normal);
+font-weight: var(--unnamed-font-weight-bold);
+font-size: var(--unnamed-font-size-16);
+line-height: var(--unnamed-line-spacing-19);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-ffffff);
+}

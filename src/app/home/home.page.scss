@@ -79,22 +79,30 @@ swiper-slide {
 }
 
 .ion-card-subtitle {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-17) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
     text-align: left;
-    font-size: 14px;
-    line-height: 17px;
-    font-family: Roboto, sans-serif;
+    font: 300 normal normal 14px/17px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
+    opacity: 1;
 
 }
 
+.quote-name {
+    color: black; /* เปลี่ยนสีเฉพาะ quote.name */
+  }
+
 .label {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-17) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
     text-align: left;
-    font-size: 10px;
-    line-height: 13px;
-    font-family: Roboto, sans-serif;
+    font: 300 normal 14px/17px Roboto;
     letter-spacing: 0px;
-    color: #FFFFFF;
+    // color: #FFFFFF;
+    opacity: 1;
 
 }
 
@@ -164,7 +172,7 @@ ion-row h1 {
     --background: #ffff;
     border: 1px solid #469FD1;
     box-shadow: none;
-    border-radius: 7px;
+    border-radius: 2px;
     opacity: 1 !important;
 
     &.ios {
@@ -250,12 +258,16 @@ ion-row h1 {
     height: 40px;
     min-height: 23px;
     --background: #469FD1 0% 0% no-repeat padding-box;
-    --border-radius: 3px;
+    --border-radius: 2px;
 
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 18px/22px var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
     text-align: left;
-    font: normal normal bold 16px/19px Roboto;
+    font: normal normal 500 18px/22px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
+    opacity: 1;
 
 }
 
@@ -270,10 +282,14 @@ ion-row h1 {
 }
 
 .label-com {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 18px/22px var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-747474);
     text-align: left;
     font: normal normal bold 18px/22px Roboto;
     letter-spacing: 0px;
     color: #747474;
+    opacity: 1;
 }
 
 :root {
@@ -285,7 +301,7 @@ ion-row h1 {
 }
 
 ion-button {
-    --background-activated: transparent;
+    --background-activated: #5fb6e9;
     --background-hover: transparent;
     --ripple-color: transparent;
 }
@@ -296,6 +312,7 @@ ion-button {
     color: var(--unnamed-color-707070);
     text-align: left;
     font: normal normal normal 14px/19px Roboto;
+
     letter-spacing: 0px;
     color: #707070;
     opacity: 1;
@@ -551,3 +568,20 @@ ion-content {
     --border-radius: 5px;
     opacity: 1;
 }
+
+.ios ion-toolbar{
+    padding-top: 5%;
+}
+
+.swiper-pagination-bullet {
+    width: 100px; /* ขนาดจุด */
+    height: 6px;
+    background: #4a4a4a; /* สีของจุด */
+    opacity: 0.5; /* ความโปร่งแสง */
+  }
+  
+  .swiper-pagination-bullet-active {
+    width: 20px; /* ทำให้จุด active เป็นแถบยาว */
+    border-radius: 4px; /* ทำให้เป็นขอบโค้ง */
+    background: #4a4a4a; /* สีของจุดที่ active */
+  }

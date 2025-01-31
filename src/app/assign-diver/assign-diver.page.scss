@@ -166,5 +166,9 @@ ion-checkbox::part(container) {
   ion-checkbox::part(mark) {
     color: #ffffff !important; /* ทำให้ checkmark เป็นสีขาว */
   }
+
+  .ios ion-toolbar{
+    margin-top: 5%;
+}
   
   

@@ -9,8 +9,13 @@ ion-tab-bar {
 ion-tab-bar {
     background: #ffff;
     border-top: 1px solid #ffff;
-    height: 70px;
+    height: 90px;
 }
+
+// .ios ion-tab-bar{
+//     height: 100px;
+//     padding-bottom: 6%;
+// }
 
 /* ปรับสีของ tab-button เมื่อ active */
 ion-tab-button {
