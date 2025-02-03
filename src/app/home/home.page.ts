@@ -20,7 +20,8 @@ export class HomePage implements OnInit {
     this.home_ser.quote_booking(this.limit,this.isChecked);
   }
 
-  ngOnInit() {    
+  ngOnInit() {  
+      
     const swiper = document.querySelector('swiper-container')?.swiper;
     swiper?.pagination
     if (swiper) {
@@ -105,6 +106,7 @@ export class HomePage implements OnInit {
   }
 
   setIconTob(){
+    this.iconshow = false;
     this.isIconSpeed = false;
     this.isIconBus = false;
     this.isIconPerson = false;
@@ -119,7 +121,11 @@ export class HomePage implements OnInit {
     this.modalAlert.dismiss();
   }
 
-  isAlertOpen = false;
+  iconshow = false;
+
+  toggleSvg(){
+    this.iconshow = !this.iconshow;
+  }
 }
 
 

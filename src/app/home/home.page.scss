@@ -62,7 +62,7 @@ swiper-slide {
 }
 
 .cardQ {
-    width: auto;
+    width: 100%;
     height: auto;
     padding: 0;
     background-color: #469FD1;
@@ -91,8 +91,9 @@ swiper-slide {
 }
 
 .quote-name {
-    color: black; /* เปลี่ยนสีเฉพาะ quote.name */
-  }
+    color: black;
+    /* เปลี่ยนสีเฉพาะ quote.name */
+}
 
 .label {
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-17) var(--unnamed-font-family-roboto);
@@ -175,13 +176,15 @@ ion-row h1 {
     border-radius: 2px;
     opacity: 1 !important;
 
-    &.ios {
-        margin-bottom: -2%;
-    }
+    margin-bottom: 4%;
 
-    &.md {
-        margin-bottom: 1%;
-    }
+    // &.ios {
+    //     margin-bottom: -2%;
+    // }
+
+    // &.md {
+    //     margin-bottom: 1%;
+    // }
 }
 
 .call {
@@ -194,6 +197,17 @@ ion-row h1 {
     font-size: 40px;
     color: #ffff;
 
+}
+
+.font-18 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 18px/22px var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+    text-align: left;
+    font: normal normal bold 18px/22px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
 }
 
 .set-font {
@@ -272,6 +286,9 @@ ion-row h1 {
 }
 
 .text-truncate {
+    display: block;
+    max-width: 100%;
+    /* ป้องกันการขยายเต็มที่ */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -344,9 +361,15 @@ ion-radio.ios::part(container) {
 }
 
 .checkbox-q {
+    // background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    // border: 0.5px var(--unnamed-color-ffffff);
+    // background: #469FD1 0% 0% no-repeat padding-box;
+    // // border: 0.5px solid #FFFFFF;
+    // border-radius: 2px;
+    // opacity: 1;
     --size: 15px;
     --border-radius: 2px;
-    --border-color: #ffffff;
+    --border-color:#ffffff;
     --border-color-checked: #ffffff;
     --checkbox-background: #469fD1;
     --checkbox-background-checked: #ffffff;
@@ -418,37 +441,37 @@ ion-modal {
     opacity: 1;
 }
 
-.custom-pagination .swiper-pagination-bullet {
-    display: none;
-}
+// .custom-pagination .swiper-pagination-bullet {
+//     display: none;
+// }
 
-.custom-pagination .swiper-pagination-bullet:nth-child(-n+10) {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #ccc;
-    margin: 0 5px;
-    border-radius: 50%;
-}
+// .custom-pagination .swiper-pagination-bullet:nth-child(-n+10) {
+//     display: inline-block;
+//     width: 10px;
+//     height: 10px;
+//     background-color: #ccc;
+//     margin: 0 5px;
+//     border-radius: 50%;
+// }
 
-.custom-pagination .swiper-pagination-bullet-active {
-    background-color: #007bff;
-    transform: scale(1.2);
-}
+// .custom-pagination .swiper-pagination-bullet-active {
+//     background-color: #007bff;
+//     transform: scale(1.2);
+// }
 
-.swiper-pagination-bullet {
-    display: none;
-}
+// .swiper-pagination-bullet {
+//     display: none;
+// }
 
-.swiper-pagination-bullet:nth-child(-n+10) {
-    display: inline-block;
-}
+// .swiper-pagination-bullet:nth-child(-n+10) {
+//     display: inline-block;
+// }
 
 /* กำหนดสไตล์ checkbox ตอนยังไม่ถูกเลือก */
 .unchecked-checkbox::part(container) {
     --size: 15px;
     background-color: white !important;
-    border: 1px solid #ccc !important;
+    border: 0.5px solid #FFFFFF;
     border-radius: 2px;
 }
 
@@ -464,7 +487,8 @@ ion-modal {
 }
 
 .disabled-icon {
-    opacity: 0.5;
+    // opacity: 0.5;
+    fill: #ACACAC;
     /* ทำให้ไอคอนจางลง */
     pointer-events: none;
     /* ปิดการคลิก */
@@ -472,6 +496,7 @@ ion-modal {
 
 .set-icon {
     color: #469FD1;
+    fill: #469FD1;
 }
 
 .custom-alert .alert-wrapper {
@@ -550,6 +575,12 @@ ion-content {
     justify-content: center;
 }
 
+.center-right {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
 .button-alert-blue {
     width: 100px;
     height: 41px;
@@ -569,19 +600,71 @@ ion-content {
     opacity: 1;
 }
 
-.ios ion-toolbar{
+.ios ion-toolbar {
     padding-top: 5%;
 }
 
 .swiper-pagination-bullet {
-    width: 100px; /* ขนาดจุด */
+    width: 100px;
+    /* ขนาดจุด */
     height: 6px;
-    background: #4a4a4a; /* สีของจุด */
-    opacity: 0.5; /* ความโปร่งแสง */
-  }
-  
-  .swiper-pagination-bullet-active {
-    width: 20px; /* ทำให้จุด active เป็นแถบยาว */
-    border-radius: 4px; /* ทำให้เป็นขอบโค้ง */
-    background: #4a4a4a; /* สีของจุดที่ active */
-  }
+    background: #4a4a4a;
+    /* สีของจุด */
+    opacity: 0.5;
+    /* ความโปร่งแสง */
+}
+
+.swiper-pagination-bullet-active {
+    width: 20px;
+    /* ทำให้จุด active เป็นแถบยาว */
+    border-radius: 4px;
+    /* ทำให้เป็นขอบโค้ง */
+    background: #4a4a4a;
+    /* สีของจุดที่ active */
+}
+
+.row-call {
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 3%;
+    padding-bottom: 10%;
+
+}
+
+
+//น้อยกว่า 850px
+@media (max-height: 854px) {
+    .row-call {
+        max-height: 290px;
+        padding-bottom: 5%;
+    }
+}
+
+@media (max-height: 700px) {
+    .row-call {
+        max-height: 200px;
+        padding-bottom: 25%;
+    }
+}
+
+.no-padding {
+    padding: 0;
+}
+
+swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+swiper-slide {
+    --margin-right: 2%;
+}

@@ -3,26 +3,50 @@
   <ion-toolbar style="height: 111px;">
     <app-explore-header style="width: 100%;"></app-explore-header>
   </ion-toolbar>
-
 </ion-header>
 
 <!-- class="curved-shape" -->
-<ion-content>
+<ion-content [fullscreen]="true">
   <ion-grid>
 
     <ion-row style="background-color: #ffff; margin-top: 5%;">
       <!-- <ion-row style="color: aqua;"> -->
-      <ion-col size="6" class="center-left" style="padding-left: 4%; padding-bottom: 0;">
+      <!-- <ion-col size="6" class="center-left" style="padding-left: 4%; padding-bottom: 0;">
         <ion-checkbox labelPlacement="end" [checked]="isChecked" (ionChange)="toggleSelectAll($event)"
           class="unchecked-checkbox font-14" style="size: 15px; color: #000000;">Select All</ion-checkbox>
-      </ion-col>
-      <ion-col size="6" class="icon-top"
+      </ion-col> -->
+      <ion-col offset="6" size="6" class="icon-top"
         style="display: flex; align-items: center; justify-content: space-between; padding-right: 4%; padding-bottom: 0;">
-        <ion-icon id="open-assign-driver" [name]="isIconSpeed ? 'speedometer' : 'speedometer-outline'" [ngClass]="{
+
+        <svg (click)="toggleSvg()" id="open-assign-driver" [ngClass]="{
           'set-icon': isChecked || home_ser.chB.includes(true), 
           'disabled-icon': !(isChecked || home_ser.chB.includes(true))
-        }" (click)="toggleSpeedIcon()">
-          ></ion-icon>
+        }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22.049" height="20"
+          viewBox="0 0 22.049 20">
+
+          <g id="Group_1987" data-name="Group 1987" transform="translate(0 0)">
+            <g id="Group_1986" data-name="Group 1986" transform="translate(0 0)" clip-path="url(#clip-path)">
+              <path id="Path_2179" data-name="Path 2179"
+                d="M16.1,12a3.848,3.848,0,0,0-3.4,2.051H9.246a3.845,3.845,0,1,0,.445,1.795c0-.086,0-.171-.008-.256h2.58c-.005.085-.008.17-.008.256A3.846,3.846,0,1,0,16.1,12M5.846,18.155a2.307,2.307,0,1,1,2.307-2.307,2.31,2.31,0,0,1-2.307,2.307m10.255,0a2.307,2.307,0,1,1,2.307-2.307A2.311,2.311,0,0,1,16.1,18.155"
+                transform="translate(0.051 0.306)" fill="currentColor" />
+              <path id="Path_2180" data-name="Path 2180"
+                d="M21.623,10.339a17.083,17.083,0,0,0-2.67-1.033l-1.075-6.9A2.844,2.844,0,0,0,16.323.29a2.766,2.766,0,0,0-2.585.064L13.106.7A4.274,4.274,0,0,1,8.941.7L8.31.354A2.8,2.8,0,0,0,5.724.291,2.844,2.844,0,0,0,4.171,2.409L3.1,9.307A17.07,17.07,0,0,0,.426,10.339a.769.769,0,1,0,.687,1.375,23.187,23.187,0,0,1,9.912-1.97,23.19,23.19,0,0,1,9.912,1.97.757.757,0,0,0,.343.081.769.769,0,0,0,.345-1.456M4.718,8.883l.972-6.237a1.287,1.287,0,0,1,.71-.973A1.242,1.242,0,0,1,7.566,1.7l.63.349a5.8,5.8,0,0,0,5.655,0l.632-.349a1.244,1.244,0,0,1,1.164-.029,1.288,1.288,0,0,1,.712.974l.972,6.237a29.714,29.714,0,0,0-12.612,0"
+                transform="translate(0 0)" />
+            </g>
+          </g>
+
+          <g id="Group_1985" *ngIf="iconshow" data-name="Group 1985" transform="translate(0 0)">
+            <g id="Group_1984" data-name="Group 1984" transform="translate(0 0)" clip-path="url(#clip-path)">
+              <path id="Path_2177" data-name="Path 2177"
+                d="M21.623,10.338a17.07,17.07,0,0,0-2.669-1.032l-1.075-6.9A2.847,2.847,0,0,0,16.323.289a2.764,2.764,0,0,0-2.584.064L13.106.7A4.272,4.272,0,0,1,8.942.7L8.311.353A2.8,2.8,0,0,0,5.724.291,2.844,2.844,0,0,0,4.171,2.408L3.1,9.307A17.07,17.07,0,0,0,.426,10.338a.769.769,0,0,0,.687,1.376,14.542,14.542,0,0,1,1.664-.688H19.272a14.542,14.542,0,0,1,1.664.688.769.769,0,0,0,.687-1.376"
+                transform="translate(0 0)" fill="#469fd1" />
+              <path id="Path_2178" data-name="Path 2178"
+                d="M16.1,12a3.848,3.848,0,0,0-3.4,2.051H9.246a3.845,3.845,0,1,0,.445,1.795c0-.086,0-.171-.008-.256h2.58c-.005.085-.008.17-.008.256A3.846,3.846,0,1,0,16.1,12"
+                transform="translate(0.051 0.306)" fill="#469fd1" />
+            </g>
+          </g>
+        </svg>
+
         <ion-icon id="open-assign-vehicle" [name]="isIconBus ? 'bus' : 'bus-outline'" [ngClass]="{
           'set-icon': isChecked || home_ser.chB.includes(true), 
           'disabled-icon': !(isChecked || home_ser.chB.includes(true))
@@ -38,7 +62,7 @@
       </ion-col>
 
       <!-- Modal Assign Driver-->
-      <ion-modal #modalAs trigger="open-assign-driver">
+      <ion-modal #modalAs trigger="open-assign-driver" backdropDismiss="false">
         <ng-template>
           <ion-content>
             <ion-grid>
@@ -53,20 +77,20 @@
                   <ion-label class="font-14" style="color: #000000;">Assign Driver</ion-label>
                 </ion-col>
                 <ion-col size="12" class="col-modal" id="open-custom-dialog">
-                  <ion-label class="font-14" style="color: #000000;" 
-                    >Unallocte Driver and Vehicle</ion-label>
+                  <ion-label class="font-14" style="color: #000000;">Unallocte Driver and Vehicle</ion-label>
                 </ion-col>
                 <!-- alert -->
-                <ion-modal id="alert-modal"  #modalAlert trigger="open-custom-dialog">
+                <ion-modal id="alert-modal" #modalAlert trigger="open-custom-dialog" backdropDismiss="false">
                   <ng-template>
                     <ion-grid class="alert">
                       <ion-row>
                         <ion-col size="12">
-                          <ion-label class="font-16 center" style="color: #469FD1;">Do you want to Unallocate Vehicle</ion-label>
+                          <ion-label class="font-16 center" style="color: #469FD1;">Do you want to Unallocate
+                            Vehicle</ion-label>
                         </ion-col>
                         <ion-col size="12" class="center">
                           <ion-button class="button-alert-blue">Yes</ion-button>
-                          <ion-button  (click)="modalAlert.dismiss()"  class="button-alert-red">No</ion-button>
+                          <ion-button (click)="modalAlert.dismiss()" class="button-alert-red">No</ion-button>
                         </ion-col>
                       </ion-row>
                     </ion-grid>
@@ -91,7 +115,7 @@
       </ion-modal>
 
       <!-- Modal Assign Driver -->
-      <ion-modal #modalvehicle trigger="open-assign-vehicle">
+      <ion-modal #modalvehicle trigger="open-assign-vehicle" backdropDismiss="false">
         <ng-template>
           <ion-content>
             <ion-grid>
@@ -101,7 +125,8 @@
                   <ion-icon (click)="modalvehicle.dismiss()" (click)="setIconTob()" name="close-outline"
                     style="font-size: 15px; color: #D14646;"></ion-icon>
                 </ion-col>
-                <ion-col size="12" class="col-modal">
+                <ion-col size="12" class="col-modal" (click)="setIconTob()" (click)="modalvehicle.dismiss()"
+                  (click)="to_Assign()">
                   <ion-label class="font-14" style="color: #000000;">Assign Driver</ion-label>
                 </ion-col>
                 <ion-col size="12" class="col-modal">
@@ -120,7 +145,7 @@
       </ion-modal>
 
       <!-- Modal person -->
-      <ion-modal #modalperson trigger="open-assign-person">
+      <ion-modal #modalperson trigger="open-assign-person" backdropDismiss="false">
         <ng-template>
           <ion-content>
             <ion-grid>
@@ -152,7 +177,7 @@
       </ion-modal>
 
       <!-- Modal seting -->
-      <ion-modal #modalsetting trigger="open-setting">
+      <ion-modal #modalsetting trigger="open-setting" backdropDismiss="false">
         <ng-template>
           <ion-content>
             <ion-grid>
@@ -188,13 +213,19 @@
 
       <!-- </ion-row> -->
       <!-- [pagination]="true" -->
-       
-      <swiper-container [pagination]="true">
+
+      <swiper-container 
+      pagination="true" 
+      pagination-clickable="true" 
+      slides-per-view="1.04"
+      space-between="-5" 
+      free-mode="true"
+      >
         <!-- 1 -->
-        <swiper-slide #swiperEx *ngFor="let quote of this.home_ser.quo;  let i = index;" >
+        <swiper-slide #swiperEx *ngFor="let quote of this.home_ser.quo;  let i = index;">
           <ion-card class="card-container" style="margin: 3%; margin-bottom: 10%; padding-bottom: 0;">
             <ion-row>
-              <ion-col class="col-f" size-xs="6" size-sm="4" size-md="3" style="padding: 0;">
+              <ion-col class="col-f" size-xs="6" size-sm="6" size-md="6" style="padding: 0;">
                 <ion-card-header class="cardQ" style="background-color: #469FD1; padding: 2%;">
                   <span style="padding: 2%; padding-bottom: 0;">
                     <ion-row style="display: flex; justify-content: space-between;" class="no-padding">
@@ -202,16 +233,24 @@
                       <ion-checkbox [checked]="this.home_ser.chB[i]" (ionChange)="onCheckboxChange($event, i)"
                         class="checkbox-q"></ion-checkbox>
                     </ion-row>
-                    <ion-row style="display: flex; align-items: center; justify-content: space-between; padding-top: 2%;" class="no-padding">
-                      <ion-label class="ion-card-subtitle">Sale : {{ quote.sale }}</ion-label>
-                      <ion-label class="label">1 Journey</ion-label>
+                    <ion-row
+                      style="display: flex; align-items: center; justify-content: space-between; padding-top: 2%;"
+                      class="no-padding">
+                      <ion-col size="6" class="no-padding">
+                        <ion-label class="ion-card-subtitle text-truncate">Sale : {{ quote.sale }}</ion-label>
+                      </ion-col>
+                      <ion-col size="6" class="no-padding center-right">
+                        <ion-label class="label">1 Journey</ion-label>
+                      </ion-col>
+
                     </ion-row>
                   </span>
                 </ion-card-header>
               </ion-col>
-              <ion-col class="col-l" size-xs="6" size-sm="8" size-md="9">
+              <ion-col class="col-l" size-xs="6" size-sm="6" size-md="6">
                 <ion-row>
-                  <ion-col size-xs="7.5" style="height: 45px; display: flex; align-items: end; justify-content: start; padding-bottom: 0;">
+                  <ion-col size-xs="7.5"
+                    style="height: 45px; display: flex; align-items: end; justify-content: start; padding-bottom: 0;">
                     <ion-label class="text-truncate">
                       Name: <span class="quote-name">{{ quote.name }}</span>
                     </ion-label>
@@ -267,7 +306,7 @@
                     </ion-col>
                   </ion-row>
                 </ion-col>
-                <ion-col size-xs="6"  style="padding-left: 1%;">
+                <ion-col size-xs="6" style="padding-left: 1%;">
                   <ion-row style="display: flex; align-items: center;" class="cus">
                     <ion-col size-xs="2" style="display: flex; align-items: center;" class="cus">
                       <ion-icon class="icon-card" name="cash-outline"></ion-icon>
@@ -305,74 +344,75 @@
     </ion-row>
 
     <!-- overflow-y: auto; overflow-y: auto; -->
-    <ion-row style="overflow-y: auto; overflow-y: auto;  width: 100%; height: 370px; display: flex; align-items: center; justify-content: center; margin-bottom: 5%; margin-left: -1%;">
-      <ion-card class="card-call">
-        <ion-row style="width: 100%; height: 100%; padding: 0;">
-          <ion-col size-xs="3"
-            style="padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+    <ion-row class="row-call">
+
+      <ion-col size="12" class="card-call">
+        <ion-row style="width: 100%; height: 100%;">
+          <ion-col class="center" size-xs="3">
             <ion-icon class="call" name="call"></ion-icon>
           </ion-col>
           <ion-col size-xs="7"
             style="padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
-            <h1 style="padding: 0; margin: 0; margin-bottom: 4%;" class="set-font-1">Quote CallBacks</h1>
-            <h2 style="padding: 0; margin: 0;" class="set-font2">No Callbacks</h2>
+            <ion-label style="color: #52595C; margin-bottom: 2%;" class="font-18 text-truncate">Quote
+              CallBacks</ion-label>
+            <ion-label class="font-14 text-truncate">No Callbacks</ion-label>
           </ion-col>
-          <ion-col size-xs="2" style="display: flex; align-items: center; justify-content: center;">
-            <ion-icon style="color: #469FD1; font-size: 35px; " name="ellipsis-vertical"></ion-icon>
+          <ion-col size-xs="2" class="center-right">
+            <ion-icon style="color: #469FD1; font-size: 30px; " name="ellipsis-vertical"></ion-icon>
           </ion-col>
         </ion-row>
-      </ion-card>
+      </ion-col>
 
-      <ion-card class="card-call" >
-        <ion-row style="width: 100%; height: 100%; padding: 0; background-color: #469FD1;">
-          <ion-col size="3"
-            style="padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+      <ion-col size="12" class="card-call" style="background-color: #469FD1;">
+        <ion-row style="width: 100%; height: 100%;">
+          <ion-col size="3" class="center">
             <ion-icon class="call_2" name="call"></ion-icon>
           </ion-col>
-          <ion-col size="7" class="text-truncate"
+          <ion-col size="7"
             style="padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
-            <h1 style="padding: 0; margin: 0; color: #ffff; margin-bottom: 4%;" class="set-font-h1">Customer CallBacks</h1>
-            <h2 style="padding: 0; margin: 0;" class="set-font2-h2 text-truncate">09 Aug 2023 10.55 (GTxxx WBR+18)</h2>
+            <ion-label style=" margin-bottom: 2%;" class="font-18">Customer CallBacks</ion-label>
+            <ion-label class="font-14 text-truncate" style="color: #FFFFFF;">09 Aug 2023 10.55 (GTxxx
+              WBR+18)</ion-label>
           </ion-col>
-          <ion-col size="2" style="display: flex; align-items: center; justify-content: center;">
-            <ion-icon style="color: #ffff; font-size: 35px;" name="ellipsis-vertical"></ion-icon>
+          <ion-col size-xs="2" class="center-right">
+            <ion-icon style="color: #ffff; font-size: 30px; " name="ellipsis-vertical"></ion-icon>
           </ion-col>
         </ion-row>
-      </ion-card>
+      </ion-col>
 
-      <ion-card class="card-call">
-        <ion-row style="width: 100%; height: 100%; padding: 0;">
-          <ion-col size="3"
-            style="padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+      <ion-col size="12" class="card-call">
+        <ion-row style="width: 100%; height: 100%;">
+          <ion-col class="center" size-xs="3">
             <ion-icon class="call" name="call"></ion-icon>
           </ion-col>
-          <ion-col size="7" class="text-truncate"
-            style="padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
-            <h1 style="padding: 0; margin: 0; margin-bottom: 4%;" class="set-font">Supplier CallBacks</h1>
-            <h2 style="padding: 0; margin: 0;" class="set-font2 text-truncate">02 Jan 2024 16.00 (Aye Melbourne1)</h2>
+          <ion-col size-xs="7"
+            style=" display: flex; align-items: start; justify-content: center; flex-direction: column;">
+            <ion-label style="color: #52595C; margin-bottom: 2%;" class="font-18">Supplier CallBacks</ion-label>
+            <ion-label class="font-14 text-truncate">02 Jan 2024 16.00 (Aye Melbourne1)</ion-label>
           </ion-col>
-          <ion-col size="2" style="display: flex; align-items: center; justify-content: center;">
-            <ion-icon style="color: #469FD1; font-size: 35px;" name="ellipsis-vertical"></ion-icon>
+          <ion-col size-xs="2" class="center-right">
+            <ion-icon style="color: #469FD1; font-size: 30px; " name="ellipsis-vertical"></ion-icon>
           </ion-col>
         </ion-row>
-      </ion-card>
+      </ion-col>
 
-      <ion-card class="card-call">
-        <ion-row style="width: 100%; height: 100%; padding: 0; background-color: #469FD1;">
-          <ion-col size="3"
-            style="padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+      <ion-col size="12" class="card-call" style="background-color: #469FD1;">
+        <ion-row style="width: 100%; height: 100%;">
+          <ion-col size="3" class="center">
             <ion-icon class="call_2" name="call"></ion-icon>
           </ion-col>
-          <ion-col size="7" class="text-truncate"
-            style=" padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
-            <h1 style="padding: 0; margin: 0; color: #ffff; margin-bottom: 4%;" class="set-font-h1">Customer CallBacks</h1>
-            <h2 style="padding: 0; margin: 0;" class="set-font2-h2 ">16 Aug 2021 00.00 (Jod ID: 1208)</h2>
+          <ion-col size="7"
+            style="padding: 0; margin: 0; display: flex; flex-direction: column; align-items: start; justify-content: center;">
+            <ion-label style=" margin-bottom: 2%;" class="font-18">Self Drive Callbacks</ion-label>
+            <ion-label class="font-14 text-truncate" style="color: #FFFFFF;">16 Aug 2021 00.00 (Jod ID:
+              1208)</ion-label>
           </ion-col>
-          <ion-col size-xs="2" style="display: flex; align-items: center; justify-content: center;">
-            <ion-icon style="color: #ffff; font-size: 35px;" name="ellipsis-vertical"></ion-icon>
+          <ion-col size-xs="2" class="center-right">
+            <ion-icon style="color: #ffff; font-size: 30px; " name="ellipsis-vertical"></ion-icon>
           </ion-col>
         </ion-row>
-      </ion-card>
+      </ion-col>
+
     </ion-row>
   </ion-grid>
 </ion-content>

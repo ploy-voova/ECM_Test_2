@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import Swiper from 'swiper';
+import { FreeMode } from 'swiper/modules';
+
 
 @Component({
   selector: 'app-job',
@@ -10,6 +13,7 @@ export class JobPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

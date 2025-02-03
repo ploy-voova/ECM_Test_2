@@ -10,14 +10,17 @@ import { JobPage } from './job.page';
 
 import { ExploreHeaderComponentModule } from '../explore-header/explore-header.module';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule.forRoot(),
     JobPageRoutingModule,
-    ExploreHeaderComponentModule
+    ExploreHeaderComponentModule,
   ],
-  declarations: [JobPage]
+  declarations: [JobPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class JobPageModule {}
