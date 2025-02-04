@@ -7,16 +7,16 @@
 
 <!-- class="curved-shape" -->
 <ion-content [fullscreen]="true">
-  <ion-grid>
+  <ion-grid class="ion-grid">
 
-    <ion-row style="background-color: #ffff; margin-top: 5%;">
+    <ion-row style="background-color: #ffff; margin-top: 2%;">
       <!-- <ion-row style="color: aqua;"> -->
       <!-- <ion-col size="6" class="center-left" style="padding-left: 4%; padding-bottom: 0;">
         <ion-checkbox labelPlacement="end" [checked]="isChecked" (ionChange)="toggleSelectAll($event)"
           class="unchecked-checkbox font-14" style="size: 15px; color: #000000;">Select All</ion-checkbox>
       </ion-col> -->
       <ion-col offset="6" size="6" class="icon-top"
-        style="display: flex; align-items: center; justify-content: space-between; padding-right: 4%; padding-bottom: 0;">
+        style="display: flex; align-items: center; justify-content: space-between; padding-right: 5.5%; padding-bottom: 0;">
 
         <svg (click)="toggleSvg()" id="open-assign-driver" [ngClass]="{
           'set-icon': isChecked || home_ser.chB.includes(true), 
@@ -217,13 +217,13 @@
       <swiper-container 
       pagination="true" 
       pagination-clickable="true" 
-      slides-per-view="1.04"
-      space-between="-5" 
+      slides-per-view="1.02"
+      space-between="-16" 
       free-mode="true"
       >
         <!-- 1 -->
         <swiper-slide #swiperEx *ngFor="let quote of this.home_ser.quo;  let i = index;">
-          <ion-card class="card-container" style="margin: 3%; margin-bottom: 10%; padding-bottom: 0;">
+          <ion-card class="card-container" style="margin: 4%; margin-bottom: 10%; padding-bottom: 0;">
             <ion-row>
               <ion-col class="col-f" size-xs="6" size-sm="6" size-md="6" style="padding: 0;">
                 <ion-card-header class="cardQ" style="background-color: #469FD1; padding: 2%;">
@@ -326,7 +326,7 @@
                   <ion-row style="height: 64%;">
                     <ion-col size-xs="12"
                       style="padding-right: 3%; display: flex; align-items: end; justify-content: end;">
-                      <ion-button class="booking-btn">Booking</ion-button>
+                      <ion-button class="booking-btn font-test">Booking</ion-button>
                     </ion-col>
                   </ion-row>
                 </ion-col>
@@ -339,7 +339,7 @@
       </swiper-container>
     </ion-row>
 
-    <ion-row style="display: flex; align-items: center; padding-left: 3%; padding-top: 5%; color: #ffff;">
+    <ion-row style="display: flex; align-items: center; padding-left: 4%; padding-top: 5%; color: #ffff;">
       <ion-label class="label-com">Communicate</ion-label>
     </ion-row>
 
