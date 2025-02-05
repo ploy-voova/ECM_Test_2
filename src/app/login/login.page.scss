@@ -28,6 +28,7 @@ ion-grid {
     --background-activated: #5fb6e9;
     --background-hover: transparent;
     --ripple-color: transparent;
+    text-transform: none !important;
     opacity: 1;
 
 
@@ -60,6 +61,7 @@ ion-grid {
     --background-activated: transparent;
     --background-hover: transparent;
     --ripple-color: transparent;
+    text-transform: none !important;
     opacity: 1;
 }
 

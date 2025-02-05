@@ -83,6 +83,7 @@ export class QuotePreviewPage implements OnInit {
     this.journey_quote();
   }
 
+
   async journey_quote() {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
     console.log(res);
@@ -237,15 +238,15 @@ export class QuotePreviewPage implements OnInit {
     }
   }
 
-  segmentChanged(event: any) {
-    const selectedValue = event.detail.value;
-    document.querySelectorAll('ion-segment-button').forEach((button) => {
-      button.classList.toggle(
-        'selected',
-        button.getAttribute('value') === selectedValue
-      );
-    });
-  }
+  // segmentChanged(event: any) {
+  //   const selectedValue = event.detail.value;
+  //   document.querySelectorAll('ion-segment-button').forEach((button) => {
+  //     button.classList.toggle(
+  //       'selected',
+  //       button.getAttribute('value') === selectedValue
+  //     );
+  //   });
+  // }
 
   paxChange(e: CustomEvent, i: number, j: number) {
     this.pax = e.detail.value;
@@ -414,4 +415,20 @@ export class QuotePreviewPage implements OnInit {
       }
     });
   }
+
+  segmentChanged(event: any) {
+    const selectedValue = event.detail.value;
+    document.querySelectorAll('ion-segment-button').forEach((btn) => {
+      if (btn.getAttribute('value') === selectedValue) {
+        btn.style.setProperty('--background', '#42a5f5');
+        btn.style.setProperty('--color', 'white');
+      } else {
+        btn.style.setProperty('--background', '#bdbdbd');
+        btn.style.setProperty('--color', 'black');
+      }
+    });
+  }
+  
+  
+
 }
