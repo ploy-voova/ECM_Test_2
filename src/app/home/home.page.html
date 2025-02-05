@@ -237,7 +237,7 @@
                       style="display: flex; align-items: center; justify-content: space-between; padding-top: 2%;"
                       class="no-padding">
                       <ion-col size="6" class="no-padding">
-                        <ion-label class="ion-card-subtitle text-truncate">Sale : {{ quote.sale }}</ion-label>
+                        <ion-label class="ion-card-subtitle text-truncate">Sale : {{ quote.sales_person }}</ion-label>
                       </ion-col>
                       <ion-col size="6" class="no-padding center-right">
                         <ion-label class="label">1 Journey</ion-label>
@@ -252,7 +252,7 @@
                   <ion-col size-xs="7.5"
                     style="height: 45px; display: flex; align-items: end; justify-content: start; padding-bottom: 0;">
                     <ion-label class="text-truncate">
-                      Name: <span class="quote-name">{{ quote.name }}</span>
+                      Name: <span class="quote-name">{{ quote.internal_profile }}</span>
                     </ion-label>
                   </ion-col>
                   <ion-col size-xs="4.5">
@@ -278,7 +278,7 @@
                       <ion-icon class="icon-card" name="calendar-clear-outline"></ion-icon>
                     </ion-col>
                     <ion-col size-xs="10" class="cus">
-                      <h4>{{ quote.date_journey }}</h4>
+                      <h4>{{ formatDate(quote.date_start) }}</h4>
                     </ion-col>
                   </ion-row>
                   <ion-row style="display: flex; align-items: center;" class="cus">
@@ -286,7 +286,7 @@
                       <ion-icon class="icon-card" name="time-outline"></ion-icon>
                     </ion-col>
                     <ion-col size-xs="10" class="cus">
-                      <h4>{{ quote.time_journey }}</h4>
+                      <h4>{{ formatTime(quote.time_start) }}</h4>
                     </ion-col>
                   </ion-row>
                   <ion-row style="display: flex; align-items: center;" class="cus">
@@ -294,7 +294,7 @@
                       <ion-icon class="icon-card" name="location-outline"></ion-icon>
                     </ion-col>
                     <ion-col size-xs="10" class="cus">
-                      <h4 class="text-truncate">{{ quote.pick_up }}</h4>
+                      <h4 class="text-truncate">{{ quote.collection_address }}</h4>
                     </ion-col>
                   </ion-row>
                   <ion-row style="display: flex; align-items: center;" class="cus">
@@ -302,7 +302,7 @@
                       <ion-icon class="icon-card" name="location-outline" style="color: #000000;"></ion-icon>
                     </ion-col>
                     <ion-col size-xs="10" class="cus">
-                      <h4 class="text-truncate">{{ quote.destination }}</h4>
+                      <h4 class="text-truncate">{{ quote.destination_address }}</h4>
                     </ion-col>
                   </ion-row>
                 </ion-col>
@@ -312,7 +312,7 @@
                       <ion-icon class="icon-card" name="cash-outline"></ion-icon>
                     </ion-col>
                     <ion-col size-xs="10" class="cus">
-                      <h4>£{{ quote.price }}</h4>
+                      <h4>£{{ quote.total_price }}</h4>
                     </ion-col>
                   </ion-row>
                   <ion-row style="display: flex; align-items: center;" class="cus">
@@ -320,13 +320,13 @@
                       <ion-icon class="icon-card" name="people-circle-outline"></ion-icon>
                     </ion-col>
                     <ion-col size-xs="" class="cus">
-                      <h4>10 Pix(s)</h4>
+                      <h4>{{ quote.num_id }} Pix(s)</h4>
                     </ion-col>
                   </ion-row>
                   <ion-row style="height: 64%;">
                     <ion-col size-xs="12"
                       style="padding-right: 3%; display: flex; align-items: end; justify-content: end;">
-                      <ion-button class="booking-btn">Booking</ion-button>
+                      <ion-button class="booking-btn">{{ quote.status_re }}</ion-button>
                     </ion-col>
                   </ion-row>
                 </ion-col>

@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '
 import { Router } from '@angular/router';
 import { HomeService } from '../service/home/home.service';
 import { InfiniteScrollCustomEvent, IonModal } from '@ionic/angular';
+import { GlobalService } from '../service/global/global.service';
 
 @Component({
   selector: 'app-home',
@@ -11,17 +12,51 @@ import { InfiniteScrollCustomEvent, IonModal } from '@ionic/angular';
 export class HomePage implements OnInit {
   limit: number = 10;
   qid: any;
-  quo: any = [];
   currentSlideIndex: number = 0;
 
   isChecked : boolean = false;
 
-  constructor(private router: Router,public home_ser: HomeService) {
-    this.home_ser.quote_booking(this.limit,this.isChecked);
+  constructor(private router: Router, public home_ser: HomeService, private glo: GlobalService) {
+    this.one();
+  }
+
+  one(){
+    this.glo.data = {
+      d: 'adminlib',
+      f: 'list-booking.php',
+      callback: '',
+      pagesize: '10',
+      callbacks: '',
+      date_start: '04/02/2025',
+      date_end: '18/02/2025',
+      date_booking_start: '',
+      date_booking_end: '',
+      grid_type: '3',
+      privatedashboardfilter: '0',
+      site_id: 'all',
+      s_user: 'all',
+      ops_person: 'all',
+      status_re: 'B',
+      payment: 'all',
+      progress: 'all',
+      priority: 'all',
+      search: '',
+      journey_type: 'all',
+      qfilter: '0',
+      private_hire: '1',
+      contract: '1',
+      non_inv_checkbox: '0',
+      take: '10',
+      skip: '0',
+      page: '1',
+      pageSize: '10',
+      sort: [{ field: 'quote_id', dir: 'asc' }],
+    }
+    this.glo.quote_preview('list-quote');
+    // this.home_ser.quote_booking(this.limit,this.isChecked);
   }
 
   ngOnInit() {  
-      
     const swiper = document.querySelector('swiper-container')?.swiper;
     swiper?.pagination
     if (swiper) {
@@ -125,6 +160,28 @@ export class HomePage implements OnInit {
 
   toggleSvg(){
     this.iconshow = !this.iconshow;
+  }
+
+  public formatDate(inputDate:string): string {
+    const months: Record<string, string> = {
+        "Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04",
+        "May": "05", "Jun": "06", "Jul": "07", "Aug": "08",
+        "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"
+    };
+
+    const parts: string[] = inputDate.split(" ");
+    const day: string = parts[1].replace(/\D/g, '');
+    const month: string = months[parts[2]] || "00";
+    const year: string = parts[3];
+
+    return `${day.padStart(2, '0')}/${month}/${year}`;
+  }
+
+  public formatTime(time: string): string {
+    let [hour, minute]: number[] = time.split(":").map(Number);
+    let period: string = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12 || 12;
+    return `${String(hour).padStart(2, '0')}.${minute} ${period}`;
   }
 }
 

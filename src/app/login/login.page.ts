@@ -20,12 +20,12 @@ export class LoginPage implements OnInit {
 
   async login(){
 
-    // const slogin = (await this.logser.login(this.username, this.password)).data;
-    // if (slogin['status'] == 'Done') {
-    //   this.router.navigate(['/tabs/home']);
-    // } else {
-    //   alert(slogin['status']);
-    // }
+    const slogin = (await this.logser.login(this.username, this.password)).data;
+    if (slogin['status'] == 'Done') {
+      this.router.navigate(['/tabs/home']);
+    } else {
+      alert(slogin['status']);
+    };
     
     
 
@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
     // }).then((res) => {
     //   console.log(res);
     // })
-    this.router.navigate(['/tabs/home'])
+    // this.router.navigate(['/tabs/home'])
     // axios.get('http://35.187.248.255:214/lib/perform_function.php',{
     //   params: {
     //     d: 'adminlib',
@@ -71,7 +71,7 @@ export class LoginPage implements OnInit {
     //     _: '1738551746506'
     //   }
     // }).then((res) => {
-    //   let cleanData = res.data.replace(/^[^(]*\(/, "").replace(/\)[^)]*$/, "");
+    //   let cleanData = res.data.replace(/^[^(]*\(/, "").replace(/\)[^);]*$/, "");
     //   let jsonData = JSON.parse(cleanData);
     //   console.log(jsonData);
     // })
