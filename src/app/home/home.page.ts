@@ -53,6 +53,7 @@ export class HomePage implements OnInit {
     //   sort: [{ field: 'quote_id', dir: 'asc' }],
     // }
     // this.glo.quote_preview('list-quote');
+    ///////////////////////////////////////////////////////////////////////
     this.home_ser.quote_booking(this.limit,this.isChecked);
   }
 
