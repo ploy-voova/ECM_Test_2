@@ -14,7 +14,7 @@ ion-content {
 }
 
 ion-grid {
-    padding: 2.5%;
+    padding: 4%;
 }
 
 .custom-checkbox {
@@ -38,11 +38,13 @@ ion-grid {
 }
 
 .font-16 {
-    font: var(--unnamed-font-style-normal) normal normal var(--unnamed-font-size-16)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
     letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-469fd1);
     text-align: left;
     font: normal normal normal 16px/19px Roboto;
     letter-spacing: 0px;
+    color: #469FD1;
     opacity: 1;
 }
 
@@ -53,7 +55,7 @@ ion-grid {
     margin: 0;
     margin-bottom: 5%;
     background: rgba(172, 172, 172, 0.15);
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: none;
 }
 
@@ -69,10 +71,9 @@ ion-grid {
     width: 109px;
     height: 40px;
     min-height: 40px;
-    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 0.5px solid var(--unnamed-color-707070);
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 0.5px solid #707070;
+    background: #FFFFFF;
+    border: 0.1px solid #ACACAC;
+    /* ใช้ 0.3px แทน 0.2px */
     border-radius: 2px;
     opacity: 1;
 }
@@ -130,27 +131,28 @@ ion-checkbox {
     height: auto;
     margin: 2%;
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px var(--unnamed-color-469fd1);
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #469FD1;
+    border: 0.3px solid #ACACAC;
+    box-shadow: none;
     border-radius: 5px;
     opacity: 1;
 }
 
 .font-14 {
-    font: var(--unnamed-font-style-normal) normal normal 14px/17px var(--unnamed-font-family-roboto);
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
     letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-707070);
     text-align: left;
-    font: normal normal normal 14px/17px Roboto;
+    font: normal normal normal 14px/19px Roboto;
     letter-spacing: 0px;
-    color: #747474;
+    color: #707070;
     opacity: 1;
 }
 
 .icon-line {
     position: relative;
     width: 0.2px;
-    height: 90px;
+    height: 65px;
     bottom: -15px;
     background-color: #397C53;
     margin: 0 auto;
@@ -191,15 +193,23 @@ ion-select {
 }
 
 .ion-input {
-    width: 219px;
+    // width: 219px;
     height: 40px;
     min-height: 40px;
-    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 0.5px solid var(--unnamed-color-707070);
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 0.5px solid #707070;
-    border-color: #707070;
+    background: #FFFFFF;
+    border: 0.1px solid #ACACAC;
+    /* ใช้ 0.3px แทน 0.2px */
+    box-shadow: none;
+    --padding-start: 4%;
     border-radius: 2px;
+    opacity: 1;
+}
+
+.sc-ion-input-ios-h {
+    --border-width: 0.3px;
+    --border-color: var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-250, var(--ion-background-color-step-250, #c8c7cc))));
+    --highlight-height: 0px;
+    font-size: inherit;
 }
 
 .margin {
@@ -253,13 +263,13 @@ ion-segment-view {
     }
 }
 
-.popover-content {
-    background-color: #FFFFFF;
-    padding: 10px;
-    max-width: 260px;
-    height: 200px;
-    border-radius: 16px;
-}
+// .popover-content {
+//     background-color: #FFFFFF;
+//     padding: 10px;
+//     max-width: 260px;
+//     height: 200px;
+//     border-radius: 16px;
+// }
 
 .popover-content-time {
     background-color: #FFFFFF;
@@ -281,12 +291,14 @@ ion-select {
 }
 
 .ion-select-T {
+    padding-left: 4%;
     width: 100%;
     height: 40px;
-    border: 0.5px solid var(--unnamed-color-707070);
-    border: 0.5px solid #707070;
+    background: #FFFFFF;
+    border: 0.1px solid #ACACAC;
     border-radius: 2px;
     opacity: 1;
+    color: #707070;
 }
 
 .ion-button-blue {
@@ -450,11 +462,121 @@ ion-button {
     }
 }
 
-.ios ion-toolbar{
+.ios ion-toolbar {
     padding-top: 5%;
 }
-  
-  
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0 0;
+}
+
+.unchecked-checkbox::part(container) {
+    --size: 15px;
+    background-color: white !important;
+    border: 0.5px solid #469FD1;
+    border-radius: 2px;
+}
+
+/* กำหนดสไตล์ checkbox ตอนถูกเลือก */
+.unchecked-checkbox[aria-checked="true"]::part(container) {
+    background-color: #469FD1 !important;
+    border: 1px solid #469FD1 !important;
+}
+
+// /* เปลี่ยนสีของเครื่องหมายถูก */
+// .unchecked-checkbox::part(mark) {
+//     color: #7c1b1b !important;
+// }
+
+
+ion-toolbar {
+    --background: #ffff;
+    border: none;
+    box-shadow: none;
+}
+
+ion-header {
+    --background: #ffff;
+    box-shadow: none;
+    border-bottom: #fff;
+}
+
+ion-content {
+    --background: #ffff;
+}
+
+.custom-popover {
+    --width: 280px; // กำหนดความกว้างของ popover
+    --max-width: 280px;
+    --border-radius: 10px;
+    --box-shadow: none;
+}
+
+ion-datetime {
+    --background: transparent;
+    --color: #c50000;
+    width: 100%;
+    max-width: 260px;
+
+    .calendar-header {
+        font-size: 16px; // ขนาดตัวอักษรของเดือนและปี
+        font-weight: bold;
+        color: #000;
+        text-align: left;
+        padding: 8px;
+    }
+
+    .calendar-day {
+        font-size: 14px; // ขนาดตัวอักษรของวันที่
+        color: #444;
+    }
+
+    .calendar-day.today {
+        font-weight: bold;
+        color: #007aff;
+    }
+
+    .calendar-day.selected {
+        font-size: 16px; // ขยายตัวเลขวันที่ที่ถูกเลือก
+        background: #007aff;
+        color: #fff;
+        border-radius: 50%;
+    }
+
+    .calendar-footer {
+        font-size: 14px; // ขนาดปุ่ม Cancel และ Done
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+
+        button {
+            font-size: 14px;
+            font-weight: bold;
+            color: #007aff;
+            background: transparent;
+            border: none;
+        }
+    }
+}
+
+.mb-2 {
+    margin-bottom: 2.5%;
+}
+
+native-wrapper.sc-ion-input-ios {
+    display: -ms-flexbox;
+    display: flex
+;
+    position: relative;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    padding: 4%;
+}
+
+
 
 // .custom-action-sheet {
 //     width: 100px; /* กำหนดความกว้าง */
@@ -463,7 +585,7 @@ ion-button {
 //     --border-radius: 8px; /* มุมโค้ง */
 //     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* เงา */
 //   }
-  
+
 //   .custom-action-sheet .action-sheet-button {
 //     font-size: 12px; /* ขนาดข้อความ */
 //     padding: 8px;    /* ระยะห่างระหว่างตัวเลือก */

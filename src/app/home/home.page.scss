@@ -36,6 +36,7 @@ ion-content {
     --background: #ffff;
 }
 
+
 .content-card {
     padding: 20px;
     background: #fff;
@@ -68,6 +69,7 @@ swiper-slide {
     background-color: #469FD1;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 2px;
+    box-shadow: none;
     opacity: 1 !important;
 }
 
@@ -128,9 +130,10 @@ h5 {
     height: 199px;
     --background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: none;
-    border: 0.5px solid #ACACAC;
+    background: rgba(255, 255, 255, 0.82);
+    border: 0.1px solid #cccccc;
     border-radius: 2px;
-    opacity: 0.82;
+    // opacity: 0.82;
     opacity: 1 !important;
 }
 
@@ -138,6 +141,10 @@ h5 {
     --ion-grid-padding: 0;
     margin-left: 10px;
     --ion-grid-column-padding: 0;
+}
+
+.ion-grid{
+ padding: 0;
 }
 
 .cus {
@@ -273,16 +280,16 @@ ion-row h1 {
     min-height: 23px;
     --background: #469FD1 0% 0% no-repeat padding-box;
     --border-radius: 2px;
-
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 18px/22px var(--unnamed-font-family-roboto);
-    letter-spacing: var(--unnamed-character-spacing-0);
+    --box-shadow: none;    
+    
+    font-family: 'Roboto', sans-serif !important;
     color: var(--unnamed-color-ffffff);
     text-align: left;
-    font: normal normal 500 18px/22px Roboto;
+    font: normal normal bold 18px/22px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
-
+    text-transform: none !important;
 }
 
 .text-truncate {
@@ -361,12 +368,6 @@ ion-radio.ios::part(container) {
 }
 
 .checkbox-q {
-    // background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
-    // border: 0.5px var(--unnamed-color-ffffff);
-    // background: #469FD1 0% 0% no-repeat padding-box;
-    // // border: 0.5px solid #FFFFFF;
-    // border-radius: 2px;
-    // opacity: 1;
     --size: 15px;
     --border-radius: 2px;
     --border-color:#ffffff;
@@ -600,9 +601,15 @@ ion-content {
     opacity: 1;
 }
 
-.ios ion-toolbar {
+ion-toolbar.ios{
     padding-top: 5%;
 }
+
+  .header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0 0; 
+  }
+
+
 
 .swiper-pagination-bullet {
     width: 100px;
@@ -626,7 +633,9 @@ ion-content {
 .row-call {
     overflow-y: auto;
     max-height: 400px;
-    padding: 3%;
+    padding: 4%;
+    padding-top: 0;
+    margin-top: 4%;
     padding-bottom: 10%;
 
 }

@@ -21,39 +21,39 @@ export class HomePage implements OnInit {
   }
 
   one(){
-    this.glo.data = {
-      d: 'adminlib',
-      f: 'list-booking.php',
-      callback: '',
-      pagesize: '10',
-      callbacks: '',
-      date_start: '04/02/2025',
-      date_end: '18/02/2025',
-      date_booking_start: '',
-      date_booking_end: '',
-      grid_type: '3',
-      privatedashboardfilter: '0',
-      site_id: 'all',
-      s_user: 'all',
-      ops_person: 'all',
-      status_re: 'B',
-      payment: 'all',
-      progress: 'all',
-      priority: 'all',
-      search: '',
-      journey_type: 'all',
-      qfilter: '0',
-      private_hire: '1',
-      contract: '1',
-      non_inv_checkbox: '0',
-      take: '10',
-      skip: '0',
-      page: '1',
-      pageSize: '10',
-      sort: [{ field: 'quote_id', dir: 'asc' }],
-    }
-    this.glo.quote_preview('list-quote');
-    // this.home_ser.quote_booking(this.limit,this.isChecked);
+    // this.glo.data = {
+    //   d: 'adminlib',
+    //   f: 'list-booking.php',
+    //   callback: '',
+    //   pagesize: '10',
+    //   callbacks: '',
+    //   date_start: '04/02/2025',
+    //   date_end: '18/02/2025',
+    //   date_booking_start: '',
+    //   date_booking_end: '',
+    //   grid_type: '3',
+    //   privatedashboardfilter: '0',
+    //   site_id: 'all',
+    //   s_user: 'all',
+    //   ops_person: 'all',
+    //   status_re: 'B',
+    //   payment: 'all',
+    //   progress: 'all',
+    //   priority: 'all',
+    //   search: '',
+    //   journey_type: 'all',
+    //   qfilter: '0',
+    //   private_hire: '1',
+    //   contract: '1',
+    //   non_inv_checkbox: '0',
+    //   take: '10',
+    //   skip: '0',
+    //   page: '1',
+    //   pageSize: '10',
+    //   sort: [{ field: 'quote_id', dir: 'asc' }],
+    // }
+    // this.glo.quote_preview('list-quote');
+    this.home_ser.quote_booking(this.limit,this.isChecked);
   }
 
   ngOnInit() {  
