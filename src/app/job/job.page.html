@@ -1,12 +1,65 @@
-<swiper-container class="mySwiper" pagination="true" pagination-clickable="true" slides-per-view="3"
-space-between="30" free-mode="true">
-<swiper-slide>Slide 1</swiper-slide>
-<swiper-slide>Slide 2</swiper-slide>
-<swiper-slide>Slide 3</swiper-slide>
-<swiper-slide>Slide 4</swiper-slide>
-<swiper-slide>Slide 5</swiper-slide>
-<swiper-slide>Slide 6</swiper-slide>
-<swiper-slide>Slide 7</swiper-slide>
-<swiper-slide>Slide 8</swiper-slide>
-<swiper-slide>Slide 9</swiper-slide>
-</swiper-container>
+<ion-header>
+    <ion-toolbar>
+      <!-- Undo / Redo -->
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon name="arrow-undo-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="arrow-redo-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  
+      <!-- Font Selection -->
+      <ion-select placeholder="Sans Serif">
+        <ion-select-option value="sans-serif">Sans Serif</ion-select-option>
+        <ion-select-option value="serif">Serif</ion-select-option>
+      </ion-select>
+  
+      <!-- Font Size -->
+      <ion-select placeholder="12px">
+        <ion-select-option value="12">12px</ion-select-option>
+        <ion-select-option value="14">14px</ion-select-option>
+        <ion-select-option value="16">16px</ion-select-option>
+      </ion-select>
+  
+      <!-- Text Formatting -->
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="text-bold-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="text-italic-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="text-underline-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="color-palette-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  
+      <!-- Alignment -->
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="align-left-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="align-center-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="align-right-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  
+      <!-- Lists -->
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="list-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="reorder-four-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
