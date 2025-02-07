@@ -16,6 +16,8 @@ export class HomePage implements OnInit {
 
   isChecked : boolean = false;
 
+  isCheckNodata: boolean = true;
+
   constructor(private router: Router, public home_ser: HomeService, private glo: GlobalService) {
     this.one();
   }

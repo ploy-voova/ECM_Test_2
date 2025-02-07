@@ -6,21 +6,37 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="white-background">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start" class="center" style="padding: 2%;" >
+    <ion-fab-button class="ion-fab-button-h">
+      <ion-icon name="add-outline" class="icon-fab-h"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button class="ion-fab-button-c" >
+        <ion-icon name="save-outline" class="icon-fab-c"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button class="ion-fab-button-c">
+        <ion-icon name="bookmark-outline" class="icon-fab-c"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button class="ion-fab-button-c">
+        <ion-icon name="chevron-up-outline" class="icon-fab-c"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
   <ion-grid style="background-color: #ffff; ">
     <ion-row>
-      <ion-col size="12" class="center" >
+      <ion-col size="12" class="center">
         <ion-label class="font-16" style="color: #000000; font-weight: bold;">Create a new qoute</ion-label>
       </ion-col>
     </ion-row>
     <ion-row style=" margin-bottom: 4%; margin-top: 5%; ">
-      <ion-col size="6">
+      <ion-col size="6" style="padding-left: 0;">
         <ion-row class="ion-button-blue font-16 no-padding center">
           Create a new Quote
         </ion-row>
       </ion-col>
       <ion-col size="6" class="center" style="padding-left: 4%;">
-        <ion-select class="font-16 ion-select-T" (ionChange)="onFirstSelectChange()" style="color: #707070;"
-          label-placement="floating" interface="popover" value="select">
+        <ion-select class="font-16 ion-select-T" (ionChange)="onFirstSelectChange()" label-placement="floating"
+          interface="popover" value="select">
           <ion-select-option value="select">Select Profile</ion-select-option>
           <ion-select-option value="bezt">bezt</ion-select-option>
         </ion-select>
@@ -45,36 +61,43 @@
       </ion-col>
     </ion-row>
 
-    <ion-row style="padding: 2%;" *ngIf="isRowvisibleCus">
-      <ion-col size="6">
-        <ion-input [(ngModel)]="company" style="width: 100%; color: #707070;" class="input font-14" placeholder=" Company/Account" ></ion-input>
+    <ion-row style="padding: 2%; padding-top: 3%;" *ngIf="isRowvisibleCus">
+      <ion-col size="6" class="padding-input-right margin-input">
+        <ion-input style="width: 100%;" [(ngModel)]="company" class="input font-14 "
+          placeholder="Company/Account"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="email" class="input font-14" placeholder=" Email" style="width: 100%;"></ion-input>
+      <ion-col size="6" class="padding-input-left margin-input">
+        <ion-input [(ngModel)]="email" class="input font-14" placeholder="Email" style="width: 100%;"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="external_reference" class="input font-14" placeholder=" External Reference" style="width: 100%;"></ion-input>
+      <ion-col size="6" class="padding-input-right margin-input">
+        <ion-input [(ngModel)]="external_reference" class="input font-14" placeholder="External Reference"
+          style="width: 100%;"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="name" class="input font-14" placeholder=" name" style="width: 100%;"></ion-input>
+      <ion-col size="6" class="padding-input-left margin-input">
+        <ion-input [(ngModel)]="name" class="input font-14" placeholder="name" style="width: 100%;"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="referrer_code" class="input font-14" placeholder=" Referrer Code" style="width: 100%;"></ion-input>
+      <ion-col size="6" class="padding-input-right margin-input">
+        <ion-input [(ngModel)]="referrer_code" class="input font-14" placeholder="Referrer Code"
+          style="width: 100%;"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="phone" type="number" class="input font-14" placeholder=" Phone" style="width: 100%;"></ion-input>
+      <ion-col size="6" class="padding-input-left margin-input">
+        <ion-input [(ngModel)]="phone" type="number" class="input font-14" placeholder="Phone"
+          style="width: 100%;"></ion-input>
       </ion-col>
-      <ion-col size="12">
+      <ion-col size="12" class="margin-input">
         <ion-label class="font-16" style="color: #707070; font-weight: bold;">Passenger</ion-label>
       </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="passenger_email" class="input font-14" placeholder=" Passenger Email" style="width: 100%;"></ion-input>
+      <ion-col size="6" class="padding-input-right margin-input">
+        <ion-input [(ngModel)]="passenger_email" class="input font-14" placeholder="Passenger Email"
+          style="width: 100%;"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="passenger_name" class="input font-14" placeholder=" Passenger Name" style="width: 100%;"></ion-input>
+      <ion-col size="6" class="padding-input-left margin-input">
+        <ion-input [(ngModel)]="passenger_name" class="input font-14" placeholder="Passenger Name"
+          style="width: 100%;"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="passenger_namber" type="number" class="input font-14" placeholder=" Passenger Number" style="width: 100%;"></ion-input>
+      <ion-col size="6" class="padding-input-right margin-input">
+        <ion-input [(ngModel)]="passenger_namber" type="number" class="input font-14" placeholder="Passenger Number"
+          style="width: 100%;"></ion-input>
       </ion-col>
     </ion-row>
 
@@ -96,40 +119,40 @@
     </ion-row>
 
     <ion-row *ngIf="isRowvisibleTran" style="margin-bottom: 5%; padding: 2%;">
-      <ion-col size="12" class="center-right">
-        <ion-button class="ion-button-blue center font-14" style="width: 135px; color: #ffff;">
+      <ion-col size="12" class="center-right" style="margin-bottom: 1%;">
+        <ion-button class="ion-button-blue center font-16" style="color: #ffff; margin: 0; padding: 0;">
           Show Movement
         </ion-button>
       </ion-col>
-      <ion-col size="6">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
-        [(ngModel)]="select_pax" (ionChange)="paxChange($event)">
+      <ion-col size="6" class="padding-input-right margin-input">
+        <ion-select class="font-14 ion-select-T" label-placement="stacked" interface="popover" [(ngModel)]="select_pax"
+          (ionChange)="paxChange($event)">
           <ion-select-option value="selectpax">Select Pax</ion-select-option>
           <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
             {{ index + 1 }} Paxs
           </ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-        [(ngModel)]="select_vehicle_" (ionChange)="vehicleChange($event)">
+      <ion-col size="6" class="padding-input-left margin-input">
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover"
+          [(ngModel)]="select_vehicle_" (ionChange)="vehicleChange($event)">
           <ion-select-option value="selectvehicle">Select Vehicle</ion-select-option>
           <ion-select-option *ngFor="let vehi of vehicle" [value]="vehi.car_id">
             {{vehi.car_name}}
           </ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-        [(ngModel)]="select_luggage_" (ionChange)="luggageChange($event)">
+      <ion-col size="6" class="padding-input-right margin-input">
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover"
+          [(ngModel)]="select_luggage_" (ionChange)="luggageChange($event)">
           <ion-select-option value="selectluggage">Select Luggage</ion-select-option>
           <ion-select-option *ngFor="let lug of luggage" [value]="lug.bag_id">
             {{lug.bag_des}}
           </ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
+      <ion-col size="6" class="padding-input-left margin-input">
+        <ion-select class="font-14 ion-select-T" label-placement="stacked" interface="popover"
           value="selectjourneytype">
           <ion-select-option value="selectjourneytype">Select Journey Type</ion-select-option>
           <ion-select-option *ngFor="let j_type of journey_Type" value="{{j_type.jt_id}}">
@@ -137,53 +160,52 @@
           </ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6.5" class="center-left" style="margin-top: 2%;">
+      <ion-col size="12" class="center-left" style="margin-top: 2%; margin-bottom: 2%;">
         <ion-icon name="bus-outline" style="color: #AB1C1C; width: 25px; height: 29px"></ion-icon>
-        <ion-label class="font-16" style="color: #AB1C1C;" (click)="toggleVehicles()">Set alternative
-          vehicles</ion-label>
-      </ion-col>
-      <ion-col size="5.5" class="center-left">
-        <ion-icon name="bus-outline" style="color: #000000; width: 25px; height: 29px"></ion-icon>
-        <ion-label class="font-16 " style="color: #000000;" (click)="toggleAs()">As Directed</ion-label>
-      </ion-col>
-      <ion-col offset="6.5">
-        <ion-row *ngIf="isdropAs">
-          <ion-select class="font-14 ion-select-T" style="color: #ACACAC; width: 120px; margin-right: 5%;"
-            label-placement="floating" interface="popover" value="hours">
-            <ion-select-option value="hours">0 Hours</ion-select-option>
-            <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
-              {{ index + 1 }} Hours
-            </ion-select-option>
-          </ion-select>
-          <ion-select class="font-14 ion-select-T" style="color: #ACACAC; width: 120px;" label-placement="floating"
-            interface="popover" value="days">
-            <ion-select-option value="days">0 Days</ion-select-option>
-            <ion-select-option *ngFor="let i of [].constructor(365); let index = index" [value]="index + 1">
-              {{ index + 1 }} Days
-            </ion-select-option>
-          </ion-select>
-        </ion-row>
+        <ion-label class="font-16" style="color: #AB1C1C;" (click)="toggleVehicles()">Set Alternative Type</ion-label>
       </ion-col>
       <ion-row *ngIf="isdropVehicles">
-        <ion-col size="6">
-          <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-            interface="popover" value="vehicle2" >
+        <ion-col size="6" class="padding-input-right margin-input">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="vehicle2">
             <ion-select-option value="vehicle2">Alternate vehicle2</ion-select-option>
           </ion-select>
         </ion-col>
-        <ion-col size="6">
+        <ion-col size="6" class="padding-input-left margin-input">
           <ion-input class="input font-14" type="number" placeholder=" Price" style="width: 100%;"></ion-input>
         </ion-col>
-        <ion-col size="6">
-          <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-            interface="popover" value="vehicle3" >
+        <ion-col size="6" class="padding-input-right margin-input">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="vehicle3">
             <ion-select-option value="vehicle3">Alternate vehicle3</ion-select-option>
           </ion-select>
         </ion-col>
-        <ion-col size="6">
+        <ion-col size="6" class="padding-input-left margin-input">
           <ion-input class="input font-14" type="number" placeholder=" Price" style="width: 100%;"></ion-input>
         </ion-col>
       </ion-row>
+      <ion-col size="12" class="center-left">
+        <ion-icon name="bus-outline"
+          style="color: #000000; width: 25px; height: 29px; margin-top: 2%; margin-bottom: 2%; "></ion-icon>
+        <ion-label class="font-16 " style="color: #000000;" (click)="toggleAs()">As Directed</ion-label>
+      </ion-col>
+      <!-- <ion-row *ngIf="isdropAs"> -->
+      <ion-col size="6" *ngIf="isdropAs" class="padding-input-right margin-input">
+        <ion-select class="font-14 ion-select-T" style=" margin-right: 5%; width: 100%;" label-placement="floating"
+          interface="popover" value="hours">
+          <ion-select-option value="hours">0 Hours</ion-select-option>
+          <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
+            {{ index + 1 }} Hours
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6" *ngIf="isdropAs" class="padding-input-left margin-input">
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="days">
+          <ion-select-option value="days">0 Days</ion-select-option>
+          <ion-select-option *ngFor="let i of [].constructor(365); let index = index" [value]="index + 1">
+            {{ index + 1 }} Days
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <!-- </ion-row> -->
       <ion-col size="12" style="margin-top: 3%;">
         <ion-label class="font-16" style="font-weight: bold; color: #000000;">As Directed</ion-label>
       </ion-col>
@@ -196,9 +218,9 @@
       <ion-col size="6" style="display: flex; align-items: end;">
         <ion-label class="font-14" style="color: #000000;">miles</ion-label>
       </ion-col>
-      <ion-col size="6" style="margin-top: 3%;">
+      <ion-col size="6" style="margin-top: 3%; ">
         <ion-label class="font-16" style="font-weight: bold; color: #000000;">Actual Time</ion-label>
-        <ion-row style="display: flex; align-items: end; margin-top: 3%;">
+        <ion-row style="display: flex; align-items: end; margin-top: 6%;">
           <ion-input class="input font-14" style="margin-right: 2%; color: #707070;" value="{{timeAc}}"
             placeholder="Hours / Minutes">
             <ion-icon id="open-time_Ac" name="time-outline" slot="end"
@@ -233,38 +255,36 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="isRowvisiblePricing" style="margin-top: 4%; padding: 2%;">
-      <ion-col size="6">
+    <ion-row *ngIf="isRowvisiblePricing" style="margin-top: 4%; padding: 2%; margin-bottom: 2%;">
+      <ion-col size="6" class="padding-input-right margin-input">
         <ion-input class="input font-14" placeholder="Vehicle Price"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
+      <ion-col size="6" class="padding-input-left margin-input">
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="6" class="padding-input-right margin-input">
         <ion-input class="input font-14" placeholder="Deposit"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
+      <ion-col size="6" class="padding-input-left margin-input">
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="12" style="margin-top: 2%;">
+      <ion-col size="12" style="margin-top: 3%; margin-bottom: 3%;">
         <ion-label class="font-16" style="color: #067E36; font-weight: bold;">Added Options</ion-label>
       </ion-col>
       <ion-col size="6" class="center-left">
-        <ion-checkbox class="font-16" style="color: #747474;" labelPlacement="end">ITEM 004</ion-checkbox>
+        <ion-checkbox class="font-14" style="color: #4D4D4D;" labelPlacement="end">ITEM 004</ion-checkbox>
       </ion-col>
-      <ion-col size="5.5">
+      <ion-col size="6">
         <ion-row style="display: flex; align-items: center; justify-content: space-between;">
           <ion-label style="font-size: 20px; color: #747474;">$</ion-label>
           <ion-input class="input" style="width: 113px;"></ion-input>
@@ -272,9 +292,9 @@
         </ion-row>
       </ion-col>
       <ion-col size="6" class="center-left">
-        <ion-checkbox class="font-16" style="color: #747474;" labelPlacement="end">Oil TEST Extra It...</ion-checkbox>
+        <ion-checkbox class="font-14" style="color: #4D4D4D;" labelPlacement="end">Oil TEST Extra It...</ion-checkbox>
       </ion-col>
-      <ion-col size="5.5">
+      <ion-col size="6">
         <ion-row style="display: flex; align-items: center; justify-content: space-between;">
           <ion-label style="font-size: 20px; color: #747474;">$</ion-label>
           <ion-input class="input" style="width: 113px;"></ion-input>
@@ -282,29 +302,32 @@
         </ion-row>
       </ion-col>
       <ion-col size="6" class="center-left">
-        <ion-checkbox class="font-16" style="color: #747474;" labelPlacement="end">Oil TEST Extra It...</ion-checkbox>
+        <ion-checkbox class="font-14" style="color: #4D4D4D;" labelPlacement="end">Oil TEST Extra It...</ion-checkbox>
       </ion-col>
-      <ion-col size="5.5">
+      <ion-col size="6">
         <ion-row style="display: flex; align-items: center; justify-content: space-between;">
           <ion-label style="font-size: 20px; color: #747474;">$</ion-label>
           <ion-input class="input" style="width: 113px;"></ion-input>
           <ion-icon class="icon" name="alert-circle-outline"></ion-icon>
         </ion-row>
       </ion-col>
-      <ion-col size="6.8" style="margin-top: 2%;">
-        <ion-textarea placeholder="Payment Message"></ion-textarea>
+      <ion-col size="6" style="margin-top: 5%;">
+        <ion-textarea class="font-14" style="color: #707070;" placeholder="Payment Message"></ion-textarea>
       </ion-col>
-      <ion-col size="5.2" style="margin-top: 2%;">
-        <ion-col class="no-padding">
-          <ion-input class="input font-14" placeholder="Balance Due Date">
-            <ion-icon class="icon" slot="end" name="today-outline"></ion-icon>
-          </ion-input>
-        </ion-col>
-        <ion-col class="no-padding" style="display: flex; align-items: end; justify-content: end;">
-          <ion-button class="ion-button-blue font-14" style="width: 110px; color: #ffff;">
-            $ Quick Price
-          </ion-button>
-        </ion-col>
+      <ion-col size="6" style="margin-top: 5%;">
+        <ion-row>
+          <ion-col size="12" style="padding-top: 0;">
+            <ion-input class="input font-14" placeholder="Balance Due Date">
+              <ion-icon class="icon" slot="end" name="today-outline" style="padding-right: 5%;"></ion-icon>
+            </ion-input>
+          </ion-col>
+          <ion-col size="12" style="display: flex; align-items: end; justify-content: end; padding-bottom: 0;">
+            <ion-button class="ion-button-blue font-14" style="color: #ffff; margin: 0;">
+              $ Quick Price
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
       </ion-col>
     </ion-row>
 
@@ -325,9 +348,9 @@
 
     <ion-row *ngIf="isRowvisibleMisc" style="margin-top: 3%; padding: 2%;">
       <ion-col size="5.5">
-        <ion-label class="font-14">How did you hear of us ?</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
+        <ion-label class="font-14" style="color: #707070;">How did you hear of us ?</ion-label>
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="No"
+          style="margin-top: 5%;">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -335,9 +358,9 @@
         </ion-select>
       </ion-col>
       <ion-col offset="1" size="5.5">
-        <ion-label class="font-14">Opsperson</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
+        <ion-label class="font-14" style="color: #707070;">Opsperson</ion-label>
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="No"
+          style="margin-top: 5%;">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -346,9 +369,9 @@
       </ion-col>
 
       <ion-col size="5.5">
-        <ion-label class="font-14">Salesperson</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
+        <ion-label class="font-14" style="color: #707070;">Salesperson</ion-label>
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="No"
+          style="margin-top: 5%;">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -356,9 +379,9 @@
         </ion-select>
       </ion-col>
       <ion-col offset="1" size="5.5">
-        <ion-label class="font-14">Account Owner</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
+        <ion-label class="font-14" style="color: #707070;">Account Owner</ion-label>
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="No"
+          style="margin-top: 5%;">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -366,9 +389,9 @@
         </ion-select>
       </ion-col>
       <ion-col size="5.5">
-        <ion-label class="font-14">Priority</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
-          value="No">
+        <ion-label class="font-14 mb-2" style="color: #707070;">Priority</ion-label>
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="No"
+          style="margin-top: 5%;">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -376,15 +399,15 @@
         </ion-select>
       </ion-col>
       <ion-col offset="1" size="5.5">
-        <ion-label class="font-14">Account Owner</ion-label>
-        <ion-label class="font-14" style="color: #000000; display: block;">Name Admin</ion-label>
+        <ion-label class="font-14 mb-2" style="color: #707070;">Account Owner</ion-label>
+        <ion-label class="font-14" style="color: #000000; display: block; margin-top: 5%;">Name Admin</ion-label>
       </ion-col>
       <ion-col size="7">
-        <ion-textarea class="font-12" placeholder="Payment Message"
+        <ion-textarea style="color: #707070; margin-top: 2%;" class="font-12" placeholder="Payment Message"
           placeholder="Notes (Customers see these!)"></ion-textarea>
       </ion-col>
       <ion-col size="5" style="display: flex; justify-content: end;">
-        <ion-button class="ion-button-blue font-14" style="width: 76px; color: #ffff;">
+        <ion-button class="ion-button-blue font-14" style="width: 76px; color: #ffff; margin: 0; margin-top: 2%;">
           Itinerary
         </ion-button>
       </ion-col>
@@ -405,11 +428,11 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="isRowvisibleItem">
+    <ion-row *ngIf="isRowvisibleItem" style=" padding: 3%;">
       <ion-col size="5.5">
         <ion-label class="font-14" style="color: #000000; font-weight: bold;">Location</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
-          interface="popover" value="No">
+        <ion-select class="font-14 ion-select-T" style="margin-top: 5%;" label-placement="floating" interface="popover"
+          value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -418,8 +441,8 @@
       </ion-col>
       <ion-col offset="1" size="5.5">
         <ion-label class="font-14" style="color: #000000; font-weight: bold;">Categoty</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
-          interface="popover" value="No">
+        <ion-select class="font-14 ion-select-T" style="margin-top: 5%;" label-placement="floating" interface="popover"
+          value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -428,35 +451,38 @@
       </ion-col>
       <ion-col size="5.5">
         <ion-label class="font-14" style="color: #000000; font-weight: bold;">Group</ion-label>
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
-          interface="popover" value="No">
+        <ion-select class="font-14 ion-select-T" style="margin-top: 5%;" label-placement="floating" interface="popover"
+          value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">No luggage.</ion-select-option>
           <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="12">
+      <ion-col size="12" style="margin-top: 3%;">
         <label class="font-14" style="font-weight: bold; color: #000000;">No extra item yet</label>
       </ion-col>
-      <ion-col size="4">
+    </ion-row>
+    <ion-row *ngIf="isRowvisibleItem" style="margin-bottom: 5%;">
+      <ion-col size="4" >
         <ion-button class="ion-button-green font-14" style="color: #ffff; width: 100%;">
           Book Now
         </ion-button>
       </ion-col>
-      <ion-col size="4">
+      <ion-col size="4" >
         <ion-button class="ion-button-green font-14" style="color: #ffff; width: 100%;">
           Send and Save
         </ion-button>
       </ion-col>
-      <ion-col size="4">
+      <ion-col size="4" >
         <ion-button class="ion-button-blue font-14" style=" color: #ffff; width: 100%;">
           Quick Save
         </ion-button>
       </ion-col>
     </ion-row>
 
-    <ion-row>
+
+    <!-- <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleRowKyc()">
           <ion-col size="11" class="center-left">
@@ -489,7 +515,7 @@
           <ion-input style="text-align: center;" placeholder="Please fill the Email Address"></ion-input>
         </ion-card-content>
       </ion-card>
-    </ion-row>
+    </ion-row> -->
 
     <ion-row>
       <ion-col size="12" class="card-toolbar">
@@ -506,14 +532,14 @@
     </ion-row>
 
     <ion-row *ngIf="isRowvisibleStart" style="padding: 2%; margin-top: 3%; margin-bottom: 10%;">
-      <ion-col size="12" class="bar">
-        <ion-checkbox class="check-box font-14 " checked="true" style="color: #469FD1;">Start of Journey</ion-checkbox>
+      <ion-col size="12" class="bar center-left" >
+        <ion-checkbox class="check-box font-14 " checked="true" style="color: #469FD1; margin-left: 4%;">Start of Journey</ion-checkbox>
       </ion-col>
       <ion-row style="margin-top: 3%;">
-        <ion-col size="6" class="center-left">
+        <ion-col size="5" class="center-left">
           <ion-label class="font-14" style="color: #AB1C1C;">Pickup date</ion-label>
         </ion-col>
-        <ion-col size="6">
+        <ion-col size="7">
           <ion-input class="font-14 input" style="color: #707070; " value="{{date_c}} {{time_c}}">
             <ion-icon id="open-date" style="margin-right: 3%; padding: 0;" slot="end" name="today-outline"
               class="icon-25"></ion-icon>
@@ -529,7 +555,7 @@
         </ion-col>
         <ion-col size="2.5">
           <ion-icon class="icon-blue" name="location-outline" id="open-modal-call"></ion-icon>
-          
+
           <!-- modal-call -->
           <ion-modal #modal_coll trigger="open-modal-call" [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7]">
             <ng-template>
@@ -537,10 +563,11 @@
                 <ion-grid>
                   <ion-row>
                     <ion-col size="12" class="center">
-                      <ion-label class="font-16" style="color: #747474;" >Collection Address</ion-label>
+                      <ion-label class="font-16" style="color: #747474;">Collection Address</ion-label>
                     </ion-col>
                     <ion-col size="12" style="display: flex;">
-                      <ion-input class="input font-14" style="color: #707070;" [value]="newjob_ser.name_address.trim() === '' ? address1 : newjob_ser.name_address"></ion-input>
+                      <ion-input class="input font-14" style="color: #707070;"
+                        [value]="newjob_ser.name_address.trim() === '' ? address1 : newjob_ser.name_address"></ion-input>
                       <ion-icon name="location-outline" style="font-size: 40px; color: #469FD1;"></ion-icon>
                     </ion-col>
                     <ion-col>
@@ -550,7 +577,9 @@
                       <app-map></app-map>
                     </ion-col>
                     <ion-col size="12" class="center-right">
-                      <ion-button (click)="apply_address()" (click)="modal_coll.dismiss()" class="ion-button-blue font-14" style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
+                      <ion-button (click)="apply_address()" (click)="modal_coll.dismiss()"
+                        class="ion-button-blue font-14"
+                        style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
                     </ion-col>
                   </ion-row>
                 </ion-grid>
@@ -558,28 +587,30 @@
             </ng-template>
           </ion-modal>
 
-          <ion-icon [ngClass]="{'icon-green': note1.length > 0, 'icon-blue': note1.length === 0}"  (click)="toggleNote_col1()" class="icon-blue" name="reader-outline"></ion-icon>
+          <ion-icon [ngClass]="{'icon-green': note1.length > 0, 'icon-blue': note1.length === 0}"
+            (click)="toggleNote_col1()" class="icon-blue" name="reader-outline"></ion-icon>
         </ion-col>
         <!-- <ion-row *ngIf="isdropNote_des1"> -->
-          <ion-col size="12" *ngIf="isdropNote_des1">
-            <ion-label class="font-14">Destination Note</ion-label>
-          </ion-col>
-          <ion-col size="9.5" *ngIf="isdropNote_des1">
-            <ion-input [(ngModel)]="note1" class="input"></ion-input>
-          </ion-col>
-          <ion-col offset="0.9" size="1" *ngIf="isdropNote_des1">
-            <ion-icon (click)="toggleNote_des1()" class="icon-red" name="reader-outline"></ion-icon>
-          </ion-col>
+        <ion-col size="12" *ngIf="isdropNote_des1">
+          <ion-label class="font-14" style="color: #707070;" >Destination Note</ion-label>
+        </ion-col>
+        <ion-col size="9.5" *ngIf="isdropNote_des1">
+          <ion-input [(ngModel)]="note1" class="input"></ion-input>
+        </ion-col>
+        <ion-col offset="0.9" size="1" *ngIf="isdropNote_des1">
+          <ion-icon (click)="toggleNote_des1()" class="icon-red" name="reader-outline"></ion-icon>
+        </ion-col>
         <!-- </ion-row> -->
         <ion-col size="12">
-          <ion-label  class="font-14" style="color: #AB1C1C;">Collection Address(2)</ion-label>
+          <ion-label class="font-14" style="color: #AB1C1C;">Collection Address(2)</ion-label>
         </ion-col>
         <ion-col size="9.5">
           <ion-input [(ngModel)]="address2" value="address2" class="input font-14" style="color: #707070;"></ion-input>
         </ion-col>
         <ion-col size="2.5">
-          <ion-icon class="icon-blue" name="location-outline"  id="open-modal-call2"></ion-icon>
-          <ion-icon [ngClass]="{'icon-green': note2.length > 0, 'icon-blue': note2.length === 0}" (click)="toggleNote_col2()" class="icon-blue" name="reader-outline"></ion-icon>
+          <ion-icon class="icon-blue" name="location-outline" id="open-modal-call2"></ion-icon>
+          <ion-icon [ngClass]="{'icon-green': note2.length > 0, 'icon-blue': note2.length === 0}"
+            (click)="toggleNote_col2()" class="icon-blue" name="reader-outline"></ion-icon>
         </ion-col>
 
         <!-- modal-call2 -->
@@ -589,10 +620,11 @@
               <ion-grid>
                 <ion-row>
                   <ion-col size="12" class="center">
-                    <ion-label class="font-16" style="color: #747474;" >Collection Address</ion-label>
+                    <ion-label class="font-16" style="color: #747474;">Collection Address</ion-label>
                   </ion-col>
                   <ion-col size="12" style="display: flex;">
-                    <ion-input class="input font-14" style="color: #707070;" [value]="newjob_ser.name_address.trim() === '' ? address2 : newjob_ser.name_address"></ion-input>
+                    <ion-input class="input font-14" style="color: #707070;"
+                      [value]="newjob_ser.name_address.trim() === '' ? address2 : newjob_ser.name_address"></ion-input>
                     <ion-icon name="location-outline" style="font-size: 40px; color: #469FD1;"></ion-icon>
                   </ion-col>
                   <ion-col>
@@ -602,7 +634,9 @@
                     <app-map></app-map>
                   </ion-col>
                   <ion-col size="12" class="center-right">
-                    <ion-button (click)="apply_address2()" (click)="modal_coll2.dismiss()" class="ion-button-blue font-14" style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
+                    <ion-button (click)="apply_address2()" (click)="modal_coll2.dismiss()"
+                      class="ion-button-blue font-14"
+                      style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -611,20 +645,20 @@
         </ion-modal>
 
         <!-- <ion-row *ngIf="isdropNote_des2"> -->
-          <ion-col size="12" *ngIf="isdropNote_des2">
-            <ion-label class="font-14">Destination Note</ion-label>
-          </ion-col>
-          <ion-col size="9.5" *ngIf="isdropNote_des2">
-            <ion-input [(ngModel)]="note2" class="input"></ion-input>
-          </ion-col>
-          <ion-col offset="0.9" size="1.5" *ngIf="isdropNote_des2">
-            <ion-icon (click)="toggleNote_des2()" class="icon-red" name="reader-outline"></ion-icon>
-          </ion-col>
+        <ion-col size="12" *ngIf="isdropNote_des2">
+          <ion-label class="font-14">Destination Note</ion-label>
+        </ion-col>
+        <ion-col size="9.5" *ngIf="isdropNote_des2">
+          <ion-input [(ngModel)]="note2" class="input"></ion-input>
+        </ion-col>
+        <ion-col offset="0.9" size="1.5" *ngIf="isdropNote_des2">
+          <ion-icon (click)="toggleNote_des2()" class="icon-red" name="reader-outline"></ion-icon>
+        </ion-col>
         <!-- </ion-row> -->
-        <ion-col size="5" class="center">
+        <ion-col size="5" class="center" style="margin-top: 3%;">
           <ion-label class="font-14">Destination Arrival Time</ion-label>
         </ion-col>
-        <ion-col size="7">
+        <ion-col size="7" style="margin-top: 3%;">
           <ion-input class="font-14 input" style="color: #707070; " value="{{date_des}} {{time_des}}">
             <ion-icon id="open-date_des" style="margin-right: 3%; padding: 0;" slot="end" name="today-outline"
               class="icon-25"></ion-icon>
@@ -672,15 +706,15 @@
           </ion-content>
         </ng-template>
       </ion-popover>
-      <ion-col size="12" class="bar" style="display: flex; align-items: center; margin-top: 3%;">
+      <ion-col size="12" class="bar" style="display: flex; align-items: center; margin-top: 3%; margin-bottom: 4%;">
         <ion-label class="font-14" style="color: #469FD1;">Vehicle</ion-label>
       </ion-col>
 
-      <ion-col size="6" class="center-left">
+      <ion-col size="6" class="center-left mb-2">
         <ion-label class="font-14" style="color: #AB1C1C;">Passenger</ion-label>
       </ion-col>
-      <ion-col size="6" class="center-left">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
+      <ion-col size="6" class="center-left mb-2">
+        <ion-select class="font-14 ion-select-T" label-placement="stacked" interface="popover"
           [(ngModel)]="select_pax_jouney" (ionChange)="paxChange_journey($event)">
           <ion-select-option value="selectpax">Select Pax</ion-select-option>
           <ion-select-option *ngFor="let i of [].constructor(100); let index = index" [value]="index + 1">
@@ -688,11 +722,11 @@
           </ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6" class="center-left">
+      <ion-col size="6" class="center-left mb-2">
         <ion-label class="font-14" style="color: #AB1C1C;">Vehicle</ion-label>
       </ion-col>
-      <ion-col size="6" class="center-left">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+      <ion-col size="6" class="center-left mb-2">
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover"
           [(ngModel)]="select_vehicle_journey" (ionChange)="vehicleChange_journey($event)">
           <ion-select-option value="selectvehicle">Select Vehicle</ion-select-option>
           <ion-select-option *ngFor="let vehi of vehicle" [value]="vehi.car_id">
@@ -700,11 +734,11 @@
           </ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6" class="center-left">
+      <ion-col size="6" class="center-left mb-2">
         <ion-label class="font-14" style="color: #AB1C1C;">Luggage</ion-label>
       </ion-col>
-      <ion-col size="6" class="center-left">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+      <ion-col size="6" class="center-left mb-2">
+        <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover"
           [(ngModel)]="select_luggage_journey" (ionChange)="luggageChange_journey($event)">
           <ion-select-option value="selectluggage">Select Luggage</ion-select-option>
           <ion-select-option *ngFor="let lug of luggage" [value]="lug.bag_id">
@@ -712,11 +746,11 @@
           </ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6" class="center-left">
+      <ion-col size="6" class="center-left mb-2">
         <ion-label class="font-14">Journey Type</ion-label>
       </ion-col>
-      <ion-col size="6" class="center-left">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="stacked" interface="popover"
+      <ion-col size="6" class="center-left mb-2">
+        <ion-select class="font-14 ion-select-T" label-placement="stacked" interface="popover"
           value="selectjourneytype">
           <ion-select-option value="selectjourneytype">Select Journey Type</ion-select-option>
           <ion-select-option *ngFor="let j_type of journey_Type" value="{{j_type.jt_id}}">
@@ -793,7 +827,7 @@
       <ion-col size="5.5">
         <ion-button class="ion-button-gray font-16" style="width: 100%;">Duplicate Journey</ion-button>
       </ion-col>
-      <ion-col size="4">
+      <ion-col size="4.5">
         <ion-button class="ion-button-gray font-16" style="width: 100%;">Assign Driver</ion-button>
       </ion-col>
       <ion-col size="5">
@@ -811,4 +845,4 @@
     </ion-row>
 
   </ion-grid>
-</ion-content>                             
+</ion-content>

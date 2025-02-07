@@ -308,7 +308,7 @@ export class NewJobPage implements OnInit {
 
   toggleNote_des1() {
     this.isdropNote_des1 = false;
-    this.note1 = '';
+    // this.note1 = '';
   }
 
   toggleNote_col2() {
@@ -317,7 +317,7 @@ export class NewJobPage implements OnInit {
 
   toggleNote_des2() {
     this.isdropNote_des2 = false;
-    this.note2 = '';
+    // this.note2 = '';
   }
 
   togglemap() {

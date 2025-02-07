@@ -143,8 +143,8 @@ h5 {
     --ion-grid-column-padding: 0;
 }
 
-.ion-grid{
- padding: 0;
+.ion-grid {
+    padding: 0;
 }
 
 .cus {
@@ -280,8 +280,8 @@ ion-row h1 {
     min-height: 23px;
     --background: #469FD1 0% 0% no-repeat padding-box;
     --border-radius: 2px;
-    --box-shadow: none;    
-    
+    --box-shadow: none;
+
     font-family: 'Roboto', sans-serif !important;
     color: var(--unnamed-color-ffffff);
     text-align: left;
@@ -370,7 +370,7 @@ ion-radio.ios::part(container) {
 .checkbox-q {
     --size: 15px;
     --border-radius: 2px;
-    --border-color:#ffffff;
+    --border-color: #ffffff;
     --border-color-checked: #ffffff;
     --checkbox-background: #469fD1;
     --checkbox-background-checked: #ffffff;
@@ -439,6 +439,15 @@ ion-modal {
     border: 1px solid #D14646;
     color: #D14646;
     border-radius: 10px;
+    opacity: 1;
+}
+
+.btn-new-quote{
+    width: 160px;
+    height: 40px;
+    min-height: 40px;
+    --background: #469FD1 0% 0% no-repeat padding-box;
+    --border-radius: 2px;
     opacity: 1;
 }
 
@@ -601,13 +610,13 @@ ion-content {
     opacity: 1;
 }
 
-ion-toolbar.ios{
+ion-toolbar.ios {
     padding-top: 5%;
 }
 
-  .header-ios ion-toolbar:last-of-type {
-    --border-width: 0 0 0 0; 
-  }
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0 0;
+}
 
 
 
@@ -676,4 +685,12 @@ swiper-slide {
 
 swiper-slide {
     --margin-right: 2%;
+}
+
+.bg-nodata {
+    width: 100%;
+    height: 250px;
+    /* UI Properties */
+    border: 1px solid #DFDFDF;
+    opacity: 1;
 }
