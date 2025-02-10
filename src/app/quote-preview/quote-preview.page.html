@@ -69,7 +69,7 @@
             </ion-row>
             <ion-row style="display: flex; align-items: center; justify-content: end;">
               <ion-label class="font-icon" style="margin-right: 5%;">$</ion-label>
-              <ion-input class="input" style="margin-right: 5%;"></ion-input>
+              <ion-input class="input" value="{{jj['j_price']}}" style="margin-right: 5%;"></ion-input>
               <ion-icon class="icon" name="map" style="margin-right: 3%;"></ion-icon>
             </ion-row>
           </ion-col>
@@ -90,30 +90,30 @@
                 <ion-label class="font-14"> {{mm.time_use}} min</ion-label>
               </ion-col>
             </ion-row>
-            <ion-row>
+            <ion-row style="height: auto;">
               <ion-col size-xs="1.5"
-                style="padding: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; height: 100%;">
-                <ion-row style="margin-bottom: 25px;">
+                style="padding: 5; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; height: 100%;">
+                <ion-row>
                   <ion-label class="font-14" style="color: #ACACAC;">From:</ion-label>
                 </ion-row>
-                <ion-row>
+                <ion-row *ngIf="t_row[i] && t_row[i][j]" [ngStyle]="{'margin-top.px': t_row[i][j] + 5}">
                   <ion-label class="font-14" style="color: #ACACAC;">To:</ion-label>
-                </ion-row>
+                </ion-row>                
               </ion-col>
-              <ion-col size-xs="1.5" class="no-padding">
-                <ion-row class="no-padding">
-                  <ion-label class="icon-line" style="height: ()px;"></ion-label>
+              <ion-col size-xs="1.5" class="no-padding" style="height: auto;">
+                <ion-row class="no-padding" style="height: 100%;">
+                  <ion-label class="icon-line" style="height: calc(100% - 36px); display: block;"></ion-label>
                 </ion-row>
               </ion-col>
               <ion-col size-xs="9">
-                <ion-row style="margin-bottom: 25px;">
+                <ion-row id="row_start_{{i}}_{{j}}" style="margin-bottom: 25px;">
                   <ion-label class="font-14" style="color: #747474;">{{mm.address_start}}</ion-label>
                 </ion-row>
-                <ion-row style="margin-bottom: 5%;">
+                <ion-row>
                   <ion-label class="font-14" style="color: #747474;">{{mm.address_last}}</ion-label>
                 </ion-row>
                 <ion-row>
-                  <ion-label class="font-14" style="color: #469FD1;">ETA : {{mm.eta}}</ion-label>
+                  <ion-label class="font-14" style="color: #469FD1; margin-top: 5%;">ETA : {{mm.eta}}</ion-label>
                 </ion-row>
               </ion-col>
             </ion-row>
@@ -428,11 +428,11 @@
         </ion-col>
         <ion-col size="6" class="center-left">
           <ion-label class="font-14" style="color: #000000; margin-right: 2%;">E-mail on this job:</ion-label>
-          <ion-badge class="center font-16" style="color: #ffff;">1/30</ion-badge>
+          <ion-badge class="center font-16" style="color: #ffff;">{{this.dt_c.email_quote}}/{{this.dt_c.email_other}}</ion-badge>
         </ion-col>
         <ion-col size="6" class="center-left">
           <ion-label class="font-14" style="color: #000000; margin-right: 2%;">SMS on this job:</ion-label>
-          <ion-badge class="center font-16" style="color: #ffff;">1/30</ion-badge>
+          <ion-badge class="center font-16" style="color: #ffff;">{{this.dt_c.sms_quote}}/{{this.dt_c.sms_other}}</ion-badge>
         </ion-col>
         <ion-col size="12">
           <ion-label class="font-14" style="color: #469FD1; font-weight: bold;">Passenger</ion-label>

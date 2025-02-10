@@ -4,6 +4,7 @@ import { PopoverController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { QuotePreviewService } from '../service/quote-preview/quote-preview.service';
 import { NewjobService } from '../service/newjob/newjob.service';
+import { LoadingService } from '../service/loading/loading.service';
 
 @Component({
   selector: 'app-quote-preview',
@@ -18,6 +19,8 @@ export class QuotePreviewPage implements OnInit {
   key: any;
   date_j: any;
   time_j: any;
+
+  t_row: number[][] = [];
 
   date_c: any;
   time_c: any;
@@ -72,7 +75,8 @@ export class QuotePreviewPage implements OnInit {
     private alertController: AlertController,
     public quote_pre: QuotePreviewService,
     private router_: Router,
-    private new_job: NewjobService
+    private new_job: NewjobService,
+    private loadingService: LoadingService
   ) {}
 
   async ngOnInit() {
@@ -83,10 +87,38 @@ export class QuotePreviewPage implements OnInit {
     this.journey_quote();
   }
 
+  async ionViewDidEnter() {
+
+    await this.loadingService.show("ก็บอกว่า อย่าพึ่งทำ");
+
+    setTimeout(async () => {
+      for (let i = 0; i < this.dt_q.length; i++) {
+        this.t_row[i] = [];
+  
+        for (let j = 0; j < this.dt_q[i]['movement_quote'].length; j++) {
+          const targetRow = document.querySelector(`#row_start_${i}_${j}`) as HTMLElement;
+  
+          if (targetRow) {
+            const targetHeight = targetRow.offsetHeight;
+            this.t_row[i][j] = targetHeight;
+            console.log(`ความสูงของ #row_start_${i}_${j}: ${targetHeight}px`);
+          } else {
+            console.log(`ไม่พบ #row_start_${i}_${j}`);
+            this.t_row[i][j] = 0;
+          }
+        }
+      }
+      await this.loadingService.hide();
+    }, 100000);
+  }
+
+  
+  
+
 
   async journey_quote() {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
-    console.log(res);
+    // console.log(res);
 
     // let i = 0;
     res['journey_quote'].map((r:any,i:number) => {

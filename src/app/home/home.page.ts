@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HomeService } from '../service/home/home.service';
 import { InfiniteScrollCustomEvent, IonModal } from '@ionic/angular';
 import { GlobalService } from '../service/global/global.service';
+import { LoadingService } from '../service/loading/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomePage implements OnInit {
 
   isCheckNodata: boolean = true;
 
-  constructor(private router: Router, public home_ser: HomeService, private glo: GlobalService) {
+  constructor(private router: Router, public home_ser: HomeService, private glo: GlobalService, private loadingService: LoadingService) {
     this.one();
   }
 
@@ -59,18 +60,24 @@ export class HomePage implements OnInit {
     this.home_ser.quote_booking(this.limit,this.isChecked);
   }
 
-  ngOnInit() {  
-    const swiper = document.querySelector('swiper-container')?.swiper;
-    swiper?.pagination
-    if (swiper) {
-      swiper.on('slideChange', () => {
-        console.log('Slide changed to:', swiper.activeIndex+1);
-        if (this.limit - swiper.activeIndex == 1) {
-          this.limit = this.limit + 10;
-          this.home_ser.quote_booking(this.limit,this.isChecked);
-        }
-      });
-    }
+  async ngOnInit() {  
+
+    await this.loadingService.show('อย่าพึ่งทำ ไปคุยกับ UI ก่อน');
+    setTimeout(async () => {
+      const swiper = document.querySelector('swiper-container')?.swiper;
+      swiper?.pagination
+      if (swiper) {
+        swiper.on('slideChange', () => {
+          console.log('Slide changed to:', swiper.activeIndex+1);
+          if (this.limit - swiper.activeIndex == 1) {
+            this.limit = this.limit + 10;
+            this.home_ser.quote_booking(this.limit,this.isChecked);
+          }
+        });
+      }
+      await this.loadingService.hide();
+    },100000);
+    
   }
   Topreview(quoteId: string) {
     console.log(quoteId);
