@@ -96,27 +96,28 @@ export class QuotePreviewPage implements OnInit {
 
   async ionViewDidEnter() {
 
-    // await this.loadingService.show("ก็บอกว่า อย่าพึ่งทำ");
+    await this.loadingService.show();
+
 
     setTimeout(async () => {
       for (let i = 0; i < this.dt_q.length; i++) {
         this.t_row[i] = [];
+
+        const $data = this.dt_q[i]['movement_quote'];
   
-        for (let j = 0; j < this.dt_q[i]['movement_quote'].length; j++) {
+        for (let j = 0; j < $data.length; j++) {
           const targetRow = document.querySelector(`#row_start_${i}_${j}`) as HTMLElement;
   
           if (targetRow) {
             const targetHeight = targetRow.offsetHeight;
             this.t_row[i][j] = targetHeight;
-            console.log(`ความสูงของ #row_start_${i}_${j}: ${targetHeight}px`);
           } else {
-            console.log(`ไม่พบ #row_start_${i}_${j}`);
             this.t_row[i][j] = 0;
           }
         }
       }
       await this.loadingService.hide();
-    }, 100000);
+    }, 1000);
   }
 
   

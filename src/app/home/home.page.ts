@@ -62,7 +62,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit() {  
 
-    // await this.loadingService.show('อย่าพึ่งทำ ไปคุยกับ UI ก่อน');
+    await this.loadingService.show();
     setTimeout(async () => {
       const swiper = document.querySelector('swiper-container')?.swiper;
       swiper?.pagination
@@ -76,7 +76,7 @@ export class HomePage implements OnInit {
         });
       }
       await this.loadingService.hide();
-    },100000);
+    },1000);
     
   }
   Topreview(quoteId: string) {
