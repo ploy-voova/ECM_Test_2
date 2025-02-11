@@ -10,6 +10,8 @@ import { QuotePreviewPage } from './quote-preview.page';
 
 import { ExploreHeaderComponentModule } from '../explore-header/explore-header.module';
 import { SharedMapModule } from '../sharedMap/sharedMap.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { SharedMapModule } from '../sharedMap/sharedMap.module';
     ExploreHeaderComponentModule,
     SharedMapModule
   ],
-  declarations: [QuotePreviewPage]
+  declarations: [QuotePreviewPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class QuotePreviewPageModule {}

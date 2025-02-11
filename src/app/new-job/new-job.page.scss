@@ -25,7 +25,7 @@ ion-grid {
     // width: 160px;
     height: 40px;
     min-height: 40px;
-    --background: #1F8447 0% 0% no-repeat padding-box;
+    --background: #2EA455 0% 0% no-repeat padding-box;
     --border-radius: 2px;
     opacity: 1;
     text-transform: none !important;
@@ -98,7 +98,7 @@ ion-grid {
     height: 40px;
     background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
     background: #469FD1 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
+    box-shadow: none;
     border-radius: 2px;
     opacity: 1;
 }
@@ -120,6 +120,7 @@ ion-grid {
     --padding-start: 4%;
     opacity: 1;
 }
+
 .icon {
     font-size: 25px;
     color: #469FD1;
@@ -221,28 +222,95 @@ ion-select-option {
     opacity: 1;
 }
 
+ion-segment {
+    height: 41px;
+    margin-bottom: 0.5%;
+    background: #DFDFDF 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    opacity: 1;
+}
+
 ion-segment-view {
     width: 100%;
-    height: 216px;
-    background: #F3F3F3 0% 0% no-repeat padding-box;
+    height: 165px;
+    background: #DFDFDF 0% 0% no-repeat padding-box;
     border-top: none;
     border-radius: 2px;
     opacity: 1;
 }
 
+// ion-segment-button{
+//     border-radius: 2px !important;
+//     background-color: #2EA455;
+// }
+
+// ion-segment-button::part(native) {
+//     --border-radius: 2px;
+//   }
+
+ion-segment-button::part(indicator-background) {
+    background: #469FD1;
+    clip-path: inset(0% round 2px);
+    /* กำหนด border-radius */
+
+
+}
+
+.f-seg{
+    text-align: left;
+    font: normal normal normal 16px/14px Roboto;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+
+/* Material Design styles */
+ion-segment-button.md::part(native) {
+    color: #000;
+}
+
+.segment-button-checked.md::part(native) {
+    color: #469FD1;
+}
+
+ion-segment-button.md::part(indicator-background) {
+    height: 4px;
+}
+
+/* iOS styles */
+ion-segment-button.ios::part(native) {
+    color: #000;
+}
+
+.segment-button-checked.ios::part(native) {
+    color: #FFFF;
+}
+
+ion-segment-button.ios::part(indicator-background) {
+    width: 95%;
+    height: 30px;
+    min-height: 30px;
+    border-radius: 4px;
+    margin-top: 2%;
+}
+
 
 .input-segment {
+    // height: 40px;
+    // min-height: 10px;
+    --padding-start: 6%;
+    --padding-end: 6%;
+    // --padding: 5%;
+    padding-left: 5%;
+    margin-bottom: 5%;
     height: 40px;
-    min-height: 10px;
-    margin-bottom: 10%;
-    --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: none;
     border-radius: 2px;
+    --placeholder-opacity: var(--ion-placeholder-opacity, 1);
     opacity: 1;
+    color: #747474;
 
     ::placeholder {
-        color: red;
+        color: #747474;
         opacity: 1;
     }
 }
@@ -264,34 +332,34 @@ ion-header {
 }
 
 ion-checkbox::part(container) {
-    background-color: white !important; 
-    border: 1px solid #ccc !important; 
-    border-radius: 2px; 
-  }
-  
-  /* เมื่อ checkbox ถูกเลือก (checked) */
-  ion-checkbox[aria-checked="true"]::part(container) {
-    border-color: #469FD1 !important; 
-    background-color: #469FD1 !important; 
-  }
-  
-  ion-checkbox {
+    background-color: white !important;
+    border: 1px solid #ccc !important;
+    border-radius: 2px;
+}
+
+/* เมื่อ checkbox ถูกเลือก (checked) */
+ion-checkbox[aria-checked="true"]::part(container) {
+    border-color: #469FD1 !important;
+    background-color: #469FD1 !important;
+}
+
+ion-checkbox {
     --size: 15px;
     --background: #ffffff !important;
-    --border-color: #ccc !important; 
+    --border-color: #ccc !important;
     --border-width: 1px;
-  }
-  
-  /* กำหนดสีขีดเครื่องหมายถูก (checkmark) */
-  ion-checkbox::part(mark) {
-    color: #ffffff !important;
-  }
+}
 
-  .white-background {
+/* กำหนดสีขีดเครื่องหมายถูก (checkmark) */
+ion-checkbox::part(mark) {
+    color: #ffffff !important;
+}
+
+.white-background {
     --background: #ffffff !important;
 }
 
-ion-select-option{
+ion-select-option {
     --background: #ffffff !important;
 }
 
@@ -299,50 +367,72 @@ ion-select-option{
     --highlight-color: none;
 }
 
-.padding-input-left{
+.padding-input-left {
     padding-left: 3%;
 }
 
-.padding-input-right{
+.padding-input-right {
     padding-right: 3%;
 }
 
-.margin-input{
+.margin-input {
     margin-bottom: 1%;
 }
 
-.mb-2{
+.mb-2 {
     margin-bottom: 2%;
 }
 
 .ion-fab-button-h {
-    width: 40px;
-    height: 40px;
-    --background: #71B4DA 0% 0% no-repeat padding-box;
-    --box-shadow: 0px 3px 6px #00000029;
-    --border-radius: 4px;
-    --background-activated: transparent;
-    --background-hover: transparent;
-    --ripple-color: transparent;
+    width: 100px;
+    height: 47px;
+    min-height: 47px;
+    margin-left: -100%;
+    background: #2EA455 0% 0% no-repeat padding-box;
+    border-radius: 50px;
     opacity: 1;
 }
 
 .ion-fab-button-c {
-    width: 30px;
+    margin: 0;
+    width: 100%;
     height: 30px;
-    --background: #71B4DA 0% 0% no-repeat padding-box;
+    --background: #397C53 0% 0% no-repeat padding-box;
     --box-shadow: 0px 3px 6px #00000029;
-    --border-radius: 4px;
+    --border-radius: 1px;
     --background-activated: transparent;
     --background-hover: transparent;
     --ripple-color: transparent;
     opacity: 1;
 }
 
-.icon-fab-h{
+.icon-fab-h {
     font-size: 50px;
+    color: #fff;
 }
 
-.icon-fab-c{
+.icon-fab-c {
+    // font-size: 50px;
     color: #FFFFFF;
+    margin-right: 5%;
+}
+
+.feb-list {
+    width: 436px;
+    height: 47px;
+    min-height: 47px;
+    margin-left: -15%;
+    background: #2EA455 0% 0% no-repeat padding-box;
+    border-radius: 24px;
+    opacity: 1;
+}
+
+.col {
+    height: 35px;
+    min-height: 35px;
+}
+
+.icon-fight {
+    font-size: 28px;
+    color: #469FD1;
 }

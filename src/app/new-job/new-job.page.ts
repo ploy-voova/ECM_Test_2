@@ -90,6 +90,8 @@ export class NewJobPage implements OnInit {
   name_address:any;
   isModalOpen = false;
   temp_addess:any;
+  checkfabButton: boolean = true ;
+
 
   constructor(private popoverController: PopoverController,
     public newjob_ser: NewjobService,) {
@@ -97,6 +99,11 @@ export class NewJobPage implements OnInit {
 
   ngOnInit() {
     this.select_journeyT()
+  }
+
+  toggleFabButton(){
+    this.checkfabButton = !this.checkfabButton;
+    console.log("but"+this.checkfabButton);   
   }
 
 

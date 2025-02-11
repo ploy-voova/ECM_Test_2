@@ -5,21 +5,29 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-fab slot="fixed" vertical="bottom" horizontal="start" class="center" style="padding: 2%;" >
-    <ion-fab-button class="ion-fab-button-h">
-      <ion-icon name="add-outline" class="icon-fab-h"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="top">
-      <ion-fab-button class="ion-fab-button-c" >
-        <ion-icon name="save-outline" class="icon-fab-c"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button class="ion-fab-button-c">
-        <ion-icon name="bookmark-outline" class="icon-fab-c"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button class="ion-fab-button-c">
-        <ion-icon name="chevron-up-outline" class="icon-fab-c"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start" class="center">
+    <ion-col *ngIf="checkfabButton == true" class="ion-fab-button-h center-right" (click)="toggleFabButton()">
+      <ion-icon name="chevron-forward-outline" class="icon-fab-h"></ion-icon>
+    </ion-col>
+    <ion-list side="end" class="feb-list center" *ngIf="checkfabButton == false">
+      <ion-row class="center" style="width: 100%; padding-left: 5%;">
+        <ion-col size="3.5" class="center col" style="border-right: 2px solid #FFFFFF;">
+          <ion-icon name="bookmark-outline" class="icon-fab-c"></ion-icon>
+          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFFFFF;">Book Now</ion-fab-label>
+        </ion-col>
+        <ion-col size="3.5" class="center col" >
+          <ion-icon name="share-social-outline"class="icon-fab-c" ></ion-icon>
+          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFFFFF;">Save & Send</ion-fab-label>
+        </ion-col>
+        <ion-col size="3.5" class="center col" style="border-left: 2px solid #FFFFFF;">
+          <ion-icon name="save-outline" class="icon-fab-c" ></ion-icon>
+          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFFFFF;" >Quick Save</ion-fab-label>
+        </ion-col>
+        <ion-col size="1.5" class="center col" (click)="toggleFabButton()">
+          <ion-icon name="chevron-forward-outline" class="icon-fab-h"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-list>
   </ion-fab>
   <ion-grid>
     <ion-col size="12" class="center">

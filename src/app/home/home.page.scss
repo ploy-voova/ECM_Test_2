@@ -442,6 +442,11 @@ ion-modal {
     opacity: 1;
 }
 
+ion-slides {
+    --bullet-background: #469FD1; /* เปลี่ยนสีจุด */
+    --bullet-background-active: #FF5733; /* เปลี่ยนสีจุดที่ active */
+  }
+
 .btn-new-quote{
     width: 160px;
     height: 40px;

@@ -62,7 +62,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit() {  
 
-    await this.loadingService.show('อย่าพึ่งทำ ไปคุยกับ UI ก่อน');
+    // await this.loadingService.show('อย่าพึ่งทำ ไปคุยกับ UI ก่อน');
     setTimeout(async () => {
       const swiper = document.querySelector('swiper-container')?.swiper;
       swiper?.pagination

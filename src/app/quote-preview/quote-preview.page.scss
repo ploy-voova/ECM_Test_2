@@ -667,35 +667,52 @@ ion-input {
 }
 
 .ion-fab-button-h {
-    width: 40px;
-    height: 40px;
-    --background: #71B4DA 0% 0% no-repeat padding-box;
-    --box-shadow: 0px 3px 6px #00000029;
-    --border-radius: 4px;
-    --background-activated: transparent;
-    --background-hover: transparent;
-    --ripple-color: transparent;
+    width: 100px;
+    height: 47px;
+    min-height: 47px;
+    margin-left: -100%;
+    background: #2EA455 0% 0% no-repeat padding-box;
+    border-radius: 50px;
     opacity: 1;
 }
 
 .ion-fab-button-c {
-    width: 30px;
+    margin: 0;
+    width: 100%;
     height: 30px;
-    --background: #71B4DA 0% 0% no-repeat padding-box;
+    --background: #397C53 0% 0% no-repeat padding-box;
     --box-shadow: 0px 3px 6px #00000029;
-    --border-radius: 4px;
+    --border-radius: 1px;
     --background-activated: transparent;
     --background-hover: transparent;
     --ripple-color: transparent;
     opacity: 1;
 }
 
-.icon-fab-h{
+.icon-fab-h {
     font-size: 50px;
+    color: #fff;
 }
 
-.icon-fab-c{
+.icon-fab-c {
+    // font-size: 50px;
     color: #FFFFFF;
+    margin-right: 5%;
+}
+
+.feb-list {
+    width: 436px;
+    height: 47px;
+    min-height: 47px;
+    margin-left: -15%;
+    background: #2EA455 0% 0% no-repeat padding-box;
+    border-radius: 24px;
+    opacity: 1;
+}
+
+.col {
+    height: 35px;
+    min-height: 35px;
 }
 
 

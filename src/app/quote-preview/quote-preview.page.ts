@@ -69,6 +69,8 @@ export class QuotePreviewPage implements OnInit {
   luggage_tran: any;
   journey_type_tran: any;
 
+  checkfabButton: boolean = true ;
+
   constructor(
     private router: ActivatedRoute,
     private popoverController: PopoverController,
@@ -87,9 +89,14 @@ export class QuotePreviewPage implements OnInit {
     this.journey_quote();
   }
 
+  toggleFabButton(){
+    this.checkfabButton = !this.checkfabButton;
+    console.log("but"+this.checkfabButton);   
+  }
+
   async ionViewDidEnter() {
 
-    await this.loadingService.show("ก็บอกว่า อย่าพึ่งทำ");
+    // await this.loadingService.show("ก็บอกว่า อย่าพึ่งทำ");
 
     setTimeout(async () => {
       for (let i = 0; i < this.dt_q.length; i++) {
