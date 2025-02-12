@@ -96,12 +96,8 @@ export class QuotePreviewPage implements OnInit {
   }
 
   // async ionViewDidEnter() {
-
+  
   // }
-
-  
-  
-
 
   async journey_quote() {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
