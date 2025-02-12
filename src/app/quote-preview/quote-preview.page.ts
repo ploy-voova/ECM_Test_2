@@ -143,7 +143,7 @@ export class QuotePreviewPage implements OnInit {
     this.dt_m = res['Misc'];
 
     setTimeout(async () => {
-      for (let i = 0; i < this.dt_q.length; i++) {
+      for (let i = 0; i < res['journey_quote'].length; i++) {
         this.t_row[i] = [];
 
         const $data = res['journey_quote'][i]['movement_quote'];

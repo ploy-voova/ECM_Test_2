@@ -29,6 +29,7 @@ ion-grid {
     min-height: 40px;
     --background: #2EA455 0% 0% no-repeat padding-box;
     --border-radius: 2px;
+    --box-shadow: none;
     opacity: 1;
     text-transform: none !important;
 }
@@ -126,7 +127,7 @@ ion-grid {
     --placeholder-opacity: var(--ion-placeholder-opacity, 1);
     color: #707070;
     --padding-start: 4%;
-    opacity: 1;
+    // opacity: 1;
 }
 
 .icon {
@@ -395,7 +396,7 @@ ion-select-option {
     width: 100px;
     height: 47px;
     min-height: 47px;
-    margin-left: -90%;
+    margin-left: -135%;
     background: #2EA455 0% 0% no-repeat padding-box;
     border-radius: 50px;
     opacity: 1;
@@ -429,7 +430,7 @@ ion-select-option {
     width: 440px;
     height: 47px;
     min-height: 47px;
-    margin-left: -13%;
+    margin-left: -15%;
     background: #2EA455 0% 0% no-repeat padding-box;
     border-radius: 24px;
     opacity: 1;
@@ -452,10 +453,33 @@ ion-select-option {
     opacity: 1;
 }
 .text-truncate {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    white-space: nowrap; /* ป้องกันการขึ้นบรรทัดใหม่ */
+    overflow: hidden; /* ซ่อนข้อความที่เกินขอบเขต */
+    text-overflow: ellipsis; /* แสดง "..." เมื่อข้อความเกิน */
     width: 100%;
+}
+
+.input-text::part(native) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* ตัดข้อความ placeholder ที่เกิน */
+    display: block;
+    width: 100%;
+  }
+
+  ion-input::part(native) {
+    color: #747474;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ion-input{
+    --placeholder-color: #747474;
+    --placeholder-opacity: 1;
+    --placeholder-text-overflow: ellipsis;
+    --placeholder-white-space: nowrap;
+    --placeholder-overflow: hidden;
 }
 
 // ion-input::part(native) input::placeholder {
