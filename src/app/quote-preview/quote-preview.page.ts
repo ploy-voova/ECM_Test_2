@@ -82,6 +82,7 @@ export class QuotePreviewPage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    await this.loadingService.show();
     this.router.paramMap.subscribe((params) => {
       this.q_id = params.get('quoteId');
       this.quote_pre.qId = this.q_id;
@@ -141,7 +142,6 @@ export class QuotePreviewPage implements OnInit {
     this.dt_p = res['Pricing'];
     this.dt_m = res['Misc'];
 
-    await this.loadingService.show();
     setTimeout(async () => {
       for (let i = 0; i < this.dt_q.length; i++) {
         this.t_row[i] = [];
