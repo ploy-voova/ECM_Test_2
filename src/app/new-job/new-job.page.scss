@@ -5,9 +5,10 @@ ion-grid {
 .ion-button-blue {
     height: 41px;
     min-height: 41px;
-    --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
-    background: #469FD1 0% 0% no-repeat padding-box;
-    border-radius: 2px;
+    // --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    --background: #469FD1 0% 0% no-repeat padding-box;
+    --border-radius: 2px;
+    --box-shadow: none;
     opacity: 1;
     text-transform: none !important;
 }
@@ -17,6 +18,7 @@ ion-grid {
     min-height: 40px;
     --background: #ACACAC 0% 0% no-repeat padding-box;
     --border-radius: 2px;
+    --box-shadow: none;
     opacity: 1;
     text-transform: none !important;
 }
@@ -30,6 +32,12 @@ ion-grid {
     opacity: 1;
     text-transform: none !important;
 }
+
+// ion-button {
+//     --background-activated: #5fb6e9;
+//     --background-hover: transparent;
+//     --ripple-color: transparent;
+// }
 
 .font-16 {
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
@@ -256,7 +264,7 @@ ion-segment-button::part(indicator-background) {
 
 }
 
-.f-seg{
+.f-seg {
     text-align: left;
     font: normal normal normal 16px/14px Roboto;
     letter-spacing: 0px;
@@ -387,7 +395,7 @@ ion-select-option {
     width: 100px;
     height: 47px;
     min-height: 47px;
-    margin-left: -100%;
+    margin-left: -90%;
     background: #2EA455 0% 0% no-repeat padding-box;
     border-radius: 50px;
     opacity: 1;
@@ -407,7 +415,7 @@ ion-select-option {
 }
 
 .icon-fab-h {
-    font-size: 50px;
+    font-size: 30px;
     color: #fff;
 }
 
@@ -418,10 +426,10 @@ ion-select-option {
 }
 
 .feb-list {
-    width: 436px;
+    width: 440px;
     height: 47px;
     min-height: 47px;
-    margin-left: -15%;
+    margin-left: -13%;
     background: #2EA455 0% 0% no-repeat padding-box;
     border-radius: 24px;
     opacity: 1;
@@ -436,3 +444,23 @@ ion-select-option {
     font-size: 28px;
     color: #469FD1;
 }
+
+.row-blue {
+    height: 41px;
+    background: #469FD1 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+}
+.text-truncate {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+// ion-input::part(native) input::placeholder {
+//     font-size: 14px;  /* กำหนดขนาดตัวอักษร */
+//     color: #888;      /* กำหนดสี */
+//     font-family: Arial, sans-serif;  /* กำหนดฟอนต์ */
+//   }
+

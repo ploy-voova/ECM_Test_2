@@ -153,6 +153,7 @@ export class QuotePreviewPage implements OnInit {
     // this.time_j = res[0]['movement_quote'][0]['time_start'];
 
     this.dt_q = res['journey_quote'];
+    
     this.date_j = res['journey_quote'][0]['movement_quote'][0]['date_start'];
     this.time_j = res['journey_quote'][0]['movement_quote'][0]['time_start'];
     this.quote_pre.checkAll = res['journey_quote'].map(() => false);

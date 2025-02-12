@@ -13,20 +13,20 @@
       <ion-icon name="chevron-forward-outline" class="icon-fab-h"></ion-icon>
     </ion-col>
     <ion-list side="end" class="feb-list center" *ngIf="checkfabButton == false">
-      <ion-row class="center" style="width: 100%; padding-left: 5%;">
+      <ion-row class="center" style="width: 100%; padding-left: 8%;">
         <ion-col size="3.5" class="center col" style="border-right: 2px solid #FFFFFF;">
           <ion-icon name="bookmark-outline" class="icon-fab-c"></ion-icon>
           <ion-fab-label class="font-16" style="font-weight: 300;">Book Now</ion-fab-label>
         </ion-col>
-        <ion-col size="3.5" class="center col" >
+        <ion-col size="3.6" class="center col" >
           <ion-icon name="share-social-outline"class="icon-fab-c" ></ion-icon>
           <ion-fab-label class="font-16" style="font-weight: 300;">Save & Send</ion-fab-label>
         </ion-col>
-        <ion-col size="3.5" class="center col" style="border-left: 2px solid #FFFFFF;">
+        <ion-col size="3.4" class="center col" style="border-left: 2px solid #FFFFFF;">
           <ion-icon name="save-outline" class="icon-fab-c" ></ion-icon>
           <ion-fab-label class="font-16" style="font-weight: 300;">Quick Save</ion-fab-label>
         </ion-col>
-        <ion-col size="1.5" class="center col" (click)="toggleFabButton()">
+        <ion-col size="1.5" class="center col no-padding" (click)="toggleFabButton()">
           <ion-icon name="chevron-forward-outline" class="icon-fab-h"></ion-icon>
         </ion-col>
       </ion-row>
@@ -58,7 +58,7 @@
     </ion-row>
     <ion-row style=" margin-bottom: 4%; margin-top: 5%; ">
       <ion-col size="6" style="padding-left: 0;">
-        <ion-row class="ion-button-blue font-16 no-padding center">
+        <ion-row class="row-blue font-16 no-padding center">
           Create a new Quote
         </ion-row>
       </ion-col>
@@ -74,11 +74,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleRowCus()">
-          <ion-col size="7" class="center-left">
+          <ion-col size="6" class="center-left">
             <ion-icon name="person-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Customer</ion-label>
           </ion-col>
-          <ion-col size="5" class="center" style="justify-content: space-between;">
+          <ion-col size="6" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="mail-outline"></ion-icon>
             <ion-icon class="iconbar" name="call-outline"></ion-icon>
             <ion-icon class="iconbar" name="id-card-outline"></ion-icon>
@@ -132,11 +132,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleRowTran()">
-          <ion-col size="8" class="center-left">
+          <ion-col size="7.5" class="center-left">
             <ion-icon name="bus-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Transport</ion-label>
           </ion-col>
-          <ion-col size="4" class="center" style="justify-content: space-between;">
+          <ion-col size="4.5" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="people-circle-outline"></ion-icon>
             <ion-icon class="iconbar" name="briefcase-outline"></ion-icon>
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
@@ -271,11 +271,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleRowPricing()">
-          <ion-col size="10" class="center-left">
+          <ion-col size="9.9" class="center-left">
             <ion-icon name="cash-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Pricing</ion-label>
           </ion-col>
-          <ion-col size="2" class="center" style="justify-content: space-between;">
+          <ion-col size="2.1" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
             <ion-icon class="iconbar" [name]="iconNamePrice"></ion-icon>
           </ion-col>
@@ -345,7 +345,7 @@
       <ion-col size="6" style="margin-top: 5%;">
         <ion-row>
           <ion-col size="12" style="padding-top: 0;">
-            <ion-input class="input font-14" placeholder="Balance Due Date">
+            <ion-input class="input font-14 text-truncate" id="input-field" placeholder="Balance Due Date">
               <ion-icon class="icon" slot="end" name="today-outline" style="padding-right: 5%;"></ion-icon>
             </ion-input>
           </ion-col>
@@ -362,11 +362,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleRowMisc()">
-          <ion-col size="10" class="center-left">
+          <ion-col size="9.9" class="center-left">
             <ion-icon name="help-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Misc</ion-label>
           </ion-col>
-          <ion-col size="2" class="center" style="justify-content: space-between;">
+          <ion-col size="2.1" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
             <ion-icon class="iconbar" [name]="iconNameMisc"></ion-icon>
           </ion-col>
@@ -376,7 +376,7 @@
 
     <ion-row *ngIf="isRowvisibleMisc" style="margin-top: 3%; padding: 2%;">
       <ion-col size="5.5">
-        <ion-label class="font-14" style="color: #707070;">How did you hear of us ?</ion-label>
+        <ion-label class="font-14" style="color: #707070; white-space: nowrap;">How did you hear of us ?</ion-label>
         <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="No"
           style="margin-top: 5%;">
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -444,11 +444,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleRowItem()">
-          <ion-col size="10" class="center-left">
+          <ion-col size="9.9" class="center-left">
             <ion-icon name="pricetags-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Item</ion-label>
           </ion-col>
-          <ion-col size="2" class="center" style="justify-content: space-between;">
+          <ion-col size="2.1" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
             <ion-icon class="iconbar" [name]="iconNameItem"></ion-icon>
           </ion-col>
@@ -498,7 +498,7 @@
         </ion-button>
       </ion-col>
       <ion-col size="4">
-        <ion-button class="ion-button-green font-14" style="color: #ffff; width: 100%;">
+        <ion-button class="ion-button-green font-14 " style="color: #ffff; width: 100%; white-space: nowrap;">
           Send and Save
         </ion-button>
       </ion-col>
@@ -548,11 +548,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleRowStart()">
-          <ion-col size="11" class="center-left">
+          <ion-col size="10.9" class="center-left">
             <ion-icon name="map-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Start of Journey</ion-label>
           </ion-col>
-          <ion-col size="1" class="center" style="justify-content: space-between;">
+          <ion-col size="1.1" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" [name]="iconNameStart"></ion-icon>
           </ion-col>
         </ion-row>
@@ -857,7 +857,7 @@
         <ion-button class="ion-button-blue font-16" style="width: 100%;">Add Blank Journey</ion-button>
       </ion-col>
       <ion-col size="4">
-        <ion-button class="ion-button-blue font-16" style="width: 100%;">Add Return</ion-button>
+        <ion-button class="ion-button-blue font-16" style="width: 100%; white-space: nowrap;">Add Return</ion-button>
       </ion-col>
       <ion-col size="6">
         <ion-button class="ion-button-blue font-16" style="width: 100%;">Remove Movement</ion-button>
@@ -866,16 +866,16 @@
         <ion-button class="ion-button-gray font-16" style="width: 100%;">Covering job</ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button class="ion-button-gray font-16" style="width: 100%;">Duplicate Movement</ion-button>
+        <ion-button class="ion-button-gray font-16" style="width: 100%; white-space: nowrap;">Duplicate Movement</ion-button>
       </ion-col>
       <ion-col size="5.5">
-        <ion-button class="ion-button-gray font-16" style="width: 100%;">Duplicate Journey</ion-button>
+        <ion-button class="ion-button-gray font-16" style="width: 100%; white-space: nowrap;">Duplicate Journey</ion-button>
       </ion-col>
       <ion-col size="4.5">
-        <ion-button class="ion-button-gray font-16" style="width: 100%;">Assign Driver</ion-button>
+        <ion-button class="ion-button-gray font-16" style="width: 100%; white-space: nowrap;">Assign Driver</ion-button>
       </ion-col>
       <ion-col size="5">
-        <ion-button class="ion-button-gray font-16" style="width: 100%;">Remove Driver</ion-button>
+        <ion-button class="ion-button-gray font-16" style="width: 100%; white-space: nowrap;">Remove Driver</ion-button>
       </ion-col>
       <ion-col size="12" class="center-right">
         <ion-icon (click)="togglemap()" name="map" style="color: #469FD1; font-size: 27px;"></ion-icon>
