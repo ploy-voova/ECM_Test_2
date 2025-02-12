@@ -24,14 +24,19 @@ export class HomePage implements OnInit {
   }
 
   one(){
+    const today = new Date();
+    const date_start = new Intl.DateTimeFormat('en-GB').format(today);
+    today.setDate(today.getDate() + 14);
+    const date_end = new Intl.DateTimeFormat('en-GB').format(today);
+    
     // this.glo.data = {
     //   d: 'adminlib',
     //   f: 'list-booking.php',
     //   callback: '',
     //   pagesize: '10',
     //   callbacks: '',
-    //   date_start: '04/02/2025',
-    //   date_end: '18/02/2025',
+    //   date_start: date_start,
+    //   date_end: date_end,
     //   date_booking_start: '',
     //   date_booking_end: '',
     //   grid_type: '3',
@@ -61,7 +66,6 @@ export class HomePage implements OnInit {
   }
 
   async ngOnInit() {  
-
     await this.loadingService.show();
     setTimeout(async () => {
       const swiper = document.querySelector('swiper-container')?.swiper;

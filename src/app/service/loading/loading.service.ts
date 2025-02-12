@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 
 @Injectable({
-  providedIn: 'root', // ให้ Service นี้ถูกใช้งานได้ทั่วแอป
+  providedIn: 'root',
 })
 export class LoadingService {
   private loading: HTMLIonLoadingElement | null = null;
