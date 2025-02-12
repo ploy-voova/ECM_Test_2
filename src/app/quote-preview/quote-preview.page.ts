@@ -94,31 +94,9 @@ export class QuotePreviewPage implements OnInit {
     console.log("but"+this.checkfabButton);   
   }
 
-  async ionViewDidEnter() {
+  // async ionViewDidEnter() {
 
-    await this.loadingService.show();
-
-
-    setTimeout(async () => {
-      for (let i = 0; i < this.dt_q.length; i++) {
-        this.t_row[i] = [];
-
-        const $data = this.dt_q[i]['movement_quote'];
-  
-        for (let j = 0; j < $data.length; j++) {
-          const targetRow = document.querySelector(`#row_start_${i}_${j}`) as HTMLElement;
-  
-          if (targetRow) {
-            const targetHeight = targetRow.offsetHeight;
-            this.t_row[i][j] = targetHeight;
-          } else {
-            this.t_row[i][j] = 0;
-          }
-        }
-      }
-      await this.loadingService.hide();
-    }, 1000);
-  }
+  // }
 
   
   
@@ -162,6 +140,27 @@ export class QuotePreviewPage implements OnInit {
     this.dt_t = res['Transport'];
     this.dt_p = res['Pricing'];
     this.dt_m = res['Misc'];
+
+    await this.loadingService.show();
+    setTimeout(async () => {
+      for (let i = 0; i < this.dt_q.length; i++) {
+        this.t_row[i] = [];
+
+        const $data = res['journey_quote'][i]['movement_quote'];
+  
+        for (let j = 0; j < $data.length; j++) {
+          const targetRow = document.querySelector(`#row_start_${i}_${j}`) as HTMLElement;
+  
+          if (targetRow) {
+            const targetHeight = targetRow.offsetHeight;
+            this.t_row[i][j] = targetHeight;
+          } else {
+            this.t_row[i][j] = 0;
+          }
+        }
+      }
+      await this.loadingService.hide();
+    }, 1000);
   }
 
   to_CoveringJob() {
