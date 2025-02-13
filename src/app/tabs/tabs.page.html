@@ -1,20 +1,28 @@
 
 
-<ion-menu side="end" menuId="first-menu" contentId="main-content">
+<!-- <ion-menu side="end" menuId="firstMenu" contentId="main-content">
+  <ion-content>
+    <ion-list>
+      <ion-item>Menu Item 1</ion-item>
+      <ion-item>Menu Item 2</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu> -->
+
+<ion-menu side="end" menuId="firstMenu" contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>First Menu</ion-title>
+      <ion-title>Menu Content</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-item routerLink="/tabs/inbox">
-          <ion-icon name="mail-outline"></ion-icon>
-          <h1>Inbox</h1>
-    </ion-item>
+    <ion-menu-toggle>
+      <ion-button >Click to close the menu</ion-button>
+    </ion-menu-toggle>
   </ion-content>
 </ion-menu>
 
-<ion-tabs >
+<!-- <ion-tabs >
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button #iconN tab="new-job" (click)="changeIcon_Newjob()">
@@ -44,4 +52,35 @@
     </ion-tab-button>
   </ion-tab-bar>
 
-</ion-tabs>
+</ion-tabs> -->
+
+<ion-content id="main-content">
+  <ion-tabs (ionTabsDidChange)="setActiveTab($event)">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="new-job">
+        <ion-icon [name]="getIcon('new-job')"></ion-icon>
+        <ion-label>New Job</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="job">
+        <ion-icon [name]="getIcon('job')"></ion-icon>
+        <ion-label>Job</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="home">
+        <ion-icon [name]="getIcon('home')"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="contacts">
+        <ion-icon [name]="getIcon('contacts')"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="toggleMenu(); $event.preventDefault();">
+        <ion-icon [name]="menuIcon"></ion-icon>
+        <ion-label>More</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
+
+
+

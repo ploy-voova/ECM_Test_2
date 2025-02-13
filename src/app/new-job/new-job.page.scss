@@ -71,6 +71,7 @@ ion-grid {
     background: #FFFFFF;
     border: 0.1px solid #ACACAC;
     border-radius: 2px;
+    --box-shadow: none;
     opacity: 1;
     color: #707070;
 }
@@ -127,6 +128,8 @@ ion-grid {
     --placeholder-opacity: var(--ion-placeholder-opacity, 1);
     color: #707070;
     --padding-start: 4%;
+    --padding-end: 4%;
+    --highlight-color: none;
     // opacity: 1;
 }
 
@@ -372,9 +375,13 @@ ion-select-option {
     --background: #ffffff !important;
 }
 
-.ion-valid.sc-ion-input-ios-h {
-    --highlight-color: none;
-}
+// .ion-valid.sc-ion-input-ios-h {
+//     --highlight-color: none;
+// }
+
+// .ion-valid.sc-ion-input-md-h {
+//     --highlight-color: none;
+// }
 
 .padding-input-left {
     padding-left: 3%;
@@ -427,7 +434,7 @@ ion-select-option {
 }
 
 .feb-list {
-    width: 440px;
+    width: 430px;
     height: 47px;
     min-height: 47px;
     margin-left: -15%;
@@ -452,39 +459,187 @@ ion-select-option {
     border-radius: 2px;
     opacity: 1;
 }
+
 .text-truncate {
-    white-space: nowrap; /* ป้องกันการขึ้นบรรทัดใหม่ */
-    overflow: hidden; /* ซ่อนข้อความที่เกินขอบเขต */
-    text-overflow: ellipsis; /* แสดง "..." เมื่อข้อความเกิน */
-    width: 100%;
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .input-text::part(native) {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* ตัดข้อความ placeholder ที่เกิน */
+    text-overflow: ellipsis;
     display: block;
     width: 100%;
-  }
+}
 
-  ion-input::part(native) {
+ion-input::part(native) {
     color: #747474;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  ion-input{
-    --placeholder-color: #747474;
-    --placeholder-opacity: 1;
-    --placeholder-text-overflow: ellipsis;
-    --placeholder-white-space: nowrap;
-    --placeholder-overflow: hidden;
 }
 
-// ion-input::part(native) input::placeholder {
-//     font-size: 14px;  /* กำหนดขนาดตัวอักษร */
-//     color: #888;      /* กำหนดสี */
-//     font-family: Arial, sans-serif;  /* กำหนดฟอนต์ */
-//   }
+ion-input {
+    --placeholder-color: #747474;
+    --placeholder-opacity: 1;
+    // --placeholder-text-overflow: ellipsis;
+    // --placeholder-white-space: nowrap;
+    // --placeholder-overflow: hidden;
+}
 
+.space{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-col-check {
+    flex: 0 0 50%;
+}
+
+.custom-col-op {
+    flex: 0 0 50%;
+}
+
+.custom-col-pick {
+    flex: 0 0 41.67%;
+}
+
+.custom-col-date {
+    flex: 0 0 58.33%;
+}
+
+.custom-col-address {
+    flex: 0 0 79.16%;
+}
+
+.custom-col-address-2 {
+    flex: 0 0 20.83%;
+}
+
+// .col-note{
+
+// }
+
+.setting {
+    // height: 1180;
+    background: #F3F4F6 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    opacity: 1;
+}
+
+ion-toggle {
+    --handle-width: 10px;
+    --handle-height: 10px;
+    color: #FFFFFF;
+    // --track-width: 30px;
+    // --track-height: 18px;
+}
+
+ion-toggle::part(track) {
+    background: #747474;
+}
+
+ion-toggle::part(track) {
+    width: 32px;
+    height: 16px;
+}
+
+ion-toggle.toggle-checked::part(track) {
+    background: #469FD1 !important;
+    --handle-color: #FFFF;
+}
+
+@media (max-width: 390px) {
+    .custom-col-pick {
+        flex: 0 0 35%;
+    }
+
+    .custom-col-date {
+        flex: 0 0 65%;
+    }
+}
+
+@media (max-width: 360px) {
+    .custom-col-check {
+        flex: 0 0 40%;
+    }
+
+    .custom-col-op {
+        flex: 0 0 60%;
+    }
+
+    .custom-col-address {
+        flex: 0 0 75%;
+    }
+
+    .custom-col-address-2 {
+        flex: 0 0 25%;
+    }
+
+    .custom-col-pick {
+        flex: 0 0 100%;
+    }
+
+    .custom-col-date {
+        flex: 0 0 75%;
+    }
+
+}
+
+
+@media (max-width: 425px) {
+    .feb-list {
+        width: 425px;
+        margin-left: -16%;
+    }
+
+    .col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .feb-list {
+        width: 390px;
+    }
+
+    .font-16 {
+        text-align: left;
+        font: normal normal normal 14px/16px Roboto;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    .col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .feb-list {
+        width: 360px;
+        margin-left: -16%;
+        text-align: left;
+    }
+
+    .font-16 {
+        text-align: left;
+        font: normal normal normal 14px/16px Roboto;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    .col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
