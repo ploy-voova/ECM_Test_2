@@ -1,60 +1,25 @@
-:root {
-
-    /* Colors: */
-    --unnamed-color-edeef0: #EDEEF0;
-    --unnamed-color-747474: #747474;
-    --unnamed-color-ff9900: #FF9900;
-    --unnamed-color-000000: #000000;
-    --unnamed-color-f4f5f8: #F4F5F8;
-    --unnamed-color-ffffff: #FFFFFF;
-    --unnamed-color-397c53: #397C53;
-    --unnamed-color-469fd1: #469FD1;
-    --unnamed-color-ff0101: #FF0101;
-    --unnamed-color-03679f: #03679F;
-    --unnamed-color-035887: #035887;
-    --unnamed-color-707070: #707070;
-
-    /* Font/text values */
-    --unnamed-font-family-roboto: Roboto;
-    --unnamed-font-style-normal: normal;
-    --unnamed-font-weight-normal: normal;
-    --unnamed-font-weight-bold: bold;
-    --unnamed-font-size-14: 14px;
-    --unnamed-font-size-16: 16px;
-    --unnamed-character-spacing-0: 0px;
-    --unnamed-line-spacing-17: 17px;
-    --unnamed-line-spacing-19: 19px;
+ion-toolbar {
+    --background: #ffff;
+    border: none;
+    box-shadow: none;
 }
 
-/* Character Styles */
-.unnamed-character-style-1 {
-    font-family: var(--unnamed-font-family-roboto);
-    font-style: var(--unnamed-font-style-normal);
-    font-weight: var(--unnamed-font-weight-normal);
-    font-size: var(--unnamed-font-size-14);
-    line-height: var(--unnamed-line-spacing-17);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-469fd1);
+ion-header {
+    --background: #ffff;
+    box-shadow: none;
+    border-bottom: #fff;
 }
 
-.unnamed-character-style-2 {
-    font-family: var(--unnamed-font-family-roboto);
-    font-style: var(--unnamed-font-style-normal);
-    font-weight: var(--unnamed-font-weight-normal);
-    font-size: var(--unnamed-font-size-14);
-    line-height: var(--unnamed-line-spacing-17);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-000000);
+ion-content {
+    --background: #ffff;
 }
 
-.unnamed-character-style-3 {
-    font-family: var(--unnamed-font-family-roboto);
-    font-style: var(--unnamed-font-style-normal);
-    font-weight: var(--unnamed-font-weight-bold);
-    font-size: var(--unnamed-font-size-16);
-    line-height: var(--unnamed-line-spacing-19);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-ffffff);
+.ios ion-toolbar {
+    padding-top: 5%;
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0 0;
 }
 
 .bar {
@@ -80,7 +45,6 @@
 .font-14 {
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-17) var(--unnamed-font-family-roboto);
     letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-469fd1);
     text-align: left;
     font: normal normal normal 14px/17px Roboto;
     letter-spacing: 0px;
@@ -98,11 +62,6 @@
     color: #469FD1;
     opacity: 1;
 }
-
-.ios ion-toolbar{
-    margin-top: 5%;
-}
-
 
 ion-grid {
     padding: 4%;
@@ -201,28 +160,36 @@ ion-grid {
 }
 
 .item-drop {
-    width: 180px;
-    height: 34px;
-    min-height: 34px;
-    text-align: center;
-    color: #000;
-    --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 0.5px solid var(--unnamed-color-469fd1);
-    --background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 0.5px solid #469FD1C4;
-    border-radius: 2px;
+    // width: 100%;
+    // height: 34px;
+    // min-height: 34px;
+    // text-align: center;
+    // color: #000;
+    // --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    // border: 0.5px solid var(--unnamed-color-469fd1);
+    // --background: #FFFFFF 0% 0% no-repeat padding-box;
+    // border: 0.5px solid #469FD1C4;
+    // border-radius: 2px;
+    // opacity: 1;
+    margin-top: 3%;
+    width: 90%;
+    height: 43px;
+    min-height: 43px;
+    --background: #F3F4F6 0% 0% no-repeat padding-box;
+    --border-radius: 2px;
     opacity: 1;
+    --box-shadow: none;
 }
 
 .item-drop-header {
-    width: 180px;
-    height: 34px;
-    min-height: 34px;
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
     text-align: center;
-    color: #469FD1;
+    color: #FFFF;
     --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     border: 0.5px solid var(--unnamed-color-469fd1);
-    --background: #FFFFFF 0% 0% no-repeat padding-box;
+    --background: #469FD1 0% 0% no-repeat padding-box;
     border: 0.5px solid #469FD1;
     border-radius: 3px;
     opacity: 1;
@@ -293,10 +260,10 @@ ion-textarea {
     margin: 0;
 }
 
-ion-item.item-drop.center.selected {
-    --background: #469FD1C4;
-    color: #ffffff;
-}
+// ion-item.item-drop.center.selected {
+//     // --background: #469FD1C4;
+//     // color: #ffffff;
+// }
 
 ion-modal {
     --border-radius: 13px;
@@ -444,18 +411,6 @@ ion-toolbar {
     opacity: 1;
 }
 
-ion-toolbar {
-    --background: #ffff;
-    border: none;
-    box-shadow: none;
-}
-
-ion-header {
-    --background: #ffff;
-    box-shadow: none;
-    border-bottom: #fff;
-}
-
 .icon-mm {
     font-size: 18px;
     color: #469FD1;
@@ -502,4 +457,41 @@ ion-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.icon-bar {
+    color: #FFFF;
+    font-size: 23px;
+    margin-right: 2%;
+}
+
+ion-accordion-group {
+    position: relative;
+    /* เพื่อให้ accordion ใช้อ้างอิงตำแหน่ง */
+}
+
+ion-accordion {
+    position: absolute;
+    /* ให้ accordion ลอยทับ */
+    width: 100%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    /* ขยายเต็มพื้นที่ */
+    z-index: 10;
+    /* ให้แน่ใจว่าอยู่ด้านบนสุด */
+    background: white;
+    /* ป้องกันโปร่งใส */
+    box-shadow: none;
+    /* เพิ่มเงาให้ดูเด่น */
+
+}
+
+.list-item {
+    margin-top: 2%;
+    height: 159px;
+    /* UI Properties */
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 0.5px solid #ACACAC;
+    border-radius: 2px;
+    opacity: 1;
 }

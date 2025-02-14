@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content class="white-background" [fullscreen]="true">
-  <ion-grid >
+  <ion-grid>
     <ion-row>
       <ion-col size="12" class="center">
         <ion-label class="font-18" style="font-weight: bold;">Covering Job</ion-label>
@@ -15,7 +15,8 @@
           style="margin-top: -7%; margin-bottom: 10%; font-size: 23px; color: #747474; "></ion-icon>
       </ion-col>
       <ion-col size="12" class="bar center-left">
-        <ion-label class="font-18" style="color: #ffff;">Job Select</ion-label>
+        <ion-icon name="folder-open-outline" class="icon-bar"></ion-icon>
+        <ion-label class="font-18" style="color: #ffff;">| Job Select</ion-label>
       </ion-col>
     </ion-row>
     <ion-row style="margin-top: 3%; margin-bottom: 5%;" *ngFor="let j of quotepreviewservice.jm; let i = index;">
@@ -159,7 +160,7 @@
         </ion-row>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col size="6">
         <ion-button class="button-gray font-14">
           <ion-icon name="bag-add-outline"></ion-icon>
@@ -172,522 +173,48 @@
           Start Auto Dialing (4)
         </ion-button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row class="bar">
       <ion-col size="6" style="display: flex; align-items: start; justify-content: start;">
         <ion-label class="font-18" style="color: #ffff; margin-top: 4px;">New Bid</ion-label>
       </ion-col>
-      <ion-col size="6" class="center-right" style="padding-top: 0.8%;">
+    </ion-row>
+    <ion-row style="padding: 2%; margin-top: 2%;">
+      <ion-col offset="5" size="7" style="margin: 0; padding: 0;">
         <ion-accordion-group style="z-index: 3;">
-          <ion-accordion style="background-color: #469FD1C4;">
+          <ion-accordion>
             <ion-item slot="header" class="item-drop-header center">
-              <ion-label class="font-16" style="margin-left: 15%;">Get bids</ion-label>
+              <ion-label class="font-16" style="margin-left: 15%; color: #ffff;">Get bids</ion-label>
             </ion-item>
 
-            <ion-list slot="content" style="background-color: #ffff;">
+            <ion-list class="list-item " slot="content"
+              style="background-color: #ffff; display: block; align-items: center; justify-content: center;">
               <ion-item id="open-modal-orign" class="item-drop center" [class.selected]="selectedItem === 'origin'"
                 (click)="selectItem('origin')">
-                <ion-label class="font-14">Get bids at origin</ion-label>
+                <ion-icon name="pin-outline"></ion-icon>
+                <ion-label class="font-14" style="color: #424242;">Get bids at origin</ion-label>
               </ion-item>
 
               <ion-item id="open-modal-along-route" class="item-drop center" [class.selected]="selectedItem === 'route'"
                 (click)="selectItem('route')">
-                <ion-label class="font-14">Get bids along route</ion-label>
+                <ion-icon name="compass-outline"></ion-icon>
+                <ion-label class="font-14" style="color: #424242;">Get bids along route</ion-label>
               </ion-item>
 
               <ion-item id="open-modal-at-destination" class="item-drop center"
                 [class.selected]="selectedItem === 'destination'" (click)="selectItem('destination')">
-                <ion-label class="font-14 no-margin">Get bids at destination</ion-label>
+                <ion-icon name="flag-outline"></ion-icon>
+                <ion-label class="font-14 no-margin" style="color: #424242;">Get bids at destination</ion-label>
               </ion-item>
             </ion-list>
           </ion-accordion>
         </ion-accordion-group>
-
-        <!-- Modal Get bids at orign -->
-        <ion-modal #modalorign trigger="open-modal-orign" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]" >
-          <ng-template>
-            <ion-content class="content-modal white-background" scroll-y="true" >
-              <ion-grid >
-                <ion-row>
-                  <ion-col size="12" class="center">
-                    <ion-label class="font-18" style="font-weight: bold;">Get bids at orign</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <!-- <ion-icon name="arrow-undo" style="font-size: 20px; color: red; "></ion-icon> -->
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-label class="font-14">Seart By location</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-label class="font-14">Vehicle Type</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-label class="font-14">Vehicle Type</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-label class="font-14">Within</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-label class="font-14">Prefered</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-label class="font-14">Extra Type</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-label class="font-14">Extraitem</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size=12>
-                    <ion-label class="font-14">Quantity</ion-label>
-                  </ion-col>
-                  <ion-col size="6" class="center">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-blue font-14" style="color: #ffff;">Find Now!</ion-button>
-                  </ion-col>
-                  <ion-col size=12>
-                    <ion-label class="font-14">Buy it now price</ion-label>
-                  </ion-col>
-                  <ion-col size="6" class="center">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-blue font-14" style="color: #ffff;">Get Bids</ion-button>
-                  </ion-col>
-                  <ion-col size="3.5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14" style="color: #000000;">Select All</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14" style="color: #000000;">Select All
-                      Preferred</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="3.5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14" style="color: #000000;">Select None</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="6" class="center">
-                    <ion-label class="font-14" style="color: #000000;">Showing 1 - 264 of 264</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-yello font-14 center" style="color: #ffff;">
-                      <ion-icon name="call-outline" style="font-size: 18px; margin-right: 2%;"></ion-icon>
-                      Start Auto Dialing (4)
-                    </ion-button>
-                  </ion-col>
-                  <ion-col size="12" style="max-height: 270px; overflow-y: auto;">
-                    <ion-list>
-                      <ion-item class="item-list center" *ngFor="let item of items">
-                        <ion-col size="4.5" style="padding: 5%;">
-                          <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
-                        </ion-col>
-                        <ion-col size="1.5" style="display: flex;">
-                          <ion-icon name="star" style="color: #FFB300; font-size: 18px;"></ion-icon>
-                          <ion-label class="font-14 color-list">5.0</ion-label>
-                        </ion-col>
-                        <ion-col size="3" style="padding: 3%;">
-                          <ion-label class="font-14">(5.2 mile)</ion-label>
-                        </ion-col>
-                        <ion-col size="2">
-                          <ion-label class="font-14">None</ion-label>
-                        </ion-col>
-                        <ion-col size="1">
-                          <ion-icon class="color-list" name="call-outline"></ion-icon>
-                        </ion-col>
-                      </ion-item>
-                    </ion-list>
-                  
-                    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-                      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-                    </ion-infinite-scroll>
-                  </ion-col>
-                  <ion-col offset="3" size="9" class="center" style="display: flex; margin-bottom: 11%;">
-                    <ion-select class="font-14 ion-select-T" style="color: #FFB300; border-color: #FFB300;"
-                      label-placement="floating" interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                    <ion-button class="ion-button-blue">Apply</ion-button>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-content>
-          </ng-template>
-        </ion-modal>
-
-        <!-- Modal Get bids along route -->
-        <ion-modal #modalroute trigger="open-modal-along-route" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
-          <ng-template>
-            <ion-content class="white-background">
-              <ion-grid >
-                <ion-row>
-                  <ion-col size="12" class="center">
-                    <ion-label class="font-18" style="font-weight: bold;">Get bids along route</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <!-- <ion-icon name="arrow-undo" style="font-size: 20px; color: red; "></ion-icon> -->
-                  </ion-col>
-                  <ion-col size="4" class="center-left">
-                    <ion-label class="font-14" style="color: #747474;">From</ion-label>
-                  </ion-col>
-                  <ion-col size="8" class="center">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="4" class="center-left">
-                    <ion-label class="font-14" style="color: #747474;">To</ion-label>
-                  </ion-col>
-                  <ion-col size="8" class="center">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="4" class="center-left">
-                    <ion-label class="font-14" style="color: #747474;">Vehicle Type</ion-label>
-                  </ion-col>
-                  <ion-col size="8" class="center">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="4" class="center-left">
-                    <ion-label class="font-14" style="color: #747474;">Passengers</ion-label>
-                  </ion-col>
-                  <ion-col size="8" class="center">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="4" class="center-left">
-                    <ion-label class="font-14" style="color: #747474;">Within</ion-label>
-                  </ion-col>
-                  <ion-col size="8" class="center">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="12" class="center-right">
-                    <ion-icon name="map" (click)="showMap()" style="font-size: 25px; color: #469FD1;"></ion-icon>
-                  </ion-col>
-                  <ion-col *ngIf="map" size="12" style="height: 300px;">
-                    <app-map></app-map>
-                  </ion-col>
-                  <ion-col size=12>
-                    <ion-label class="font-14">Buy it now price</ion-label>
-                  </ion-col>
-                  <ion-col size="6" class="center">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-blue font-14" style="color: #ffff;">Get Bids</ion-button>
-                  </ion-col>
-                  <ion-col size="3.5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select All</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select All
-                      Preferred</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="3.5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="6" class="center">
-                    <ion-label class="font-14">Showing 1 - 264 of 264</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-yello font-14 center" style="color: #ffff;">
-                      <ion-icon name="call-outline" style="font-size: 18px; margin-right: 2%;"></ion-icon>
-                      Start Auto Dialing (4)
-                    </ion-button>
-                  </ion-col>
-                  <ion-col size="12" style="max-height: 270px; overflow-y: auto;">
-                    <ion-list>
-                      <ion-item class="item-list center" *ngFor="let item of items">
-                        <ion-col size="4.5" style="padding: 5%;">
-                          <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
-                        </ion-col>
-                        <ion-col size="1.5" style="display: flex;">
-                          <ion-icon name="star" style="color: #FFB300; font-size: 18px;"></ion-icon>
-                          <ion-label class="font-14 color-list">5.0</ion-label>
-                        </ion-col>
-                        <ion-col size="3" style="padding: 3%;">
-                          <ion-label class="font-14">(5.2 mile)</ion-label>
-                        </ion-col>
-                        <ion-col size="2">
-                          <ion-label class="font-14">None</ion-label>
-                        </ion-col>
-                        <ion-col size="1">
-                          <ion-icon class="color-list" name="call-outline"></ion-icon>
-                        </ion-col>
-                      </ion-item>
-                    </ion-list>
-                  
-                    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-                      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-                    </ion-infinite-scroll>
-                  </ion-col>
-                  
-                  <ion-col offset="3" size="9" class="center" style="display: flex; margin-bottom: 11%;">
-                    <ion-select class="font-14 ion-select-T" style="color: #FFB300; border-color: #FFB300;"
-                      label-placement="floating" interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                    <ion-button class="ion-button-blue" >Apply</ion-button>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-content>
-          </ng-template>
-        </ion-modal>
-
-        <!-- Modal Get bids at destination -->
-        <ion-modal #modaldestination trigger="open-modal-at-destination" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
-          <ng-template>
-            <ion-content class="content-modal white-background" scroll-y="true">
-              <ion-grid style="background-color: #ffff;">
-                <ion-row>
-                  <ion-col size="12" class="center">
-                    <ion-label class="font-18" style="font-weight: bold;">Get bids at destination</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <!-- <ion-icon name="arrow-undo" style="font-size: 20px; color: red; "></ion-icon> -->
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-label class="font-14">Seart By location</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-label class="font-14">Vehicle Type</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-label class="font-14">Vehicle Type</ion-label>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-label class="font-14">Within</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-label class="font-14">Prefered</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-label class="font-14">Extra Type</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-label class="font-14">Extraitem</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size=12>
-                    <ion-label class="font-14">Quantity</ion-label>
-                  </ion-col>
-                  <ion-col size="6" class="center">
-                    <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-                      interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-blue font-14" style="color: #ffff;">Find Now!</ion-button>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-blue-no-back font-14">FCustom Email</ion-button>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-blue-no-back font-14">Emergency SMS</ion-button>
-                  </ion-col>
-                  <ion-col size="12">
-                    <ion-input class="input font-14" style="color: #747474;" placeholder=" SMS Text"></ion-input>
-                  </ion-col>
-                  <ion-col size=12>
-                    <ion-label class="font-14">Buy it now price</ion-label>
-                  </ion-col>
-                  <ion-col size="6" class="center">
-                    <ion-input class="input"></ion-input>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-blue font-14" style="color: #ffff;">Get Bids</ion-button>
-                  </ion-col>
-                  <ion-col size="3.5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select All</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select All
-                      Preferred</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="3.5">
-                    <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
-                  </ion-col>
-                  <ion-col size="6" class="center">
-                    <ion-label class="font-14">Showing 1 - 264 of 264</ion-label>
-                  </ion-col>
-                  <ion-col size="6">
-                    <ion-button class="ion-button-yello font-14 center" style="color: #ffff;">
-                      <ion-icon name="call-outline" style="font-size: 18px; margin-right: 2%;"></ion-icon>
-                      Start Auto Dialing (4)
-                    </ion-button>
-                  </ion-col>
-                  <ion-col size="12" style="max-height: 270px; overflow-y: auto;">
-                    <ion-list>
-                      <ion-item class="item-list center" *ngFor="let item of items">
-                        <ion-col size="4.5" style="padding: 5%;">
-                          <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
-                        </ion-col>
-                        <ion-col size="1.5" style="display: flex;">
-                          <ion-icon name="star" style="color: #FFB300; font-size: 18px;"></ion-icon>
-                          <ion-label class="font-14 color-list">5.0</ion-label>
-                        </ion-col>
-                        <ion-col size="3" style="padding: 3%;">
-                          <ion-label class="font-14">(5.2 mile)</ion-label>
-                        </ion-col>
-                        <ion-col size="2">
-                          <ion-label class="font-14">None</ion-label>
-                        </ion-col>
-                        <ion-col size="1">
-                          <ion-icon class="color-list" name="call-outline"></ion-icon>
-                        </ion-col>
-                      </ion-item>
-                    </ion-list>
-                  
-                    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-                      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-                    </ion-infinite-scroll>
-                  </ion-col>
-                  <ion-col offset="3" size="9" class="center" style="display: flex; margin-bottom: 11%;">
-                    <ion-select class="font-14 ion-select-T" style="color: #FFB300; border-color: #FFB300;"
-                      label-placement="floating" interface="popover" value="No">
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">No luggage.</ion-select-option>
-                      <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-                    </ion-select>
-                    <ion-button class="ion-button-blue">Apply</ion-button>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-content>
-          </ng-template>
-        </ion-modal>
-
       </ion-col>
-    </ion-row>
-    <ion-row style="padding: 2%; margin-top: 2%;">
-      <ion-col size="4" class="center-left-top">
+
+      <ion-col size="4" class="center-left-top" style="margin-top: 15%;">
         <ion-label class="font-14" style="color: #747474;">Lookup Affiliate</ion-label>
       </ion-col>
-      <ion-col size="8">
+      <ion-col size="8" style="margin-top: 15%;">
         <ion-input class="input font-14" style="color: #747474;" placeholder=" Find affiliateID by name"></ion-input>
       </ion-col>
       <ion-col size="4" class="center-left-top">
@@ -762,3 +289,485 @@
     </ion-col>
   </ion-grid>
 </ion-content>
+
+
+
+<!-- Modal Get bids at orign -->
+<ion-modal #modalorign trigger="open-modal-orign" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
+  <ng-template>
+    <ion-content class="content-modal white-background" scroll-y="true">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" class="center">
+            <ion-label class="font-18" style="font-weight: bold;">Get bids at orign</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <!-- <ion-icon name="arrow-undo" style="font-size: 20px; color: red; "></ion-icon> -->
+          </ion-col>
+          <ion-col size="12">
+            <ion-label class="font-14">Seart By location</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label class="font-14">Vehicle Type</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label class="font-14">Vehicle Type</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label class="font-14">Within</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label class="font-14">Prefered</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label class="font-14">Extra Type</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label class="font-14">Extraitem</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size=12>
+            <ion-label class="font-14">Quantity</ion-label>
+          </ion-col>
+          <ion-col size="6" class="center">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue font-14" style="color: #ffff;">Find Now!</ion-button>
+          </ion-col>
+          <ion-col size=12>
+            <ion-label class="font-14">Buy it now price</ion-label>
+          </ion-col>
+          <ion-col size="6" class="center">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue font-14" style="color: #ffff;">Get Bids</ion-button>
+          </ion-col>
+          <ion-col size="3.5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14" style="color: #000000;">Select
+              All</ion-checkbox>
+          </ion-col>
+          <ion-col size="5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14" style="color: #000000;">Select All
+              Preferred</ion-checkbox>
+          </ion-col>
+          <ion-col size="3.5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14" style="color: #000000;">Select
+              None</ion-checkbox>
+          </ion-col>
+          <ion-col size="6" class="center">
+            <ion-label class="font-14" style="color: #000000;">Showing 1 - 264 of 264</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-yello font-14 center" style="color: #ffff;">
+              <ion-icon name="call-outline" style="font-size: 18px; margin-right: 2%;"></ion-icon>
+              Start Auto Dialing (4)
+            </ion-button>
+          </ion-col>
+          <ion-col size="12" style="max-height: 270px; overflow-y: auto;">
+            <ion-list>
+              <ion-item class="item-list center" *ngFor="let item of items">
+                <ion-col size="4.5" style="padding: 5%;">
+                  <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
+                </ion-col>
+                <ion-col size="1.5" style="display: flex;">
+                  <ion-icon name="star" style="color: #FFB300; font-size: 18px;"></ion-icon>
+                  <ion-label class="font-14 color-list">5.0</ion-label>
+                </ion-col>
+                <ion-col size="3" style="padding: 3%;">
+                  <ion-label class="font-14">(5.2 mile)</ion-label>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-label class="font-14">None</ion-label>
+                </ion-col>
+                <ion-col size="1">
+                  <ion-icon class="color-list" name="call-outline"></ion-icon>
+                </ion-col>
+              </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+              <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          </ion-col>
+          <ion-col offset="3" size="9" class="center" style="display: flex; margin-bottom: 11%;">
+            <ion-select class="font-14 ion-select-T" style="color: #FFB300; border-color: #FFB300;"
+              label-placement="floating" interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+            <ion-button class="ion-button-blue">Apply</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- Modal Get bids along route -->
+<ion-modal #modalroute trigger="open-modal-along-route" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
+  <ng-template>
+    <ion-content class="white-background">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" class="center">
+            <ion-label class="font-18" style="font-weight: bold;">Get bids along route</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <!-- <ion-icon name="arrow-undo" style="font-size: 20px; color: red; "></ion-icon> -->
+          </ion-col>
+          <ion-col size="4" class="center-left">
+            <ion-label class="font-14" style="color: #747474;">From</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="4" class="center-left">
+            <ion-label class="font-14" style="color: #747474;">To</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="4" class="center-left">
+            <ion-label class="font-14" style="color: #747474;">Vehicle Type</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="4" class="center-left">
+            <ion-label class="font-14" style="color: #747474;">Passengers</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="4" class="center-left">
+            <ion-label class="font-14" style="color: #747474;">Within</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="12" class="center-right">
+            <ion-icon name="map" (click)="showMap()" style="font-size: 25px; color: #469FD1;"></ion-icon>
+          </ion-col>
+          <ion-col *ngIf="map" size="12" style="height: 300px;">
+            <app-map></app-map>
+          </ion-col>
+          <ion-col size=12>
+            <ion-label class="font-14">Buy it now price</ion-label>
+          </ion-col>
+          <ion-col size="6" class="center">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue font-14" style="color: #ffff;">Get Bids</ion-button>
+          </ion-col>
+          <ion-col size="3.5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select All</ion-checkbox>
+          </ion-col>
+          <ion-col size="5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select All
+              Preferred</ion-checkbox>
+          </ion-col>
+          <ion-col size="3.5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
+          </ion-col>
+          <ion-col size="6" class="center">
+            <ion-label class="font-14">Showing 1 - 264 of 264</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-yello font-14 center" style="color: #ffff;">
+              <ion-icon name="call-outline" style="font-size: 18px; margin-right: 2%;"></ion-icon>
+              Start Auto Dialing (4)
+            </ion-button>
+          </ion-col>
+          <ion-col size="12" style="max-height: 270px; overflow-y: auto;">
+            <ion-list>
+              <ion-item class="item-list center" *ngFor="let item of items">
+                <ion-col size="4.5" style="padding: 5%;">
+                  <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
+                </ion-col>
+                <ion-col size="1.5" style="display: flex;">
+                  <ion-icon name="star" style="color: #FFB300; font-size: 18px;"></ion-icon>
+                  <ion-label class="font-14 color-list">5.0</ion-label>
+                </ion-col>
+                <ion-col size="3" style="padding: 3%;">
+                  <ion-label class="font-14">(5.2 mile)</ion-label>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-label class="font-14">None</ion-label>
+                </ion-col>
+                <ion-col size="1">
+                  <ion-icon class="color-list" name="call-outline"></ion-icon>
+                </ion-col>
+              </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+              <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          </ion-col>
+
+          <ion-col offset="3" size="9" class="center" style="display: flex; margin-bottom: 11%;">
+            <ion-select class="font-14 ion-select-T" style="color: #FFB300; border-color: #FFB300;"
+              label-placement="floating" interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+            <ion-button class="ion-button-blue">Apply</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- Modal Get bids at destination -->
+<ion-modal #modaldestination trigger="open-modal-at-destination" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
+  <ng-template>
+    <ion-content class="content-modal white-background" scroll-y="true">
+      <ion-grid style="background-color: #ffff;">
+        <ion-row>
+          <ion-col size="12" class="center">
+            <ion-label class="font-18" style="font-weight: bold;">Get bids at destination</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <!-- <ion-icon name="arrow-undo" style="font-size: 20px; color: red; "></ion-icon> -->
+          </ion-col>
+          <ion-col size="12">
+            <ion-label class="font-14">Seart By location</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label class="font-14">Vehicle Type</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label class="font-14">Vehicle Type</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label class="font-14">Within</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label class="font-14">Prefered</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label class="font-14">Extra Type</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label class="font-14">Extraitem</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size=12>
+            <ion-label class="font-14">Quantity</ion-label>
+          </ion-col>
+          <ion-col size="6" class="center">
+            <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+              interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue font-14" style="color: #ffff;">Find Now!</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue-no-back font-14">FCustom Email</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue-no-back font-14">Emergency SMS</ion-button>
+          </ion-col>
+          <ion-col size="12">
+            <ion-input class="input font-14" style="color: #747474;" placeholder=" SMS Text"></ion-input>
+          </ion-col>
+          <ion-col size=12>
+            <ion-label class="font-14">Buy it now price</ion-label>
+          </ion-col>
+          <ion-col size="6" class="center">
+            <ion-input class="input"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue font-14" style="color: #ffff;">Get Bids</ion-button>
+          </ion-col>
+          <ion-col size="3.5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select All</ion-checkbox>
+          </ion-col>
+          <ion-col size="5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select All
+              Preferred</ion-checkbox>
+          </ion-col>
+          <ion-col size="3.5">
+            <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
+          </ion-col>
+          <ion-col size="6" class="center">
+            <ion-label class="font-14">Showing 1 - 264 of 264</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-yello font-14 center" style="color: #ffff;">
+              <ion-icon name="call-outline" style="font-size: 18px; margin-right: 2%;"></ion-icon>
+              Start Auto Dialing (4)
+            </ion-button>
+          </ion-col>
+          <ion-col size="12" style="max-height: 270px; overflow-y: auto;">
+            <ion-list>
+              <ion-item class="item-list center" *ngFor="let item of items">
+                <ion-col size="4.5" style="padding: 5%;">
+                  <ion-checkbox labelPlacement="end" class="custom-checkbox font-14">Select None</ion-checkbox>
+                </ion-col>
+                <ion-col size="1.5" style="display: flex;">
+                  <ion-icon name="star" style="color: #FFB300; font-size: 18px;"></ion-icon>
+                  <ion-label class="font-14 color-list">5.0</ion-label>
+                </ion-col>
+                <ion-col size="3" style="padding: 3%;">
+                  <ion-label class="font-14">(5.2 mile)</ion-label>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-label class="font-14">None</ion-label>
+                </ion-col>
+                <ion-col size="1">
+                  <ion-icon class="color-list" name="call-outline"></ion-icon>
+                </ion-col>
+              </ion-item>
+            </ion-list>
+
+            <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+              <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          </ion-col>
+          <ion-col offset="3" size="9" class="center" style="display: flex; margin-bottom: 11%;">
+            <ion-select class="font-14 ion-select-T" style="color: #FFB300; border-color: #FFB300;"
+              label-placement="floating" interface="popover" value="No">
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">No luggage.</ion-select-option>
+              <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+            </ion-select>
+            <ion-button class="ion-button-blue">Apply</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ng-template>
+</ion-modal>

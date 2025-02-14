@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { QuotePreviewService } from '../service/quote-preview/quote-preview.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
@@ -59,6 +59,14 @@ export class CoveringJobPage implements OnInit {
 
   checkBut(){
     console.log(this.quotepreviewservice.mmcheck);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const accordion = document.querySelector('ion-accordion');
+    if (accordion && !accordion.contains(event.target as Node)) {
+      (accordion as any).toggleAccordion(); // ปิด accordion
+    }
   }
 
 
