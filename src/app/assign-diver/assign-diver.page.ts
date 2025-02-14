@@ -17,4 +17,10 @@ export class AssignDiverPage implements OnInit {
     this.router.navigate(['tabs/home']);
   }
 
+  selectedSegment = 'staff';
+
+  onChanged(value: string) {
+    this.selectedSegment = value;
+  }
+
 }

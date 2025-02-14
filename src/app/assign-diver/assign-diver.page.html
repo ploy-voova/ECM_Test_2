@@ -1,7 +1,7 @@
 <!-- collapse="condense" -->
 <ion-header>
   <ion-toolbar style="height: 111px;">
-    <app-explore-header style="width: 100%;"></app-explore-header>
+    <app-explore-header></app-explore-header>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,8 @@
         <ion-label class="font-18" style="color: #2e2e2e;">Assign Driver</ion-label>
       </ion-col>
       <ion-col class="center-left" size="12" style="margin-top: -7%;">
-        <ion-icon  (click)="back_Home()" name="chevron-back-outline" style="font-size: 25px; color: #747474; "></ion-icon>
+        <ion-icon (click)="back_Home()" name="chevron-back-outline"
+          style="font-size: 25px; color: #747474; "></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row style="padding: 3%; margin-top: 5%;">
@@ -85,14 +86,364 @@
         </ion-row>
       </ion-col>
 
-      <!-- button -->
-      <ion-col size="12" class="space-between" style="margin-top: 3%;">
-        <ion-button class="font-14" style="color: #ffffff;">Staff Driver</ion-button>
-        <ion-button class="font-14" style="color: #ffffff;">Affiliate</ion-button>
-        <ion-button class="font-14" style="color: #ffffff;">Push job</ion-button>
+
+      <ion-col size="12" class="space-between"
+        style="margin-top: 3%; padding: 0; background-color: #469FD1; border-radius: 2px; margin-bottom: 8%;">
+        <ion-col size="4" class="segment-col center no-padding" (click)="onChanged('staff')"
+          [class.active]="selectedSegment === 'staff'">
+          <ion-label class="font-16">Staff Driver</ion-label>
+        </ion-col>
+        <ion-col size="4" class="segment-col center no-padding" (click)="onChanged('affiliate')"
+          [class.active]="selectedSegment === 'affiliate'">
+          <ion-label class="font-16">Affiliate</ion-label>
+        </ion-col>
+        <ion-col size="4" class="segment-col center no-padding" (click)="onChanged('pushjob')"
+          [class.active]="selectedSegment === 'pushjob'">
+          <ion-label class="font-16">Push job</ion-label>
+        </ion-col>
       </ion-col>
 
-      
+      <ng-container *ngIf="selectedSegment === 'staff'">
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver Extra's</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="Select">
+            <ion-select-option value="Select">Select Driver Extra's</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="Select Driver">
+            <ion-select-option value="Select Driver">Select Driver</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver pay £</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+        </ion-col>
+
+        <ion-col offset="4" size="8" class="center-right">
+          <ion-button class="ion-button-add">
+            <ion-icon name="add-circle"></ion-icon>
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Driver pay per movement</ion-label>
+          </ion-button>
+        </ion-col>
+
+        <!-- /////////////////////////////// -->
+        <!-- <ion-col size="4" class="center-left">
+            <ion-label class="font-14">ttt</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+          </ion-col> -->
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Hours Work</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover"
+            value="Select Hours Work">
+            <ion-select-option value="Select Hours Work">Select Hours Work</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col offset="4" size="8" class="center-right">
+          <ion-button class="ion-button-add">
+            <ion-icon name="add-circle"></ion-icon>
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Driver pay per movement</ion-label>
+          </ion-button>
+        </ion-col>
+
+        <!-- /////////////////////////////// -->
+        <!-- <ion-col size="4" class="center-left">
+            <ion-label class="font-14">ttt</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+          </ion-col> -->
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver pay £</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-textarea class="font-14" placeholder="Add notes..."></ion-textarea>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver name</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Enter driver name"></ion-input>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver number</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Enter driver number"></ion-input>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Vehicle</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="Enter extras...."
+            value="Enter extras....">
+            <ion-select-option value="Enter extras....">Enter extras....</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+
+        <ion-col offset="4" size="8" style="display: flex; flex-direction: row; margin-top: 2%;">
+          <ion-toggle labelPlacement="end"  style="margin-right: 2%;"></ion-toggle>
+          <ion-label class="font-14">
+            Send Email
+            <span  style="color: #D14646;">Untick to disable Driver emails</span></ion-label>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button class="ion-button-up">
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Update</ion-label>
+          </ion-button>
+        </ion-col>
+
+      </ng-container>
+
+      <ng-container *ngIf="selectedSegment === 'affiliate'">
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Affiliate Search</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="Select">
+            <ion-select-option value="Select">Affiliate Search</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver pay £</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+        </ion-col>
+
+        <ion-col offset="4" size="8" class="center-right">
+          <ion-button class="ion-button-add">
+            <ion-icon name="add-circle"></ion-icon>
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Driver pay per movement</ion-label>
+          </ion-button>
+        </ion-col>
+
+        <!-- /////////////////////////////// -->
+        <!-- <ion-col size="4" class="center-left">
+            <ion-label class="font-14">ttt</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+          </ion-col> -->
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Hours Work</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover"
+            value="Select Hours Work">
+            <ion-select-option value="Select Hours Work">Select Hours Work</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col offset="4" size="8" class="center-right">
+          <ion-button class="ion-button-add">
+            <ion-icon name="add-circle"></ion-icon>
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Driver pay per movement</ion-label>
+          </ion-button>
+        </ion-col>
+
+        <!-- /////////////////////////////// -->
+        <!-- <ion-col size="4" class="center-left">
+            <ion-label class="font-14">ttt</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+          </ion-col> -->
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver pay £</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-textarea class="font-14" placeholder="Add notes..."></ion-textarea>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver name</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Enter driver name"></ion-input>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver number</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Enter driver number"></ion-input>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Vehicle</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="Enter extras...."
+            value="Enter extras....">
+            <ion-select-option value="Enter extras....">Enter extras....</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+
+        <ion-col offset="4" size="8" style="display: flex; flex-direction: row; margin-top: 2%;">
+          <ion-toggle labelPlacement="end"  style="margin-right: 2%;"></ion-toggle>
+          <ion-label class="font-14">
+            Send Email
+            <span  style="color: #D14646;">Untick to disable Driver emails</span></ion-label>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button class="ion-button-up">
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Update</ion-label>
+          </ion-button>
+        </ion-col>
+      </ng-container>
+
+      <ng-container *ngIf="selectedSegment === 'pushjob'">
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Company</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover" value="Select">
+            <ion-select-option value="Select">Company</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver pay £</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+        </ion-col>
+
+        <ion-col offset="4" size="8" class="center-right">
+          <ion-button class="ion-button-add">
+            <ion-icon name="add-circle"></ion-icon>
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Driver pay per movement</ion-label>
+          </ion-button>
+        </ion-col>
+
+        <!-- /////////////////////////////// -->
+        <ion-col size="4" class="center-left">
+            <ion-label class="font-14">ttt</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+          </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Hours Work</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="popover"
+            value="Select Hours Work">
+            <ion-select-option value="Select Hours Work">Select Hours Work</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col offset="4" size="8" class="center-right">
+          <ion-button class="ion-button-add">
+            <ion-icon name="add-circle"></ion-icon>
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Driver pay per movement</ion-label>
+          </ion-button>
+        </ion-col>
+
+        <!-- /////////////////////////////// -->
+        <ion-col size="4" class="center-left">
+            <ion-label class="font-14">ttt</ion-label>
+          </ion-col>
+          <ion-col size="8" class="center">
+            <ion-input class="input font-14" placeholder="Select Driver pay £"></ion-input>
+          </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver pay £</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-textarea class="font-14" placeholder="Add notes..."></ion-textarea>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver name</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Enter driver name"></ion-input>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Driver number</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-input class="input font-14" placeholder="Enter driver number"></ion-input>
+        </ion-col>
+
+        <ion-col size="4" class="center-left">
+          <ion-label class="font-14">Vehicle</ion-label>
+        </ion-col>
+        <ion-col size="8" class="center">
+          <ion-select class="font-14 ion-select-T" label-placement="floating" interface="Enter extras...."
+            value="Enter extras....">
+            <ion-select-option value="Enter extras....">Enter extras....</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">No luggage.</ion-select-option>
+            <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+          </ion-select>
+        </ion-col>
+
+        <ion-col offset="4" size="8" style="display: flex; flex-direction: row; margin-top: 2%;">
+          <ion-toggle labelPlacement="end"  style="margin-right: 2%;"></ion-toggle>
+          <ion-label class="font-14">
+            Send Email
+            <span  style="color: #D14646;">Untick to disable Driver emails</span></ion-label>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button class="ion-button-up">
+            <ion-label class="font-14" style="color: #ffff; margin-left: 5%;">Update</ion-label>
+          </ion-button>
+        </ion-col>
+      </ng-container>
+
+
+
 
     </ion-row>
   </ion-grid>

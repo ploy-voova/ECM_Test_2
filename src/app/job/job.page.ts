@@ -13,9 +13,15 @@ export class JobPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
-  
+  selectedSegment = 'first';
+
+  onChanged(value: string) {
+    this.selectedSegment = value;
+  }
+
+
 
 }
