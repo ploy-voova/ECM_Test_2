@@ -14,16 +14,48 @@ export class CoveringJobPage implements OnInit {
   map: boolean = false;
   items: string[] = [];
   bidding: boolean = true;
+  // iconName: string = 'chevron-down-outline';
 
 
   constructor(
     private router: Router,
     public quotepreviewservice: QuotePreviewService
-  ) {  }
+  ) { }
 
   ngOnInit() {
     this.generateItems();
   }
+
+  isOpen = false;
+  isModalOpenOrign = false;
+  isModalOpenAlong = false;
+  isModalOpenDes = false;
+  event:any;
+
+  openPopover(event: Event) {
+    this.event = event; // เก็บตำแหน่งการคลิก
+    this.isOpen = true; // สลับสถานะ Popover
+  }
+
+  openOrign() {
+    this.isModalOpenOrign = true;
+    this.isOpen = false; // ปิด popover หลังจากเลือก
+  }
+
+  openAlong() {
+    this.isModalOpenAlong = true;
+    this.isOpen = false; // ปิด popover หลังจากเลือก
+  }
+
+  openDes() {
+    this.isModalOpenDes = true;
+    this.isOpen = false; // ปิด popover หลังจากเลือก
+  }
+
+  // // ปิด popover เมื่อกด backdrop และเปลี่ยนไอคอน
+  // onPopoverDismiss() {
+  //   this.isOpen = false;
+  // }
 
   selectedItem: string | null = null;
 
@@ -31,19 +63,19 @@ export class CoveringJobPage implements OnInit {
     this.selectedItem = item;
   }
 
-  back_quotepreview(){
-    this.router.navigate(['/tabs/quote-preview',this.quotepreviewservice.qId])
+  back_quotepreview() {
+    this.router.navigate(['/tabs/quote-preview', this.quotepreviewservice.qId])
   }
 
-  showMap(){
+  showMap() {
     this.map = !this.map;
   }
 
-  showBid(){
+  showBid() {
     this.bidding = !this.bidding;
   }
 
-  private generateItems() {    
+  private generateItems() {
     const count = this.items.length + 1;
     for (let i = 0; i < 15; i++) {
       this.items.push(`Item ${count + i}`);
@@ -57,17 +89,17 @@ export class CoveringJobPage implements OnInit {
     }, 500);
   }
 
-  checkBut(){
+  checkBut() {
     console.log(this.quotepreviewservice.mmcheck);
   }
 
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event) {
-    const accordion = document.querySelector('ion-accordion');
-    if (accordion && !accordion.contains(event.target as Node)) {
-      (accordion as any).toggleAccordion(); // ปิด accordion
-    }
-  }
+  // @HostListener('document:click', ['$event'])
+  // onClickOutside(event: Event) {
+  //   const accordion = document.querySelector('ion-accordion');
+  //   if (accordion && !accordion.contains(event.target as Node)) {
+  //     (accordion as any).toggleAccordion(); // ปิด accordion
+  //   }
+  // }
 
 
 }

@@ -179,42 +179,112 @@
         <ion-label class="font-18" style="color: #ffff; margin-top: 4px;">New Bid</ion-label>
       </ion-col>
     </ion-row>
-    <ion-row style="padding: 2%; margin-top: 2%;">
-      <ion-col offset="5" size="7" style="margin: 0; padding: 0;">
-        <ion-accordion-group style="z-index: 3;">
+    <ion-row>
+      <ion-col offset="7" size="5" style="margin: 0; padding: 0; margin-top: 3%;">
+        <ion-button id="popover-button" class="item-drop-header" (click)="openPopover($event)">
+          <ion-label class="font-14">Get Bids</ion-label>
+          <ion-icon [name]="isOpen ? 'chevron-up' : 'chevron-down'"></ion-icon>
+        </ion-button>
+
+        <!-- Popover -->
+        <ion-popover trigger="popover-button" [event]="event" [isOpen]="isOpen" (ionDismiss)="isOpen = false">
+          <ng-template>
+            <ion-content scroll-y="false">
+              <ion-list class="list-item">
+                <ion-item lines="none" (click)="openOrign()" class="item-drop center">
+                  <ion-icon class="icon-pop" name="pin-outline"></ion-icon>
+                  <ion-label class="font-14" style="color: #424242;">Get bids at origin</ion-label>
+                </ion-item>
+                <ion-item lines="none" (click)="openAlong()" class="item-drop center" >
+                  <ion-icon class="icon-pop" name="compass-outline"></ion-icon>
+                  <ion-label class="font-14" style="color: #424242;">Get bids along route</ion-label>
+                </ion-item>
+
+                <ion-item lines="none" (click)="openDes()" id="open-modal-at-destination" class="item-drop center" >
+                  <ion-icon class="icon-pop" name="flag-outline"></ion-icon>
+                  <ion-label class="font-14 no-margin" style="color: #424242;">Get bids at destination</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+
+
+        <!-- <ion-popover [isOpen]="isOpen" [event]="event" (didDismiss)="isOpen = false"
+          style="margin-top: 2%;" trigger="bottom-start" side="bottom" alignment="start" >
+          <ng-template>
+            <ion-content scroll-y="false" style="border-radius: 2px; margin-right: 20%;" class="center-list">
+              <ion-list >
+              <ion-row class="item-drop" lines="none" button>
+                <ion-icon name="pin-outline"></ion-icon>
+                <ion-label class="font-14" style="color: #424242;">Get bids at origin</ion-label>
+              </ion-row>
+              <ion-item class="item-drop" lines="none" button [detail]="false">
+                <ion-icon name="compass-outline"></ion-icon>
+                <ion-label class="font-14" style="color: #424242;">Get bids along route</ion-label>
+              </ion-item>
+              <ion-item class="item-drop" lines="none" button [detail]="false">
+                <ion-icon name="flag-outline"></ion-icon>
+                <ion-label class="font-14 no-margin" style="color: #424242;">Get bids at destination</ion-label>
+              </ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover> -->
+
+        <!-- Modal -->
+        <!-- <ion-modal [isOpen]="isModalOpen" (didDismiss)="isModalOpen = false">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>My Modal</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="isModalOpen = false">Close</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              <p>This is a modal content.</p>
+            </ion-content>
+          </ng-template>
+        </ion-modal> -->
+
+
+        <!-- <ion-accordion-group style="z-index: 3;">
           <ion-accordion>
             <ion-item slot="header" class="item-drop-header center">
               <ion-label class="font-16" style="margin-left: 15%; color: #ffff;">Get bids</ion-label>
             </ion-item>
 
             <ion-list class="list-item " slot="content"
-              style="background-color: #ffff; display: block; align-items: center; justify-content: center;">
-              <ion-item id="open-modal-orign" class="item-drop center" [class.selected]="selectedItem === 'origin'"
-                (click)="selectItem('origin')">
+              style="background-color: #ffff; display: block; align-items: center; justify-content: center; padding: 3%; margin-top: 2%;">
+              <ion-item lines="none" id="open-modal-orign" class="item-drop center"
+                [class.selected]="selectedItem === 'origin'" (click)="selectItem('origin')">
                 <ion-icon name="pin-outline"></ion-icon>
                 <ion-label class="font-14" style="color: #424242;">Get bids at origin</ion-label>
               </ion-item>
 
-              <ion-item id="open-modal-along-route" class="item-drop center" [class.selected]="selectedItem === 'route'"
-                (click)="selectItem('route')">
+              <ion-item lines="none" id="open-modal-along-route" class="item-drop center"
+                [class.selected]="selectedItem === 'route'" (click)="selectItem('route')">
                 <ion-icon name="compass-outline"></ion-icon>
                 <ion-label class="font-14" style="color: #424242;">Get bids along route</ion-label>
               </ion-item>
 
-              <ion-item id="open-modal-at-destination" class="item-drop center"
+              <ion-item lines="none" id="open-modal-at-destination" class="item-drop center"
                 [class.selected]="selectedItem === 'destination'" (click)="selectItem('destination')">
                 <ion-icon name="flag-outline"></ion-icon>
                 <ion-label class="font-14 no-margin" style="color: #424242;">Get bids at destination</ion-label>
               </ion-item>
             </ion-list>
           </ion-accordion>
-        </ion-accordion-group>
+        </ion-accordion-group> -->
       </ion-col>
-
-      <ion-col size="4" class="center-left-top" style="margin-top: 15%;">
+    </ion-row>
+    <ion-row style="padding: 2%; margin-top: 2%;">
+      <ion-col size="4" class="center-left-top">
         <ion-label class="font-14" style="color: #747474;">Lookup Affiliate</ion-label>
       </ion-col>
-      <ion-col size="8" style="margin-top: 15%;">
+      <ion-col size="8" >
         <ion-input class="input font-14" style="color: #747474;" placeholder=" Find affiliateID by name"></ion-input>
       </ion-col>
       <ion-col size="4" class="center-left-top">
@@ -284,7 +354,7 @@
 
     <!-- </ion-row> -->
     <ion-col size="12" class="center-right">
-      <ion-button class="ion-button-make-bid-nobg font-14" style="color: #469FD1;">Make bid</ion-button>
+      <ion-button class="ion-button-make-bid-nobg font-14" style="color: #469FD1;">Share this job</ion-button>
       <ion-button class="ion-button-make-bid font-14" style="color: #ffff;">Make bid</ion-button>
     </ion-col>
   </ion-grid>
@@ -293,13 +363,13 @@
 
 
 <!-- Modal Get bids at orign -->
-<ion-modal #modalorign trigger="open-modal-orign" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
+<ion-modal #modalorign [isOpen]="isModalOpenOrign" (didDismiss)="isModalOpenOrign = false" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
   <ng-template>
     <ion-content class="content-modal white-background" scroll-y="true">
       <ion-grid>
         <ion-row>
           <ion-col size="12" class="center">
-            <ion-label class="font-18" style="font-weight: bold;">Get bids at orign</ion-label>
+            <ion-label class="font-18" style="font-weight: bold;">eCoachManager</ion-label>
           </ion-col>
           <ion-col size="12">
             <!-- <ion-icon name="arrow-undo" style="font-size: 20px; color: red; "></ion-icon> -->
@@ -308,7 +378,9 @@
             <ion-label class="font-14">Seart By location</ion-label>
           </ion-col>
           <ion-col size="12">
-            <ion-input class="input"></ion-input>
+            <ion-input class="input center">
+              <ion-icon style="color: #469FD1; font-size: 25px;" slot="end" name="search-outline"></ion-icon>
+            </ion-input>
           </ion-col>
           <ion-col size="12">
             <ion-label class="font-14">Vehicle Type</ion-label>
@@ -397,6 +469,18 @@
           <ion-col size="6">
             <ion-button class="ion-button-blue font-14" style="color: #ffff;">Find Now!</ion-button>
           </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue-no-back  center">
+              <ion-icon name="mail-outline" style="font-size: 20px;"></ion-icon>
+              <ion-label class="font-14">Custom Email</ion-label>
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="ion-button-blue-no-back font-14">
+              <ion-icon name="chatbox-outline"></ion-icon>
+              <ion-label class="font-14">Emergency SMS</ion-label>
+            </ion-button>
+          </ion-col>
           <ion-col size=12>
             <ion-label class="font-14">Buy it now price</ion-label>
           </ion-col>
@@ -419,14 +503,14 @@
               None</ion-checkbox>
           </ion-col>
           <ion-col size="6" class="center">
-            <ion-label class="font-14" style="color: #000000;">Showing 1 - 264 of 264</ion-label>
+            <!-- <ion-label class="font-14" style="color: #000000;">Showing 1 - 264 of 264</ion-label> -->
           </ion-col>
-          <ion-col size="6">
+          <!-- <ion-col size="6">
             <ion-button class="ion-button-yello font-14 center" style="color: #ffff;">
               <ion-icon name="call-outline" style="font-size: 18px; margin-right: 2%;"></ion-icon>
               Start Auto Dialing (4)
             </ion-button>
-          </ion-col>
+          </ion-col> -->
           <ion-col size="12" style="max-height: 270px; overflow-y: auto;">
             <ion-list>
               <ion-item class="item-list center" *ngFor="let item of items">
@@ -454,13 +538,13 @@
             </ion-infinite-scroll>
           </ion-col>
           <ion-col offset="3" size="9" class="center" style="display: flex; margin-bottom: 11%;">
-            <ion-select class="font-14 ion-select-T" style="color: #FFB300; border-color: #FFB300;"
+            <!-- <ion-select class="font-14 ion-select-T" style="color: #FFB300; border-color: #FFB300;"
               label-placement="floating" interface="popover" value="No">
               <ion-select-option value="No">No luggage.</ion-select-option>
               <ion-select-option value="No">No luggage.</ion-select-option>
               <ion-select-option value="No">No luggage.</ion-select-option>
               <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-            </ion-select>
+            </ion-select> -->
             <ion-button class="ion-button-blue">Apply</ion-button>
           </ion-col>
         </ion-row>
@@ -470,7 +554,7 @@
 </ion-modal>
 
 <!-- Modal Get bids along route -->
-<ion-modal #modalroute trigger="open-modal-along-route" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
+<ion-modal #modalroute [isOpen]="isModalOpenAlong" (didDismiss)="isModalOpenAlong = false" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
   <ng-template>
     <ion-content class="white-background">
       <ion-grid>
@@ -589,7 +673,7 @@
 </ion-modal>
 
 <!-- Modal Get bids at destination -->
-<ion-modal #modaldestination trigger="open-modal-at-destination" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
+<ion-modal #modaldestination [isOpen]="isModalOpenDes" (didDismiss)="isModalOpenDes = false" [initialBreakpoint]="0.93" [breakpoints]="[0, 0.93]">
   <ng-template>
     <ion-content class="content-modal white-background" scroll-y="true">
       <ion-grid style="background-color: #ffff;">

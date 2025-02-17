@@ -172,7 +172,8 @@ ion-grid {
     // border-radius: 2px;
     // opacity: 1;
     margin-top: 3%;
-    width: 90%;
+    width: 100%;
+
     height: 43px;
     min-height: 43px;
     --background: #F3F4F6 0% 0% no-repeat padding-box;
@@ -181,29 +182,42 @@ ion-grid {
     --box-shadow: none;
 }
 
+ion-popover::part(arrow) {
+    display: none;
+}
+
+.center-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* ให้รายการอยู่กลางหน้าจอ */
+}
+
 .item-drop-header {
     width: 100%;
     height: 40px;
     min-height: 40px;
     text-align: center;
     color: #FFFF;
-    --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 0.5px solid var(--unnamed-color-469fd1);
     --background: #469FD1 0% 0% no-repeat padding-box;
-    border: 0.5px solid #469FD1;
-    border-radius: 3px;
+    --border-radius: 2px;
     opacity: 1;
 }
 
 .input {
     height: 40px;
     min-height: 40px;
-    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 0.5px solid var(--unnamed-color-707070);
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 0.5px solid #707070;
+    background: #FFFFFF;
+    box-shadow: none;
+    border: 0.1px solid #ACACAC;
     border-radius: 2px;
-    opacity: 1;
+    --placeholder-opacity: var(--ion-placeholder-opacity, 1);
+    color: #707070;
+    --padding-start: 4%;
+    --padding-end: 4%;
+    --highlight-color: none;
 }
 
 ion-textarea {
@@ -270,13 +284,32 @@ ion-modal {
 }
 
 .ion-select-T {
+    padding-right: 5%;
+    padding-left: 5%;
+    width: 100%;
+    height: 41px;
+    min-height: 41px;
+    background: #FFFFFF;
+    border: 0.1px solid #707070;
+    border-radius: 2px;
+    --box-shadow: none;
+    opacity: 1;
+    color: #707070;
+}
+
+/* ซ่อนไอคอนที่มาพร้อมกับ ion-select */
+// ion-select::part(icon) {
+//     display: none;
+//   }
+
+.button-blue-white-bg {
+    width: 100%;
     height: 40px;
     min-height: 40px;
-    --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-    border: 0.5px solid var(--unnamed-color-707070);
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 0.5px solid #707070;
-    border-radius: 2px;
+    background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    --background: #ffffff 0% 0% no-repeat padding-box;
+    --border-radius: 2px;
+    border: 0.5px solid #469FD1;
     opacity: 1;
 }
 
@@ -473,7 +506,7 @@ ion-accordion-group {
 ion-accordion {
     position: absolute;
     /* ให้ accordion ลอยทับ */
-    width: 100%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    width: 100%;
     /* ขยายเต็มพื้นที่ */
     z-index: 10;
     /* ให้แน่ใจว่าอยู่ด้านบนสุด */
@@ -485,13 +518,38 @@ ion-accordion {
 }
 
 .list-item {
-    margin-top: 2%;
-    height: 159px;
-    /* UI Properties */
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border: 0.5px solid #ACACAC;
     border-radius: 2px;
+    padding: 3%;
     opacity: 1;
+}
+
+ion-button {
+    --background-activated: #5fb6e9;
+    --background-hover: transparent;
+    --ripple-color: transparent;
+}
+
+ion-textarea {
+    --placeholder-opacity: var(--ion-placeholder-opacity, 1);
+    height: 90px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.1px solid #ACACAC;
+    border-radius: 2px;
+    padding-left: 5%;
+    opacity: 1;
+}
+
+ion-popover{
+    --width: 218px;
+    margin-top: 1%;
+    margin-left: -2%;
+}
+
+.icon-pop{
+    font-size: 18px;
+    margin-right: 2%;
 }
