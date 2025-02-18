@@ -281,31 +281,55 @@
               </ion-col>
               <!-- </ion-row> -->
               <ion-row>
-                <ion-col>
-                  <ion-segment color="light" (ionChange)="segmentChanged($event)" value="arrival">
-                    <ion-segment-button value="arrival" style="--background: #42a5f5; --color: white;">
-                      <ion-label>Arrival</ion-label>
+                <ion-col size="12" style="padding: 5%;">
+                  <ion-segment (ionChange)="segmentChanged($event)" >
+                    <ion-segment-button value="medium" content-id="arrival" class="center">
+                      <ion-label class="f-seg">Arrival</ion-label>
                     </ion-segment-button>
-                    <ion-segment-button value="departure" style="--background: #bdbdbd; --color: black;">
-                      <ion-label>Departure</ion-label>
+                    <ion-segment-button value="segment">
+                      <ion-label class="f-seg">Departure</ion-label>
                     </ion-segment-button>
                   </ion-segment>
-
-                  <div class="form-container">
-                    <div class="form-group">
-                      <ion-input placeholder="Flight Airline"></ion-input>
-                      <ion-input placeholder="Number"></ion-input>
-                    </div>
-                    <div class="form-group">
-                      <ion-input placeholder="Date"></ion-input>
-                      <ion-input placeholder="Time"></ion-input>
-                    </div>
-                    <div class="form-group">
-                      <ion-input placeholder="Airport"></ion-input>
-                      <ion-input placeholder="Terminal"></ion-input>
-                    </div>
-                  </div>
-
+                  <ion-segment-view>
+                    <ion-segment-content id="arrival" style="padding: 2%;">
+                      <ion-row>
+                        <ion-col class="no-padding" style="margin-right: 2%;">
+                          <ion-input class="input-segment" placeholder="Filght Airline">
+                            <ion-icon slot="end" class="icon-fight" name="ticket-outline"></ion-icon>
+                          </ion-input>
+                        </ion-col>
+                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                          <ion-input class="input-segment" placeholder="Number">
+                            <ion-icon slot="end" class="icon-fight" name="search-outline"></ion-icon>
+                          </ion-input>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col class="no-padding" style="margin-right: 2%;">
+                          <ion-input class="input-segment" placeholder="Date">
+                            <ion-icon slot="end" class="icon-fight" name="today-outline"></ion-icon>
+                          </ion-input>
+                        </ion-col>
+                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                          <ion-input class="input-segment" placeholder="Time">
+                            <ion-icon slot="end" class="icon-fight" name="time-outline"></ion-icon>
+                          </ion-input>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col class="no-padding" style="margin-right: 2%;">
+                          <ion-input class="input-segment" placeholder="Airport">
+                            <ion-icon slot="end" class="icon-fight" name="airplane-outline"></ion-icon>
+                          </ion-input>
+                        </ion-col>
+                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                          <ion-input class="input-segment" placeholder="Terminal">
+                            <ion-icon slot="end" class="icon-fight" name="trail-sign-outline"></ion-icon>
+                          </ion-input>
+                        </ion-col>
+                      </ion-row>
+                    </ion-segment-content>
+                  </ion-segment-view>
                 </ion-col>
               </ion-row>
               <ion-col size="12" style="display: flex; align-items: center; justify-content: end;">

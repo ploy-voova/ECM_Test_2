@@ -1,7 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { QuotePreviewService } from '../service/quote-preview/quote-preview.service';
-import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-covering-job',
@@ -14,48 +14,56 @@ export class CoveringJobPage implements OnInit {
   map: boolean = false;
   items: string[] = [];
   bidding: boolean = true;
-  // iconName: string = 'chevron-down-outline';
-
-
+  
   constructor(
     private router: Router,
-    public quotepreviewservice: QuotePreviewService
+    public quotepreviewservice: QuotePreviewService,
   ) { }
 
   ngOnInit() {
     this.generateItems();
   }
 
+
+  @ViewChild('popover') popover!: HTMLIonPopoverElement;
+  
   isOpen = false;
   isModalOpenOrign = false;
   isModalOpenAlong = false;
   isModalOpenDes = false;
-  event:any;
+  map_origin = false;
+
+  showmap_Origin(){
+    this.map_origin = true;
+  }
+
+  closed_MapOrigin(){
+    this.map_origin = false;
+  }
+
+  onBackdropClick() {
+    this.isOpen = !this.isOpen;
+  }
 
   openPopover(event: Event) {
-    this.event = event; // เก็บตำแหน่งการคลิก
-    this.isOpen = true; // สลับสถานะ Popover
+    this.popover.event = event;
+    this.isOpen = !this.isOpen; 
   }
 
   openOrign() {
     this.isModalOpenOrign = true;
-    this.isOpen = false; // ปิด popover หลังจากเลือก
+    this.isOpen = !this.isOpen; 
   }
 
   openAlong() {
     this.isModalOpenAlong = true;
-    this.isOpen = false; // ปิด popover หลังจากเลือก
+    this.isOpen = !this.isOpen; 
   }
 
   openDes() {
     this.isModalOpenDes = true;
-    this.isOpen = false; // ปิด popover หลังจากเลือก
+    this.isOpen = !this.isOpen; 
   }
-
-  // // ปิด popover เมื่อกด backdrop และเปลี่ยนไอคอน
-  // onPopoverDismiss() {
-  //   this.isOpen = false;
-  // }
 
   selectedItem: string | null = null;
 
@@ -77,7 +85,7 @@ export class CoveringJobPage implements OnInit {
 
   private generateItems() {
     const count = this.items.length + 1;
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 10; i++) {
       this.items.push(`Item ${count + i}`);
     }
   }
