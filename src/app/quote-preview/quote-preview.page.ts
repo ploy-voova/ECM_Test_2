@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
@@ -69,7 +69,9 @@ export class QuotePreviewPage implements OnInit {
   luggage_tran: any;
   journey_type_tran: any;
 
-  checkfabButton: boolean = true ;
+  checkfabButton: boolean = true;
+
+  isFilght: boolean = false;
 
   constructor(
     private router: ActivatedRoute,
@@ -79,7 +81,7 @@ export class QuotePreviewPage implements OnInit {
     private router_: Router,
     private new_job: NewjobService,
     private loadingService: LoadingService
-  ) {}
+  ) { }
 
   async ngOnInit() {
     await this.loadingService.show();
@@ -90,21 +92,21 @@ export class QuotePreviewPage implements OnInit {
     this.journey_quote();
   }
 
-  toggleFabButton(){
-    this.checkfabButton = !this.checkfabButton;
-    console.log("but"+this.checkfabButton);   
+  showFilghtDrtail(){
+    this.isFilght = !this.isFilght;
   }
 
-  // async ionViewDidEnter() {
-  
-  // }
+  toggleFabButton() {
+    this.checkfabButton = !this.checkfabButton;
+    console.log("but" + this.checkfabButton);
+  }
 
   async journey_quote() {
     const res = await this.quote_pre.quote_Preview2(this.q_id);
     // console.log(res);
 
     // let i = 0;
-    res['journey_quote'].map((r:any,i:number) => {
+    res['journey_quote'].map((r: any, i: number) => {
       this.select_pax[i] = [];
       this.select_vehicle_[i] = [];
       this.select_luggage_[i] = [];
@@ -112,13 +114,13 @@ export class QuotePreviewPage implements OnInit {
       i = i + 1;
     });
 
-    this.vehicle_tran = await this.new_job.select_Vehicle(res['Transport']['pax'],this.q_id);
-    this.luggage_tran = await this.new_job.select_Luggage(res['Transport']['pax'],res['Transport']['car_id']);
+    this.vehicle_tran = await this.new_job.select_Vehicle(res['Transport']['pax'], this.q_id);
+    this.luggage_tran = await this.new_job.select_Luggage(res['Transport']['pax'], res['Transport']['car_id']);
     this.journey_type_tran = await this.new_job.select_Journey();
-    
+
     this.vehicle_tran = this.vehicle_tran[0];
     this.luggage_tran = this.luggage_tran[0];
-    
+
     // this.journey_type_tran = this.journey_type_tran[0];
 
     // this.quote_pre.checkAll = res.map(() => false);
@@ -129,6 +131,7 @@ export class QuotePreviewPage implements OnInit {
 
     this.dt_q = res['journey_quote'];
     
+
     this.date_j = res['journey_quote'][0]['movement_quote'][0]['date_start'];
     this.time_j = res['journey_quote'][0]['movement_quote'][0]['time_start'];
     this.quote_pre.checkAll = res['journey_quote'].map(() => false);
@@ -138,15 +141,18 @@ export class QuotePreviewPage implements OnInit {
     this.dt_p = res['Pricing'];
     this.dt_m = res['Misc'];
 
+
+
     setTimeout(async () => {
       for (let i = 0; i < res['journey_quote'].length; i++) {
         this.t_row[i] = [];
 
         const $data = res['journey_quote'][i]['movement_quote'];
-  
+
         for (let j = 0; j < $data.length; j++) {
           const targetRow = document.querySelector(`#row_start_${i}_${j}`) as HTMLElement;
-  
+
+
           if (targetRow) {
             const targetHeight = targetRow.offsetHeight;
             this.t_row[i][j] = targetHeight;
@@ -159,20 +165,22 @@ export class QuotePreviewPage implements OnInit {
     }, 1000);
   }
 
+
+
   to_CoveringJob() {
     this.quote_pre.jm = [];
     let u = 0;
-    this.quote_pre.mmcheck.map((res: any[],i: number) => {
+    this.quote_pre.mmcheck.map((res: any[], i: number) => {
       if (res.includes(true)) {
         this.quote_pre.jm[u] = [];
         this.quote_pre.jm[u][0] = [];
-        this.quote_pre.jm[u][0].push(i+1);
+        this.quote_pre.jm[u][0].push(i + 1);
         res.map((res2: any, j: number) => {
           if (res2 == true) {
             if (!this.quote_pre.jm[u][1]) {
               this.quote_pre.jm[u][1] = [];
             }
-            this.quote_pre.jm[u][1].push(j+1);
+            this.quote_pre.jm[u][1].push(j + 1);
           }
         })
         u = u + 1;
@@ -236,6 +244,47 @@ export class QuotePreviewPage implements OnInit {
   isdrop: boolean[][] = [];
   currentOpen: { journeyIndex: number; mmIndex: number } | null = null; // เก็บตำแหน่งของอันที่เปิดอยู่
 
+  // j_index: any = this.dt_q
+  async open_jLast(journeyIndex: number, mmIndex: number) {
+    console.log(journeyIndex + "cdfcsd" + mmIndex);
+    
+    if (
+      this.currentOpen &&
+      (this.currentOpen.journeyIndex !== journeyIndex ||
+        this.currentOpen.mmIndex !== mmIndex)
+    ) {
+      const alert = await this.alertController.create({
+        header: 'Destination has not been set.',
+        message: 'Please drag the locate pointer to the requied destination.',
+        buttons: [
+          {
+            text: 'OK',
+            role: 'confirm',
+            handler: () => {
+              console.log('OK clicked');
+            },
+          },
+        ],
+      });
+
+      await alert.present();
+      return; // ไม่ให้ทำการเปิดรายการใหม่
+    }
+
+    if (!this.isdrop[journeyIndex]) {
+      this.isdrop[journeyIndex] = [];
+    }
+
+    this.isdrop[journeyIndex][mmIndex] = !this.isdrop[journeyIndex][mmIndex];
+
+    // อัพเดต currentOpen ตามสถานะการเปิด/ปิด
+    if (this.isdrop[journeyIndex][mmIndex]) {
+      this.currentOpen = { journeyIndex, mmIndex };
+    } else {
+      this.currentOpen = null;
+    }
+  }
+
   async toggleDrop(journeyIndex: number, mmIndex: number) {
     if (
       this.currentOpen &&
@@ -274,6 +323,13 @@ export class QuotePreviewPage implements OnInit {
     }
   }
 
+  segmentChanged(event: any) {
+    const selectedValue = event.detail.value;
+    document.querySelectorAll('ion-segment-button').forEach((button) => {
+      button.classList.toggle('selected', button.getAttribute('value') === selectedValue);
+    });
+  }
+
   // segmentChanged(event: any) {
   //   const selectedValue = event.detail.value;
   //   document.querySelectorAll('ion-segment-button').forEach((button) => {
@@ -297,7 +353,7 @@ export class QuotePreviewPage implements OnInit {
   }
 
   async vehicleChange_fo(pax: number) {
-    const veh = await this.new_job.select_Vehicle(pax,this.q_id);
+    const veh = await this.new_job.select_Vehicle(pax, this.q_id);
     this.vehicle = veh;
     this.vehicle = this.vehicle[0];
   }
@@ -306,17 +362,17 @@ export class QuotePreviewPage implements OnInit {
     this.select_luggage_[i][j] = e.detail.value;
   }
 
-  async luggageChange_fo(pax: number,vehicle: number){
+  async luggageChange_fo(pax: number, vehicle: number) {
     const lug = await this.new_job.select_Luggage(pax, vehicle);
     this.luggage = lug;
     this.luggage = this.luggage[0];
   }
 
-  select_journey(e: CustomEvent, i: number, j: number){
+  select_journey(e: CustomEvent, i: number, j: number) {
     this.select_journey_type_[i][j] = e.detail.value;
   }
 
-  async select_journeyT(){
+  async select_journeyT() {
     this.journey_type = await this.new_job.select_Journey();
   }
 
@@ -325,21 +381,21 @@ export class QuotePreviewPage implements OnInit {
     this.select_pax_tran = this.pax_tran;
     this.select_vehicle_tran = 'selectvehicle';
     this.select_luggage_tran = 'selectluggage';
-    this.vehicle_tran = await this.new_job.select_Vehicle(e.detail.value,this.q_id);
+    this.vehicle_tran = await this.new_job.select_Vehicle(e.detail.value, this.q_id);
     this.vehicle_tran = this.vehicle_tran[0];
   }
 
   async vehicleTran(e: CustomEvent) {
     this.select_vehicle_tran = e.detail.value;
     this.select_luggage_tran = 'selectluggage';
-    this.luggage_tran = await this.new_job.select_Luggage(this.select_pax_tran,e.detail.value);
+    this.luggage_tran = await this.new_job.select_Luggage(this.select_pax_tran, e.detail.value);
     this.luggage_tran = this.luggage_tran[0];
   }
 
   luggageTran(e: CustomEvent) {
     this.select_luggage_tran = e.detail.value;
   }
-  journey_type_Tran(e: CustomEvent){
+  journey_type_Tran(e: CustomEvent) {
     this.select_journey_type_tran = e.detail.value;
   }
 
@@ -452,19 +508,23 @@ export class QuotePreviewPage implements OnInit {
     });
   }
 
-  segmentChanged(event: any) {
-    const selectedValue = event.detail.value;
-    document.querySelectorAll('ion-segment-button').forEach((btn) => {
-      if (btn.getAttribute('value') === selectedValue) {
-        btn.style.setProperty('--background', '#42a5f5');
-        btn.style.setProperty('--color', 'white');
-      } else {
-        btn.style.setProperty('--background', '#bdbdbd');
-        btn.style.setProperty('--color', 'black');
-      }
-    });
-  }
-  
-  
+  // segmentChanged(event: any) {
+  //   const selectedValue = event.detail.value;
+  //   document.querySelectorAll('ion-segment-button').forEach((btn) => {
+  //     if (btn.getAttribute('value') === selectedValue) {
+  //       btn.style.setProperty('--background', '#42a5f5');
+  //       btn.style.setProperty('--color', 'white');
+  //     } else {
+  //       btn.style.setProperty('--background', '#bdbdbd');
+  //       btn.style.setProperty('--color', 'black');
+  //     }
+  //   });
+  // }
+
+
 
 }
+function len(arg0: any): any {
+  throw new Error('Function not implemented.');
+}
+

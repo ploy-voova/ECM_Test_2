@@ -154,8 +154,8 @@ ion-checkbox {
 
 .icon-line {
     position: relative;
-    width: 0.2px;
-    height: 60px;
+    width: 0.5px;
+    height: 100px;
     bottom: -15px;
     background-color: #397C53;
     margin: 0 auto;
@@ -301,6 +301,7 @@ ion-select {
     // margin: 0;
     text-transform: none !important;
     opacity: 1;
+    white-space: nowrap;
 }
 
 .ion-button-green {
@@ -337,6 +338,7 @@ ion-select {
     color: #FFFFFF;
     opacity: 1;
     text-transform: none !important;
+    white-space: nowrap;
 }
 
 .card-toolbar {
@@ -417,32 +419,10 @@ ion-button {
     --background-activated: transparent;
     --background-hover: transparent;
     --ripple-color: transparent;
+    
 }
 
-.custom-col {
-    flex: 0 0 55%;
-    max-width: 50%;
-}
 
-.custom-col2 {
-    flex: 0 0 45%;
-    max-width: 55%;
-}
-
-@media (min-width: 300px) and (max-width:400px) {
-
-    .card {
-        width: auto;
-    }
-
-    .custom-col2 {
-        flex: 0 0 60%;
-    }
-
-    .card-content {
-        padding: 2%;
-    }
-}
 
 .ios ion-toolbar {
     padding-top: 5%;
@@ -663,19 +643,23 @@ ion-segment {
 
 ion-segment-view {
     width: 100%;
-    height: 165px;
+    // height: 170px;
     background: #DFDFDF 0% 0% no-repeat padding-box;
     border-top: none;
     border-radius: 2px;
     opacity: 1;
 }
 
+// ion-segment-button::part(indicator-background) {
+//     background: #469FD1;
+//     clip-path: inset(0% round 2px);
+//     /* กำหนด border-radius */
+// }
+
 ion-segment-button::part(indicator-background) {
     background: #469FD1;
     clip-path: inset(0% round 2px);
     /* กำหนด border-radius */
-
-
 }
 
 .f-seg {
@@ -730,6 +714,7 @@ ion-segment-button.ios::part(indicator-background) {
     --placeholder-opacity: var(--ion-placeholder-opacity, 1);
     opacity: 1;
     color: #747474;
+    box-shadow: none;
 
     ::placeholder {
         color: #747474;
@@ -737,10 +722,105 @@ ion-segment-button.ios::part(indicator-background) {
     }
 }
 
+
+
 .icon-fight {
     font-size: 28px;
     color: #469FD1;
 }
+
+.margin-to{
+    margin-left: -36.1%;
+}
+
+.custom-col {
+    flex: 0 0 55%;
+    max-width: 50%;
+}
+
+.custom-col2 {
+    flex: 0 0 45%;
+    max-width: 55%;
+}
+
+@media (width: 344px) {
+    .font-14{
+        font-size: 12px;
+    }
+
+    .custom-col2 {
+        flex: 0 0 20%;
+        max-width: 55%;
+    }
+}
+
+@media (min-width: 350px) and (max-width:374px) {
+
+    .font-14{
+        font-size: 13px;
+    }
+
+    .card {
+        width: auto;
+    }
+
+    .custom-col2 {
+        flex: 0 0 40%;
+    }
+
+    .card-content {
+        padding: 2%;
+    }
+}
+
+.custom-col-pick {
+    flex: 0 0 41.67;
+}
+
+.custom-col-date {
+    flex: 0 0 66.67%;
+}
+
+@media (max-width: 414px) {
+    .custom-col-pick {
+        flex: 0 0 30%;
+    }
+
+    .custom-col-date {
+        flex: 0 0 70%;
+    }
+
+    // .font-14{
+    //     font-size: 13px;
+    // }
+}
+
+@media (max-width: 375px) {
+    // .custom-col-check {
+    //     flex: 0 0 40%;
+    // }
+
+    // .custom-col-op {
+    //     flex: 0 0 60%;
+    // }
+
+    // .custom-col-address {
+    //     flex: 0 0 75%;
+    // }
+
+    // .custom-col-address-2 {
+    //     flex: 0 0 25%;
+    // }
+    .custom-col-pick {
+        flex: 0 0 100%;
+    }
+
+    .custom-col-date {
+        flex: 0 0 75.83%;
+    }
+
+}
+
 
 
 // ion-segment {
