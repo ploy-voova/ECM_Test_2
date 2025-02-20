@@ -204,6 +204,7 @@ ion-select {
     /* ใช้ 0.3px แทน 0.2px */
     box-shadow: none;
     --padding-start: 4%;
+    --padding-end: 4%;
     border-radius: 2px;
     margin: 0;
     opacity: 1;
@@ -213,7 +214,6 @@ ion-select {
     --border-width: 0.3px;
     --border-color: var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-250, var(--ion-background-color-step-250, #c8c7cc))));
     --highlight-height: 0px;
-    font-size: inherit;
 }
 
 .font-13 {
@@ -295,13 +295,14 @@ ion-select {
     height: 40px;
     min-height: 40px;
     --background: #469FD1 0% 0% no-repeat padding-box;
-    box-shadow: none;
+    --box-shadow: none;
     --border-radius: 3px;
     color: #FFFFFF;
     // margin: 0;
     text-transform: none !important;
     opacity: 1;
     white-space: nowrap;
+    font-weight: 300;
 }
 
 .ion-button-green {
@@ -309,7 +310,8 @@ ion-select {
     min-height: 40px;
     background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
     --background: #397C53 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
+    // box-shadow: 0px 3px 6px #00000029;
+    --box-shadow: none;
     --border-radius: 3px;
     opacity: 1;
 
@@ -322,6 +324,7 @@ ion-select {
     color: #FFFFFF;
     opacity: 1;
     text-transform: none !important;
+    white-space: nowrap;
 }
 
 .ion-button-gray {
@@ -339,6 +342,10 @@ ion-select {
     opacity: 1;
     text-transform: none !important;
     white-space: nowrap;
+    --box-shadow: none;
+
+    //ปิดคลิก
+    pointer-events: none;
 }
 
 .card-toolbar {
@@ -346,7 +353,7 @@ ion-select {
     height: 40px;
     background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
     background: #469FD1 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
+    box-shadow: none;
     border-radius: 2px;
     opacity: 1;
 }
@@ -395,7 +402,7 @@ ion-badge {
 }
 
 ion-textarea {
-    width: 319px;
+    // width: 319px;
     height: 121px;
     color: #707070;
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
@@ -789,28 +796,9 @@ ion-segment-button.ios::part(indicator-background) {
     .custom-col-date {
         flex: 0 0 70%;
     }
-
-    // .font-14{
-    //     font-size: 13px;
-    // }
 }
 
 @media (max-width: 375px) {
-    // .custom-col-check {
-    //     flex: 0 0 40%;
-    // }
-
-    // .custom-col-op {
-    //     flex: 0 0 60%;
-    // }
-
-    // .custom-col-address {
-    //     flex: 0 0 75%;
-    // }
-
-    // .custom-col-address-2 {
-    //     flex: 0 0 25%;
-    // }
     .custom-col-pick {
         flex: 0 0 100%;
     }
@@ -821,66 +809,93 @@ ion-segment-button.ios::part(indicator-background) {
 
 }
 
+.icon-blue {
+    font-size: 30px;
+    color: #469FD1;
+}
 
+.icon-red {
+    font-size: 30px;
+    color: #FF0000;
+}
 
-// ion-segment {
-//     --background: #ACACAC;
-//     --color: white;
-// }
+.icon-green {
+    font-size: 30px;
+    color: #1F8447;
+}
 
-// // ion-segment-button {
-// //     background-color: #d47216;
-// //     color: #FFFFFF;
-// // }
+.ion-valid.sc-ion-input-md-h {
+    --highlight-color: none;
+}
 
-// // ion-segment-button {
-// //     --background: #ACACAC; /* เปลี่ยนพื้นหลังของปุ่มที่ไม่ได้ถูกเลือก */
-// //     --color: black; /* สีข้อความของปุ่มที่ไม่ได้ถูกเลือก */
-// //   }
+.ion-valid.sc-ion-input-ios-h {
+    --highlight-color: none;
+}
 
-//   ion-segment-button[selected] {
-//     --background: #469FD1; /* เปลี่ยนพื้นหลังของปุ่มที่ถูกเลือก */
-//     --color: white; /* เปลี่ยนสีข้อความของปุ่มที่ถูกเลือก */
-//   }
+.disabled-input{
+    height: 40px;
+    min-height: 40px;
+    background: #D9D9D9 0% 0% no-repeat padding-box;
+    border: 0.1px solid #D9D9D9;
+    /* ใช้ 0.3px แทน 0.2px */
+    box-shadow: none;
+    border-radius: 2px;
+    color: #000000;
+    margin: 0;
+    opacity: 1;
+    --padding-start: 4%;
+    --padding-end: 4%;
+    box-shadow: none;
+}
 
+@media (max-width: 425px) {
+    .feb-list {
+        width: 425px;
+        margin-left: -16%;
+    }
 
-// .custom-action-sheet {
-//     width: 100px; /* กำหนดความกว้าง */
-//     height: 100px; /* กำหนดความสูง */
-//     --background: #ffffff; /* สีพื้นหลัง */
-//     --border-radius: 8px; /* มุมโค้ง */
-//     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* เงา */
-//   }
+    .col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 
-//   .custom-action-sheet .action-sheet-button {
-//     font-size: 12px; /* ขนาดข้อความ */
-//     padding: 8px;    /* ระยะห่างระหว่างตัวเลือก */
-//   }
+@media (max-width: 400px) {
+    .feb-list {
+        width: 390px;
+    }
 
-// @media (min-width: 500px) {
-//     .custom-col {
-//         flex: 0 0 30%; /* 50% width (6 columns) */
-//         // max-width: 50%; /* กำหนดขนาดสูงสุด */
-//     }
-// }
+    .font-16 {
+        text-align: left;
+        font: normal normal normal 14px/16px Roboto;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
 
-// @media (min-width: 768px) {
-//     .custom-col {
-//         width: 33.33%;
-//         /* md */
-//     }
-// }
+    .col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 
-// @media (min-width: 992px) {
-//     .custom-col {
-//         width: 25%;
-//         /* lg */
-//     }
-// }
+@media (max-width: 360px) {
+    .feb-list {
+        width: 360px;
+        margin-left: -16%;
+        text-align: left;
+    }
 
-// @media (min-width: 1200px) {
-//     .custom-col {
-//         width: 16.67%;
-//         /* xl */
-//     }
-// }
+    .font-16 {
+        text-align: left;
+        font: normal normal normal 14px/16px Roboto;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    .col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

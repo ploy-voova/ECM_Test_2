@@ -80,7 +80,8 @@ export class QuotePreviewPage implements OnInit {
     public quote_pre: QuotePreviewService,
     private router_: Router,
     private new_job: NewjobService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    public newjob_ser: NewjobService
   ) { }
 
   async ngOnInit() {
@@ -90,6 +91,26 @@ export class QuotePreviewPage implements OnInit {
       this.quote_pre.qId = this.q_id;
     });
     this.journey_quote();
+  }
+
+  address1: string = '';
+  address2: string = '';
+
+  apply_address(){
+    this.address1 = this.newjob_ser.name_address;
+    this.newjob_ser.name_address = '';
+  }
+
+  apply_address2(){
+    this.address2 = this.newjob_ser.name_address;
+    this.newjob_ser.name_address = '';
+  }
+
+  isChecked_startJ: boolean[][] = [];
+  
+  logCheckboxStatus(e:any,j: number, mm: number) {
+    // this.quote_pre.start_J[j][mm] = e.detail.checked; 
+    // console.log('Checkbox status:', this.quote_pre.start_J[j][mm]);
   }
 
   showFilghtDrtail(){
@@ -107,6 +128,7 @@ export class QuotePreviewPage implements OnInit {
 
     // let i = 0;
     res['journey_quote'].map((r: any, i: number) => {
+      // this.isChecked_startJ[i] = [];
       this.select_pax[i] = [];
       this.select_vehicle_[i] = [];
       this.select_luggage_[i] = [];
@@ -136,6 +158,9 @@ export class QuotePreviewPage implements OnInit {
     this.time_j = res['journey_quote'][0]['movement_quote'][0]['time_start'];
     this.quote_pre.checkAll = res['journey_quote'].map(() => false);
     this.quote_pre.mmcheck = res['journey_quote'].map((res: any) => res['movement_quote'].map(() => false));
+    this.isChecked_startJ = res['journey_quote'].map((res: any) => res['movement_quote'].map(() => false));
+    console.log(this.isChecked_startJ);
+    
     this.dt_c = res['Customer'];
     this.dt_t = res['Transport'];
     this.dt_p = res['Pricing'];
@@ -240,6 +265,61 @@ export class QuotePreviewPage implements OnInit {
   togglemap() {
     this.isvisiblemap = !this.isvisiblemap;
   }
+
+  // isOpencoll: boolean[][] = [];
+
+  note1: string[][] = [];
+  isOpencoll: boolean[][] = [];
+  
+  openNote(i: number, j: number) {
+    if (!this.note1[i]) {
+      this.note1[i] = [];
+    }
+    if (!this.note1[i][j]) {
+      this.note1[i][j] = "";
+    }
+  
+    if (!this.isOpencoll[i]) {
+      this.isOpencoll[i] = [];
+    }
+    this.isOpencoll[i][j] = true;
+
+  }
+  
+  closeNote(i: number, j: number) {
+    if (this.isOpencoll[i]) {
+      this.isOpencoll[i][j] = false;
+    }
+  }
+
+  note2: string[][] = [];
+  isOpendes: boolean[][] = [];
+
+  openNote_Des(j: number, mm: number){
+
+    if(!this.note2[j]){
+      this.note2[j] = [];
+    }
+
+    if(!this.note2[j][mm]){
+      this.note2[j][mm] = "";
+    }
+
+    if(!this.isOpendes[j]){
+      this.isOpendes[j] = [];
+    }
+
+    this.isOpendes[j][mm] = true;
+  }
+
+  closeNote_Des(j: number, mm: number){
+    if(!this.isOpendes[j]){
+      this.isOpendes[j] = [];
+    }
+
+    this.isOpendes[j][mm] = false;
+  }
+
 
   isdrop: boolean[][] = [];
   currentOpen: { journeyIndex: number; mmIndex: number } | null = null; // เก็บตำแหน่งของอันที่เปิดอยู่

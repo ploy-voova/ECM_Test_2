@@ -5,30 +5,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-fab slot="fixed" vertical="center" horizontal="start" class="center">
+  <ion-fab slot="fixed" vertical="center" horizontal="start" class="center" [fullscreen]="true">
     <ion-col *ngIf="checkfabButton == true" class="ion-fab-button-h center-right" (click)="toggleFabButton()">
       <ion-icon name="chevron-forward-outline" class="icon-fab-h"></ion-icon>
     </ion-col>
     <ion-list side="end" class="feb-list center" *ngIf="checkfabButton == false">
-      <ion-row class="center" style="width: 100%; padding-left: 5%;">
+      <ion-row class="center" style="width: 100%; padding-left: 8%;">
         <ion-col size="3.5" class="center col" style="border-right: 2px solid #FFFFFF;">
           <ion-icon name="bookmark-outline" class="icon-fab-c"></ion-icon>
-          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFFFFF;">Book Now</ion-fab-label>
+          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFF;">Book Now</ion-fab-label>
         </ion-col>
-        <ion-col size="3.5" class="center col" >
-          <ion-icon name="share-social-outline"class="icon-fab-c" ></ion-icon>
-          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFFFFF;">Save & Send</ion-fab-label>
+        <ion-col size="3.6" class="center col">
+          <ion-icon name="share-social-outline" class="icon-fab-c"></ion-icon>
+          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFF;">Save & Send</ion-fab-label>
         </ion-col>
-        <ion-col size="3.5" class="center col" style="border-left: 2px solid #FFFFFF;">
-          <ion-icon name="save-outline" class="icon-fab-c" ></ion-icon>
-          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFFFFF;" >Quick Save</ion-fab-label>
+        <ion-col size="3.4" class="center col" style="border-left: 2px solid #FFFFFF;">
+          <ion-icon name="save-outline" class="icon-fab-c"></ion-icon>
+          <ion-fab-label class="font-16" style="font-weight: 300; color: #FFF;">Quick Save</ion-fab-label>
         </ion-col>
-        <ion-col size="1.5" class="center col" (click)="toggleFabButton()">
+        <ion-col size="1.5" class="center col no-padding" (click)="toggleFabButton()">
           <ion-icon name="chevron-forward-outline" class="icon-fab-h"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-list>
-  </ion-fab> -->
+  </ion-fab>
   <ion-grid>
     <ion-col size="12" class="center">
       <ion-label class="font-18" style="color: #0D0D0D;">Quote Preview</ion-label>
@@ -177,8 +177,8 @@
             <!-- *ngIf="isdrop[i] && isdrop[i][j]" -->
             <ion-row *ngIf="isdrop[i] && isdrop[i][j]">
               <ion-col size="12" class="mb-2">
-                <ion-checkbox class="font-14 unchecked-checkbox" labelPlacement="start"
-                  style="color: #747474; font-weight: bold;">
+                <ion-checkbox [(ngModel)]="isChecked_startJ[i][j]" class="font-14 unchecked-checkbox"
+                  labelPlacement="start" style="color: #747474; font-weight: bold;">
                   Start ofJourney
                 </ion-checkbox>
               </ion-col>
@@ -186,7 +186,7 @@
                 <ion-label class="font-14" style="color: #FF0000;">Pickup date</ion-label>
               </ion-col>
               <ion-col class="mb-2 custom-col-date">
-                <ion-input class="font-14 ion-input" style="color: #707070; "
+                <ion-input class="ion-input font-14" style="color: #707070; "
                   value="{{date_c ? date_c : mm.date_start}} {{time_c ? time_c : mm.time_start}}">
                   <ion-icon id="open-date[{{i}}][{{j}}]" style="margin-right: 2%; padding: 0;" slot="end"
                     name="today-outline" class="icon-blue"></ion-icon>
@@ -221,17 +221,63 @@
                 <ion-col size="12" class="mb-2">
                   <ion-label class="font-14" style="color: #FF0000;">Collection Address(2)</ion-label>
                 </ion-col>
-                <ion-col class="col-sm">
-                  <ion-input class="font-14 ion-input"
-                    style="color: #000000; border: none; background: #D9D9D9 0% 0% no-repeat padding-box; padding: 3%;"
-                    value="{{mm.address_last}}" disabled="true">
+                <ion-col class="col-sm " style="display: flex; align-items: start; justify-content: flex-start;">
+                  <ion-input class="font-14" [ngClass]="{
+                      'disabled-input': isChecked_startJ[i][j] === false,
+                      'ion-input' : isChecked_startJ[i][j] === true}" value="{{mm.address_last}}"
+                    [disabled]="isChecked_startJ[i][j] === false">
                   </ion-input>
                 </ion-col>
+                <!-- <ion-col *ngIf="isChecked_startJ[i][j]" class="col-sm">
+                  <ion-input class="font-14 ion-input"></ion-input>
+                </ion-col> -->
                 <ion-col>
-                  <ion-icon class="icon-blue" name="location-outline" style="font-size: 35px;"></ion-icon>
-                  <ion-icon class="icon-blue" name="reader-outline" style="font-size: 35px;"></ion-icon>
+                  <ion-icon class="icon-blue" name="location-outline" style="font-size: 32px;"></ion-icon>
+                  <ion-icon (click)="openNote(i,j)" class="icon-blue" [ngClass]="{
+                    'icon-green': note1[i] && note1[i][j] && note1[i][j].length > 0, 
+                    'icon-blue': !note1[i] || !note1[i][j] || note1[i][j].length === 0
+                  }" name="reader-outline" style="font-size: 32px;"></ion-icon>
+                </ion-col>
+                <ion-col *ngIf="isOpencoll[i] && isOpencoll[i][j]" class="col-sm">
+                  <ion-input [(ngModel)]="note1[i][j]" class="ion-input"></ion-input>
+                </ion-col>
+                <ion-col *ngIf="isOpencoll[i] && isOpencoll[i][j]">
+                  <ion-icon (click)="closeNote(i,j)" class="icon-blue" name="reader-outline"
+                    style="font-size: 32px; margin-left: 32px; color: #FF0000;"></ion-icon>
                 </ion-col>
               </ion-row>
+
+              <!--/////////////////////// modal-call //////////////////////////-->
+              <ion-modal #modal_coll trigger="open-modal-call" [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7]">
+                <ng-template>
+                  <ion-content>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="12" class="center">
+                          <ion-label class="font-16" style="color: #747474;">Collection Address</ion-label>
+                        </ion-col>
+                        <ion-col size="12" style="display: flex;">
+                          <ion-input class="input font-14" style="color: #707070;"
+                            [value]="newjob_ser.name_address.trim() === '' ? address1 : newjob_ser.name_address"></ion-input>
+                          <ion-icon name="location-outline" style="font-size: 40px; color: #469FD1;"></ion-icon>
+                        </ion-col>
+                        <ion-col>
+                          <ion-label class="font-14" style="color: #469FD1;">View Root</ion-label>
+                        </ion-col>
+                        <ion-col size="12" style="height: 300px;">
+                          <app-map></app-map>
+                        </ion-col>
+                        <ion-col size="12" class="center-right">
+                          <ion-button (click)="apply_address()" (click)="modal_coll.dismiss()"
+                            class="ion-button-blue font-14"
+                            style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+
               <ion-row class="mb-2" style="width: 100%;">
                 <ion-col size="12">
                   <ion-label class="font-14" style="color: #FF0000;">Destination Address(2)</ion-label>
@@ -240,8 +286,18 @@
                   <ion-input class="center font-14 ion-input"></ion-input>
                 </ion-col>
                 <ion-col>
-                  <ion-icon class="icon-blue" name="location-outline" style="font-size: 35px;"></ion-icon>
-                  <ion-icon class="icon-blue" name="reader-outline" style="font-size: 35px;"></ion-icon>
+                  <ion-icon class="icon-blue" name="location-outline" style="font-size: 32px;"></ion-icon>
+                  <ion-icon (click)="openNote_Des(i,j)" class="icon-blue" [ngClass]="{
+                    'icon-green': note2[i] && note2[i][j] && note2[i][j].length > 0, 
+                    'icon-blue': !note2[i] || !note2[i][j] || note2[i][j].length === 0
+                  }" name="reader-outline" style="font-size: 32px;"></ion-icon>
+                </ion-col>
+                <ion-col *ngIf="isOpendes[i] && isOpendes[i][j]" class="col-sm">
+                  <ion-input [(ngModel)]="note2[i][j]" class="ion-input"></ion-input>
+                </ion-col>
+                <ion-col *ngIf="isOpendes[i] && isOpendes[i][j]">
+                  <ion-icon (click)="closeNote_Des(i,j)" class="icon-blue" name="reader-outline"
+                    style="font-size: 32px; margin-left: 32px; color: #FF0000;"></ion-icon>
                 </ion-col>
               </ion-row>
 
@@ -311,13 +367,14 @@
               </ion-row>
               <!-- <ion-row> -->
               <ion-col size="12" class="" style="display: flex; align-items: center; margin-top: 4%;">
-                <ion-row class="card-tool center-left" style="width: 100%; padding-left: 2%;" (click)="showFilghtDrtail()">
+                <ion-row class="card-tool center-left" style="width: 100%; padding-left: 2%;"
+                  (click)="showFilghtDrtail()">
                   <ion-label class="font-16 " style="color: #469FD1;">Filght Detaild</ion-label>
                 </ion-row>
               </ion-col>
               <ion-col>
                 <ion-col size="12" *ngIf="isFilght">
-                  <ion-row>
+                  <ion-row style="margin-top: -5%;">
                     <ion-segment (ionChange)="segmentChanged($event)" style="background-color: #DFDFDF;">
                       <ion-segment-button value="medium" content-id="arrival" class="center">
                         <ion-label class="f-seg">Arrival</ion-label>
@@ -373,61 +430,6 @@
                 </ion-col>
               </ion-col>
 
-
-              <!-- </ion-row> -->
-              <!-- <ion-row>
-                <ion-col size="12" style="padding: 5%;">
-                  <ion-segment (ionChange)="segmentChanged($event)">
-                    <ion-segment-button value="medium" content-id="arrival" class="center">
-                      <ion-label class="f-seg">Arrival</ion-label>
-                    </ion-segment-button>
-                    <ion-segment-button value="segment">
-                      <ion-label class="f-seg">Departure</ion-label>
-                    </ion-segment-button>
-                  </ion-segment>
-                  <ion-segment-view>
-                    <ion-segment-content id="arrival" style="padding: 2%;">
-                      <ion-row>
-                        <ion-col class="no-padding" style="margin-right: 2%;">
-                          <ion-input class="input-segment" placeholder="Filght Airline">
-                            <ion-icon slot="end" class="icon-fight" name="ticket-outline"></ion-icon>
-                          </ion-input>
-                        </ion-col>
-                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
-                          <ion-input class="input-segment" placeholder="Number">
-                            <ion-icon slot="end" class="icon-fight" name="search-outline"></ion-icon>
-                          </ion-input>
-                        </ion-col>
-                      </ion-row>
-                      <ion-row>
-                        <ion-col class="no-padding" style="margin-right: 2%;">
-                          <ion-input class="input-segment" placeholder="Date">
-                            <ion-icon slot="end" class="icon-fight" name="today-outline"></ion-icon>
-                          </ion-input>
-                        </ion-col>
-                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
-                          <ion-input class="input-segment" placeholder="Time">
-                            <ion-icon slot="end" class="icon-fight" name="time-outline"></ion-icon>
-                          </ion-input>
-                        </ion-col>
-                      </ion-row>
-                      <ion-row>
-                        <ion-col class="no-padding" style="margin-right: 2%;">
-                          <ion-input class="input-segment" placeholder="Airport">
-                            <ion-icon slot="end" class="icon-fight" name="airplane-outline"></ion-icon>
-                          </ion-input>
-                        </ion-col>
-                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
-                          <ion-input class="input-segment" placeholder="Terminal">
-                            <ion-icon slot="end" class="icon-fight" name="trail-sign-outline"></ion-icon>
-                          </ion-input>
-                        </ion-col>
-                      </ion-row>
-                    </ion-segment-content>
-                  </ion-segment-view>
-                </ion-col>
-              </ion-row> -->
-
             </ion-row>
 
 
@@ -463,11 +465,15 @@
               </ion-row>
             </ion-col>
 
+            <!-- [ngClass]="{ 'set-icon': quote_pre?.checkAll?.[i] || quote_pre?.mmcheck?.[i]?.[k] }" -->
             <ion-col size="12">
               <ion-row>
                 <ion-col size="4" class="no-padding" style="margin-right: 2%;">
-                  <ion-button (click)="to_CoveringJob()" class="ion-button-gray">Covering
-                    job</ion-button>
+                  <ion-button (click)="to_CoveringJob()"
+                  [ngClass]="{ 
+                    'ion-button-blue': selectAll === true,
+                    'ion-button-gray': selectAll === false }"
+                  >Covering job</ion-button>
                 </ion-col>
                 <ion-col size="5.8" class="no-padding ">
                   <ion-button class="no-padding ion-button-gray">Duplicate
@@ -509,11 +515,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleCus()">
-          <ion-col size="7" class="center-left">
+          <ion-col size="6" class="center-left">
             <ion-icon name="person-outline" style="font-size: 25px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Customer</ion-label>
           </ion-col>
-          <ion-col size="5" class="center" style="justify-content: space-between;">
+          <ion-col size="6" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="mail-outline"></ion-icon>
             <ion-icon class="iconbar" name="call-outline"></ion-icon>
             <ion-icon class="iconbar" name="id-card-outline"></ion-icon>
@@ -583,7 +589,7 @@
         <ion-col offset="7" size="5">
           <ion-button class="ion-button-blue center">
             <ion-icon name="chatbubbles-outline" style="margin-right: 3%; font-size: 25px;"></ion-icon>
-            Contact Log
+            <ion-label class="font-14" style="color: #FFF;">Contact Log</ion-label>
           </ion-button>
         </ion-col>
       </ion-row>
@@ -592,11 +598,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleTran()">
-          <ion-col size="8" class="center-left">
+          <ion-col size="7.2" class="center-left">
             <ion-icon name="bus-outline" style="width: 25px; height: 29px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Transport</ion-label>
           </ion-col>
-          <ion-col size="4" class="center" style="justify-content: space-between;">
+          <ion-col size="4.8" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="people-circle-outline"></ion-icon>
             <ion-icon class="iconbar" name="briefcase-outline"></ion-icon>
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
@@ -649,20 +655,11 @@
           </ion-select-option>
         </ion-select>
       </ion-col>
-      <ion-col size="6" class="center-left" style="margin-top: 2%;">
+      <ion-col size="12" class="center-left" style="margin-top: 2%;">
         <ion-icon name="bus-outline" style="color: #AB1C1C; width: 25px; height: 29px"></ion-icon>
         <ion-label class="font-16" style="color: #AB1C1C;" (click)="toggleVehicles()">Set Alternative Type</ion-label>
       </ion-col>
-      <ion-col size="6" class="center-left">
-        <ion-icon name="bus-outline" style="color: #000000; width: 25px; height: 29px"></ion-icon>
-        <ion-label class="font-16 " style="color: #000000;" (click)="toggleAs()">As Directed</ion-label>
-      </ion-col>
-      <ion-col offset="6" *ngIf="isdropAs">
-        <ion-row>
-          <ion-input class="input font-14 " style="margin-right: 2%;" placeholder=" Hours"></ion-input>
-          <ion-input class="input font-14 " placeholder=" Days"></ion-input>
-        </ion-row>
-      </ion-col>
+    
       <ion-row *ngIf="isdropVehicles">
         <ion-col size="6">
           <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
@@ -689,6 +686,28 @@
           <ion-input class="input font-14" placeholder=" Price" style="width: 100%; margin: 0;"></ion-input>
         </ion-col>
       </ion-row>
+      <ion-col size="12" class="center-left">
+        <ion-icon name="bus-outline" style="color: #000000; width: 25px; height: 29px"></ion-icon>
+        <ion-label class="font-16 " style="color: #000000;" (click)="toggleAs()">As Directed</ion-label>
+      </ion-col>
+      <ion-col size="6" *ngIf="isdropAs">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+        interface="popover" value="No">
+        <ion-select-option value="No">Hours</ion-select-option>
+        <ion-select-option value="No">No luggage.</ion-select-option>
+        <ion-select-option value="No">No luggage.</ion-select-option>
+        <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+      </ion-select>
+      </ion-col>
+      <ion-col size="6" *ngIf="isdropAs">
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
+        interface="popover" value="No">
+        <ion-select-option value="No">Days</ion-select-option>
+        <ion-select-option value="No">No luggage.</ion-select-option>
+        <ion-select-option value="No">No luggage.</ion-select-option>
+        <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+      </ion-select>
+      </ion-col>
       <ion-col size="12" style="margin-top: 4%;">
         <ion-label class="font-16" style="font-weight: bold; color: #000000;">As Directed</ion-label>
       </ion-col>
@@ -713,11 +732,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="togglePrice()">
-          <ion-col size="10" class="center-left">
+          <ion-col size="9.7" class="center-left">
             <ion-icon name="cash-outline" style="width: 25px; height: 29px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Pricing</ion-label>
           </ion-col>
-          <ion-col size="2" class="center" style="justify-content: space-between;">
+          <ion-col size="2.3" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
             <ion-icon class="iconbar" [name]="iconNamePrice"></ion-icon>
           </ion-col>
@@ -780,11 +799,11 @@
     <ion-row>
       <ion-col size="12" class="card-toolbar">
         <ion-row (click)="toggleMisc()">
-          <ion-col size="10" class="center-left">
+          <ion-col size="9.7" class="center-left">
             <ion-icon name="help-outline" style="width: 25px; height: 29px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Misc</ion-label>
           </ion-col>
-          <ion-col size="2" class="center" style="justify-content: space-between;">
+          <ion-col size="2.3" class="center" style="justify-content: space-between;">
             <ion-icon class="iconbar" name="notifications-circle-outline"></ion-icon>
             <ion-icon class="iconbar" [name]="iconNameMisc"></ion-icon>
           </ion-col>
@@ -831,7 +850,7 @@
           <ion-textarea value="{{dt_m.comment}}"></ion-textarea>
         </ion-col>
         <ion-col size="4" style="display: block; justify-items: center;">
-          <ion-label class="font-16" style="color: #469FD1; display: block;">Chang Status</ion-label>
+          <ion-label class="font-16" style="color: #469FD1; display: block; white-space: nowrap;">Chang Status</ion-label>
           <ion-icon name="document-attach-outline" style="width: 43px; height: 50px; color: #000000;"></ion-icon>
           <ion-label class="font-14" style="color: #747474; display: block;">Invoice</ion-label>
         </ion-col>
@@ -854,21 +873,21 @@
     <ion-row (click)="toggleItem()">
       <ion-col size="12" class="card-toolbar">
         <ion-row>
-          <ion-col size="11" class="center-left">
-            <ion-icon name="pricetags-outline"
+          <ion-col size="6" class="center-left">
+            <ion-icon name="ticket-outline"
               style="width: 25px; height: 29px; margin-right: 5%; color: #ffff;"></ion-icon>
             <ion-label style="color: #ffff;">| Item</ion-label>
           </ion-col>
-          <ion-col size="1" class="center" style="justify-content: space-between;">
+          <ion-col size="6" class="center-right">
             <ion-icon class="iconbar" [name]="iconNameItem"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-col>
     </ion-row>
 
-    <ion-row style="padding: 4%;" *ngIf="isdropItem">
+    <ion-row style="padding: 3%;" *ngIf="isdropItem">
       <ion-col size="6">
-        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Location</ion-label>
+        <ion-label class="font-14" style="color: #000000;">Location</ion-label>
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
           interface="popover" value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -878,7 +897,7 @@
         </ion-select>
       </ion-col>
       <ion-col size="6">
-        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Categoty</ion-label>
+        <ion-label class="font-14" style="color: #000000;">Categoty</ion-label>
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
           interface="popover" value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -888,7 +907,7 @@
         </ion-select>
       </ion-col>
       <ion-col size="6">
-        <ion-label class="font-14" style="color: #000000; font-weight: bold;">Group</ion-label>
+        <ion-label class="font-14" style="color: #000000; ">Group</ion-label>
         <ion-select class="font-14 ion-select-T" style="color: #ACACAC; margin-top: 5%;" label-placement="floating"
           interface="popover" value="No">
           <ion-select-option value="No">No luggage.</ion-select-option>
@@ -898,9 +917,9 @@
         </ion-select>
       </ion-col>
       <ion-col size="12">
-        <ion-label class="font-14" style="color: #000000; font-weight: bold; ">No extra item yet</ion-label>
+        <ion-label class="font-14" style="color: #000000;  ">No extra item yet</ion-label>
       </ion-col>
-      <ion-col offset="3">
+      <ion-col offset="2">
         <ion-button class="font-14 ion-button-green">
           Send and Save
         </ion-button>
