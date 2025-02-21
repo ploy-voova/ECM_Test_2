@@ -224,7 +224,8 @@
                 <ion-col class="col-sm " style="display: flex; align-items: start; justify-content: flex-start;">
                   <ion-input class="font-14" [ngClass]="{
                       'disabled-input': isChecked_startJ[i][j] === false,
-                      'ion-input' : isChecked_startJ[i][j] === true}" value="{{mm.address_last}}"
+                      'ion-input' : isChecked_startJ[i][j] === true}"
+                    value="{{mm.address_last}}"
                     [disabled]="isChecked_startJ[i][j] === false">
                   </ion-input>
                 </ion-col>
@@ -232,7 +233,8 @@
                   <ion-input class="font-14 ion-input"></ion-input>
                 </ion-col> -->
                 <ion-col>
-                  <ion-icon class="icon-blue" name="location-outline" style="font-size: 32px;"></ion-icon>
+                  <ion-icon id="open-modal-call-q" class="icon-blue" name="location-outline"
+                    style="font-size: 32px;"></ion-icon>
                   <ion-icon (click)="openNote(i,j)" class="icon-blue" [ngClass]="{
                     'icon-green': note1[i] && note1[i][j] && note1[i][j].length > 0, 
                     'icon-blue': !note1[i] || !note1[i][j] || note1[i][j].length === 0
@@ -248,7 +250,7 @@
               </ion-row>
 
               <!--/////////////////////// modal-call //////////////////////////-->
-              <ion-modal #modal_coll trigger="open-modal-call" [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7]">
+              <ion-modal #modal_coll trigger="open-modal-call-q" [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7]">
                 <ng-template>
                   <ion-content>
                     <ion-grid>
@@ -277,6 +279,7 @@
                   </ion-content>
                 </ng-template>
               </ion-modal>
+              <!-- //////////////////////////////////////////////// -->
 
               <ion-row class="mb-2" style="width: 100%;">
                 <ion-col size="12">
@@ -286,7 +289,7 @@
                   <ion-input class="center font-14 ion-input"></ion-input>
                 </ion-col>
                 <ion-col>
-                  <ion-icon class="icon-blue" name="location-outline" style="font-size: 32px;"></ion-icon>
+                  <ion-icon id="open-modal-call2-q" class="icon-blue" name="location-outline" style="font-size: 32px;"></ion-icon>
                   <ion-icon (click)="openNote_Des(i,j)" class="icon-blue" [ngClass]="{
                     'icon-green': note2[i] && note2[i][j] && note2[i][j].length > 0, 
                     'icon-blue': !note2[i] || !note2[i][j] || note2[i][j].length === 0
@@ -300,6 +303,38 @@
                     style="font-size: 32px; margin-left: 32px; color: #FF0000;"></ion-icon>
                 </ion-col>
               </ion-row>
+
+              <!--///////////////////// modal-call2 /////////////////////-->
+              <ion-modal #modal_coll2 trigger="open-modal-call2-q" [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7]">
+                <ng-template>
+                  <ion-content>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="12" class="center">
+                          <ion-label class="font-16" style="color: #747474;">Collection Address</ion-label>
+                        </ion-col>
+                        <ion-col size="12" style="display: flex;">
+                          <ion-input class="input font-14" style="color: #707070;"
+                            [value]="newjob_ser.name_address.trim() === '' ? address2 : newjob_ser.name_address"></ion-input>
+                          <ion-icon name="location-outline" style="font-size: 40px; color: #469FD1;"></ion-icon>
+                        </ion-col>
+                        <ion-col>
+                          <ion-label class="font-14" style="color: #469FD1;">View Root</ion-label>
+                        </ion-col>
+                        <ion-col size="12" style="height: 300px;">
+                          <app-map></app-map>
+                        </ion-col>
+                        <ion-col size="12" class="center-right">
+                          <ion-button (click)="apply_address2()" (click)="modal_coll2.dismiss()"
+                            class="ion-button-blue font-14"
+                            style="color: #ffff; width: 124px; height: 45px; min-height: 45px;">Apply</ion-button>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+              <!-- ////////////////////////////////////////////// -->
 
               <ion-row>
                 <ion-col size="12" class="mb-2">
@@ -439,12 +474,12 @@
           <ion-row>
             <ion-col size="12">
               <ion-row>
-                <ion-col size="5" class="no-padding" style="margin-right: 2%;"
+                <ion-col size="6" class="no-padding" style="padding-right: 2%;"
                   (click)="open_jLast(dt_q.length-1,jj['movement_quote'].length-1)">
                   <ion-button class="no-padding ion-button-blue" style="font-weight: 300; white-space: nowrap;">Add
                     Movement</ion-button>
                 </ion-col>
-                <ion-col size="5.5" class="no-padding">
+                <ion-col size="6" class="no-padding" style="padding-left: 2%;">
                   <ion-button class="no-padding ion-button-blue" style="font-weight: 300; white-space: nowrap;">Add
                     Blank
                     Journey
@@ -455,10 +490,10 @@
 
             <ion-col size="12">
               <ion-row>
-                <ion-col size="4" class="no-padding" style="margin-right: 2%;">
+                <ion-col size="6" class="no-padding" style="padding-right: 2%;">
                   <ion-button class="ion-button-blue" style="font-weight: 300;">Add Return</ion-button>
                 </ion-col>
-                <ion-col size="5.5" class="no-padding">
+                <ion-col size="6" class="no-padding" style="padding-left: 2%;">
                   <ion-button class="no-padding ion-button-blue" style="font-weight: 300;">Remove
                     Movement</ion-button>
                 </ion-col>
@@ -468,14 +503,13 @@
             <!-- [ngClass]="{ 'set-icon': quote_pre?.checkAll?.[i] || quote_pre?.mmcheck?.[i]?.[k] }" -->
             <ion-col size="12">
               <ion-row>
-                <ion-col size="4" class="no-padding" style="margin-right: 2%;">
-                  <ion-button (click)="to_CoveringJob()"
-                  [ngClass]="{ 
-                    'ion-button-blue': selectAll === true,
-                    'ion-button-gray': selectAll === false }"
-                  >Covering job</ion-button>
+                <ion-col size="6" class="no-padding" style="padding-right: 2%;">
+                  <ion-button (click)="to_CoveringJob()" [ngClass]="{ 
+                    'ion-button-blue': selectAll || ischeck || this.quote_pre.checkAll.includes(true),
+                    'ion-button-gray': !(selectAll || ischeck || this.quote_pre.checkAll.includes(true))}">Covering
+                    job</ion-button>
                 </ion-col>
-                <ion-col size="5.8" class="no-padding ">
+                <ion-col size="6" class="no-padding " style="padding-left: 2%;">
                   <ion-button class="no-padding ion-button-gray">Duplicate
                     Movement</ion-button>
                 </ion-col>
@@ -484,11 +518,11 @@
 
             <ion-col size="12">
               <ion-row>
-                <ion-col size="5.2" class="no-padding" style="margin-right: 2%;">
+                <ion-col size="6" class="no-padding" style="padding-right: 2%;">
                   <ion-button class="no-padding ion-button-gray">Duplicate
                     Journey</ion-button>
                 </ion-col>
-                <ion-col size="4.1" class="no-padding">
+                <ion-col size="6" class="no-padding" style="padding-left: 2%;">
                   <ion-button class="no-padding ion-button-gray">Assign Driver</ion-button>
                 </ion-col>
               </ion-row>
@@ -496,7 +530,7 @@
 
             <ion-col size="12">
               <ion-row>
-                <ion-col size="4.5" class="no-padding">
+                <ion-col size="6" class="no-padding" style="padding-right: 2%;">
                   <ion-button class="no-padding ion-button-gray">Remove Driver</ion-button>
                 </ion-col>
               </ion-row>
@@ -659,7 +693,7 @@
         <ion-icon name="bus-outline" style="color: #AB1C1C; width: 25px; height: 29px"></ion-icon>
         <ion-label class="font-16" style="color: #AB1C1C;" (click)="toggleVehicles()">Set Alternative Type</ion-label>
       </ion-col>
-    
+
       <ion-row *ngIf="isdropVehicles">
         <ion-col size="6">
           <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
@@ -691,22 +725,22 @@
         <ion-label class="font-16 " style="color: #000000;" (click)="toggleAs()">As Directed</ion-label>
       </ion-col>
       <ion-col size="6" *ngIf="isdropAs">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-        interface="popover" value="No">
-        <ion-select-option value="No">Hours</ion-select-option>
-        <ion-select-option value="No">No luggage.</ion-select-option>
-        <ion-select-option value="No">No luggage.</ion-select-option>
-        <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-      </ion-select>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">Hours</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
       </ion-col>
       <ion-col size="6" *ngIf="isdropAs">
-        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating"
-        interface="popover" value="No">
-        <ion-select-option value="No">Days</ion-select-option>
-        <ion-select-option value="No">No luggage.</ion-select-option>
-        <ion-select-option value="No">No luggage.</ion-select-option>
-        <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
-      </ion-select>
+        <ion-select class="font-14 ion-select-T" style="color: #ACACAC;" label-placement="floating" interface="popover"
+          value="No">
+          <ion-select-option value="No">Days</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">No luggage.</ion-select-option>
+          <ion-select-option value="No">81 Seat Standard C..</ion-select-option>
+        </ion-select>
       </ion-col>
       <ion-col size="12" style="margin-top: 4%;">
         <ion-label class="font-16" style="font-weight: bold; color: #000000;">As Directed</ion-label>
@@ -850,7 +884,8 @@
           <ion-textarea value="{{dt_m.comment}}"></ion-textarea>
         </ion-col>
         <ion-col size="4" style="display: block; justify-items: center;">
-          <ion-label class="font-16" style="color: #469FD1; display: block; white-space: nowrap;">Chang Status</ion-label>
+          <ion-label class="font-16" style="color: #469FD1; display: block; white-space: nowrap;">Chang
+            Status</ion-label>
           <ion-icon name="document-attach-outline" style="width: 43px; height: 50px; color: #000000;"></ion-icon>
           <ion-label class="font-14" style="color: #747474; display: block;">Invoice</ion-label>
         </ion-col>

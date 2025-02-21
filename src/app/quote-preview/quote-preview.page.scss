@@ -729,91 +729,6 @@ ion-segment-button.ios::part(indicator-background) {
     }
 }
 
-
-
-.icon-fight {
-    font-size: 28px;
-    color: #469FD1;
-}
-
-.margin-to{
-    margin-left: -36.1%;
-}
-
-.custom-col {
-    flex: 0 0 55%;
-    max-width: 50%;
-}
-
-.custom-col2 {
-    flex: 0 0 45%;
-    max-width: 55%;
-}
-
-@media (width: 344px) {
-    .font-14{
-        font-size: 12px;
-    }
-
-    .custom-col2 {
-        flex: 0 0 20%;
-        max-width: 55%;
-    }
-}
-
-@media (min-width: 350px) and (max-width:374px) {
-
-    .font-14{
-        font-size: 13px;
-    }
-
-    .card {
-        width: auto;
-    }
-
-    .custom-col2 {
-        flex: 0 0 40%;
-    }
-
-    .card-content {
-        padding: 2%;
-    }
-}
-
-.custom-col-pick {
-    flex: 0 0 41.67;
-}
-
-.custom-col-date {
-    flex: 0 0 66.67%;
-}
-
-@media (max-width: 414px) {
-    .custom-col-pick {
-        flex: 0 0 30%;
-    }
-
-    .custom-col-date {
-        flex: 0 0 70%;
-    }
-}
-
-@media (max-width: 375px) {
-    .custom-col-pick {
-        flex: 0 0 100%;
-    }
-
-    .custom-col-date {
-        flex: 0 0 75.83%;
-    }
-
-}
-
-.icon-blue {
-    font-size: 30px;
-    color: #469FD1;
-}
-
 .icon-red {
     font-size: 30px;
     color: #FF0000;
@@ -847,6 +762,128 @@ ion-segment-button.ios::part(indicator-background) {
     --padding-end: 4%;
     box-shadow: none;
 }
+
+.icon-blue {
+    font-size: 29px;
+    color: #469FD1;
+}
+
+.icon-fight {
+    font-size: 28px;
+    color: #469FD1;
+}
+
+.margin-to{
+    margin-left: -36.1%;
+}
+
+.custom-col {
+    flex: 0 0 55%;
+    max-width: 50%;
+}
+
+.custom-col2 {
+    flex: 0 0 45%;
+    max-width: 55%;
+}
+
+@media (width: 344px) {
+    .font-14{
+        font-size: 12px;
+    }
+
+    .custom-col2 {
+        flex: 0 0 20%;
+        max-width: 55%;
+    }
+
+
+}
+
+@media (min-width: 350px) and (max-width:374px) {
+
+    .font-14{
+        font-size: 13px;
+    }
+
+    .card {
+        width: auto;
+    }
+
+    .custom-col2 {
+        flex: 0 0 40%;
+    }
+
+    .card-content {
+        padding: 2%;
+    }
+
+    .ion-button-gray{
+        text-align: center;
+        font: normal normal 300 14px/19px Roboto;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+}
+
+.custom-col-pick {
+    flex: 0 0 41.67;
+}
+
+.custom-col-date {
+    flex: 0 0 66.67%;
+}
+
+@media (max-width: 414px) {
+    .custom-col-pick {
+        flex: 0 0 30%;
+    }
+
+    .custom-col-date {
+        flex: 0 0 70%;
+    }
+
+    .icon-blue{
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 410px) {
+    .custom-col-pick {
+        flex: 0 0 29.17%;
+    }
+
+    .custom-col-date {
+        flex: 0 0 70.83%;
+    }
+
+    .icon-blue {
+        font-size: 25px;
+        color: #469FD1;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .custom-col-pick {
+        flex: 0 0 100%;
+    }
+
+    .custom-col-date {
+        flex: 0 0 100%;
+    }
+
+    .icon-blue {
+        font-size: 25px;
+        color: #469FD1;
+    }
+
+}
+
+
+
+
 
 @media (max-width: 425px) {
     .feb-list {

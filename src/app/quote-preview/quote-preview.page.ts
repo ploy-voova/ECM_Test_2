@@ -159,7 +159,6 @@ export class QuotePreviewPage implements OnInit {
     this.quote_pre.checkAll = res['journey_quote'].map(() => false);
     this.quote_pre.mmcheck = res['journey_quote'].map((res: any) => res['movement_quote'].map(() => false));
     this.isChecked_startJ = res['journey_quote'].map((res: any) => res['movement_quote'].map(() => false));
-    console.log(this.isChecked_startJ);
     
     this.dt_c = res['Customer'];
     this.dt_t = res['Transport'];
@@ -535,6 +534,7 @@ export class QuotePreviewPage implements OnInit {
   onccheckAll(e: any, i: number) {
     let se: boolean = true;
     this.quote_pre.checkAll[i] = e.detail.checked;
+    
     this.quote_pre.mmcheck[i] = this.quote_pre.mmcheck[i].map(
       () => e.detail.checked
     );
@@ -544,17 +544,22 @@ export class QuotePreviewPage implements OnInit {
         se = false;
         this.selectAll = false;
       }
-
       if (se) {
         this.selectAll = se;
       }
     });
   }
 
+  ischeck: boolean = false;
   onccheck(e: any, i: number, j: number) {
     let se: boolean = true;
     let ch: boolean = true;
     this.quote_pre.mmcheck[i][j] = e.detail.checked;
+    if (this.quote_pre.mmcheck.some(row => row.some(value => value === true))) {
+      this.ischeck = !this.ischeck;
+    }else{
+      this.ischeck = !this.ischeck;
+    }
     this.quote_pre.mmcheck[i].map((res) => {
       if (res == false) {
         se = false;
